@@ -1,8 +1,10 @@
 import React from "react";
+import './App.css'
 import { Typography } from '@material-ui/core';
 import { Link } from "react-router-dom";
-import SignIn from "./Components/Signin";
+import SignIn from "./routes/Signin";
 import HeaderComponent from "./routes/Dashboard/Header/HeaderComponent";
+import LineChart from "./Components/LineChart";
 
 
 const App = () => {
@@ -10,6 +12,8 @@ const App = () => {
         <div>
             {/*<SignIn />*/}
             {<HeaderComponent />}
+
+
         </div>
     );
 }

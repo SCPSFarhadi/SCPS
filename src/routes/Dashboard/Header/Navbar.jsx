@@ -27,7 +27,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
-
+import LineChart from "../../../Components/LineChart";
+import './Chart.css';
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -93,45 +94,7 @@ const mdTheme = createTheme();
 //     const toggleDrawer = () => {
 //         setOpen(!open);
 //     };
-//     return (
-        // <ThemeProvider theme={mdTheme}>
-        // <Box sx={{display: 'flex'}}>
-        //     <CssBaseline/>
-        //     <AppBar position="static">
-        //         <Toolbar  sx={{
-        //             pr: '24px', // keep right padding when drawer closed
-        //         }}>
-        //             <Box>
-        //                 <Profile/>
-        //             </Box>
-        //             <IconButton
-        //                 // size="large"
-        //                 edge="start"
-        //                 color="inherit"
-        //                 aria-label="open drawer"
-        //                 onClick={toggleDrawer}
-        //                 sx={{
-        //                     marginRight: '36px',
-        //                     ...(open && { display: 'none' }),
-        //                 }}
-        //             >
-        //                 <MenuIcon />
-        //
-        //
-        //             </IconButton>
-        //             <Typography variant="h6" component="h1" color="inherit" noWrap sx={{flexGrow: 1}}>
-        //                 Dashboard
-        //             </Typography>
-        //             <Button color="inherit">Login</Button>
-        //
-        //         </Toolbar>
-        //     </AppBar>
 
-        // </Box>
-        // </ThemeProvider>
-
-//     );
-// }
 function DashboardContent() {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -244,8 +207,12 @@ function DashboardContent() {
                             {/* Recent Orders */}
                             <Grid item xs={12}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                    <Orders />
+                                    <div className='chart'>
+                                        <LineChart />
+                                    </div>
+                                    {/*<Orders />*/}
                                 </Paper>
+
                             </Grid>
                         </Grid>
                         <Copyright sx={{ pt: 4 }} />
