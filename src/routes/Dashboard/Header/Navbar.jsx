@@ -24,7 +24,7 @@ import Link from '@mui/material/Link';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
-import Chart from './Chart';
+import Chart from '../../../Components/Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import LineChart from "../../../Components/LineChart";
