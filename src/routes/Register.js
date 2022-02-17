@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from '../api.js';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-    const history = useNavigate();
+    // const history = useNavigate();
     const initialFormData = Object.freeze({
         email: '',
         username: '',
@@ -63,7 +63,7 @@ export default function SignUp() {
                 password: formData.password,
             })
             .then((res) => {
-                history.push('/signin');
+                // history.push('/signin');
                 console.log(res);
                 console.log(res.data);
             });
@@ -137,7 +137,7 @@ export default function SignUp() {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="/login" variant="body2">
                                 Already have an account? Sign in
                             </Link>
                         </Grid>
