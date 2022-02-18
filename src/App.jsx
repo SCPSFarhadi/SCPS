@@ -37,7 +37,7 @@ class App extends Component {
                         <PrivateRoute exact path="/" component={HeaderComponent} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={SignIn} />
-                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/test" component={Login} />
                     </Switch>
                 </BrowserRouter>
 

@@ -12,13 +12,15 @@ import {
     REGISTER_FAIL,
 } from './types';
 
+const baseUrl = 'http://127.0.0.1:8000/';
+
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {
     // User Loading
     dispatch({ type: USER_LOADING });
 
     axios
-        .get('/api/auth/user', tokenConfig(getState))
+        .post(baseUrl+'api/users/token/refresh/', tokenConfig(getState))
         .then((res) => {
             dispatch({
                 type: USER_LOADED,
@@ -34,7 +36,11 @@ export const loadUser = () => (dispatch, getState) => {
 };
 
 // LOGIN USER
-export const login = (username, password) => (dispatch) => {
+export const login = (email, password) => (dispatch) => {
+    if(email === undefined || password === undefined){
+        console.log("undefined");
+        return;
+    }
     // Headers
     const config = {
         headers: {
@@ -42,11 +48,8 @@ export const login = (username, password) => (dispatch) => {
         },
     };
 
-    // Request Body
-    const body = JSON.stringify({ username, password });
-
     axios
-        .post('/api/auth/login', body, config)
+        .post(baseUrl+'api/users/login/', {email: email, password: password}, config)
         .then((res) => {
             dispatch({
                 type: LOGIN_SUCCESS,
