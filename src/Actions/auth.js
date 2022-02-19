@@ -18,9 +18,8 @@ const baseUrl = 'http://127.0.0.1:8000/';
 export const loadUser = () => (dispatch, getState) => {
     // User Loading
     dispatch({ type: USER_LOADING });
-
     axios
-        .post(baseUrl+'api/users/token/refresh/', tokenConfig(getState))
+        .post(baseUrl+'api/users/token/refresh/' , {refresh: localStorage.getItem('token')},tokenConfig(getState))
         .then((res) => {
             dispatch({
                 type: USER_LOADED,

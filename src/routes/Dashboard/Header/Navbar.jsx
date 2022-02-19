@@ -133,6 +133,24 @@ function DashboardContent() {
                         >
                             Dashboard
                         </Typography>
+                        <Typography
+                            component="h4"
+                            variant="h6"
+                            color="inherit"
+                            noWrap
+
+                        >
+                            Username: {localStorage.getItem('username')} {'\xa0\xa0\xa0\xa0\xa0\xa0'}
+                        </Typography>
+                        <Typography
+                            component="h4"
+                            variant="h6"
+                            color="inherit"
+                            noWrap
+
+                        >
+                            Role: {localStorage.getItem('role')}
+                        </Typography>
                         <IconButton color="inherit">
                             <Profile/>
                         </IconButton>

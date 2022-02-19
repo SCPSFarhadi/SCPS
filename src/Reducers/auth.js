@@ -8,6 +8,7 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
 } from '../Actions/types.js';
+import {b64_to_utf8} from "./base64";
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -17,6 +18,15 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
+    function getUserInfo() {
+        let refresh_token = action.payload['refresh'];
+        let user_payload = refresh_token.split('.')[1];
+        user_payload = JSON.parse(b64_to_utf8(user_payload))
+
+        localStorage.setItem('username', user_payload.user_name);
+        localStorage.setItem('role', user_payload.role);
+    }
+
     switch (action.type) {
         case USER_LOADING:
             return {
@@ -24,6 +34,7 @@ export default function (state = initialState, action) {
                 isLoading: true,
             };
         case USER_LOADED:
+            getUserInfo();
             return {
                 ...state,
                 isAuthenticated: true,
@@ -31,7 +42,9 @@ export default function (state = initialState, action) {
                 user: action.payload,
             };
         case LOGIN_SUCCESS:
-            localStorage.setItem('token',action.payload.token);
+
+            localStorage.setItem('token',action.payload['refresh']);
+            getUserInfo();
             return {
                 ...state,
                 ...action.payload,
