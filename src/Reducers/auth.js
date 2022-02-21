@@ -11,7 +11,8 @@ import {
 import {b64_to_utf8} from "./base64";
 
 const initialState = {
-    token: localStorage.getItem('token'),
+    token_refresh: localStorage.getItem('token_refresh'),
+    token_access: localStorage.getItem('token_access'),
     isAuthenticated: null,
     isLoading: false,
     user: null,
@@ -19,10 +20,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
     function getUserInfo() {
+        localStorage.setItem('token_refresh',action.payload['refresh']);
+        localStorage.setItem('token_access',action.payload['access'])
         let refresh_token = action.payload['refresh'];
         let user_payload = refresh_token.split('.')[1];
         user_payload = JSON.parse(b64_to_utf8(user_payload))
-
         localStorage.setItem('username', user_payload.user_name);
         localStorage.setItem('role', user_payload.role);
     }
@@ -43,7 +45,6 @@ export default function (state = initialState, action) {
             };
         case LOGIN_SUCCESS:
 
-            localStorage.setItem('token',action.payload['refresh']);
             getUserInfo();
             return {
                 ...state,
@@ -53,7 +54,7 @@ export default function (state = initialState, action) {
             };
 
         case REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.token);
+            getUserInfo();
             return {
                 ...state,
                 ...action.payload,
@@ -64,7 +65,8 @@ export default function (state = initialState, action) {
         case LOGIN_FAIL:
         case LOGOUT_SUCCESS:
         case REGISTER_FAIL:
-            localStorage.removeItem('token');
+            localStorage.removeItem('token_refresh');
+            localStorage.removeItem('token_access');
             return {
                 ...state,
                 token: null,

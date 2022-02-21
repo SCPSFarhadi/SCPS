@@ -19,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
     // User Loading
     dispatch({ type: USER_LOADING });
     axios
-        .post(baseUrl+'api/users/token/refresh/' , {refresh: localStorage.getItem('token')},tokenConfig(getState))
+        .post(baseUrl+'api/users/token/refresh/' , {refresh: localStorage.getItem('token_refresh')},tokenConfig(getState))
         .then((res) => {
             dispatch({
                 type: USER_LOADED,
@@ -109,8 +109,7 @@ export const logout = () => (dispatch, getState) => {
 // Setup config with token - helper function
 export const tokenConfig = (getState) => {
     // Get token from state
-    const token = getState().auth.token;
-
+    const token = getState().auth.token_access;
     // Headers
     const config = {
         headers: {
