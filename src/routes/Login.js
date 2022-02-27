@@ -27,7 +27,7 @@ export class Login extends Component {
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Link to="/" />;
+            return <Link to="/admin" />;
         }
         const { username, password } = this.state;
         return (
