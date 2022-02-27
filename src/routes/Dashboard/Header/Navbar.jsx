@@ -158,13 +158,13 @@ function DashboardContent(props) {
             <Copyright sx={{ pt: 4 }} />
         </Container>;
     }
-    else if(menu === "Graph"){
+    else if(menu === "Integrations"){
         dataMiddle = <Matrix />;
     }
     else if(menu === "Reports"){
         dataMiddle = <h1>Reports here</h1>;
     }
-    else if(menu === "Integrations"){
+    else if(menu === "Graph"){
         dataMiddle = <h1>Integrations here</h1>;
     }
     else if(menu === "Setting"){
