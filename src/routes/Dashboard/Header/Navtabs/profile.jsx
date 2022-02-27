@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from "@mui/material/IconButton";
-import {Badge, ListItem, ListItemIcon, ListItemText} from "@mui/material";
+import {Badge, List, ListItem, ListItemIcon, ListItemText} from "@mui/material";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Box from "@mui/material/Box";
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -19,26 +19,21 @@ export default function BasicMenu() {
         setAnchorEl(null);
     };
 
-    const dropDownProfile = [
-        {label:"Profile Setting",icon:<SettingsIcon/>},
-        {label:"Logout",icon:<LogoutIcon/>},
-    ];
-
     return (
         <div>
             <Box>
-                <IconButton
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                    color='inherit'
-                >
-                <Badge color="secondary">
-                    <SettingsIcon />
-                </Badge>
-            </IconButton>
+                {/*<IconButton*/}
+                {/*    id="basic-button"*/}
+                {/*    aria-controls={open ? 'basic-menu' : undefined}*/}
+                {/*    aria-haspopup="true"*/}
+                {/*    aria-expanded={open ? 'true' : undefined}*/}
+                {/*    onClick={handleClick}*/}
+                {/*    color='inherit'*/}
+                {/*>*/}
+                    <Badge color="secondary" onClick={handleClick}>
+                        <SettingsIcon />
+                    </Badge>
+                {/*</IconButton>*/}
             </Box>
 
             <Menu
@@ -50,12 +45,14 @@ export default function BasicMenu() {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {dropDownProfile.map((item,i)=>(
-                    <MenuItem component={ListItem} onClick={handleClose}>
-                        <ListItemIcon>{item.icon}</ListItemIcon>
-                        <ListItemText>{item.label}</ListItemText>
-                    </MenuItem>
-                ))}
+                <MenuItem>
+                    <ListItemIcon><SettingsIcon/></ListItemIcon>
+                    <ListItemText>Profile Setting</ListItemText>
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon><LogoutIcon/></ListItemIcon>
+                    <ListItemText>Logout</ListItemText>
+                </MenuItem>
             </Menu>
         </div>
     );
