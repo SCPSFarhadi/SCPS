@@ -64,7 +64,7 @@ function Matrix(props) {
             }
             return (
                 <form onSubmit={handleSubmit} dir={'rtl'}>
-                    <div style={{overflow: 'scroll', height: '300px', width: '1000px'}}>
+                    <div style={{overflow: 'scroll', height: '300px', width: '100%'}}>
                         {getInput(matrix)}
                     </div>
                     <div style={{display: 'flex'}}>
