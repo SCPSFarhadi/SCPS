@@ -41,6 +41,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import {connect} from "react-redux";
 import {login} from "../../../Actions/auth";
 import Matrix from "../../../Components/Matrix/matrix.js";
+import MakeGraph from "../../../Components/Graph/Graph.js";
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -165,7 +166,7 @@ function DashboardContent(props) {
         dataMiddle = <h1>Reports here</h1>;
     }
     else if(menu === "Graph"){
-        dataMiddle = <h1>Integrations here</h1>;
+        dataMiddle = <MakeGraph />;
     }
     else if(menu === "Setting"){
         dataMiddle = <h1>Graph here</h1>;
