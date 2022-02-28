@@ -16,7 +16,6 @@ const myConfig = {
         color: "red",
         size: 820,
         highlightStrokeColor: "blue",
-
     },
     link: {
         highlightColor: "lightblue",
@@ -27,7 +26,7 @@ const myConfig = {
 
 function MakeGraph(props) {
     return (
-        <div>
+        <div style={{height:'100%',width:'100%'}}>
             <Graph
                 id="graph-id" // id is mandatory
                 data={data}
