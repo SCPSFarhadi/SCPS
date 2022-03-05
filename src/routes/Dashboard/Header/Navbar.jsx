@@ -42,6 +42,7 @@ import {connect} from "react-redux";
 import {login} from "../../../Actions/auth";
 import Matrix from "../../../Components/Matrix/matrix.js";
 import MakeGraph from "../../../Components/Graph/Graph.js";
+import ProfileSetting from "./Navtabs/ProfileSetting";
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -171,6 +172,9 @@ function DashboardContent(props) {
     else if(menu === "Setting"){
         dataMiddle = <h1>Graph here</h1>;
     }
+    else if(menu === "Profile"){
+        dataMiddle = <ProfileSetting />;
+    }
     else{
         dataMiddle = <h1>Error loading data</h1>;
     }
@@ -227,7 +231,7 @@ function DashboardContent(props) {
                                     Role: {localStorage.getItem('role')}
                                 </Typography>
                                 <IconButton color="inherit">
-                                    <Profile/>
+                                    <Profile setmenu={setMenu}/>
                                 </IconButton>
                                 <IconButton color="inherit">
                                     <Badge badgeContent={4} color="secondary">

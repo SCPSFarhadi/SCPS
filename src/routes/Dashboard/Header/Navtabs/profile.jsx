@@ -8,7 +8,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Box from "@mui/material/Box";
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-export default function BasicMenu() {
+export default function BasicMenu(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -22,18 +22,9 @@ export default function BasicMenu() {
     return (
         <div>
             <Box>
-                {/*<IconButton*/}
-                {/*    id="basic-button"*/}
-                {/*    aria-controls={open ? 'basic-menu' : undefined}*/}
-                {/*    aria-haspopup="true"*/}
-                {/*    aria-expanded={open ? 'true' : undefined}*/}
-                {/*    onClick={handleClick}*/}
-                {/*    color='inherit'*/}
-                {/*>*/}
-                    <Badge color="secondary" onClick={handleClick}>
-                        <SettingsIcon />
-                    </Badge>
-                {/*</IconButton>*/}
+                <Badge color="secondary" onClick={handleClick}>
+                    <SettingsIcon />
+                </Badge>
             </Box>
 
             <Menu
@@ -47,7 +38,7 @@ export default function BasicMenu() {
             >
                 <MenuItem>
                     <ListItemIcon><SettingsIcon/></ListItemIcon>
-                    <ListItemText>Profile Setting</ListItemText>
+                    <ListItemText onClick={()=>{props.setmenu('Profile')}}>Profile Setting</ListItemText>
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon><LogoutIcon/></ListItemIcon>
