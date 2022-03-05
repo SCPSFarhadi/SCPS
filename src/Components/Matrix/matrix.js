@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Button from "@mui/material/Button";
+import CsvReader from "./CsvReader";
 
 function Matrix(props) {
     const [matrixSize, setMatrixSize] = useState({
@@ -108,6 +109,7 @@ function Matrix(props) {
                         // }
                     }}
                 />
+                <CsvReader />
             </form>
             <br/>
             <MatrixInput matrixSize={matrixSize} setMatrix={matrix => setMatrix(matrix)} />
