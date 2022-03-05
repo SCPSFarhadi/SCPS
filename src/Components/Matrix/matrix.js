@@ -50,6 +50,12 @@ function Matrix(props) {
             for (let i = 0; i < matrixSize.rows; i++) {
                 matrixLimit2[i] = new Array(1).fill(0)
             }
+            let matrixU = Array(1)
+            matrixU[0] = new Array(matrixSize.columns).fill(0)
+
+
+            let matrixV = Array(1)
+            matrixV[0] = new Array(matrixSize.columns).fill(0)
 
             const handleSubmit = event => {
                 event.preventDefault();
@@ -65,15 +71,30 @@ function Matrix(props) {
             }
             return (
                 <form onSubmit={handleSubmit} dir={'rtl'}>
+                    <h3>Matrix</h3>
                     <div style={{overflow: 'scroll', height: '300px', width: '100%'}}>
                         {getInput(matrix)}
                     </div>
+                    <h3>Limits</h3>
                     <div style={{display: 'flex'}}>
+                        <label>Upper bound</label>
                         <div style={{overflow: 'scroll', height: '300px', width: '33%',flexGrow: '1'}}>
                             {getInput(matrixLimit1)}
                         </div>
+                        <label>Lower bound</label>
                         <div style={{overflow: 'scroll', height: '300px', width: '33%',flexGrow: '1'}}>
                             {getInput(matrixLimit2)}
+                        </div>
+                    </div>
+                    <h3>Vectors</h3>
+                    <div>
+                        <label>U Vector: </label>
+                        <div style={{overflow: 'scroll', width: '100%%',flexGrow: '1'}}>
+                            {getInput(matrixU)}
+                        </div>
+                        <label>V Vector: </label>
+                        <div style={{overflow: 'scroll', width: '100%%',flexGrow: '1'}}>
+                            {getInput(matrixV)}
                         </div>
                     </div>
 
