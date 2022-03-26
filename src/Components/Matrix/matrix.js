@@ -114,7 +114,7 @@ function Matrix(props) {
 
     return (
         <div  dir={'rtl'}>
-            <label>make n*n matrix by input</label>
+            <h2>make n*n matrix by input</h2>
             <form>
                 <input
                     type="number"

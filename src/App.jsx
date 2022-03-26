@@ -3,6 +3,7 @@ import './App.css'
 import { Typography } from '@material-ui/core';
 import {BrowserRouter, Link, Redirect, Route, Switch} from "react-router-dom";
 import SignIn from "./routes/Signin";
+import Chat from "./Containers/Chat.js"
 import HeaderComponent from "./routes/Dashboard/Header/HeaderComponent";
 import LineChart from "./Components/LineChart";
 import Register from './routes/Register.js'
@@ -15,6 +16,7 @@ import {Login} from "./routes/Login";
 import SendData from "./Components/SendData";
 import {loadUser} from "./Actions/auth";
 import Navbar from "./routes/Dashboard/Header/testNavbar";
+import WebSocketInstance from "./websocket";
 
 class App extends Component {
     componentDidMount() {
@@ -41,6 +43,7 @@ class App extends Component {
                         }} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={SignIn} />
+                        <Route exact path="/chat" component={Chat} />
                         <PrivateRoute exact path="/test" component={Navbar} />
                     </Switch>
                 </BrowserRouter>
