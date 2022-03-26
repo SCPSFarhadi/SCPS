@@ -50,6 +50,7 @@ class WebSocketService {
             this.callbacks[command](parsedData.messages);
         }
         if (command === "chat_message") {
+            console.log(parsedData)
             this.callbacks[command](parsedData.message);
         }
     }
@@ -67,7 +68,6 @@ class WebSocketService {
             command: "new_message",
             from: message.from,
             message: message.content,
-            chatId: message.chatId
         });
     }
 
