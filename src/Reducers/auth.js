@@ -44,7 +44,6 @@ export default function (state = initialState, action) {
                 user: action.payload,
             };
         case LOGIN_SUCCESS:
-
             getUserInfo();
             return {
                 ...state,
@@ -62,8 +61,24 @@ export default function (state = initialState, action) {
                 isLoading: false,
             };
         case AUTH_ERROR:
+            console.log("auth error")
+            return {
+                ...state
+            };
         case LOGIN_FAIL:
+            console.log("login failed")
+            return {
+                ...state
+            };
         case LOGOUT_SUCCESS:
+            console.log("logout successful!")
+            return {
+                ...state,
+                token: null,
+                user: null,
+                isAuthenticated: false,
+                isLoading: false,
+            };
         case REGISTER_FAIL:
             localStorage.removeItem('token_refresh');
             localStorage.removeItem('token_access');

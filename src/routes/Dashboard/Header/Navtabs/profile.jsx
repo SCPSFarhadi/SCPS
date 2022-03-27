@@ -8,7 +8,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Box from "@mui/material/Box";
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-export default function BasicMenu(props) {
+import {connect} from "react-redux";
+import {logout} from "../../../../Actions/auth";
+const Profile = function BasicMenu(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -40,7 +42,7 @@ export default function BasicMenu(props) {
                     <ListItemIcon><SettingsIcon/></ListItemIcon>
                     <ListItemText onClick={()=>{props.setmenu('Profile')}}>Profile Setting</ListItemText>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={props.logout}>
                     <ListItemIcon><LogoutIcon/></ListItemIcon>
                     <ListItemText>Logout</ListItemText>
                 </MenuItem>
@@ -48,3 +50,7 @@ export default function BasicMenu(props) {
         </div>
     );
 }
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+});
+export default connect(mapStateToProps, { logout })(Profile);

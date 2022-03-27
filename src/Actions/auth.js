@@ -94,7 +94,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
     axios
-        .post('/api/auth/logout/', null, tokenConfig(getState))
+        .post(baseUrl+'api/users/logout/', {refresh: localStorage.getItem('token_refresh')}, tokenConfig(getState))
         .then((res) => {
             dispatch({ type: 'CLEAR_LEADS' });
             dispatch({
@@ -119,7 +119,7 @@ export const tokenConfig = (getState) => {
 
     // If token, add to headers config
     if (token) {
-        config.headers['Authorization'] = `Token ${token}`;
+        config.headers['Authorization'] = `JWT ${token}`;
     }
 
     return config;
