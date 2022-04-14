@@ -10,7 +10,7 @@ import Register from './routes/Register.js'
 import PrivateRoute from "./Components/common/PrivateRoute";
 import {Provider} from "react-redux";
 import store from "./store";
-
+import Checkout from  './Components/ProfileSetting/Checkout.js'
 
 import {Login} from "./routes/Login";
 import SendData from "./Components/SendData";
@@ -44,6 +44,7 @@ class App extends Component {
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/chat" component={Chat} />
+                        <Route exact path="/setting" component={Checkout} />
                         <PrivateRoute exact path="/test" component={Navbar} />
                     </Switch>
                 </BrowserRouter>

@@ -43,6 +43,10 @@ import {login} from "../../../Actions/auth";
 import Matrix from "../../../Components/Matrix/matrix.js";
 import MakeGraph from "../../../Components/Graph/Graph.js";
 import ProfileSetting from "./Navtabs/ProfileSetting";
+import Checkout from  '../../../Components/ProfileSetting/Checkout.js'
+
+
+
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -170,10 +174,10 @@ function DashboardContent(props) {
         dataMiddle = <MakeGraph />;
     }
     else if(menu === "Setting"){
-        dataMiddle = <h1>Graph here</h1>;
+        dataMiddle = <Checkout/>;
     }
     else if(menu === "Profile"){
-        dataMiddle = <ProfileSetting />;
+        dataMiddle = <Checkout/>;
     }
     else{
         dataMiddle = <h1>Error loading data</h1>;
