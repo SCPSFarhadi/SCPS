@@ -47,12 +47,22 @@ class WebSocketService {
             return;
         }
         if (command === "fetch_messages") {
+            console.log(parsedData.messages)
             this.callbacks[command](parsedData.messages);
         }
         if (command === "chat_message") {
             console.log(parsedData)
             this.callbacks[command](parsedData.message);
         }
+        if (command === "node_state") {
+            console.log(parsedData)
+            this.callbacks[command](parsedData.message);
+        }
+        if (command === "graph_config") {
+            console.log(parsedData)
+            this.callbacks[command](parsedData.message);
+        }
+
     }
 
     fetchMessages(username, chatId) {
@@ -71,9 +81,11 @@ class WebSocketService {
         });
     }
 
-    addCallbacks(messagesCallback, newMessageCallback) {
+    addCallbacks(messagesCallback, newMessageCallback,setNodeState,setGraphConfig) {
         this.callbacks["new_message"] = messagesCallback;
         this.callbacks["chat_message"] = newMessageCallback;
+        this.callbacks["node_state"] = setNodeState;
+        this.callbacks["graph_config"] = setGraphConfig;
     }
 
     sendMessage(data) {

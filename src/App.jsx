@@ -17,6 +17,7 @@ import SendData from "./Components/SendData";
 import {loadUser} from "./Actions/auth";
 import Navbar from "./routes/Dashboard/Header/testNavbar";
 import WebSocketInstance from "./websocket";
+import Socket from "./routes/Dashboard/Header/Socket";
 
 class App extends Component {
     componentDidMount() {
@@ -24,7 +25,9 @@ class App extends Component {
     }
     render() {
         return (
+
             <Provider store={store}>
+            <Socket/>
                 <BrowserRouter>
                     {/*<Routes>*/}
                     {/*    <Route path="/signin" element={<SignIn />} />*/}

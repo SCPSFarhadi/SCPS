@@ -45,7 +45,7 @@ import MakeGraph from "../../../Components/Graph/Graph.js";
 import ProfileSetting from "./Navtabs/ProfileSetting";
 import Checkout from  '../../../Components/ProfileSetting/Checkout.js'
 
-
+import store from '../../../store'
 
 function Copyright(props) {
     return (
@@ -117,6 +117,7 @@ function DashboardContent(props) {
     const [open, setOpen] = React.useState(true);
     const [menu, setMenu] = React.useState("Dashboard");
     const dispatch = useDispatch();
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
