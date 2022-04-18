@@ -114,10 +114,12 @@ const mdTheme = createTheme();
 //     };
 
 function DashboardContent(props) {
+
+
     const [open, setOpen] = React.useState(true);
     const [menu, setMenu] = React.useState("Dashboard");
     const dispatch = useDispatch();
-
+    console.log(store.getState())
     const toggleDrawer = () => {
         setOpen(!open);
     };

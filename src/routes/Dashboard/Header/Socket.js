@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import WebSocketInstance from '../../../websocket';
 import {receiveDataNodeTem} from '../../../Actions/recieveData.js'
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
+import store from "../../../store";
+import {loadUser} from "../../../Actions/auth";
 
 // import Hoc from '../hoc/hoc';
 
@@ -51,11 +53,11 @@ class Socket extends React.Component {
     }
 
     setNodeState(conf) {
-        receiveDataNodeTem(conf);
+        store.dispatch(receiveDataNodeTem(conf));
     }
 
     setGraphConfig(conf) {
-        receiveDataConfig(conf);
+        store.dispatch(receiveDataConfig(conf));
     }
 
 

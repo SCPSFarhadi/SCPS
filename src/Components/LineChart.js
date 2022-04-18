@@ -1,16 +1,37 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import {ResponsiveContainer} from "recharts";
+import {useSelector} from "react-redux";
+import store from "../store";
+import receiveData from "../Reducers/receiveData";
 function LineChart(props) {
+
+    let dateTempObj = useSelector(() => store.getState().receiveData.time);
+    let times = [];
+    let temps = [];
+    if(Object.keys(dateTempObj).length !== 0){
+        dateTempObj = JSON.parse(dateTempObj);
+        for(let x in dateTempObj){
+            times.push(dateTempObj[x]['DateTime']);
+        }
+        for(let x in dateTempObj){
+            temps.push(dateTempObj[x]['temperature']);
+        }
+    }
+    console.log("in Line Chart")
+    console.log(dateTempObj)
+
+    console.log(times)
+    console.log(temps)
     const series = [
         {
             name: "Guests",
-            data: [19, 22, 20, 26]
+            data: temps
         }
     ];
     const options = {
         xaxis: {
-            categories: ["2019-05-01", "2019-05-02", "2019-05-03", "2019-05-04"]
+            categories: times
         }
     };
     return (

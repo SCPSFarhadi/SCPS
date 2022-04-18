@@ -14,10 +14,12 @@ export default function(state=initialState,action){
                 config: action.payload
             };
         case  RECEIVE_DATA_NODE_TEM:
+            const obj = JSON.parse(action.payload)
+            console.log((obj))
             return{
               ...state,
-                time: [...state.time, action.payload.time],
-                temp: [...state.temp, action.payload.temp]
+                time: [...state.time, obj],
+                temp: [...state.temp, action.payload]
             };
         default:
             return state;
