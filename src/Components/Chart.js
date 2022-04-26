@@ -23,7 +23,6 @@ const data = [
 
 export default function Chart() {
     const theme = useTheme();
-    let dateTempconfig = useSelector(() => store.getState().receiveData.time);
     return (
         <React.Fragment>
             <Title>Today</Title>
