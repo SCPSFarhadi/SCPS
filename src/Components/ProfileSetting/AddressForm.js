@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Button from "@mui/material/Button";
 
 export default function AddressForm() {
   return (
@@ -66,7 +67,9 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-
+        <Grid item xs={12}>
+          <Button variant="contained">Submit</Button>
+        </Grid>
       </Grid>
     </React.Fragment>
   );

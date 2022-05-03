@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Button from "@mui/material/Button";
 
 export default function AddressForm() {
   return (
@@ -102,6 +103,7 @@ export default function AddressForm() {
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
             label="Use this address for payment details"
           />
+          <Button variant="contained">Submit</Button>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -38,12 +38,19 @@ import PeopleIcon from "@mui/icons-material/People";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import SettingsIcon from "@mui/icons-material/Settings";
+import SecurityIcon from '@mui/icons-material/Security';
+
 import {connect} from "react-redux";
 import {login} from "../../../Actions/auth";
 import Matrix from "../../../Components/Matrix/matrix.js";
 import MakeGraph from "../../../Components/Graph/Graph.js";
-import ProfileSetting from "./Navtabs/ProfileSetting";
-import Checkout from  '../../../Components/ProfileSetting/Checkout.js'
+// import ProfileSetting from "./Navtabs/ProfileSetting";
+import ProfileSetting from '../../../Components/ProfileSetting/ProfSetting.js'
+import TestReport from '../../../Components/Reports/Testing/testReport'
+import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
+import ConfigForm from '../../../Components/Setting/NodeSetting'
+
+import ReportStates from '../../../Components/Reports/Report'
 
 import store from '../../../store'
 
@@ -80,7 +87,7 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
             position: 'relative',
@@ -171,16 +178,25 @@ function DashboardContent(props) {
         dataMiddle = <Matrix />;
     }
     else if(menu === "Reports"){
-        dataMiddle = <h1>Reports here</h1>;
+        dataMiddle = <ReportStates />
     }
     else if(menu === "Graph"){
         dataMiddle = <MakeGraph />;
     }
-    else if(menu === "Setting"){
-        dataMiddle = <Checkout/>;
+    else if(menu === "ProfileSetting"){
+        dataMiddle = <ProfileSetting/>;
     }
     else if(menu === "Profile"){
-        dataMiddle = <Checkout/>;
+        dataMiddle = <ProfileSetting/>;
+    }
+    else if(menu === "TestReport"){
+        dataMiddle = <TestReport/>;
+    }
+    else if(menu === "Setting"){
+        dataMiddle =  <ConfigForm
+            formName="Sample Form Submit"
+            formDescription="This is sample form using Material UI."
+        />;
     }
     else{
         dataMiddle = <h1>Error loading data</h1>;
@@ -288,10 +304,23 @@ function DashboardContent(props) {
                                 </ListItemButton>
                                 <ListItemButton>
                                     <ListItemIcon>
+                                        <SecurityIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Security Tests" onClick={() => setMenu("TestReport")}/>
+                                </ListItemButton>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <DisplaySettingsIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Node Setting" onClick={() => setMenu("Setting")}/>
+                                </ListItemButton>
+                                <ListItemButton>
+                                    <ListItemIcon>
                                         <SettingsIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Setting" onClick={() => setMenu("Setting")}/>
+                                    <ListItemText primary="Profile Setting" onClick={() => setMenu("ProfileSetting")}/>
                                 </ListItemButton>
+
                                 <Divider sx={{ my: 1 }} />
                                 {secondaryListItems}
                             </List>

@@ -10,7 +10,7 @@ import Register from './routes/Register.js'
 import PrivateRoute from "./Components/common/PrivateRoute";
 import {Provider} from "react-redux";
 import store from "./store";
-import Checkout from  './Components/ProfileSetting/Checkout.js'
+import Checkout from './Components/ProfileSetting/ProfSetting.js'
 
 import {Login} from "./routes/Login";
 import SendData from "./Components/SendData";
