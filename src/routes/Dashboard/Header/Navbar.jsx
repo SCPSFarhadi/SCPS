@@ -42,7 +42,7 @@ import SecurityIcon from '@mui/icons-material/Security';
 
 import {connect} from "react-redux";
 import {login} from "../../../Actions/auth";
-import Matrix from "../../../Components/Matrix/matrix.js";
+import MatrixForm from "../../../Components/Matrix/MatrixSetting";
 import MakeGraph from "../../../Components/Graph/Graph.js";
 // import ProfileSetting from "./Navtabs/ProfileSetting";
 import ProfileSetting from '../../../Components/ProfileSetting/ProfSetting.js'
@@ -175,7 +175,7 @@ function DashboardContent(props) {
         </Container>;
     }
     else if(menu === "Integrations"){
-        dataMiddle = <Matrix />;
+        dataMiddle = <MatrixForm />;
     }
     else if(menu === "Reports"){
         dataMiddle = <ReportStates />

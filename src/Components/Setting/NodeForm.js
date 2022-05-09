@@ -4,8 +4,9 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import {Slider} from "@mui/material";
+import {FormControl, InputLabel, Select, Slider} from "@mui/material";
 import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function NodeForm() {
 
@@ -92,24 +93,25 @@ export default function NodeForm() {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography >
-                        Faucet:
-                    </Typography>
-                    <Slider
-                        aria-label="faucet"
-                        defaultValue={30}
-                        getAriaValueText={valuetext}
-                        valueLabelDisplay="auto"
-                        step={5}
-                        marks
-                        min={10}
-                        max={110}
-                    />
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Permission</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value="Permission"
+                            label="Permission"
+                            // onChange={handleChange}
+                        >
+                            <MenuItem value={10}>YES</MenuItem>
+                            <MenuItem value={20}>NO</MenuItem>
+                            <MenuItem value={30}>Depends</MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                     <FormControlLabel
                         control={<Checkbox color="secondary" name="saveAddress" value="yes"/>}
-                        label="Waiting Until Response "
+                        label="Solenoid valve Open "
                     />
                     <Button variant="contained">Submit</Button>
                 </Grid>

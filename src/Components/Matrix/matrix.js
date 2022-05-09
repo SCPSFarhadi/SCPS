@@ -40,6 +40,11 @@ function Matrix(props) {
             for (let i = 0; i < matrixSize.rows; i++) {
                 matrix[i] = new Array(matrixSize.columns).fill(0)
             }
+            // for constants
+            let matrixC = Array(matrixSize.rows)
+            for (let i = 0; i < matrixSize.rows; i++) {
+                matrixC[i] = new Array(matrixSize.columns).fill(0)
+            }
             // for limits
             let matrixLimit1 = Array(matrixSize.rows)
             for (let i = 0; i < matrixSize.rows; i++) {
@@ -50,6 +55,7 @@ function Matrix(props) {
             for (let i = 0; i < matrixSize.rows; i++) {
                 matrixLimit2[i] = new Array(1).fill(0)
             }
+
             let matrixU = Array(1)
             matrixU[0] = new Array(matrixSize.columns).fill(0)
 
@@ -74,6 +80,10 @@ function Matrix(props) {
                     <h3>Matrix</h3>
                     <div style={{overflow: 'scroll', height: '300px', width: '100%'}}>
                         {getInput(matrix)}
+                    </div>
+                    <h3>Matrix Q</h3>
+                    <div style={{overflow: 'scroll', height: '300px', width: '100%'}}>
+                        {getInput(matrixC)}
                     </div>
                     <h3>Limits</h3>
                     <div style={{display: 'flex'}}>
