@@ -29,7 +29,7 @@ const myConfig = {
 
 
 function MakeGraph(props) {
-
+    let count_error = 0;
     // make a dialog ready:
     const [open, setOpen] = React.useState(false);
     const [selectedNode, setSelectedNode] = React.useState("");
@@ -53,6 +53,17 @@ function MakeGraph(props) {
     //         <ListItemText primary={email} />
     //     </ListItem>
     // ))}
+    let dateTempObj = useSelector(() => store.getState().receiveData.time);
+    if(Object.keys(dateTempObj).length !== 0){
+        dateTempObj = JSON.parse(dateTempObj);
+        for(let x in dateTempObj){
+            let a = dateTempObj[x]['temperature'];
+            if(parseInt(a) > 30 && count_error===0){
+                alert("Have an unexpected error in node:"+dateTempObj[x]["Node__id"]);
+                count_error+=1;
+            }
+        }
+    }
 
 
 

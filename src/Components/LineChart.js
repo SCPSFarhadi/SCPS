@@ -16,11 +16,6 @@ function LineChart(props) {
         }
         for(let x in dateTempObj){
             temps.push(dateTempObj[x]['temperature']);
-            let a = dateTempObj[x]['temperature'];
-            console.log(parseInt(a))
-            if(parseInt(a) > 44){
-                alert("Have an unexpected error in node:"+dateTempObj[x]["Node__id"]);
-            }
         }
     }
     console.log("in Line Chart")
