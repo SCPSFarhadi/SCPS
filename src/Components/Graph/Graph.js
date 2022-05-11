@@ -54,9 +54,12 @@ function MakeGraph(props) {
     //     </ListItem>
     // ))}
 
+
+
     React.useEffect(() => {
         let nodes = data.nodes;
         // eslint-disable-next-line array-callback-return
+        console.log("making graph by config")
         nodes.map((node)=>{
             let availableNode = document.getElementById(node.id);
             if (availableNode) {
@@ -68,8 +71,10 @@ function MakeGraph(props) {
     }, [])
 
     let dateTempconfig = useSelector(() => store.getState().receiveData.config);
+
     console.log("making graph by config")
     console.log(dateTempconfig)
+
     if(Object.keys(dateTempconfig).length !== 0){
         dateTempconfig = JSON.parse(dateTempconfig);
         console.log(dateTempconfig)
