@@ -53,6 +53,7 @@ import ConfigForm from '../../../Components/Setting/NodeSetting'
 import ReportStates from '../../../Components/Reports/Report'
 
 import store from '../../../store'
+import FaultTab from "./FaultTab";
 
 function Copyright(props) {
     return (
@@ -132,6 +133,16 @@ function DashboardContent(props) {
     };
     let dataMiddle;
     if(menu === "Dashboard"){
+        dataMiddle = <MakeGraph />;
+    }
+    else if(menu === "Integrations"){
+        dataMiddle = <MatrixForm />;
+    }
+    else if(menu === "Reports"){
+        dataMiddle = <ReportStates />
+    }
+    else if(menu === "Graph"){
+
         dataMiddle = <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
                 {/* Chart */}
@@ -173,15 +184,6 @@ function DashboardContent(props) {
             </Grid>
             <Copyright sx={{ pt: 4 }} />
         </Container>;
-    }
-    else if(menu === "Integrations"){
-        dataMiddle = <MatrixForm />;
-    }
-    else if(menu === "Reports"){
-        dataMiddle = <ReportStates />
-    }
-    else if(menu === "Graph"){
-        dataMiddle = <MakeGraph />;
     }
     else if(menu === "ProfileSetting"){
         dataMiddle = <ProfileSetting/>;
@@ -256,11 +258,7 @@ function DashboardContent(props) {
                                 <IconButton color="inherit">
                                     <Profile setmenu={setMenu}/>
                                 </IconButton>
-                                <IconButton color="inherit">
-                                    <Badge badgeContent={4} color="secondary">
-                                        <NotificationsIcon />
-                                    </Badge>
-                                </IconButton>
+                                    <FaultTab />
                             </Toolbar>
                         </AppBar>
                         <Drawer variant="permanent" open={open}>
@@ -318,7 +316,7 @@ function DashboardContent(props) {
                                     <ListItemIcon>
                                         <SettingsIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Profile Setting" onClick={() => setMenu("ProfileSetting")}/>
+                                    <ListItemText primary="Password" onClick={() => setMenu("ProfileSetting")}/>
                                 </ListItemButton>
 
                                 <Divider sx={{ my: 1 }} />

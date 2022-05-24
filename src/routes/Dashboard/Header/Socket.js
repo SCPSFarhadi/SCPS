@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import WebSocketInstance from '../../../websocket';
-import {receiveDataNodeTem} from '../../../Actions/recieveData.js'
+import {receiveDataNodeTem, receiveNotification} from '../../../Actions/recieveData.js'
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
 import store from "../../../store";
 import {loadUser} from "../../../Actions/auth";
@@ -20,7 +20,7 @@ class Socket extends React.Component {
 
         this.waitForSocketConnection(() => {
             WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this),
-                this.setNodeState.bind(this),this.setGraphConfig.bind(this))
+                this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this))
             WebSocketInstance.fetchMessages(this.props.currentUser);
         });
     }
@@ -60,6 +60,9 @@ class Socket extends React.Component {
         store.dispatch(receiveDataConfig(conf));
     }
 
+    notMessage(conf) {
+        store.dispatch(receiveNotification(conf));
+    }
 
     messageChangeHandler = (event) => {
         console.log(event.target.value)

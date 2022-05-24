@@ -7,8 +7,10 @@ import Checkbox from '@mui/material/Checkbox';
 import {FormControl, InputLabel, Select, Slider} from "@mui/material";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import {useState} from "react";
 
 export default function NodeForm() {
+    const [btnDisabled, setBtnDisabled] = useState(false)
 
     function valuetext(value) {
         return `${value}°C`;
@@ -49,15 +51,18 @@ export default function NodeForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="room"
-                        name="room"
-                        label="room"
-                        fullWidth
-                        autoComplete="room"
-                        variant="standard"
-                    />
+                    <InputLabel id="demo-simple-select-label">Room Select</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value="Permission"
+                        label="Permission"
+                        // onChange={handleChange}
+                    >
+                        <MenuItem value={10}>room 1</MenuItem>
+                        <MenuItem value={20}>room 2</MenuItem>
+                        <MenuItem value={30}>room 3</MenuItem>
+                    </Select>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -84,6 +89,7 @@ export default function NodeForm() {
                         Temperature:
                     </Typography>
                     <Slider
+                        disabled={btnDisabled}
                         aria-label="Temperature"
                         defaultValue={20}
                         getAriaValueText={valuetext}
@@ -100,6 +106,15 @@ export default function NodeForm() {
                             id="demo-simple-select"
                             value="Permission"
                             label="Permission"
+                            onChange={(event) => {
+                                console.log(event)
+                                if(event.target.value ==="YES"){
+                                    setBtnDisabled(false);
+                                }
+                                else {
+                                    setBtnDisabled(true);
+                                }
+                            }}
                             // onChange={handleChange}
                         >
                             <MenuItem value={10}>YES</MenuItem>

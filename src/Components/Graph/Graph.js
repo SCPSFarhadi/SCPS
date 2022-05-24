@@ -26,15 +26,13 @@ const myConfig = {
     },
 };
 
-
-
 function MakeGraph(props) {
     let count_error = 0;
     // make a dialog ready:
     const [open, setOpen] = React.useState(false);
     const [selectedNode, setSelectedNode] = React.useState("");
     const [nodeColor, setColor] = React.useState(green);
-
+    const [dataState, setData] = React.useState(data);
     const handleClickOpen = (node) => {
         setSelectedNode(node);
         setOpen(true);
@@ -56,16 +54,15 @@ function MakeGraph(props) {
     let dateTempObj = useSelector(() => store.getState().receiveData.time);
     if(Object.keys(dateTempObj).length !== 0){
         dateTempObj = JSON.parse(dateTempObj);
+        console.log(dateTempObj)
         for(let x in dateTempObj){
             let a = dateTempObj[x]['temperature'];
-            if(parseInt(a) > 30 && count_error===0){
-                alert("Have an unexpected error in node:"+dateTempObj[x]["Node__id"]);
-                count_error+=1;
-            }
+            // if(parseInt(a) > 30 && count_error===0){
+            //     alert("Have an unexpected error in node:"+dateTempObj[x]["Node__id"]);
+            //     count_error+=1;
+            // }
         }
     }
-
-
 
     React.useEffect(() => {
         let nodes = data.nodes;
@@ -96,6 +93,20 @@ function MakeGraph(props) {
         //     temps.push(dateTempObj[x]['temperature']);
         // }
     }
+
+
+    const onDoubleClickNode = function(nodeId) {
+        let modData = { ...dataState };
+
+        let selectNode = modData.nodes.filter(item => {
+            return item.id === nodeId;
+        });
+        selectNode.forEach(item => {
+            if (item.color && item.color === "red") item.color = "blue";
+            else item.color = "red";
+        });
+        setData(modData );
+    };
     return (
         <div>
             <div>

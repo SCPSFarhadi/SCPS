@@ -1,9 +1,10 @@
-import {RECEIVE_DATA_NODE_TEM,RECEIVE_DATA_CONFIG} from '../Actions/types.js';
+import {RECEIVE_DATA_NODE_TEM,RECEIVE_DATA_CONFIG,RECEIVE_NOTIFICATION} from '../Actions/types.js';
 
 const initialState={
     config: [],
     time: [],
-    temp: []
+    temp: [],
+    notification: []
 }
 
 export default function(state=initialState,action){
@@ -20,6 +21,11 @@ export default function(state=initialState,action){
               ...state,
                 time: [...state.time, obj],
                 temp: [...state.temp, action.payload]
+            };
+        case RECEIVE_NOTIFICATION:
+            return {
+                ...state,
+                notification: action.payload
             };
         default:
             return state;
