@@ -16,6 +16,7 @@ export const receiveDataConfig = (data) => (dispatch) => {
         type: RECEIVE_DATA_CONFIG
     })
 }
+
 export const receiveNotification = (data) => (dispatch) => {
     dispatch({
         payload: data,

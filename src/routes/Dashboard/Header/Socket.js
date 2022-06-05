@@ -5,6 +5,7 @@ import {receiveDataNodeTem, receiveNotification} from '../../../Actions/recieveD
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
 import store from "../../../store";
 import {loadUser} from "../../../Actions/auth";
+import {returnErrors} from "../../../Actions/messages";
 
 // import Hoc from '../hoc/hoc';
 
@@ -20,7 +21,7 @@ class Socket extends React.Component {
 
         this.waitForSocketConnection(() => {
             WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this),
-                this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this))
+                this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this),this.setError.bind(this))
             WebSocketInstance.fetchMessages(this.props.currentUser);
         });
     }
@@ -54,6 +55,12 @@ class Socket extends React.Component {
 
     setNodeState(conf) {
         store.dispatch(receiveDataNodeTem(conf));
+    }
+
+    setError(err) {
+        console.log("in error  "+err)
+        err = JSON.parse(err);
+        store.dispatch(returnErrors(err['message'], err['color']));
     }
 
     setGraphConfig(conf) {

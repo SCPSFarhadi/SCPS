@@ -22,7 +22,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import Chart from '../../../Components/Chart';
 import Deposits from './Deposits';
@@ -126,6 +126,12 @@ function DashboardContent(props) {
 
     const [open, setOpen] = React.useState(true);
     const [menu, setMenu] = React.useState("Dashboard");
+
+    let countError = useSelector(() => store.getState().errors.msg).length;
+    let Errors = useSelector(() => store.getState().errors);
+
+    console.log("errors in navtabs:"+countError)
+
     const dispatch = useDispatch();
     console.log(store.getState())
     const toggleDrawer = () => {
@@ -258,7 +264,7 @@ function DashboardContent(props) {
                                 <IconButton color="inherit">
                                     <Profile setmenu={setMenu}/>
                                 </IconButton>
-                                    <FaultTab />
+                                    <FaultTab len={countError} errors={Errors}/>
                             </Toolbar>
                         </AppBar>
                         <Drawer variant="permanent" open={open}>

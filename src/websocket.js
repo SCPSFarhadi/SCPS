@@ -58,7 +58,11 @@ class WebSocketService {
             console.log(parsedData)
             this.callbacks[command](parsedData.message);
         }
-        if (command === "graph_config") {
+        if (command === "graph") {
+            console.log(parsedData)
+            this.callbacks[command](parsedData.message);
+        }
+        if (command === "error") {
             console.log(parsedData)
             this.callbacks[command](parsedData.message);
         }
@@ -81,12 +85,13 @@ class WebSocketService {
         });
     }
 
-    addCallbacks(messagesCallback, newMessageCallback,setNodeState,setGraphConfig,notMessage) {
+    addCallbacks(messagesCallback, newMessageCallback,setNodeState,setGraphConfig,notMessage,setError) {
         this.callbacks["new_message"] = messagesCallback;
         this.callbacks["chat_message"] = newMessageCallback;
         this.callbacks["node_state"] = setNodeState;
-        this.callbacks["graph_config"] = setGraphConfig;
+        this.callbacks["graph"] = setGraphConfig;
         this.callbacks["not_message"] = notMessage;
+        this.callbacks["error"] = setError;
     }
 
     sendMessage(data) {
