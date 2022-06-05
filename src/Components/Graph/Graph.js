@@ -1,17 +1,10 @@
 import { Graph } from "react-d3-graph";
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useSelector,connect} from "react-redux";
 import store from "../../store";
 import SimpleDialog from "./Dialog";
 import {green, red} from "@mui/material/colors";
-// graph payload (with minimalist structure)
-const data = {
-    nodes: [{ id: "node1" }, { id: "node2" }, { id: "node3" }],
-    links: [
-        { source: "node1", target: "node2" },
-        { source: "node2", target: "node3" },
-    ],
-};
+import actions from "redux-form/lib/actions";
 
 // the graph configuration, just override the ones you need
 const myConfig = {
@@ -27,47 +20,50 @@ const myConfig = {
 };
 
 function MakeGraph(props) {
-    let count_error = 0;
+    let count_run = 0;
     // make a dialog ready:
     const [open, setOpen] = React.useState(false);
     const [selectedNode, setSelectedNode] = React.useState("");
     const [nodeColor, setColor] = React.useState(green);
-    const [dataState, setData] = React.useState(data);
+    const [dataState, setData] = React.useState(props.data);
     const handleClickOpen = (node) => {
         setSelectedNode(node);
         setOpen(true);
     };
 
+    // console.log(props.data)
+    // React.useEffect( () => {
+    //     if(props.Errors && props.Errors.id && props.Errors.id.length !== 0) {
+    //
+    //         let listErrorsID = props.Errors.id
+    //         let listErrorColor = props.Errors.status
+    //         let modData = { ...dataState };
+    //         for (let index = 0; index < listErrorsID.length; ++index) {
+    //             let selectNode = modData.nodes.filter(item => {
+    //                 return item.id === listErrorsID[index];
+    //             });
+    //             console.log(selectNode)
+    //             selectNode.forEach(item => {
+    //                 console.log(item)
+    //                 // if(item.color){
+    //                     console.log(listErrorColor[index])
+    //                     console.log(item)
+    //                     item.color = listErrorColor[index];
+    //                 // }
+    //
+    //             });
+    //         }
+    //         setData(modData)
+    //     }
+    // }, [props.Errors])
+
     const handleClose = () => {
         setOpen(false);
     };
-    // {emails.map((email) => (
-    //     <ListItem button onClick={() => handleListItemClick(email)} key={email}>
-    //         <ListItemAvatar>
-    //             <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-    //                 <PersonIcon />
-    //             </Avatar>
-    //         </ListItemAvatar>
-    //         <ListItemText primary={email} />
-    //     </ListItem>
-    // ))}
-    let dateTempObj = useSelector(() => store.getState().receiveData.config);
-    if(Object.keys(dateTempObj).length !== 0){
-        dateTempObj = JSON.parse(dateTempObj);
-        console.log(dateTempObj)
-        // for(let x in dateTempObj){
-        //     let a = dateTempObj[x]['temperature'];
-            // if(parseInt(a) > 30 && count_error===0){
-            //     alert("Have an unexpected error in node:"+dateTempObj[x]["Node__id"]);
-            //     count_error+=1;
-            // }
-        // }
-    }
 
     React.useEffect(() => {
-        let nodes = data.nodes;
+        let nodes = props.data.nodes;
         // eslint-disable-next-line array-callback-return
-        console.log("making graph by config")
         nodes.map((node)=>{
             let availableNode = document.getElementById(node.id);
             if (availableNode) {
@@ -80,8 +76,6 @@ function MakeGraph(props) {
 
     let dateTempconfig = useSelector(() => store.getState().receiveData.config);
 
-    console.log("making graph by config")
-    console.log(dateTempconfig)
 
     if(Object.keys(dateTempconfig).length !== 0){
         dateTempconfig = JSON.parse(dateTempconfig);
@@ -120,9 +114,10 @@ function MakeGraph(props) {
             <div style={{height:'100%',width:'100%'}}>
                 <Graph
                     id="graph-id" // id is mandatory
-                    data={data}
+                    data={props.data}
                     config={myConfig}
                     // onDoubleClickNode = {onDoubleClickNode}
+                    on
                 />
             </div>
         </div>
@@ -130,4 +125,10 @@ function MakeGraph(props) {
     );
 }
 
-export default MakeGraph;
+function mapStateToProps(state) {
+    return { Errors:state.errors };
+}
+
+export default connect(mapStateToProps)(MakeGraph);
+
+// export default MakeGraph;

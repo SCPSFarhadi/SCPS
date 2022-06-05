@@ -58,9 +58,8 @@ class Socket extends React.Component {
     }
 
     setError(err) {
-        console.log("in error  "+err)
         err = JSON.parse(err);
-        store.dispatch(returnErrors(err['message'], err['color']));
+        store.dispatch(returnErrors(err['message'], err['color'],err['node']));
     }
 
     setGraphConfig(conf) {

@@ -26,10 +26,11 @@ export default function FaultTab(props) {
 
     let error_list = [];
     let colors = []
-
+    let ids = []
     if(props.errors){
         error_list = props.errors.msg;
         colors = props.errors.status;
+        ids = props.errors.id
     }
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -58,7 +59,7 @@ export default function FaultTab(props) {
                             return (
                                 <Alert severity="error" key={index}>
                                     <AlertTitle>{error}</AlertTitle>
-                                    This is an Error
+                                    This is an Error in node ID: {ids[index]}
                                 </Alert>
                             )
                         }
@@ -66,7 +67,7 @@ export default function FaultTab(props) {
                             return(
                                 <Alert severity="info" key={index}>
                                     <AlertTitle>{error}</AlertTitle>
-                                    This is an info
+                                    This is an info in node ID: {ids[index]}
                                 </Alert>
                             )
                         }
@@ -74,7 +75,7 @@ export default function FaultTab(props) {
                             return (
                                 <Alert severity="warning" key={index}>
                                     <AlertTitle>{error}</AlertTitle>
-                                    This is a warning
+                                    This is a warning in node ID: {ids[index]}
                                 </Alert>
                             )
                         }

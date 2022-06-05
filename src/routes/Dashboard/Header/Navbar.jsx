@@ -129,17 +129,57 @@ function DashboardContent(props) {
 
     let countError = useSelector(() => store.getState().errors.msg).length;
     let Errors = useSelector(() => store.getState().errors);
-
-    console.log("errors in navtabs:"+countError)
+    console.log(Errors)
+    let dateConfig = useSelector(() => store.getState().receiveData.config);
 
     const dispatch = useDispatch();
-    console.log(store.getState())
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
     let dataMiddle;
     if(menu === "Dashboard"){
-        dataMiddle = <MakeGraph />;
+        let modData = {};
+        modData['nodes'] = [{ id: "1"}, { id: "2" }, { id: "3" }];
+        modData['links'] =
+            [
+                { source: "1", target: "2" },
+                { source: "2", target: "3" },
+            ]
+        ;
+
+        if((Object.keys(dateConfig).length !== 0 )) {
+            dateConfig = JSON.parse(dateConfig)
+            modData['nodes'] = dateConfig.graph
+            modData['links'] = dateConfig.links
+
+        }
+
+        if(Errors && Errors.id && Errors.id.length !== 0) {
+            // console.log("something")
+            let listErrorsID = Errors.id
+            let listErrorColor = Errors.status
+            // let modData = { ...dataState };
+            for (let index = 0; index < listErrorsID.length; ++index) {
+                let selectNode = modData.nodes.filter(item => {
+                    return item.id === listErrorsID[index];
+                });
+                // console.log(selectNode)
+                selectNode.forEach(item => {
+                    // console.log(item)
+                    // if(item.color){
+                    // console.log(listErrorColor[index])
+                    // console.log(item)
+                    item.color = listErrorColor[index];
+                    // }
+
+                });
+            }
+            console.log(modData)
+        }
+
+
+        dataMiddle = <MakeGraph data={modData} />;
     }
     else if(menu === "Integrations"){
         dataMiddle = <MatrixForm />;
@@ -355,8 +395,8 @@ function DashboardContent(props) {
 }
 
 // const mapStateToProps = (state) =>({
-//     page: state.changeMenu.page,
+//     Errors: state.errors,
 // });
-//
+// //
 // export default connect (mapStateToProps,null)(DashboardContent);
 export default DashboardContent;
