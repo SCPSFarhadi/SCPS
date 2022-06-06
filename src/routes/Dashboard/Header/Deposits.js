@@ -9,13 +9,15 @@ function preventDefault(event) {
     event.preventDefault();
 }
 
-export default function Deposits() {
+export default function Deposits(props) {
+    console.log("deposit")
+    console.log(props.data)
     return (
 
         <React.Fragment>
             <Title>Nodes status</Title>
                 <ResponsiveContainer height='100%' width='100%'>
-                    <PieChart height={300}/>
+                    <PieChart height={300} data={props.data}/>
                 </ResponsiveContainer>
         </React.Fragment>
     );

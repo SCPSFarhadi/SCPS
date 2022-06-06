@@ -66,6 +66,10 @@ class WebSocketService {
             console.log(parsedData)
             this.callbacks[command](parsedData.message);
         }
+        if ( command === "pychart"){
+            console.log(parsedData)
+            this.callbacks[command](parsedData.message);
+        }
 
     }
 
@@ -85,13 +89,14 @@ class WebSocketService {
         });
     }
 
-    addCallbacks(messagesCallback, newMessageCallback,setNodeState,setGraphConfig,notMessage,setError) {
+    addCallbacks(messagesCallback, newMessageCallback,setNodeState,setGraphConfig,notMessage,setError,setPieChart) {
         this.callbacks["new_message"] = messagesCallback;
         this.callbacks["chat_message"] = newMessageCallback;
         this.callbacks["node_state"] = setNodeState;
         this.callbacks["graph"] = setGraphConfig;
         this.callbacks["not_message"] = notMessage;
         this.callbacks["error"] = setError;
+        this.callbacks['pychart'] = setPieChart;
     }
 
     sendMessage(data) {

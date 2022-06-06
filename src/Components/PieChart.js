@@ -25,12 +25,15 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 export default class Example extends PureComponent {
     static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-label-dlhhj';
 
+
     render() {
+        console.log("pychart")
+        console.log(this.props.data)
         return (
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart width={400} height={400}>
                     <Pie
-                        data={data}
+                        data={this.props.data}
                         cx="50%"
                         cy="50%"
                         labelLine={false}

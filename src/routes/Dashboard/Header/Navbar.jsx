@@ -129,8 +129,9 @@ function DashboardContent(props) {
 
     let countError = useSelector(() => store.getState().errors.msg).length;
     let Errors = useSelector(() => store.getState().errors);
-    console.log(Errors)
+
     let dateConfig = useSelector(() => store.getState().receiveData.config);
+    let dataPychart = useSelector(() => store.getState().receiveData.pychart);
 
     const dispatch = useDispatch();
 
@@ -188,6 +189,15 @@ function DashboardContent(props) {
         dataMiddle = <ReportStates />
     }
     else if(menu === "Graph"){
+        if((Object.keys(dataPychart).length !== 0 && dataPychart)){
+            console.log(dataPychart)
+            dataPychart = JSON.parse(dataPychart)
+            // dataPychart = dataPychart.message
+
+            console.log("in pychart")
+            console.log(dataPychart)
+        }
+
 
         dataMiddle = <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
@@ -214,7 +224,7 @@ function DashboardContent(props) {
                             height: 240,
                         }}
                     >
-                        <Deposits />
+                        <Deposits data={dataPychart}/>
                     </Paper>
                 </Grid>
                 {/* Recent Orders */}

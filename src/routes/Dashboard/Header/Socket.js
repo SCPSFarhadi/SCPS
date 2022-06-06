@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import WebSocketInstance from '../../../websocket';
-import {receiveDataNodeTem, receiveNotification} from '../../../Actions/recieveData.js'
+import {receiveDataNodeTem, receiveNotification, receivePiechart} from '../../../Actions/recieveData.js'
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
 import store from "../../../store";
 import {loadUser} from "../../../Actions/auth";
@@ -21,7 +21,7 @@ class Socket extends React.Component {
 
         this.waitForSocketConnection(() => {
             WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this),
-                this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this),this.setError.bind(this))
+                this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this),this.setError.bind(this),this.setPieChart.bind(this))
             WebSocketInstance.fetchMessages(this.props.currentUser);
         });
     }
@@ -68,6 +68,11 @@ class Socket extends React.Component {
 
     notMessage(conf) {
         store.dispatch(receiveNotification(conf));
+    }
+
+    setPieChart(data){
+        console.log("fadayat shavam")
+        store.dispatch(receivePiechart(data))
     }
 
     messageChangeHandler = (event) => {

@@ -1,10 +1,12 @@
-import {RECEIVE_DATA_NODE_TEM,RECEIVE_DATA_CONFIG,RECEIVE_NOTIFICATION} from '../Actions/types.js';
+import {RECEIVE_DATA_NODE_TEM, RECEIVE_DATA_CONFIG, RECEIVE_NOTIFICATION, RECIEVE_PICHART} from '../Actions/types.js';
 
 const initialState={
     config: [],
     time: [],
     temp: [],
-    notification: []
+    notification: [],
+    pychart: [],
+
 }
 
 export default function(state=initialState,action){
@@ -27,6 +29,11 @@ export default function(state=initialState,action){
                 ...state,
                 notification: action.payload
             };
+        case RECIEVE_PICHART:
+            return {
+                ...state,
+                pychart: action.payload
+            }
         default:
             return state;
     }
