@@ -11,7 +11,7 @@ function createData(time, amount) {
 }
 
 const data = [
-    createData('00:00', 0),
+    createData('00:00', 17),
     createData('06:00', 6),
     createData('09:00', 8),
     createData('12:00', 15),
@@ -21,14 +21,14 @@ const data = [
     createData('24:00', undefined),
 ];
 
-export default function Chart() {
+export default function Chart(props) {
     const theme = useTheme();
     return (
         <React.Fragment>
             <Title>Today</Title>
             <ResponsiveContainer>
                 <LineChart
-                    data={data}
+                    data={props.data}
                     margin={{
                         top: 16,
                         right: 16,

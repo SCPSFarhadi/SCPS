@@ -133,6 +133,13 @@ function DashboardContent(props) {
     let dateConfig = useSelector(() => store.getState().receiveData.config);
     let dataPychart = useSelector(() => store.getState().receiveData.pychart);
 
+
+    let dataRoomTemp = useSelector(() => store.getState().receiveData.roomTemp);
+    let chartData = []
+    if(dataRoomTemp && dataRoomTemp.length!==0){
+        chartData = dataRoomTemp
+    }
+
     const dispatch = useDispatch();
 
     const toggleDrawer = () => {
@@ -211,7 +218,7 @@ function DashboardContent(props) {
                             height: 240,
                         }}
                     >
-                        <Chart />
+                        <Chart data={chartData} />
                     </Paper>
                 </Grid>
                 {/* Recent Deposits */}

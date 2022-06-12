@@ -18,11 +18,6 @@ function LineChart(props) {
             temps.push(dateTempObj[x]['temperature']);
         }
     }
-    console.log("in Line Chart")
-    console.log(dateTempObj)
-
-    console.log(times)
-    console.log(temps)
     const series = [
         {
             name: "Guests",

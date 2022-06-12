@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-import {RECEIVE_DATA_NODE_TEM, RECEIVE_DATA_CONFIG, RECEIVE_NOTIFICATION,RECIEVE_PICHART} from "./types";
+import {
+    RECEIVE_DATA_NODE_TEM,
+    RECEIVE_DATA_CONFIG,
+    RECEIVE_NOTIFICATION,
+    RECEIVE_PICHART,
+    RECEIVE_ROOMTEMP
+} from "./types";
 
 // GET LEADS
 
@@ -26,6 +32,12 @@ export const receiveNotification = (data) => (dispatch) => {
 export const receivePiechart = (data) => (dispatch) => {
     dispatch({
         payload: data,
-        type: RECIEVE_PICHART
+        type: RECEIVE_PICHART
+    })
+}
+export const receiveًRoomTemp = (data) => (dispatch) => {
+    dispatch({
+        payload: data,
+        type: RECEIVE_ROOMTEMP
     })
 }

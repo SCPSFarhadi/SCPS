@@ -9,6 +9,7 @@ import {
     REGISTER_FAIL,
 } from '../Actions/types.js';
 import {b64_to_utf8} from "./base64";
+import {baseUrl} from "./../Actions/auth"
 
 const initialState = {
     token_refresh: localStorage.getItem('token_refresh'),
@@ -20,6 +21,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
     function getUserInfo() {
+        const Http = new XMLHttpRequest();
+        const url=baseUrl+'api/users/sendlastdata/';
+        Http.open("GET", url);
+        Http.send();
+
         localStorage.setItem('token_refresh',action.payload['refresh']);
         localStorage.setItem('token_access',action.payload['access'])
         let refresh_token = action.payload['refresh'];
