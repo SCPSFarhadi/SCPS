@@ -30,33 +30,6 @@ function MakeGraph(props) {
         setSelectedNode(node);
         setOpen(true);
     };
-
-    // console.log(props.data)
-    // React.useEffect( () => {
-    //     if(props.Errors && props.Errors.id && props.Errors.id.length !== 0) {
-    //
-    //         let listErrorsID = props.Errors.id
-    //         let listErrorColor = props.Errors.status
-    //         let modData = { ...dataState };
-    //         for (let index = 0; index < listErrorsID.length; ++index) {
-    //             let selectNode = modData.nodes.filter(item => {
-    //                 return item.id === listErrorsID[index];
-    //             });
-    //             console.log(selectNode)
-    //             selectNode.forEach(item => {
-    //                 console.log(item)
-    //                 // if(item.color){
-    //                     console.log(listErrorColor[index])
-    //                     console.log(item)
-    //                     item.color = listErrorColor[index];
-    //                 // }
-    //
-    //             });
-    //         }
-    //         setData(modData)
-    //     }
-    // }, [props.Errors])
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -73,20 +46,6 @@ function MakeGraph(props) {
             }
         })
     }, [])
-
-    let dateTempconfig = useSelector(() => store.getState().receiveData.config);
-
-
-    if(Object.keys(dateTempconfig).length !== 0){
-        dateTempconfig = JSON.parse(dateTempconfig);
-        console.log(dateTempconfig)
-        // for(let x in dateTempconfig){
-        //     data['links'].push(dateTempconfig[x]['DateTime']);
-        // }
-        // for(let x in dateTempObj){
-        //     temps.push(dateTempObj[x]['temperature']);
-        // }
-    }
 
 
     const onDoubleClickNode = function(nodeId) {

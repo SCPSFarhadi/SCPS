@@ -27,8 +27,6 @@ export default class Example extends PureComponent {
 
 
     render() {
-        console.log("pychart")
-        console.log(this.props.data)
         return (
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart width={400} height={400}>

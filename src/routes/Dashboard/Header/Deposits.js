@@ -10,8 +10,6 @@ function preventDefault(event) {
 }
 
 export default function Deposits(props) {
-    console.log("deposit")
-    console.log(props.data)
     return (
 
         <React.Fragment>

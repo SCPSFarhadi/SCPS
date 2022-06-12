@@ -1,4 +1,11 @@
-import {RECEIVE_DATA_NODE_TEM, RECEIVE_DATA_CONFIG, RECEIVE_NOTIFICATION, RECEIVE_PICHART,RECEIVE_ROOMTEMP} from '../Actions/types.js';
+import {
+    RECEIVE_DATA_NODE_TEM,
+    RECEIVE_DATA_CONFIG,
+    RECEIVE_NOTIFICATION,
+    RECEIVE_PICHART,
+    RECEIVE_ROOMTEMP,
+    RECEIVE_NODETEMP
+} from '../Actions/types.js';
 
 const initialState={
     config: [],
@@ -39,10 +46,16 @@ export default function(state=initialState,action){
             };
         case RECEIVE_ROOMTEMP:
             let msg = JSON.parse(action.payload)
-            console.log("in message")
             return {
                 ...state,
                 roomTemp: [...state.roomTemp,createData(msg.date,msg.tem)]
+            };
+        case RECEIVE_NODETEMP:
+            let msgNode = JSON.parse(action.payload)
+            return {
+                ...state,
+                time: [...state.time, msgNode.time],
+                temp: [...state.temp, msgNode.temp]
             }
         default:
             return state;

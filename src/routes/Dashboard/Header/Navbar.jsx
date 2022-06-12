@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Profile from './Navtabs/profile';
-import {Divider, List} from "@mui/material";
+import {Divider, FormControl, InputLabel, List, Select} from "@mui/material";
 import {Component} from "react";
 import MuiDrawer from '@mui/material/Drawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -41,7 +41,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import SecurityIcon from '@mui/icons-material/Security';
 
 import {connect} from "react-redux";
-import {login} from "../../../Actions/auth";
+import {baseUrl, login, tokenConfig} from "../../../Actions/auth";
 import MatrixForm from "../../../Components/Matrix/MatrixSetting";
 import MakeGraph from "../../../Components/Graph/Graph.js";
 // import ProfileSetting from "./Navtabs/ProfileSetting";
@@ -54,6 +54,10 @@ import ReportStates from '../../../Components/Reports/Report'
 
 import store from '../../../store'
 import FaultTab from "./FaultTab";
+import MenuItem from "@mui/material/MenuItem";
+import axios from "axios";
+import {AUTH_ERROR, RECEIVE_ROOMTEMP, USER_LOADED} from "../../../Actions/types";
+import {returnErrors} from "../../../Actions/messages";
 
 function Copyright(props) {
     return (
@@ -140,6 +144,35 @@ function DashboardContent(props) {
         chartData = dataRoomTemp
     }
 
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        let token = localStorage.getItem('token_access')
+        if (token) {
+            config.headers['Authorization'] = `JWT ${token}`;
+        }
+        setAge(event.target.value);
+        axios
+            .post(baseUrl+'api/users/getlastdata/' , {nodeid:event.target.value},config)
+            .then((res) => {
+                dispatch({
+                    type: RECEIVE_ROOMTEMP,
+                    payload: res.data,
+                });
+            })
+            .catch((err) => {
+                dispatch(returnErrors(err.response.data, err.response.status));
+                dispatch({
+                    type: AUTH_ERROR,
+                });
+            });
+    };
+
     const dispatch = useDispatch();
 
     const toggleDrawer = () => {
@@ -174,16 +207,9 @@ function DashboardContent(props) {
                 });
                 // console.log(selectNode)
                 selectNode.forEach(item => {
-                    // console.log(item)
-                    // if(item.color){
-                    // console.log(listErrorColor[index])
-                    // console.log(item)
                     item.color = listErrorColor[index];
-                    // }
-
                 });
             }
-            console.log(modData)
         }
 
 
@@ -237,6 +263,20 @@ function DashboardContent(props) {
                 {/* Recent Orders */}
                 <Grid item xs={12}>
                     <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                        <FormControl>
+                            <InputLabel id="demo-simple-select-label">NodeId</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={age}
+                                label="Age"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value={"1"}>1</MenuItem>
+                                <MenuItem value={"2"}>2</MenuItem>
+                                <MenuItem value={"3"}>3</MenuItem>
+                            </Select>
+                        </FormControl>
                         <div className='chart'>
                             <LineChart />
                         </div>

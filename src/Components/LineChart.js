@@ -21,12 +21,12 @@ function LineChart(props) {
     const series = [
         {
             name: "Guests",
-            data: temps
+            data: [12,23]
         }
     ];
     const options = {
         xaxis: {
-            categories: times
+            categories: ["23:23","24:24"]
         }
     };
     return (

@@ -41,3 +41,9 @@ export const receiveًRoomTemp = (data) => (dispatch) => {
         type: RECEIVE_ROOMTEMP
     })
 }
+export const receiveًNodeTemp = (data) => (dispatch) => {
+    dispatch({
+        payload: data,
+        type: RECEIVE_ROOMTEMP
+    })
+}
