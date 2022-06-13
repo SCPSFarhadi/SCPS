@@ -8,9 +8,15 @@ import {FormControl, InputLabel, Select, Slider} from "@mui/material";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import {useState} from "react";
+import axios from "axios";
+import {baseUrl} from "../../Actions/auth";
+import {AUTH_ERROR, RECEIVE_ROOMTEMP} from "../../Actions/types";
+import {returnErrors} from "../../Actions/messages";
+import {useDispatch, useSelector} from "react-redux";
 
 export default function NodeForm() {
     const [btnDisabled, setBtnDisabled] = useState(false)
+    const [perm, setPerm] = React.useState('');
 
     function valuetext(value) {
         return `${value}°C`;
@@ -29,10 +35,36 @@ export default function NodeForm() {
             label: '37°C',
         },
         {
+            value: 50,
+            label: '50°C',
+        },
+        {
             value: 100,
             label: '100°C',
         },
     ];
+    let value;
+    const dispatch = useDispatch();
+    function handleSubmit() {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        let token = localStorage.getItem('token_access')
+        if (token) {
+            config.headers['Authorization'] = `JWT ${token}`;
+        }
+        var id = document.getElementById("NodeId").value
+
+        var fanOpen = document.getElementById("checkSolenoid").value
+        console.log(fanOpen)
+        axios
+            .post(baseUrl+'api/users/setnodeconfig/' , {nodeid:id,temp:value,fanopen:fanOpen,perm:perm},config)
+            .then((res) => {
+                console.log("data sent")
+            })
+    }
 
     return (
         <React.Fragment>
@@ -85,7 +117,7 @@ export default function NodeForm() {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography >
+                    <Typography>
                         Temperature:
                     </Typography>
                     <Slider
@@ -93,9 +125,10 @@ export default function NodeForm() {
                         aria-label="Temperature"
                         defaultValue={20}
                         getAriaValueText={valuetext}
-                        step={10}
+                        step={0.5}
                         valueLabelDisplay="auto"
                         marks={marks}
+                        onChange={(e, val) => value = val}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -104,31 +137,36 @@ export default function NodeForm() {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value="Permission"
+                            value={perm}
                             label="Permission"
                             onChange={(event) => {
-                                console.log(event)
-                                if(event.target.value ==="YES"){
+                                setPerm(event.target.value)
+                                if (event.target.value === "YES") {
                                     setBtnDisabled(false);
-                                }
-                                else {
+                                } else {
                                     setBtnDisabled(true);
                                 }
                             }}
                             // onChange={handleChange}
                         >
-                            <MenuItem value={10}>YES</MenuItem>
-                            <MenuItem value={20}>NO</MenuItem>
-                            <MenuItem value={30}>Depends</MenuItem>
+                            <MenuItem value={"YES"}>YES</MenuItem>
+                            <MenuItem value={"NO"}>NO</MenuItem>
+                            <MenuItem value={""}>Depends</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                     <FormControlLabel
-                        control={<Checkbox color="secondary" name="saveAddress" value="yes"/>}
+                        control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}
                         label="Solenoid valve Open "
                     />
-                    <Button variant="contained">Submit</Button>
+                    <br/>
+                    <FormControlLabel
+                        control={<Checkbox color="secondary" id="checWorkMode" name="saveAddress" value="yes"/>}
+                        label="work mode"
+                    />
+                    <br/>
+                    <Button variant="contained" onSubmit={handleSubmit}>Submit</Button>
                 </Grid>
 
             </Grid>

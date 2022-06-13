@@ -4,8 +4,10 @@ import CsvReader from "./CsvReader";
 
 function Matrix(props) {
     const [matrixSize, setMatrixSize] = useState({
-        rows: 2,
-        columns: 2,
+        N: 2,
+        no: 2,
+        nu:2,
+        ns:2,
     })
     const [matrix, setMatrix] = useState([[0, 0], [0, 0]])
     const [latexMatrix, setLatexMatrix] = useState(
@@ -14,6 +16,7 @@ function Matrix(props) {
 
     function MatrixInput(props) {
         function getInput(matrixLimit1) {
+            console.log(matrixLimit1)
             return <>
                 {matrixLimit1.map((row, indexRow = 1) => {
                     return (
@@ -34,34 +37,22 @@ function Matrix(props) {
             </>;
         }
 
-        if(matrixSize.rows>0){
-            // for constants
-            let matrix = Array(matrixSize.rows)
-            for (let i = 0; i < matrixSize.rows; i++) {
-                matrix[i] = new Array(matrixSize.columns).fill(0)
+        if(matrixSize.N>0 && matrixSize.no>0 && matrixSize.nu>0 && matrixSize.ns>0){
+            // Q Matrix
+            let matrixQ = Array(matrixSize.N * matrixSize.no)
+            for (let i = 0; i < matrixSize.N * matrixSize.no; i++) {
+                matrixQ[i] = new Array(matrixSize.N * matrixSize.nu).fill(0)
             }
-            // for constants
-            let matrixC = Array(matrixSize.rows)
-            for (let i = 0; i < matrixSize.rows; i++) {
-                matrixC[i] = new Array(matrixSize.columns).fill(0)
-            }
-            // for limits
-            let matrixLimit1 = Array(matrixSize.rows)
-            for (let i = 0; i < matrixSize.rows; i++) {
-                matrixLimit1[i] = new Array(1).fill(0)
-            }
-            // for limits
-            let matrixLimit2 = Array(matrixSize.rows)
-            for (let i = 0; i < matrixSize.rows; i++) {
-                matrixLimit2[i] = new Array(1).fill(0)
-            }
+            // F Matrix
+            let matrixF = Array(matrixSize.N * matrixSize.no)
 
-            let matrixU = Array(1)
-            matrixU[0] = new Array(matrixSize.columns).fill(0)
-
-
-            let matrixV = Array(1)
-            matrixV[0] = new Array(matrixSize.columns).fill(0)
+            for (let i = 0; i < matrixSize.N * matrixSize.no; i++) {
+                matrixF[i] = new Array(matrixSize.ns*1).fill(0)
+            }
+            let matrixM = Array(matrixSize.N * matrixSize.nu)
+            for (let i = 0; i < matrixSize.N * matrixSize.nu; i++) {
+                matrixM[i] = new Array(matrixSize.N * matrixSize.nu).fill(0)
+            }
 
             const handleSubmit = event => {
                 event.preventDefault();
@@ -77,35 +68,13 @@ function Matrix(props) {
             }
             return (
                 <form onSubmit={handleSubmit} dir={'rtl'}>
-                    <h3>Matrix</h3>
+                    <h3>Matrix F</h3>
                     <div style={{overflow: 'scroll', height: '300px', width: '100%'}}>
-                        {getInput(matrix)}
+                        {getInput(matrixF)}
                     </div>
                     <h3>Matrix Q</h3>
                     <div style={{overflow: 'scroll', height: '300px', width: '100%'}}>
-                        {getInput(matrixC)}
-                    </div>
-                    <h3>Limits</h3>
-                    <div style={{display: 'flex'}}>
-                        <label>Upper bound</label>
-                        <div style={{overflow: 'scroll', height: '300px', width: '33%',flexGrow: '1'}}>
-                            {getInput(matrixLimit1)}
-                        </div>
-                        <label>Lower bound</label>
-                        <div style={{overflow: 'scroll', height: '300px', width: '33%',flexGrow: '1'}}>
-                            {getInput(matrixLimit2)}
-                        </div>
-                    </div>
-                    <h3>Vectors</h3>
-                    <div>
-                        <label>U Vector: </label>
-                        <div style={{overflow: 'scroll', width: '100%%',flexGrow: '1'}}>
-                            {getInput(matrixU)}
-                        </div>
-                        <label>V Vector: </label>
-                        <div style={{overflow: 'scroll', width: '100%%',flexGrow: '1'}}>
-                            {getInput(matrixV)}
-                        </div>
+                        {getInput(matrixQ)}
                     </div>
 
                     <button>{"Save Limit and constants"}</button>
@@ -126,20 +95,63 @@ function Matrix(props) {
         <div  dir={'rtl'}>
             <h2>make n*n matrix by input</h2>
             <form>
+                <label>
+                    input N :
+                </label>
+                <input
+                type="number"
+                defaultValue={2}
+                id="nInput"
+                />
+                <br/>
+                <label>
+                    input no:
+                </label>
                 <input
                     type="number"
                     defaultValue={2}
-                    onChange={e => {
-                        const rows = parseInt(e.target.value)
+                    id="noInput"
+                />
+                <br/>
+                <label>
+                    input nu:
+                </label>
+                <input
+                    type="number"
+                    defaultValue={2}
+                    id="nuInput"
+                />
+                <br/>
+
+                <label>
+                    input ns:
+                </label>
+                <input
+                    type="number"
+                    defaultValue={2}
+                    id="nsInput"
+                />
+                <br/>
+
+                <button
+                    onClick={e => {
+                        e.preventDefault();
+                        const NInput = document.getElementById("nInput")
+                        const noInput = document.getElementById("noInput")
+                        const nuInput = document.getElementById("nuInput")
+                        const nsInput = document.getElementById("nsInput")
+                        console.log(nsInput)
                         // if we only want matrix of size between 2 and 8
                         // if (2 <= rows && rows <= 8) {
                         setMatrixSize( {
-                            columns: rows,
-                            rows: rows,
+                            N: NInput.value,
+                            no: noInput.value,
+                            nu:nuInput.value,
+                            ns:nsInput.value,
                         })
                         // }
                     }}
-                />
+                >set numbers</button>
                 <CsvReader />
             </form>
             <br/>

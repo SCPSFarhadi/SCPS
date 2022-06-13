@@ -51,11 +51,15 @@ export default function(state=initialState,action){
                 roomTemp: [...state.roomTemp,createData(msg.date,msg.tem)]
             };
         case RECEIVE_NODETEMP:
-            let msgNode = JSON.parse(action.payload)
+            let msgNode = (action.payload)
+            console.log("in receive")
+            console.log(action.payload)
+            console.log(msgNode['times'])
+            console.log(msgNode['temps'])
             return {
                 ...state,
-                time: [...state.time, msgNode.time],
-                temp: [...state.temp, msgNode.temp]
+                time: msgNode['times'],
+                temp: msgNode['temps']
             }
         default:
             return state;

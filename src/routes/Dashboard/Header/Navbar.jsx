@@ -56,7 +56,7 @@ import store from '../../../store'
 import FaultTab from "./FaultTab";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
-import {AUTH_ERROR, RECEIVE_ROOMTEMP, USER_LOADED} from "../../../Actions/types";
+import {AUTH_ERROR, RECEIVE_NODETEMP, RECEIVE_ROOMTEMP, USER_LOADED} from "../../../Actions/types";
 import {returnErrors} from "../../../Actions/messages";
 
 function Copyright(props) {
@@ -144,9 +144,20 @@ function DashboardContent(props) {
         chartData = dataRoomTemp
     }
 
+
+    let dataTime = useSelector(() => store.getState().receiveData.time);
+    let dataTemp = useSelector(() => store.getState().receiveData.temp);
+    let times = [];
+    let temps = [];
+    if(dataTime && dataTemp && dataTime.length !==0 && dataTemp.length !==0){
+        times = dataTime;
+        temps = dataTemp;
+    }
+
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
+        console.log("fadayat shavam2")
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -158,18 +169,17 @@ function DashboardContent(props) {
         }
         setAge(event.target.value);
         axios
-            .post(baseUrl+'api/users/getlastdata/' , {nodeid:event.target.value},config)
+            .post(baseUrl+'api/users/sendlastdata/' , {nodeid:event.target.value},config)
             .then((res) => {
+                console.log("res")
+                console.log(res.data)
                 dispatch({
-                    type: RECEIVE_ROOMTEMP,
+                    type: RECEIVE_NODETEMP,
                     payload: res.data,
                 });
             })
             .catch((err) => {
-                dispatch(returnErrors(err.response.data, err.response.status));
-                dispatch({
-                    type: AUTH_ERROR,
-                });
+                console.log("error in receive node temp "+err)
             });
     };
 
@@ -278,7 +288,7 @@ function DashboardContent(props) {
                             </Select>
                         </FormControl>
                         <div className='chart'>
-                            <LineChart />
+                            <LineChart temps={temps} times={times}/>
                         </div>
                         {/*<Orders />*/}
                     </Paper>
