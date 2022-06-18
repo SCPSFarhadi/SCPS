@@ -17,7 +17,7 @@ import {useDispatch, useSelector} from "react-redux";
 export default function NodeForm() {
     const [btnDisabled, setBtnDisabled] = useState(false)
     const [perm, setPerm] = React.useState('');
-
+    const [room, setRoom] = React.useState('');
     function valuetext(value) {
         return `${value}°C`;
     }
@@ -87,9 +87,11 @@ export default function NodeForm() {
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value="Permission"
-                        label="Permission"
-                        // onChange={handleChange}
+                        value={room}
+                        label="room"
+                        onChange={(event) => {
+                            setRoom(event.target.value)
+                        }}
                     >
                         <MenuItem value={10}>room 1</MenuItem>
                         <MenuItem value={20}>room 2</MenuItem>
