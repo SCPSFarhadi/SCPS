@@ -59,6 +59,8 @@ export default function NodeForm() {
 
         var fanOpen = document.getElementById("checkSolenoid").value
         console.log(fanOpen)
+        console.log("sent data: ")
+        console.log({nodeid:id,temp:value,fanopen:fanOpen,perm:perm})
         axios
             .post(baseUrl+'api/users/setnodeconfig/' , {nodeid:id,temp:value,fanopen:fanOpen,perm:perm},config)
             .then((res) => {
@@ -168,7 +170,7 @@ export default function NodeForm() {
                         label="work mode"
                     />
                     <br/>
-                    <Button variant="contained" onSubmit={handleSubmit}>Submit</Button>
+                    <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
 
             </Grid>
