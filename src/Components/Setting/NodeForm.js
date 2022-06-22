@@ -85,7 +85,7 @@ export default function NodeForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <InputLabel id="demo-simple-select-label">Room Select</InputLabel>
+                    <InputLabel id="demo-simple-select-label">FanCoil Select</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"

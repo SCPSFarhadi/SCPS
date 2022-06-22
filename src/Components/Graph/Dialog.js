@@ -16,13 +16,15 @@ import {Icon} from "@mui/material";
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SettingsInputHdmiIcon from '@mui/icons-material/SettingsInputHdmi';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
-
-const listData = ['20°C', '04/26 20:11'];
+const listData = ['20°C', '04/26 20:11',1,1];
 
 export default function SimpleDialog(props) {
     const { onClose, selectedNode,nodeColor,open } = props;
-
+    const faucetState = ((listData[2] === 1) ? 'open' : 'close');
+    const isPersonInRoom = ((listData[2] === 1) ? 'person in' : 'no person');
     const handleClose = () => {
         onClose();
     };
@@ -32,7 +34,7 @@ export default function SimpleDialog(props) {
     };
 
     return (
-        <Dialog onClose={handleClose} open={open}>
+        <Dialog onClose={handleClose} open={open} fullWidth>
             <DialogTitle>Short Details</DialogTitle>
             <List sx={{ pt: 0 }}>
                 <ListItem button onClick={() => handleListItemClick()}>
@@ -62,13 +64,32 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={listData[1]} />
                 </ListItem>
 
+                <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
+                            <SettingsInputHdmiIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={faucetState} />
+                </ListItem>
+
+                <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: blue[50], color: blue[600] }}>
+                            <PersonAddAltIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={isPersonInRoom} />
+                </ListItem>
+
+
                 <ListItem autoFocus button onClick={() => handleListItemClick()}>
                     <ListItemAvatar>
                         <Avatar>
                             <AddIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Add command" />
+                    <ListItemText primary="Node Setting" onClick={props.handleClick}/>
                 </ListItem>
             </List>
         </Dialog>

@@ -157,7 +157,8 @@ function DashboardContent(props) {
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
-        console.log("fadayat shavam2")
+        setMenu("Graph");
+        console.log("fadayat shavam2");
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -223,7 +224,7 @@ function DashboardContent(props) {
         }
 
 
-        dataMiddle = <MakeGraph data={modData} />;
+        dataMiddle = <MakeGraph data={modData} handelClick={handleChange}/>;
     }
     else if(menu === "Integrations"){
         dataMiddle = <MatrixForm />;

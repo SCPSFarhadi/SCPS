@@ -68,6 +68,7 @@ function MakeGraph(props) {
                     onClose={handleClose}
                     selectedNode={selectedNode}
                     nodeColor={nodeColor}
+                    handleClick = {props.handelClick}
                 />
             </div>
             <div style={{height:'100%',width:'100%'}}>
@@ -76,7 +77,6 @@ function MakeGraph(props) {
                     data={props.data}
                     config={myConfig}
                     // onDoubleClickNode = {onDoubleClickNode}
-                    on
                 />
             </div>
         </div>

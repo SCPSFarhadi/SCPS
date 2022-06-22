@@ -1,11 +1,15 @@
-import * as React from 'react';
+import React, { Fragment, useState } from "react";
 import * as ReactDOM from 'react-dom';
 import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 import { ExcelExport } from '@progress/kendo-react-excel-export';
 import { GridPDFExport } from "@progress/kendo-react-pdf";
 import {states} from './states.js';
-import {ColumnMenu} from "./ColumnMenu";
+
 import {filterBy} from "@progress/kendo-data-query";
+import DateFnsUtils from '@date-io/date-fns';
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { alpha } from '@material-ui/core/styles';
+
 const initialFilter = {
     logic: "and",
     filters: [
@@ -14,7 +18,9 @@ const initialFilter = {
 };
 
 export default function ReportStates() {
+
     const [filter, setFilter] = React.useState(initialFilter);
+    const [selectedDate, handleDateChange] = useState(new Date());
     const _export = React.useRef(null);
     let gridPDFExport;
 
@@ -56,7 +62,30 @@ export default function ReportStates() {
                 >
                     Export PDF
                 </button>
+
             </GridToolbar>
+            <GridToolbar>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <DateTimePicker
+                        autoOk
+                        ampm={false}
+                        value={selectedDate}
+                        disableFuture={true}
+                        onChange={handleDateChange}
+                        label="From Date:"
+                    />
+
+                    <DateTimePicker
+                        value={selectedDate}
+                        disablePast
+                        onChange={handleDateChange}
+                        disableFuture={true}
+                        label="To"
+                        showTodayButton
+                    />
+                </MuiPickersUtilsProvider>
+            </GridToolbar>
+
             <GridColumn field="ID" title="ID"
                         filter="date"
                         format="{0:d}"/>
@@ -64,7 +93,9 @@ export default function ReportStates() {
             <GridColumn field="active" title="active" cell={BooleanCell}/>
             <GridColumn field="status" title="status"/>
             <GridColumn field="comment" title="comment"/>
-        </Grid>;
+        </Grid>
+            ;
+
     }
 
     return <ExcelExport data={states} ref={_export}>
