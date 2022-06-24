@@ -22,11 +22,12 @@ import RestoreIcon from '@mui/icons-material/Restore';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Grid from "@mui/material/Grid";
-
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import AlbumIcon from '@mui/icons-material/Album';
 import NodeForm from "../Setting/NodeForm";
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import NodeChart from "./nodeChart";
+
+import LineChart from "./nodeChart";
+import {Label} from "@material-ui/icons";
 function Copyright() {
     return (
         <Typography variant="body2" color="text.secondary" align="center">
@@ -104,19 +105,7 @@ function MakeGraph(props) {
         setData(modData );
     };
     const theme = createTheme();
-    const data = [
-        createData('00:00', 17),
-        createData('06:00', 6),
-        createData('09:00', 8),
-        createData('12:00', 15),
-        createData('15:00', 20),
-        createData('18:00', 24),
-        createData('21:00', 24),
-        createData('24:00', undefined),
-    ];
-    function createData(time, amount) {
-        return { time, amount };
-    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -165,24 +154,18 @@ function MakeGraph(props) {
                                                     setValue(newValue);
                                                 }}
                                             >
-                                                <BottomNavigationAction label="Refresh" icon={<RestoreIcon />} />
-                                                <BottomNavigationAction label="Locations" icon={<LocationOnIcon />} />
-                                                <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon />} />
+                                                <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} />
+                                                <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />
+                                                <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
+                                                <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
                                             </BottomNavigation>
                                         </Box>
                                     </React.Fragment>
-                                    <CardContent>
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                            <AlbumIcon sx={{ bgcolor: blue[100], color: blue[600] }}/>
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Button size="small">Learn More</Button>
-                                    </CardActions>
                                 </React.Fragment>
                             </Paper>
                         </Container>
                     </ThemeProvider>
+
                 </Grid>
                 <Grid item xs={4}>
                     <ThemeProvider theme={theme}>
@@ -198,7 +181,7 @@ function MakeGraph(props) {
                         >
                         </AppBar>
                         <Container component="main" maxWidth="lg" sx={{ mb: 4 }}>
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 4, md: 1 } }}>
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }}>
                                 <React.Fragment>
                                     <React.Fragment>
                                         <SimpleDialog
@@ -225,19 +208,17 @@ function MakeGraph(props) {
                             }}
                         >
                         </AppBar>
-                        <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                        <Container component="main" maxWidth="lg" sx={{ mb: 4 }}>
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }}>
                                 <React.Fragment>
                                     <React.Fragment>
-                                        <NodeForm />
+
+                                        <LineChart/>
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>
-                            <Copyright />
                         </Container>
                     </ThemeProvider>
-                </Grid>
-                <Grid item xs={3}>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <AppBar
@@ -250,22 +231,20 @@ function MakeGraph(props) {
                             }}
                         >
                         </AppBar>
-                        <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+                        <Container component="main" maxWidth="lg" sx={{ mb: 4 }}>
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }}>
                                 <React.Fragment>
                                     <React.Fragment>
-
-                                    <NodeChart/>
+                                        <NodeForm />
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>
                             <Copyright />
                         </Container>
                     </ThemeProvider>
+
                 </Grid>
-                <Grid item xs={3}>
-                    <Label>xs=8</Label>
-                </Grid>
+
             </Grid>
         </Box>
 
