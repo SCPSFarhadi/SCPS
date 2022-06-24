@@ -7,7 +7,17 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Profile from './Navtabs/profile';
-import {Divider, FormControl, InputLabel, List, Select} from "@mui/material";
+import {
+    Breadcrumbs,
+    Divider,
+    FormControl,
+    InputLabel,
+    List,
+    Select,
+    SpeedDial,
+    SpeedDialAction,
+    SpeedDialIcon
+} from "@mui/material";
 import {Component} from "react";
 import MuiDrawer from '@mui/material/Drawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -59,6 +69,17 @@ import axios from "axios";
 import {AUTH_ERROR, RECEIVE_NODETEMP, RECEIVE_ROOMTEMP, USER_LOADED} from "../../../Actions/types";
 import {returnErrors} from "../../../Actions/messages";
 
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
+import Avatar from "@mui/material/Avatar";
+import {deepPurple} from "@mui/material/colors";
+
+function handleClickBread(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+}
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -71,6 +92,14 @@ function Copyright(props) {
         </Typography>
     );
 }
+
+const actions = [
+    { icon: <FileCopyIcon />, name: 'Copy' },
+    { icon: <SaveIcon />, name: 'Save' },
+    { icon: <PrintIcon />, name: 'Print' },
+    { icon: <ShareIcon />, name: 'Share' },
+];
+
 
 const drawerWidth = 240;
 
@@ -349,8 +378,12 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 1 }}
                                 >
-                                    Dashboard
+                                    {menu}
                                 </Typography>
+
+                                <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
+
+
                                 <Typography
                                     component="h4"
                                     variant="h6"
@@ -369,13 +402,16 @@ function DashboardContent(props) {
                                 >
                                     Role: {localStorage.getItem('role')}
                                 </Typography>
+
                                 <IconButton color="inherit">
                                     <Profile setmenu={setMenu}/>
                                 </IconButton>
                                     <FaultTab len={countError} errors={Errors}/>
                             </Toolbar>
+
                         </AppBar>
                         <Drawer variant="permanent" open={open}>
+
                             <Toolbar
                                 sx={{
                                     display: 'flex',
@@ -449,9 +485,33 @@ function DashboardContent(props) {
                                 overflow: 'auto',
                             }}
                         >
+
                             <Toolbar />
+                            <div role="presentation" onClick={handleClickBread}>
+                                <Breadcrumbs aria-label="breadcrumb">
+                                    <Link underline="hover" color="inherit" href="/">
+                                        admin
+                                    </Link>
+                                    <Typography color="text.primary">{menu}</Typography>
+                                </Breadcrumbs>
+                            </div>
 
                             {dataMiddle}
+                            <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                                <SpeedDial
+                                    ariaLabel="SpeedDial basic example"
+                                    sx={{ position: 'absolute', bottom: 16, right: 16 }}
+                                    icon={<SpeedDialIcon />}
+                                >
+                                    {actions.map((action) => (
+                                        <SpeedDialAction
+                                            key={action.name}
+                                            icon={action.icon}
+                                            tooltipTitle={action.name}
+                                        />
+                                    ))}
+                                </SpeedDial>
+                            </Box>
 
 
                         </Box>

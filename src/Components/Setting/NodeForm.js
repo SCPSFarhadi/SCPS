@@ -17,7 +17,7 @@ import {useDispatch, useSelector} from "react-redux";
 export default function NodeForm() {
     const [btnDisabled, setBtnDisabled] = useState(false)
     const [perm, setPerm] = React.useState('');
-    const [room, setRoom] = React.useState('');
+    const [room, setRoom] = React.useState('Fancoil Select');
     function valuetext(value) {
         return `${value}°C`;
     }
@@ -85,40 +85,20 @@ export default function NodeForm() {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <InputLabel id="demo-simple-select-label">FanCoil Select</InputLabel>
+                    {/*<InputLabel id="demo-simple-select-label">FanCoil Select</InputLabel>*/}
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={room}
-                        label="room"
+                        label="Fancoil"
                         onChange={(event) => {
                             setRoom(event.target.value)
                         }}
                     >
-                        <MenuItem value={10}>room 1</MenuItem>
-                        <MenuItem value={20}>room 2</MenuItem>
-                        <MenuItem value={30}>room 3</MenuItem>
+                        <MenuItem value={1}>fan 1</MenuItem>
+                        <MenuItem value={2}>fan 2</MenuItem>
+                        <MenuItem value={3}>fan 3</MenuItem>
                     </Select>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        id="Set"
-                        name="Set"
-                        label="Set"
-                        fullWidth
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="access"
-                        name="access"
-                        label="access"
-                        fullWidth
-                        autoComplete="access"
-                        variant="standard"
-                    />
                 </Grid>
                 <Grid item xs={12}>
                     <Typography>

@@ -34,7 +34,8 @@ export default function SimpleDialog(props) {
     };
 
     return (
-        <Dialog onClose={handleClose} open={open} fullWidth>
+        // <Dialog onClose={handleClose} open={open} fullWidth>
+        <div>
             <DialogTitle>Short Details</DialogTitle>
             <List sx={{ pt: 0 }}>
                 <ListItem button onClick={() => handleListItemClick()}>
@@ -92,8 +93,10 @@ export default function SimpleDialog(props) {
                     <ListItemText primary="Node Setting" onClick={props.handleClick}/>
                 </ListItem>
             </List>
-        </Dialog>
+        </div>
     );
+
+        {/*</Dialog>*/}
 }
 
 SimpleDialog.propTypes = {
