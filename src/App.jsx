@@ -1,22 +1,16 @@
 import React, {Component, Fragment} from "react";
 import './App.css'
-import { Typography } from '@material-ui/core';
 import {BrowserRouter, Link, Redirect, Route, Switch} from "react-router-dom";
 import SignIn from "./routes/Signin";
 import Chat from "./Containers/Chat.js"
 import HeaderComponent from "./routes/Dashboard/Header/HeaderComponent";
-import LineChart from "./Components/LineChart";
 import Register from './routes/Register.js'
 import PrivateRoute from "./Components/common/PrivateRoute";
 import {Provider} from "react-redux";
 import store from "./store";
 import Checkout from './Components/ProfileSetting/ProfSetting.js'
-
-import {Login} from "./routes/Login";
-import SendData from "./Components/SendData";
 import {loadUser} from "./Actions/auth";
 import Navbar from "./routes/Dashboard/Header/testNavbar";
-import WebSocketInstance from "./websocket";
 import Socket from "./routes/Dashboard/Header/Socket";
 
 class App extends Component {

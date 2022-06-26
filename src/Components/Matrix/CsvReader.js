@@ -1,7 +1,6 @@
 
 import React, {useState} from 'react';
 import ReactFileReader from 'react-file-reader';
-import Button from "@mui/material/Button";
 import Papa  from 'papaparse';
 
 
@@ -16,12 +15,11 @@ function CsvReader(props) {
 
 
     return (
-        <div>
-            <br />
             <ReactFileReader fileTypes={[".csv"]} multipleFiles={false} handleFiles={handleFiles}>
-                <Button className='btn btn-lg bg-light'>Upload Csv</Button>
+                <button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 my-4">
+                    Upload Csv
+                    </button>
             </ReactFileReader>
-        </div>
     );
 }
 

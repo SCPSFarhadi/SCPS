@@ -28,18 +28,7 @@ import NodeForm from "../Setting/NodeForm";
 
 import LineChart from "./nodeChart";
 import {Label} from "@material-ui/icons";
-function Copyright() {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 const bull = (
     <Box
@@ -165,8 +154,8 @@ function MakeGraph(props) {
                             </Paper>
                         </Container>
                     </ThemeProvider>
-
                 </Grid>
+                
                 <Grid item xs={4}>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
@@ -196,7 +185,10 @@ function MakeGraph(props) {
                             </Paper>
                         </Container>
                     </ThemeProvider>
-                    <ThemeProvider theme={theme}>
+                </Grid>
+
+                <Grid item xs={8}>
+                <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <AppBar
                             position="absolute"
@@ -212,14 +204,16 @@ function MakeGraph(props) {
                             <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }}>
                                 <React.Fragment>
                                     <React.Fragment>
-
                                         <LineChart/>
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>
                         </Container>
                     </ThemeProvider>
-                    <ThemeProvider theme={theme}>
+                </Grid>
+
+                <Grid item xs={4}>
+                <ThemeProvider theme={theme} >
                         <CssBaseline />
                         <AppBar
                             position="absolute"
@@ -231,20 +225,15 @@ function MakeGraph(props) {
                             }}
                         >
                         </AppBar>
-                        <Container component="main" maxWidth="lg" sx={{ mb: 4 }}>
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }}>
-                                <React.Fragment>
-                                    <React.Fragment>
-                                        <NodeForm />
-                                    </React.Fragment>
-                                </React.Fragment>
+                        <Container component="main" maxWidth="lg" sx={{ mb: 4 }} >
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }}>   
+                                <div className="p-6">
+                                    <NodeForm />
+                                </div>         
                             </Paper>
-                            <Copyright />
                         </Container>
                     </ThemeProvider>
-
                 </Grid>
-
             </Grid>
         </Box>
 

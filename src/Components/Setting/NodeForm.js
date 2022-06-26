@@ -74,32 +74,8 @@ export default function NodeForm() {
                 Node Set State
             </Typography>
             <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                    <TextField required
-                               id="NodeId"
-                               label="ID"
-                               autoComplete="given-name"
-                               name="NodeId"
-                               variant="outlined"
-                               fullWidth
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    {/*<InputLabel id="demo-simple-select-label">FanCoil Select</InputLabel>*/}
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={room}
-                        label="Fancoil"
-                        onChange={(event) => {
-                            setRoom(event.target.value)
-                        }}
-                    >
-                        <MenuItem value={1}>fan 1</MenuItem>
-                        <MenuItem value={2}>fan 2</MenuItem>
-                        <MenuItem value={3}>fan 3</MenuItem>
-                    </Select>
-                </Grid>
+                
+                
                 <Grid item xs={12}>
                     <Typography>
                         Temperature:

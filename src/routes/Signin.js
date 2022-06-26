@@ -20,18 +20,7 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {login} from '../Actions/auth.js'
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 const theme = createTheme();
 
@@ -61,9 +50,11 @@ class MyComponent extends Component {
 
         return (
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs">
+                <div className='m-0'>
+                <Container component="main" maxWidth="xs" className="bg-white rounded-lg px-5 shadow-lg">
                     <CssBaseline />
                     <Box
+                    className="py-5"
                         sx={{
                             marginTop: 8,
                             display: 'flex',
@@ -116,20 +107,20 @@ class MyComponent extends Component {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
+                                    <Link href="#" variant="body2" className="bg-red-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-red-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
+                                        Forgot password
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="/register" variant="body2">
+                                    <Link href="/register" variant="body2" className="bg-green-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-green-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>
                             </Grid>
                         </Box>
                     </Box>
-                    <Copyright sx={{ mt: 8, mb: 4 }} />
                 </Container>
+                </div>
             </ThemeProvider>
         );
     }

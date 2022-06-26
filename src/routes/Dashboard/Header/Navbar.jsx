@@ -80,18 +80,7 @@ function handleClickBread(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
 }
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 const actions = [
     { icon: <FileCopyIcon />, name: 'Copy' },
@@ -325,7 +314,6 @@ function DashboardContent(props) {
 
                 </Grid>
             </Grid>
-            <Copyright sx={{ pt: 4 }} />
         </Container>;
     }
     else if(menu === "ProfileSetting"){
@@ -426,51 +414,62 @@ function DashboardContent(props) {
                             </Toolbar>
                             <Divider />
                             <List component="nav">
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <DashboardIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Dashboard" onClick={() => setMenu("Dashboard")}/>
                                 </ListItemButton>
+                                </div>
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <PeopleIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Graph" onClick={() => setMenu("Graph")}/>
                                 </ListItemButton>
+                                </div>
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <BarChartIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Reports" onClick={() => setMenu("Reports")}/>
                                 </ListItemButton>
+                                </div>
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <LayersIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Integrations" onClick={() => setMenu("Integrations")}/>
                                 </ListItemButton>
+                                </div>
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <SecurityIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Security Tests" onClick={() => setMenu("TestReport")}/>
                                 </ListItemButton>
+                                </div>
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <DisplaySettingsIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Node Setting" onClick={() => setMenu("Setting")}/>
                                 </ListItemButton>
+                                </div>
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
                                         <SettingsIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Password" onClick={() => setMenu("ProfileSetting")}/>
+                                    <ListItemText primary="Setting" onClick={() => setMenu("ProfileSetting")}/>
                                 </ListItemButton>
-
-                                <Divider sx={{ my: 1 }} />
-                                {secondaryListItems}
+                                </div>
                             </List>
                         </Drawer>
                         <Box
@@ -488,7 +487,7 @@ function DashboardContent(props) {
 
                             <Toolbar />
                             <div role="presentation" onClick={handleClickBread}>
-                                <Breadcrumbs aria-label="breadcrumb">
+                                <Breadcrumbs className="p-4 px-8" aria-label="breadcrumb">
                                     <Link underline="hover" color="inherit" href="/">
                                         admin
                                     </Link>
@@ -497,10 +496,10 @@ function DashboardContent(props) {
                             </div>
 
                             {dataMiddle}
-                            <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                            <Box sx={{ transform: 'translateZ(0px)', flexGrow: 1 }} className="mt-20">
                                 <SpeedDial
                                     ariaLabel="SpeedDial basic example"
-                                    sx={{ position: 'absolute', bottom: 16, right: 16 }}
+                                    sx={{  position: 'absolute', bottom: 16, right: 16 }}
                                     icon={<SpeedDialIcon />}
                                 >
                                     {actions.map((action) => (
@@ -512,8 +511,6 @@ function DashboardContent(props) {
                                     ))}
                                 </SpeedDial>
                             </Box>
-
-
                         </Box>
                     </Box>
 
