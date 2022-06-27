@@ -11,13 +11,13 @@ class LineChart extends Component {
                     id: "basic-bar"
                 },
                 xaxis: {
-                    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+                    categories: [7,8,9,10,11, 12, 13, 14, 15, 16, 17, 18]
                 }
             },
             series: [
                 {
                     name: "series-1",
-                    data: [30, 40, 45, 50, 49, 60, 70, 91]
+                    data: [26, 21, 25, 20, 23, 29, 31, 32]
                 }
             ]
         };
@@ -28,12 +28,15 @@ class LineChart extends Component {
             <div className="app">
                 <div className="row">
                     <div className="mixed-chart">
+                        <h1>Node Temperature</h1>
                         <Chart
                             options={this.state.options}
                             series={this.state.series}
                             type="line"
-                            width="500"
+                            width="700"
+
                         />
+
                     </div>
                 </div>
             </div>

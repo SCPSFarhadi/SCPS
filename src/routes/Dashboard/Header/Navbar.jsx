@@ -369,27 +369,27 @@ function DashboardContent(props) {
                                     {menu}
                                 </Typography>
 
-                                <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
 
 
-                                <Typography
-                                    component="h4"
-                                    variant="h6"
-                                    color="inherit"
-                                    noWrap
 
-                                >
-                                    Username: {localStorage.getItem('username')} {'\xa0\xa0\xa0\xa0\xa0\xa0'}
-                                </Typography>
-                                <Typography
-                                    component="h4"
-                                    variant="h6"
-                                    color="inherit"
-                                    noWrap
+                                {/*<Typography*/}
+                                {/*    component="h4"*/}
+                                {/*    variant="h6"*/}
+                                {/*    color="inherit"*/}
+                                {/*    noWrap*/}
 
-                                >
-                                    Role: {localStorage.getItem('role')}
-                                </Typography>
+                                {/*>*/}
+                                    {/*Username: {localStorage.getItem('username')} {'\xa0\xa0\xa0\xa0\xa0\xa0'}*/}
+                                {/*</Typography>*/}
+                                {/*<Typography*/}
+                                {/*    component="h4"*/}
+                                {/*    variant="h6"*/}
+                                {/*    color="inherit"*/}
+                                {/*    noWrap*/}
+
+                                {/*>*/}
+                                {/*    Role: {localStorage.getItem('role')}*/}
+                                {/*</Typography>*/}
 
                                 <IconButton color="inherit">
                                     <Profile setmenu={setMenu}/>
@@ -452,14 +452,6 @@ function DashboardContent(props) {
                                         <SecurityIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Security Tests" onClick={() => setMenu("TestReport")}/>
-                                </ListItemButton>
-                                </div>
-                                <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <DisplaySettingsIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Node Setting" onClick={() => setMenu("Setting")}/>
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">

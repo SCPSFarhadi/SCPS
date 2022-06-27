@@ -12,13 +12,16 @@ import PersonIcon from '@mui/icons-material/Person';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import {blue, green, orange, red} from '@mui/material/colors';
-import {Icon} from "@mui/material";
+import {Divider, Icon, ListItemIcon, MenuList} from "@mui/material";
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SettingsInputHdmiIcon from '@mui/icons-material/SettingsInputHdmi';
+import PowerIcon from '@mui/icons-material/Power';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-
+import MenuItem from "@mui/material/MenuItem";
+import {Check} from "@material-ui/icons";
+import ClearIcon from '@mui/icons-material/Clear';
 const listData = ['20°C', '04/26 20:11',1,1];
 
 export default function SimpleDialog(props) {
@@ -36,7 +39,7 @@ export default function SimpleDialog(props) {
     return (
         // <Dialog onClose={handleClose} open={open} fullWidth>
         <div>
-            <DialogTitle>Short Details</DialogTitle>
+            <DialogTitle>Details</DialogTitle>
             <List sx={{ pt: 0 }}>
                 <ListItem button onClick={() => handleListItemClick()}>
                     <ListItemAvatar>
@@ -44,7 +47,7 @@ export default function SimpleDialog(props) {
                             <ToggleOffIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Id: ${selectedNode.id}`} />
+                    <ListItemText primary={`Room id: ${selectedNode.id}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[0]}>
@@ -53,7 +56,7 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={listData[0]} />
+                    <ListItemText primary={`Room temperature: ${listData[0]}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
@@ -62,27 +65,37 @@ export default function SimpleDialog(props) {
                             <AccessTimeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={listData[1]} />
+                    <ListItemText primary={`Last occupancy: ${listData[1]}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
                     <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
-                            <SettingsInputHdmiIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={faucetState} />
-                </ListItem>
+                        <MenuList dense>
+                            <MenuItem>
+                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <PowerIcon/>
+                                </Avatar>
+                                <ListItemText inset>Fan 1 Open</ListItemText>
+                            </MenuItem>
+                            <MenuItem>
+                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <PowerIcon/>
+                                </Avatar>
+                                <ListItemText inset>Fan 2 Open</ListItemText>
+                            </MenuItem>
+                            <MenuItem>
+                                <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
+                                    <PowerIcon/>
+                                </Avatar>
 
-                <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: blue[50], color: blue[600] }}>
-                            <PersonAddAltIcon />
-                        </Avatar>
+                                <ListItemText inset>Fan 3 close</ListItemText>
+                            </MenuItem>
+                        </MenuList>
                     </ListItemAvatar>
-                    <ListItemText primary={isPersonInRoom} />
-                </ListItem>
 
+
+
+                </ListItem>
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()}>
                     <ListItemAvatar>
@@ -90,7 +103,7 @@ export default function SimpleDialog(props) {
                             <AddIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Node Setting" onClick={props.handleClick}/>
+                    <ListItemText primary="Graph" onClick={props.handleClick}/>
                 </ListItem>
             </List>
         </div>

@@ -13,6 +13,8 @@ import {baseUrl} from "../../Actions/auth";
 import {AUTH_ERROR, RECEIVE_ROOMTEMP} from "../../Actions/types";
 import {returnErrors} from "../../Actions/messages";
 import {useDispatch, useSelector} from "react-redux";
+import IndeterminateCheckbox from "./CheckBoxValve";
+import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
 
 export default function NodeForm() {
     const [btnDisabled, setBtnDisabled] = useState(false)
@@ -23,24 +25,12 @@ export default function NodeForm() {
     }
     const marks = [
         {
-            value: 0,
-            label: '0°C',
-        },
-        {
             value: 20,
             label: '20°C',
         },
         {
-            value: 37,
-            label: '37°C',
-        },
-        {
-            value: 50,
-            label: '50°C',
-        },
-        {
-            value: 100,
-            label: '100°C',
+            value: 30,
+            label: '30°C',
         },
     ];
     let value;
@@ -71,29 +61,31 @@ export default function NodeForm() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Node Set State
+                Node Setting
             </Typography>
             <Grid container spacing={3}>
                 
                 
                 <Grid item xs={12}>
                     <Typography>
-                        Temperature:
+                        Set point:
                     </Typography>
                     <Slider
                         disabled={btnDisabled}
-                        aria-label="Temperature"
+                        aria-label="SetPoint"
                         defaultValue={20}
                         getAriaValueText={valuetext}
                         step={0.5}
                         valueLabelDisplay="auto"
                         marks={marks}
                         onChange={(e, val) => value = val}
+                        min={20}
+                        max={30}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Permission</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Room Occupant Permission</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -111,21 +103,22 @@ export default function NodeForm() {
                         >
                             <MenuItem value={"YES"}>YES</MenuItem>
                             <MenuItem value={"NO"}>NO</MenuItem>
-                            <MenuItem value={""}>Depends</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                    <FormControlLabel
-                        control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}
-                        label="Solenoid valve Open "
-                    />
-                    <br/>
-                    <FormControlLabel
-                        control={<Checkbox color="secondary" id="checWorkMode" name="saveAddress" value="yes"/>}
-                        label="work mode"
-                    />
-                    <br/>
+                    <IndeterminateCheckbox/>
+                    <IndeterminateCheckboxWork/>
+                    {/*<FormControlLabel*/}
+                    {/*    control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}*/}
+                    {/*    label="Solenoid valve Open "*/}
+                    {/*/>*/}
+                    {/*<br/>*/}
+                    {/*<FormControlLabel*/}
+                    {/*    control={<Checkbox color="secondary" id="checWorkMode" name="saveAddress" value="yes"/>}*/}
+                    {/*    label="work mode"*/}
+                    {/*/>*/}
+                    {/*<br/>*/}
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
 
