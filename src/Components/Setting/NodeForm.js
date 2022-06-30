@@ -16,10 +16,13 @@ import {useDispatch, useSelector} from "react-redux";
 import IndeterminateCheckbox from "./CheckBoxValve";
 import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
 
-export default function NodeForm() {
+export default function NodeForm(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
+    const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
+    const selectedNode = props.selectedNode;
+
     function valuetext(value) {
         return `${value}°C`;
     }
@@ -33,9 +36,11 @@ export default function NodeForm() {
             label: '30°C',
         },
     ];
-    let value;
+    let value=20;
     const dispatch = useDispatch();
     function handleSubmit() {
+        console.log("temp for fun")
+        console.log(value)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -45,14 +50,26 @@ export default function NodeForm() {
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
-        var id = document.getElementById("NodeId").value
+        var id = selectedNode
+        var fanOpen = document.getElementById("fanOpen").value
+        let sleepMode = document.getElementById("workMode1").checked
+        let optimalMode = document.getElementById("workMode2").checked;
+        let manualMode = document.getElementById("workMode3").checked
 
-        var fanOpen = document.getElementById("checkSolenoid").value
+        if((sleepMode && optimalMode) ||(sleepMode && manualMode) || (optimalMode && manualMode) ){
+            alert("Please Check only one mode");
+            return;
+        }
+
+        let valve1 = document.getElementById('valve1').checked;
+        let valve2 = document.getElementById('valve2').checked;
+        let valve3 = document.getElementById('valve3').checked;
+        let data = {nodeid:id,temp:value,fanopen:fanOpen,perm:perm,valve1:valve1,valve2:valve2,valve3:valve3,sleepMode:sleepMode,optimalMode:optimalMode,manualMode:manualMode}
         console.log(fanOpen)
         console.log("sent data: ")
-        console.log({nodeid:id,temp:value,fanopen:fanOpen,perm:perm})
+        console.log(data)
         axios
-            .post(baseUrl+'api/users/setnodeconfig/' , {nodeid:id,temp:value,fanopen:fanOpen,perm:perm},config)
+            .post(baseUrl+'api/users/setnodeconfig/' , data,config)
             .then((res) => {
                 console.log("data sent")
             })
@@ -107,8 +124,13 @@ export default function NodeForm() {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                    <IndeterminateCheckbox/>
-                    <IndeterminateCheckboxWork/>
+                    <Typography variant="h5">
+                        Fan On
+                    </Typography>
+                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="Open" />
+                    <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox}/>
+                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
+
                     {/*<FormControlLabel*/}
                     {/*    control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}*/}
                     {/*    label="Solenoid valve Open "*/}

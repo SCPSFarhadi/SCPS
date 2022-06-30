@@ -39,7 +39,7 @@ class App extends Component {
                                 return <Redirect to="/admin"/> ;
                         }} />
                         <Route exact path="/register" component={Register} />
-                        <Route exact path="/login" component={SignIn} />
+                        <Route exact path="/login" component={SignIn}/>
                         <Route exact path="/chat" component={Chat} />
                         <Route exact path="/setting" component={Checkout} />
                         <PrivateRoute exact path="/test" component={Navbar} />

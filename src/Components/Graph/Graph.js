@@ -1,6 +1,6 @@
 import { Graph } from "react-d3-graph";
 import React from 'react';
-import {useSelector,connect} from "react-redux";
+import {useSelector, connect, useDispatch} from "react-redux";
 import store from "../../store";
 import SimpleDialog from "./Dialog";
 import {blue, green, red} from "@mui/material/colors";
@@ -29,6 +29,10 @@ import NodeForm from "../Setting/NodeForm";
 import LineChart from "./nodeChart";
 import {Label} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
+import axios from "axios";
+import {baseUrl} from "../../Actions/auth";
+import {RECEIVE_NODETEMP} from "../../Actions/types";
+import LineChart2 from "./nodeChart";
 
 
 const bull = (
@@ -53,6 +57,7 @@ const myConfig = {
 };
 
 function MakeGraph(props) {
+    const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
     let count_run = 0;
     // make a dialog ready:
@@ -67,7 +72,14 @@ function MakeGraph(props) {
     const handleClose = () => {
         setOpen(false);
     };
-
+    let dataTime = useSelector(() => store.getState().receiveData.time);
+    let dataTemp = useSelector(() => store.getState().receiveData.temp);
+    let times = [];
+    let temps = [];
+    if(dataTime && dataTemp && dataTime.length !==0 && dataTemp.length !==0){
+        times = dataTime;
+        temps = dataTemp;
+    }
     React.useEffect(() => {
         let nodes = props.data.nodes;
         // eslint-disable-next-line array-callback-return
@@ -81,18 +93,42 @@ function MakeGraph(props) {
         })
     }, [])
 
+    const getLastData = (id) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        let token = localStorage.getItem('token_access')
+        if (token) {
+            config.headers['Authorization'] = `JWT ${token}`;
+        }
 
-    const onDoubleClickNode = function(nodeId) {
+        axios
+            .post(baseUrl+'api/users/sendlastdata/' , {nodeid:id},config)
+            .then((res) => {
+                console.log("resieve data in graph")
+                console.log(res.data)
+                dispatch({
+                    type: RECEIVE_NODETEMP,
+                    payload: res.data,
+                });
+            })
+            .catch((err) => {
+                console.log("error in receive node temp "+err)
+            });
+    };
+
+    const onClickedNode = function(nodeId) {
+        console.log("in click")
         let modData = { ...dataState };
 
         let selectNode = modData.nodes.filter(item => {
             return item.id === nodeId;
         });
         selectNode.forEach(item => {
-            if (item.color && item.color === "red") item.color = "blue";
-            else item.color = "red";
+            getLastData(item.id)
         });
-        setData(modData );
     };
     const theme = createTheme();
     const useStyles = makeStyles({border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
@@ -120,20 +156,13 @@ function MakeGraph(props) {
                                 <React.Fragment>
                                     <React.Fragment>
                                         <div>
-                                            <div>
-                                                {/*<SimpleDialog*/}
-                                                {/*    open={open}*/}
-                                                {/*    onClose={handleClose}*/}
-                                                {/*    selectedNode={selectedNode}*/}
-                                                {/*    nodeColor={nodeColor}*/}
-                                                {/*    handleClick = {props.handelClick}*/}
-                                                {/*/>*/}
-                                            </div>
+
                                             <div style={{height:'100%',width:'100%'}}>
                                                 <Graph
                                                     id="graph-id" // id is mandatory
                                                     data={props.data}
                                                     config={myConfig}
+                                                    onDoubleClickNode={onClickedNode}
                                                     // onDoubleClickNode = {onDoubleClickNode}
                                                 />
                                             </div>
@@ -210,7 +239,7 @@ function MakeGraph(props) {
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <React.Fragment>
                                     <React.Fragment>
-                                        <LineChart/>
+                                        <LineChart2 times={times} temps={temps}/>
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>
@@ -235,7 +264,7 @@ function MakeGraph(props) {
                             <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <div className="p-6">
-                                    <NodeForm />
+                                    <NodeForm selectedNode={selectedNode}/>
                                 </div>         
                             </Paper>
                         </Container>

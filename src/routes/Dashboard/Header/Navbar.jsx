@@ -75,6 +75,10 @@ import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
 import Avatar from "@mui/material/Avatar";
 import {deepPurple} from "@mui/material/colors";
+import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+
+import ControlPanelSetting from "../../../Components/ControlPanel/ControlPanelSetting.js";
+
 
 function handleClickBread(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     event.preventDefault();
@@ -172,11 +176,15 @@ function DashboardContent(props) {
         temps = dataTemp;
     }
 
+
+
+
+
+
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
         setMenu("Graph");
-        console.log("fadayat shavam2");
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -250,6 +258,9 @@ function DashboardContent(props) {
     else if(menu === "Reports"){
         dataMiddle = <ReportStates />
     }
+    else if(menu === "Control"){
+        dataMiddle = <ControlPanelSetting />
+    }
     else if(menu === "Graph"){
         if((Object.keys(dataPychart).length !== 0 && dataPychart)){
             console.log(dataPychart)
@@ -306,7 +317,8 @@ function DashboardContent(props) {
                                 <MenuItem value={"3"}>3</MenuItem>
                             </Select>
                         </FormControl>
-                        <div className='chart'>
+                        <div className='chart' >
+                            <label >Hi</label>
                             <LineChart temps={temps} times={times}/>
                         </div>
                         {/*<Orders />*/}
@@ -423,13 +435,24 @@ function DashboardContent(props) {
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <PeopleIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Graph" onClick={() => setMenu("Graph")}/>
+                                    </ListItemButton>
+                                </div>
+
+                                <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
-                                        <PeopleIcon />
+                                        <PauseCircleOutlineIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Graph" onClick={() => setMenu("Graph")}/>
+                                    <ListItemText primary="Control Panel" onClick={() => setMenu("Control")}/>
                                 </ListItemButton>
                                 </div>
+
+
                                 <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
@@ -443,7 +466,7 @@ function DashboardContent(props) {
                                     <ListItemIcon>
                                         <LayersIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Integrations" onClick={() => setMenu("Integrations")}/>
+                                    <ListItemText primary="Admin Setting" onClick={() => setMenu("Integrations")}/>
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
@@ -459,7 +482,7 @@ function DashboardContent(props) {
                                     <ListItemIcon>
                                         <SettingsIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Setting" onClick={() => setMenu("ProfileSetting")}/>
+                                    <ListItemText primary="Login Setting" onClick={() => setMenu("ProfileSetting")}/>
                                 </ListItemButton>
                                 </div>
                             </List>

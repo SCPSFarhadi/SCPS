@@ -20,8 +20,9 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {login} from '../Actions/auth.js'
 
-
-
+import Background from './10.jpg';
+import Paper from "@mui/material/Paper";
+// {backgroundImage: "url(" + { Background } + ")"}
 const theme = createTheme();
 
 class MyComponent extends Component {
@@ -50,76 +51,77 @@ class MyComponent extends Component {
 
         return (
             <ThemeProvider theme={theme}>
-                <div className='m-0'>
-                <Container component="main" maxWidth="xs" className="bg-white rounded-lg px-5 shadow-lg">
-                    <CssBaseline />
-                    <Box
-                    className="py-5"
-                        sx={{
-                            marginTop: 8,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Sign in
-                        </Typography>
-                        <Box component="form" onSubmit={this.onSubmit} noValidate sx={{ mt: 1 }}>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                autoFocus
-                                onChange={this.onChange}
-                                // value={email}
-                            />
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                onChange={this.onChange}
-                                // value={password}
-                            />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            />
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                            >
-                                Sign In
-                            </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2" className="bg-red-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-red-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
-                                        Forgot password
-                                    </Link>
+                <div className='m-0' >
+                    <Container component="main" maxWidth="xs" className="bg-white rounded-lg px-5 shadow-lg" style={{marginTop:`0px`}}>
+                        <CssBaseline />
+                        <Box
+                            className="py-5"
+                            sx={{
+                                marginTop: 8,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+
+                            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                                <LockOutlinedIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                Sign in
+                            </Typography>
+                            <Box component="form" onSubmit={this.onSubmit} noValidate sx={{ mt: 1 }}>
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                    onChange={this.onChange}
+                                    // value={email}
+                                />
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                    onChange={this.onChange}
+                                    // value={password}
+                                />
+                                <FormControlLabel
+                                    control={<Checkbox value="remember" color="primary" />}
+                                    label="Remember me"
+                                />
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{ mt: 3, mb: 2 }}
+                                >
+                                    Sign in
+                                </Button>
+                                <Grid container>
+                                    <Grid item xs>
+                                        <Link href="#" variant="body2" className="bg-red-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-red-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
+                                            Forgot password
+                                        </Link>
+                                    </Grid>
+                                    <Grid item>
+                                        <Link href="/register" variant="body2" className="bg-green-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-green-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
+                                            {"Don't have an account? Sign Up"}
+                                        </Link>
+                                    </Grid>
                                 </Grid>
-                                <Grid item>
-                                    <Link href="/register" variant="body2" className="bg-green-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-green-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
-                                        {"Don't have an account? Sign Up"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
+                            </Box>
                         </Box>
-                    </Box>
-                </Container>
+                    </Container>
                 </div>
             </ThemeProvider>
         );

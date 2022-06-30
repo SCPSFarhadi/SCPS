@@ -81,6 +81,8 @@ class Socket extends React.Component {
     }
 
     setNodeTemp(data){
+        console.log("In dispatch Node Temp")
+        console.log(data)
         store.dispatch(receiveًNodeTemp(data))
     }
 

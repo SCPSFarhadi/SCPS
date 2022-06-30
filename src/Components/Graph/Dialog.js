@@ -22,6 +22,8 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import MenuItem from "@mui/material/MenuItem";
 import {Check} from "@material-ui/icons";
 import ClearIcon from '@mui/icons-material/Clear';
+import {useSelector} from "react-redux";
+import store from "../../store";
 const listData = ['20°C', '04/26 20:11',1,1];
 
 export default function SimpleDialog(props) {
@@ -31,6 +33,8 @@ export default function SimpleDialog(props) {
     const handleClose = () => {
         onClose();
     };
+    let lastTime = useSelector(() => store.getState().receiveData.lastTime);
+    let lastTemp = useSelector(() => store.getState().receiveData.lastTemp);
 
     const handleListItemClick = () => {
         onClose();
@@ -56,16 +60,16 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room temperature: ${listData[0]}`} />
+                    <ListItemText primary={`Room temperature: ${lastTemp}`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccessTimeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Last occupancy: ${listData[1]}`} />
+                    <ListItemText primary={`Last occupancy: ${lastTime}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>

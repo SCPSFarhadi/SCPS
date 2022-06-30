@@ -14,6 +14,9 @@ const initialState={
     notification: [],
     pychart: [],
     roomTemp: [],
+    lastTime: "",
+    lastTemp: "",
+    countFan: 0,
 
 }
 function createData(time, amount) {
@@ -59,7 +62,9 @@ export default function(state=initialState,action){
             return {
                 ...state,
                 time: msgNode['times'],
-                temp: msgNode['temps']
+                temp: msgNode['temps'],
+                lastTime: msgNode['times'][msgNode['times'].length-1],
+                lastTemp: msgNode['temps'][msgNode['temps'].length-1]
             }
         default:
             return state;

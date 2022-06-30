@@ -2,54 +2,50 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import Typography from "@mui/material/Typography";
+import {useState} from "react";
 
-export default function IndeterminateCheckbox() {
+
+export default function IndeterminateCheckbox(props) {
     const [checked, setChecked] = React.useState([true, false,false]);
 
-    const handleChange1 = (event) => {
-        setChecked([event.target.checked, event.target.checked]);
-    };
+
 
     const handleChange2 = (event) => {
         setChecked([event.target.checked, checked[1],checked[2]]);
     };
 
-    const handleChange3 = (event) => {
-        setChecked([checked[0], event.target.checked,checked[2]]);
-    };
-    const handleChange4 = (event) => {
-        setChecked([checked[0], checked[1],event.target.checked]);
-    };
-
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
             <FormControlLabel
                 label="control vale 1 open"
-                control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+                // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+                control={<Switch id="valve1" {...label} defaultChecked onChange={handleChange2} disabled={props.disableCheckBox}/>}
             />
             <FormControlLabel
                 label="control vale 2 open"
-                control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+                control={<Switch id="valve2" {...label} defaultChecked onChange={handleChange2} disabled={props.disableCheckBox}/>}
             />
             <FormControlLabel
                 label="control vale 3 open"
-                control={<Checkbox checked={checked[2]} onChange={handleChange4} />}
+                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} disabled={props.disableCheckBox}/>}
             />
+            {/*<div>*/}
+            {/*    <Switch {...label} defaultChecked />*/}
+            {/*    <Switch {...label} />*/}
+            {/*    <Switch {...label} disabled defaultChecked />*/}
+            {/*    <Switch {...label} disabled />*/}
+            {/*</div>*/}
         </Box>
     );
 
     return (
         <div>
-            <FormControlLabel
-                label="Control Valve"
-                control={
-                    <Checkbox
-                        checked={checked[0] && checked[1]}
-                        indeterminate={checked[0] !== checked[1]}
-                        onChange={handleChange1}
-                    />
-                }
-            />
+            <Typography variant="h5">
+                Control Valve
+            </Typography>
             {children}
         </div>
     );

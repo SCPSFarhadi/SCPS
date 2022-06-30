@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from './AddressForm';
+import ControlPanelForm from './ControlPanelForm.js';
 
 function Copyright() {
   return (
@@ -29,7 +29,7 @@ function Copyright() {
 
 const theme = createTheme();
 
-export default function ProfileSetting() {
+export default function ControlPanelSetting() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -47,7 +47,7 @@ export default function ProfileSetting() {
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 6, md: 3 } }}>
           <React.Fragment>
               <React.Fragment>
-                  <AddressForm />
+                  <ControlPanelForm />
               </React.Fragment>
           </React.Fragment>
         </Paper>
