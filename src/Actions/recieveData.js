@@ -5,7 +5,7 @@ import {
     RECEIVE_DATA_CONFIG,
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
-    RECEIVE_ROOMTEMP
+    RECEIVE_ROOMTEMP, RECEIVE_SETNODE
 } from "./types";
 
 // GET LEADS
@@ -17,6 +17,7 @@ export const receiveDataNodeTem = (data) => (dispatch) => {
         })
 }
 export const receiveDataConfig = (data) => (dispatch) => {
+    console.log(data)
     dispatch({
         payload: data,
         type: RECEIVE_DATA_CONFIG
@@ -45,5 +46,14 @@ export const receiveًNodeTemp = (data) => (dispatch) => {
     dispatch({
         payload: data,
         type: RECEIVE_ROOMTEMP
+    })
+}
+
+export const setNodes = (data) => (dispatch) => {
+    console.log("fadayat shavam22...")
+    console.log(data)
+    dispatch({
+        payload: data,
+        type: RECEIVE_SETNODE
     })
 }

@@ -76,8 +76,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import Avatar from "@mui/material/Avatar";
 import {deepPurple} from "@mui/material/colors";
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
-
 import ControlPanelSetting from "../../../Components/ControlPanel/ControlPanelSetting.js";
+import {setNodes} from "../../../Actions/recieveData";
 
 
 function handleClickBread(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -149,6 +149,14 @@ const mdTheme = createTheme();
 
 function DashboardContent(props) {
 
+    let modData = {};
+    modData['nodes'] = [{ id: "1"}, { id: "2" }, { id: "3" }];
+    modData['links'] =
+        [
+            { source: "1", target: "2" },
+            { source: "2", target: "3" },
+        ]
+    ;
 
     const [open, setOpen] = React.useState(true);
     const [menu, setMenu] = React.useState("Dashboard");
@@ -168,6 +176,7 @@ function DashboardContent(props) {
 
 
     let dataTime = useSelector(() => store.getState().receiveData.time);
+    let listNodes = useSelector(() => store.getState().receiveData.listNodes);
     let dataTemp = useSelector(() => store.getState().receiveData.temp);
     let times = [];
     let temps = [];
@@ -176,10 +185,9 @@ function DashboardContent(props) {
         temps = dataTemp;
     }
 
-
-
-
-
+    if(listNodes && listNodes.length!==0){
+        console.log("fadayat shavam...")
+    }
 
     const [age, setAge] = React.useState('');
 
@@ -216,19 +224,20 @@ function DashboardContent(props) {
         setOpen(!open);
     };
     let dataMiddle;
+
+    function submitDate() {
+
+    }
+
     if(menu === "Dashboard"){
-        let modData = {};
-        modData['nodes'] = [{ id: "1"}, { id: "2" }, { id: "3" }];
-        modData['links'] =
-            [
-                { source: "1", target: "2" },
-                { source: "2", target: "3" },
-            ]
-        ;
+
+
 
         if((Object.keys(dateConfig).length !== 0 )) {
             dateConfig = JSON.parse(dateConfig)
             modData['nodes'] = dateConfig.graph
+            console.log("fadayat shavam...")
+            console.log(modData['nodes'])
             modData['links'] = dateConfig.links
 
         }
@@ -262,6 +271,12 @@ function DashboardContent(props) {
         dataMiddle = <ControlPanelSetting />
     }
     else if(menu === "Graph"){
+        if((Object.keys(dateConfig).length !== 0 )) {
+            dateConfig = JSON.parse(dateConfig)
+            modData['nodes'] = dateConfig.graph
+        }
+
+
         if((Object.keys(dataPychart).length !== 0 && dataPychart)){
             console.log(dataPychart)
             dataPychart = JSON.parse(dataPychart)
@@ -270,7 +285,6 @@ function DashboardContent(props) {
             console.log("in pychart")
             console.log(dataPychart)
         }
-
 
         dataMiddle = <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
@@ -303,22 +317,45 @@ function DashboardContent(props) {
                 {/* Recent Orders */}
                 <Grid item xs={12}>
                     <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                        <FormControl>
-                            <InputLabel id="demo-simple-select-label">NodeId</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={age}
-                                label="Age"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={"1"}>1</MenuItem>
-                                <MenuItem value={"2"}>2</MenuItem>
-                                <MenuItem value={"3"}>3</MenuItem>
-                            </Select>
-                        </FormControl>
+
                         <div className='chart' >
-                            <label >Hi</label>
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <FormControl style={{width:"100px"}}>
+                                    <InputLabel id="demo-simple-select-label">NodeId</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={age}
+                                        label="Age"
+                                        onChange={handleChange}
+                                    >
+                                        {modData['nodes'].map((l,i)=>{
+                                            return (<MenuItem key={i} value={l.id}>{l.id}</MenuItem>)
+                                        })}
+                                    {/*{modData['nodes'][0].id}*/}
+                                        {/*<ul>{modData['nodes'].map((item, i) => <li key={item + i}>{item}</li>)}</ul>*/}
+                                        {/*<MenuItem value={"1"}>0</MenuItem>*/}
+                                        {/*<MenuItem value={"2"}>2</MenuItem>*/}
+                                        {/*<MenuItem value={"3"}>3</MenuItem>*/}
+                                    </Select>
+                                </FormControl>
+                                <br />
+                                <span style={{marginTop:"15px"}}>
+                                <label style={{fontWeight:"bold"}}>
+                                    From date:
+                                </label>
+                                <input type="date" id="fromDate"/>
+                            </span>{"          "}
+                                <span style={{marginTop:"15px"}}>
+                                <label style={{fontWeight:"bold"}}>
+                                    To date:
+                                </label>
+                                <input type="date" id="toDate"/>
+                            </span>{"   "}
+                                <Button type="submit" onSubmit={submitDate} >Submit</Button>
+
+                            </div>
+
                             <LineChart temps={temps} times={times}/>
                         </div>
                         {/*<Orders />*/}

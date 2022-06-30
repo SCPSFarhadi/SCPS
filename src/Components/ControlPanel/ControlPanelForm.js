@@ -15,7 +15,7 @@ export default function ControlPanelForm() {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={3}>
           <Typography variant="h5">
-            Session
+            Season
           </Typography>
         </Grid>
 

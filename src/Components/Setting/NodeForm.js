@@ -51,7 +51,7 @@ export default function NodeForm(props) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
         var id = selectedNode
-        var fanOpen = document.getElementById("fanOpen").value
+        var fanOpen = document.getElementById("fanOpen").checked
         let sleepMode = document.getElementById("workMode1").checked
         let optimalMode = document.getElementById("workMode2").checked;
         let manualMode = document.getElementById("workMode3").checked
@@ -64,7 +64,7 @@ export default function NodeForm(props) {
         let valve1 = document.getElementById('valve1').checked;
         let valve2 = document.getElementById('valve2').checked;
         let valve3 = document.getElementById('valve3').checked;
-        let data = {nodeid:id,temp:value,fanopen:fanOpen,perm:perm,valve1:valve1,valve2:valve2,valve3:valve3,sleepMode:sleepMode,optimalMode:optimalMode,manualMode:manualMode}
+        let data = {nodeid:id.id,temp:value,fanopen:fanOpen,perm:perm,valve1:valve1,valve2:valve2,valve3:valve3,sleepMode:sleepMode,optimalMode:optimalMode,manualMode:manualMode}
         console.log(fanOpen)
         console.log("sent data: ")
         console.log(data)
@@ -110,7 +110,7 @@ export default function NodeForm(props) {
                             label="Permission"
                             onChange={(event) => {
                                 setPerm(event.target.value)
-                                if (event.target.value === "YES") {
+                                if (event.target.value === "NO") {
                                     setBtnDisabled(false);
                                 } else {
                                     setBtnDisabled(true);

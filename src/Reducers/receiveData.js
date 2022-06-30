@@ -4,7 +4,7 @@ import {
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
     RECEIVE_ROOMTEMP,
-    RECEIVE_NODETEMP
+    RECEIVE_NODETEMP, RECEIVE_SETNODE
 } from '../Actions/types.js';
 
 const initialState={
@@ -14,9 +14,11 @@ const initialState={
     notification: [],
     pychart: [],
     roomTemp: [],
+    listNodes:[],
     lastTime: "",
     lastTemp: "",
-    countFan: 0,
+    countFan: 0
+
 
 }
 function createData(time, amount) {
@@ -65,6 +67,15 @@ export default function(state=initialState,action){
                 temp: msgNode['temps'],
                 lastTime: msgNode['times'][msgNode['times'].length-1],
                 lastTemp: msgNode['temps'][msgNode['temps'].length-1]
+            }
+        case RECEIVE_SETNODE:
+            console.log("Fas")
+            let lnodes = (action.payload)
+            console.log("hello")
+            console.log(lnodes)
+            return {
+                ...state,
+                listNodes: lnodes
             }
         default:
             return state;
