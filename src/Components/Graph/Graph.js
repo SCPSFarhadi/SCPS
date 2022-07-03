@@ -33,6 +33,7 @@ import axios from "axios";
 import {baseUrl} from "../../Actions/auth";
 import {RECEIVE_NODETEMP} from "../../Actions/types";
 import LineChart2 from "./nodeChart";
+import Calculation from "../Setting/Calculation";
 
 
 const bull = (
@@ -152,7 +153,7 @@ function MakeGraph(props) {
                         >
                         </AppBar>
                         <Container component="main" maxWidth="lg" sx={{ mb: 4 }}>
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor:"rgb(245 239 242)", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}} >
                                 <React.Fragment>
                                     <React.Fragment>
@@ -204,7 +205,7 @@ function MakeGraph(props) {
                         >
                         </AppBar>
                         <Container component="main" maxWidth="lg" sx={{ mb: 4 }}>
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "rgb(255 255 215)", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <React.Fragment>
                                     <React.Fragment>
@@ -262,13 +263,21 @@ function MakeGraph(props) {
                         >
                         </AppBar>
                         <Container component="main" maxWidth="lg" sx={{ mb: 4 }} >
-                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555",  backgroundColor: "rgb(255 255 215)", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <div className="p-6">
                                     <NodeForm selectedNode={selectedNode}/>
                                 </div>         
                             </Paper>
                         </Container>
+                    <Container component="main" maxWidth="lg" sx={{ mb: 4 }} >
+                        <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555",  backgroundColor: "rgb(255 255 215)", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
+                            MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
+                            <div className="p-6">
+                                <Calculation />
+                            </div>
+                        </Paper>
+                    </Container>
                     </ThemeProvider>
                 </Grid>
             </Grid>

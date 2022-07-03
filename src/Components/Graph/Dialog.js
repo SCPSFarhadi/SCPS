@@ -51,7 +51,7 @@ export default function SimpleDialog(props) {
                             <ToggleOffIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room id: ${selectedNode.id}`} />
+                    <ListItemText primary={`Node Id: ${selectedNode.id}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[0]}>
@@ -60,7 +60,7 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room temperature: ${lastTemp}`} />
+                    <ListItemText primary={`Wet temperature: ${lastTemp}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
@@ -69,37 +69,37 @@ export default function SimpleDialog(props) {
                             <AccessTimeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Last occupancy: ${lastTime}`} />
+                    <ListItemText primary={`Dry temperature: ${'20'}`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
-                    <ListItemAvatar>
-                        <MenuList dense>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
-                                <ListItemText inset>Fan 1 Open</ListItemText>
-                            </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
-                                <ListItemText inset>Fan 2 Open</ListItemText>
-                            </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
+                {/*<ListItem button onClick={() => handleListItemClick()} key={listData[1]}>*/}
+                {/*    <ListItemAvatar>*/}
+                {/*        <MenuList dense>*/}
+                {/*            <MenuItem>*/}
+                {/*                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>*/}
+                {/*                    <PowerIcon/>*/}
+                {/*                </Avatar>*/}
+                {/*                <ListItemText inset>Fan 1 Open</ListItemText>*/}
+                {/*            </MenuItem>*/}
+                {/*            <MenuItem>*/}
+                {/*                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>*/}
+                {/*                    <PowerIcon/>*/}
+                {/*                </Avatar>*/}
+                {/*                <ListItemText inset>Fan 2 Open</ListItemText>*/}
+                {/*            </MenuItem>*/}
+                {/*            <MenuItem>*/}
+                {/*                <Avatar sx={{ bgcolor: red[100], color: red[600] }}>*/}
+                {/*                    <PowerIcon/>*/}
+                {/*                </Avatar>*/}
 
-                                <ListItemText inset>Fan 3 close</ListItemText>
-                            </MenuItem>
-                        </MenuList>
-                    </ListItemAvatar>
+                {/*                <ListItemText inset>Fan 3 close</ListItemText>*/}
+                {/*            </MenuItem>*/}
+                {/*        </MenuList>*/}
+                {/*    </ListItemAvatar>*/}
 
 
 
-                </ListItem>
+                {/*</ListItem>*/}
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()}>
                     <ListItemAvatar>

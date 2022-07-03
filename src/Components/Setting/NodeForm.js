@@ -77,70 +77,13 @@ export default function NodeForm(props) {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h3" gutterBottom>
                 Node Setting
             </Typography>
             <Grid container spacing={3}>
-                
-                
-                <Grid item xs={12}>
-                    <Typography>
-                        Set point:
-                    </Typography>
-                    <Slider
-                        disabled={btnDisabled}
-                        aria-label="SetPoint"
-                        defaultValue={20}
-                        getAriaValueText={valuetext}
-                        step={0.5}
-                        valueLabelDisplay="auto"
-                        marks={marks}
-                        onChange={(e, val) => value = val}
-                        min={20}
-                        max={30}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Room Occupant Permission</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={perm}
-                            label="Permission"
-                            onChange={(event) => {
-                                setPerm(event.target.value)
-                                if (event.target.value === "NO") {
-                                    setBtnDisabled(false);
-                                } else {
-                                    setBtnDisabled(true);
-                                }
-                            }}
-                            // onChange={handleChange}
-                        >
-                            <MenuItem value={"YES"}>YES</MenuItem>
-                            <MenuItem value={"NO"}>NO</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography variant="h5">
-                        Fan On
-                    </Typography>
-                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="Open" />
-                    <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox}/>
-                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
 
-                    {/*<FormControlLabel*/}
-                    {/*    control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}*/}
-                    {/*    label="Solenoid valve Open "*/}
-                    {/*/>*/}
-                    {/*<br/>*/}
-                    {/*<FormControlLabel*/}
-                    {/*    control={<Checkbox color="secondary" id="checWorkMode" name="saveAddress" value="yes"/>}*/}
-                    {/*    label="work mode"*/}
-                    {/*/>*/}
-                    {/*<br/>*/}
+                <Grid item xs={12}>
+                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
 

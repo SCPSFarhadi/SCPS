@@ -99,6 +99,7 @@ const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
+    backgroundColor:'rebeccapurple',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -117,6 +118,7 @@ const AppBar = styled(MuiAppBar, {
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
+            backgroundColor: 'darkkhaki',
             position: 'relative',
             whiteSpace: 'nowrap',
             width: drawerWidth,
@@ -447,7 +449,7 @@ function DashboardContent(props) {
                             </Toolbar>
 
                         </AppBar>
-                        <Drawer variant="permanent" open={open}>
+                        <Drawer variant="permanent" open={open} >
 
                             <Toolbar
                                 sx={{
@@ -483,27 +485,9 @@ function DashboardContent(props) {
                                 <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton>
                                     <ListItemIcon>
-                                        <PauseCircleOutlineIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Control Panel" onClick={() => setMenu("Control")}/>
-                                </ListItemButton>
-                                </div>
-
-
-                                <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
-                                    <ListItemIcon>
                                         <BarChartIcon />
                                     </ListItemIcon>
                                     <ListItemText primary="Reports" onClick={() => setMenu("Reports")}/>
-                                </ListItemButton>
-                                </div>
-                                <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <LayersIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Admin Setting" onClick={() => setMenu("Integrations")}/>
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
