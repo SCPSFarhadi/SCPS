@@ -24,40 +24,48 @@ export default function Calculation(props) {
 
     let value=20;
     function handleSubmit() {
-        // console.log("temp for fun")
-        // console.log(value)
-        // const config = {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // };
-        // let token = localStorage.getItem('token_access')
-        // if (token) {
-        //     config.headers['Authorization'] = `JWT ${token}`;
-        // }
-        // var id = selectedNode
-        // var fanOpen = document.getElementById("fanOpen").checked
-        // let sleepMode = document.getElementById("workMode1").checked
-        // let optimalMode = document.getElementById("workMode2").checked;
-        // let manualMode = document.getElementById("workMode3").checked
-        //
-        // if((sleepMode && optimalMode) ||(sleepMode && manualMode) || (optimalMode && manualMode) ){
-        //     alert("Please Check only one mode");
-        //     return;
-        // }
-        //
-        // let valve1 = document.getElementById('valve1').checked;
-        // let valve2 = document.getElementById('valve2').checked;
-        // let valve3 = document.getElementById('valve3').checked;
-        // let data = {nodeid:id.id,temp:value,fanopen:fanOpen,perm:perm,valve1:valve1,valve2:valve2,valve3:valve3,sleepMode:sleepMode,optimalMode:optimalMode,manualMode:manualMode}
-        // console.log(fanOpen)
-        // console.log("sent data: ")
-        // console.log(data)
-        // axios
-        //     .post(baseUrl+'api/users/setnodeconfig/' , data,config)
-        //     .then((res) => {
-        //         console.log("data sent")
-        //     })
+        console.log("hello world")
+        let s = parseFloat(document.getElementById("surfaceArea").value);
+        let p = parseFloat(document.getElementById("dailyPart").value);
+        let T_min = parseFloat(document.getElementById("minimumDaily").value);
+        let T_max = parseFloat(document.getElementById("maxDaily").value);
+        let h = parseFloat(document.getElementById("heightSea").value);
+        let u_max = parseFloat(document.getElementById("maximumWind").value);
+        let u_min = parseFloat(document.getElementById("minimumWind").value);
+        let R_n = parseFloat(document.getElementById("R_n").value);
+        let k_c = parseFloat(document.getElementById("cropCoeif").value);
+
+        console.log(s+p+T_min+T_max+h+u_min+u_max+R_n+k_c)
+        let temp1; //Dry Tem
+        let temp2; //Wet T
+        let T;
+        let u_2;
+        let deltea;
+        T=T_max-T_min;
+        let y;
+        let et0;
+        let e0min;
+        let e0max;
+        let e_a;
+        let e_s;
+        let waterneed;
+        y=0.655*0.001*101352*Math.pow(1-2.25577*0.00001*h,5.25588);
+        u_2=(u_max-u_min)/2;
+        deltea=4098*[(0.6108*Math.pow(Math.E,(17.27*T)/(T+273.3)))/Math.pow((17.27*T)/(T+273.3),2)]
+
+        e0min=4098*0.6108*Math.pow(Math.E,(17.27*T_min)/(T_min+273.3));
+
+        e0max=4098*0.6108*Math.pow(Math.E,(17.27*T_max)/(T_max+273.3));
+
+        e_a=(96*e0max+96*e0min)/2;
+
+        e_s=(96*e0max+e0min)/2;
+
+        et0=(0.408*deltea*(R_n)+y*(900/(T+273)*u_2*(e_s-e_a)))/(deltea+y*(1+0.34*u_2));
+
+        waterneed=et0*s*k_c-p;
+        alert(waterneed)
+
     }
 
     return (
@@ -75,7 +83,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="surfaceArea"
                         name="setpoint"
                         label="Surface area"
                         fullWidth
@@ -92,7 +100,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="dailyPart"
                         name="setpoint"
                         label="Daily participation"
                         fullWidth
@@ -109,7 +117,25 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="minimumDaily"
+                        name="setpoint"
+                        label="Minimum temperature"
+                        fullWidth
+                        autoComplete="25"
+                        variant="standard"
+                    />
+                </Grid>
+
+                <Grid item xs={12} sm={3}>
+                    <Typography variant="h5">
+                        Crop coefficient
+                    </Typography>
+                </Grid>
+
+                <Grid item xs={12} sm={9}>
+
+                    <TextField
+                        id="cropCoeif"
                         name="setpoint"
                         label="Minimum temperature"
                         fullWidth
@@ -127,7 +153,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="maxDaily"
                         name="setpoint"
                         label="Maximum temperature"
                         fullWidth
@@ -144,7 +170,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="heightSea"
                         name="setpoint"
                         label="Height from sea level"
                         fullWidth
@@ -162,7 +188,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="maximumWind"
                         name="setpoint"
                         label="Maximum wind speed"
                         fullWidth
@@ -181,7 +207,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="minimumWind"
                         name="setpoint"
                         label="Minimum wind speed"
                         fullWidth
@@ -200,7 +226,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="setpoint"
+                        id="R_n"
                         name="setpoint"
                         label="R_n"
                         fullWidth
@@ -209,7 +235,7 @@ export default function Calculation(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Button variant="contained">Water need</Button>
+                    <Button variant="contained" onClick={handleSubmit}>Water need</Button>
                 </Grid>
             </Grid>
         </React.Fragment>
