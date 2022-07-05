@@ -124,10 +124,7 @@ export default function NodeForm(props) {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="h5">
-                        Fan On
-                    </Typography>
-                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="Open" />
+
                     <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox}/>
                     <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
 
@@ -141,6 +138,11 @@ export default function NodeForm(props) {
                     {/*    label="work mode"*/}
                     {/*/>*/}
                     {/*<br/>*/}
+                    <Typography variant="h5">
+                        Fan On
+                    </Typography>
+                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="Open" />
+                    <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
 
