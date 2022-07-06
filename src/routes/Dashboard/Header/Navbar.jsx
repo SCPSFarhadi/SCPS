@@ -298,6 +298,7 @@ function DashboardContent(props) {
                             display: 'flex',
                             flexDirection: 'column',
                             height: 240,
+                            borderRadius: 10,
                         }}
                     >
                         <Chart data={chartData} />
@@ -311,6 +312,7 @@ function DashboardContent(props) {
                             display: 'flex',
                             flexDirection: 'column',
                             height: 240,
+                            borderRadius: 10,
                         }}
                     >
                         <Deposits data={dataPychart}/>
@@ -318,7 +320,7 @@ function DashboardContent(props) {
                 </Grid>
                 {/* Recent Orders */}
                 <Grid item xs={12}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',borderRadius: 10, }}>
 
                         <div className='chart' >
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -456,7 +458,9 @@ function DashboardContent(props) {
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'flex-end',
+                                    height: "60px",
                                     px: [1],
+
                                 }}
                             >
                                 <IconButton onClick={toggleDrawer}>
@@ -530,9 +534,9 @@ function DashboardContent(props) {
                             component="main"
                             sx={{
                                 backgroundColor: (theme) =>
-                                    theme.palette.mode === 'light'
-                                        ? theme.palette.grey[100]
-                                        : theme.palette.grey[900],
+                                    theme.palette.mode === 'light',
+                                        // ? theme.palette.grey[100]
+                                        // : theme.palette.grey[900],
                                 flexGrow: 1,
                                 height: '100vh',
                                 overflow: 'auto',
