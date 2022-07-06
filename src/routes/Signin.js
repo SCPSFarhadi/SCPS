@@ -19,8 +19,6 @@ import {Component} from "react";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {login} from '../Actions/auth.js'
-
-import Background from './10.jpg';
 import Paper from "@mui/material/Paper";
 // {backgroundImage: "url(" + { Background } + ")"}
 const theme = createTheme();
