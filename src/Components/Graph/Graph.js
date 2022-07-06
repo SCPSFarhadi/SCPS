@@ -127,6 +127,7 @@ function MakeGraph(props) {
             return item.id === nodeId;
         });
         selectNode.forEach(item => {
+
             setSelectedNode(item.id);
             getLastData(item.id);
         });
