@@ -99,6 +99,7 @@ const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
+    backgroundColor: "#7400b8",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -117,6 +118,7 @@ const AppBar = styled(MuiAppBar, {
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
+            backgroundColor: "#e09f3e",
             position: 'relative',
             whiteSpace: 'nowrap',
             width: drawerWidth,
@@ -296,6 +298,7 @@ function DashboardContent(props) {
                             display: 'flex',
                             flexDirection: 'column',
                             height: 240,
+                            borderRadius: 10,
                         }}
                     >
                         <Chart data={chartData} />
@@ -309,6 +312,7 @@ function DashboardContent(props) {
                             display: 'flex',
                             flexDirection: 'column',
                             height: 240,
+                            borderRadius: 10,
                         }}
                     >
                         <Deposits data={dataPychart}/>
@@ -316,7 +320,7 @@ function DashboardContent(props) {
                 </Grid>
                 {/* Recent Orders */}
                 <Grid item xs={12}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',borderRadius: 10, }}>
 
                         <div className='chart' >
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -454,7 +458,9 @@ function DashboardContent(props) {
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'flex-end',
+                                    height: "60px",
                                     px: [1],
+
                                 }}
                             >
                                 <IconButton onClick={toggleDrawer}>
@@ -528,9 +534,9 @@ function DashboardContent(props) {
                             component="main"
                             sx={{
                                 backgroundColor: (theme) =>
-                                    theme.palette.mode === 'light'
-                                        ? theme.palette.grey[100]
-                                        : theme.palette.grey[900],
+                                    theme.palette.mode === 'light',
+                                        // ? theme.palette.grey[100]
+                                        // : theme.palette.grey[900],
                                 flexGrow: 1,
                                 height: '100vh',
                                 overflow: 'auto',
