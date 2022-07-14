@@ -31,11 +31,11 @@ export default function IndeterminateCheckboxWork(props) {
                 control={<Switch id="workMode1" {...label}  onChange={handleChange4}/>}
             />
             <FormControlLabel
-                label="Optimal mode"
+                label="Automate mode"
                 control={<Switch id="workMode2" {...label}  onChange={handleChange3}/>}
             />
             <FormControlLabel
-                label="Manual mode"
+                label="Maintenance mode"
                 control={<Switch id="workMode3" {...label}  onChange={handleChange2}/>}
             />
         </Box>

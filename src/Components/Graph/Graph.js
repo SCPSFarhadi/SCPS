@@ -33,7 +33,7 @@ import axios from "axios";
 import {baseUrl} from "../../Actions/auth";
 import {RECEIVE_NODETEMP} from "../../Actions/types";
 import LineChart2 from "./nodeChart";
-
+import MenuItem from "@mui/material/MenuItem";
 
 const bull = (
     <Box
@@ -47,6 +47,7 @@ const bull = (
 const myConfig = {
     nodeHighlightBehavior: true,
     node: {
+        shape:'rec',
         color: "green",
         size: 820,
         highlightStrokeColor: "blue",
@@ -127,10 +128,14 @@ function MakeGraph(props) {
             return item.id === nodeId;
         });
         selectNode.forEach(item => {
-
+            item.color = "#f8c0cb";
             setSelectedNode(item.id);
             getLastData(item.id);
+
         });
+        setData(modData)
+
+
     };
     const theme = createTheme();
     const useStyles = makeStyles({border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",

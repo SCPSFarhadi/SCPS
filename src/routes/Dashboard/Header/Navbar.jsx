@@ -288,7 +288,7 @@ function DashboardContent(props) {
             console.log(dataPychart)
         }
 
-        dataMiddle = <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        dataMiddle = <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
             <Grid container spacing={3}>
                 {/* Chart */}
                 <Grid item xs={12} md={8} lg={9}>
@@ -319,6 +319,46 @@ function DashboardContent(props) {
                     </Paper>
                 </Grid>
                 {/* Recent Orders */}
+                <Grid item xs={12}>
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',borderRadius: 10, }}>
+                        <FormControl style={{width:"100px"}}>
+                                    <InputLabel id="demo-simple-select-label">Room Id</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={age}
+                                        label="Age"
+                                        onChange={handleChange}
+                                    >
+                                        {modData['nodes'].map((l,i)=>{
+                                            return (<MenuItem key={i} value={l.id}>{l.id}</MenuItem>)
+                                        })}
+                                    {/*{modData['nodes'][0].id}*/}
+                                        {/*<ul>{modData['nodes'].map((item, i) => <li key={item + i}>{item}</li>)}</ul>*/}
+                                        {/*<MenuItem value={"1"}>0</MenuItem>*/}
+                                        {/*<MenuItem value={"2"}>2</MenuItem>*/}
+                                        {/*<MenuItem value={"3"}>3</MenuItem>*/}
+                                    </Select>
+                        </FormControl>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+
+                        <ListItemButton>
+                                    <ListItemIcon>
+                                    
+                                    </ListItemIcon>
+                                    <ListItemText primary=" Max Room Temperature" onClick={() => setMenu("Dashboard")}/>
+                        </ListItemButton>
+                        <ListItemButton>
+                                    <ListItemIcon>
+                                        
+                                    </ListItemIcon>
+                                    <ListItemText primary=" Min Room Temperature" onClick={() => setMenu("Dashboard")}/>
+                        </ListItemButton>
+                        </div>
+
+                    </Paper>
+
+                </Grid>
                 <Grid item xs={12}>
                     <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',borderRadius: 10, }}>
 
@@ -422,9 +462,26 @@ function DashboardContent(props) {
                                     {menu}
                                 </Typography>
 
+                                <Typography
+                                    component="h1"
+                                    variant="h6"
+                                    color="inherit"
+                                    noWrap
+                                    sx={{ flexGrow: 2 }}
+                                >
+                                    Building Max Temprature:
+                                </Typography>
 
 
-
+                                <Typography
+                                    component="h1"
+                                    variant="h6"
+                                    color="inherit"
+                                    noWrap
+                                    sx={{ flexGrow: 2 }}
+                                >
+                                    Building Min Temprature:
+                                </Typography>
                                 {/*<Typography*/}
                                 {/*    component="h4"*/}
                                 {/*    variant="h6"*/}
