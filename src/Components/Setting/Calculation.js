@@ -234,6 +234,43 @@ export default function Calculation(props) {
                         variant="standard"
                     />
                 </Grid>
+
+                <Grid item xs={12} sm={3}>
+                    <Typography variant="h5">
+                        Longitude
+                    </Typography>
+                </Grid>
+
+
+                <Grid item xs={12} sm={9}>
+
+                    <TextField
+                        id="R_n"
+                        name="setpoint"
+                        label="R_n"
+                        fullWidth
+                        autoComplete="25"
+                        variant="standard"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                    <Typography variant="h5">
+                        Latitude
+                    </Typography>
+                </Grid>
+
+
+                <Grid item xs={12} sm={9}>
+
+                    <TextField
+                        id="R_n"
+                        name="setpoint"
+                        label="R_n"
+                        fullWidth
+                        autoComplete="25"
+                        variant="standard"
+                    />
+                </Grid>
                 <Grid item xs={12}>
                     <Button variant="contained" onClick={handleSubmit}>Water need</Button>
                 </Grid>
