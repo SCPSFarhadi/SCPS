@@ -321,46 +321,6 @@ function DashboardContent(props) {
                 {/* Recent Orders */}
                 <Grid item xs={12}>
                     <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',borderRadius: 10, }}>
-                        <FormControl style={{width:"100px"}}>
-                                    <InputLabel id="demo-simple-select-label">Room Id</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={age}
-                                        label="Age"
-                                        onChange={handleChange}
-                                    >
-                                        {modData['nodes'].map((l,i)=>{
-                                            return (<MenuItem key={i} value={l.id}>{l.id}</MenuItem>)
-                                        })}
-                                    {/*{modData['nodes'][0].id}*/}
-                                        {/*<ul>{modData['nodes'].map((item, i) => <li key={item + i}>{item}</li>)}</ul>*/}
-                                        {/*<MenuItem value={"1"}>0</MenuItem>*/}
-                                        {/*<MenuItem value={"2"}>2</MenuItem>*/}
-                                        {/*<MenuItem value={"3"}>3</MenuItem>*/}
-                                    </Select>
-                        </FormControl>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-
-                        <ListItemButton>
-                                    <ListItemIcon>
-                                    
-                                    </ListItemIcon>
-                                    <ListItemText primary=" Max Room Temperature"/>
-                        </ListItemButton>
-                        <ListItemButton>
-                                    <ListItemIcon>
-                                        
-                                    </ListItemIcon>
-                                    <ListItemText primary=" Min Room Temperature" />
-                        </ListItemButton>
-                        </div>
-
-                    </Paper>
-
-                </Grid>
-                <Grid item xs={12}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',borderRadius: 10, }}>
 
                         <div className='chart' >
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -469,9 +429,8 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Max Temprature:
+                                    Building Max Temprature: 25  roomId
                                 </Typography>
-
 
                                 <Typography
                                     component="h1"
@@ -480,7 +439,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Min Temprature:
+                                    Building Min Temprature: 20  roomId
                                 </Typography>
                                 {/*<Typography*/}
                                 {/*    component="h4"*/}

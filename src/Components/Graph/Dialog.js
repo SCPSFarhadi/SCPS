@@ -79,26 +79,44 @@ export default function SimpleDialog(props) {
                                 <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                     <PowerIcon/>
                                 </Avatar>
-                                <ListItemText inset>Fan 1 Open</ListItemText>
+                                <ListItemText inset>Cooling_Heating 1 Open</ListItemText>
                             </MenuItem>
                             <MenuItem>
                                 <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                     <PowerIcon/>
                                 </Avatar>
-                                <ListItemText inset>Fan 2 Open</ListItemText>
+                                <ListItemText inset>Cooling_Heating 2 Open</ListItemText>
                             </MenuItem>
                             <MenuItem>
                                 <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
                                     <PowerIcon/>
                                 </Avatar>
 
-                                <ListItemText inset>Fan 3 close</ListItemText>
+                                <ListItemText inset>Cooling_Heating 3 close</ListItemText>
                             </MenuItem>
                         </MenuList>
                     </ListItemAvatar>
 
 
 
+                </ListItem>
+
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <AccessTimeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Analog Sensor1: ${lastTime}`} />
+                </ListItem>
+
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <AccessTimeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Analog Sensor2: ${lastTime}`} />
                 </ListItem>
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()}>
