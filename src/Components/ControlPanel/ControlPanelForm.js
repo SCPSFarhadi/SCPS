@@ -133,21 +133,60 @@ export default function ControlPanelForm() {
               disabled={disabled}
           />
         </Grid>
-        {/*<Grid item xs={12} sm={6}>*/}
-        {/*  <TextField*/}
-        {/*    required*/}
-        {/*    id="country"*/}
-        {/*    name="country"*/}
-        {/*    label="Country"*/}
-        {/*    fullWidth*/}
-        {/*    autoComplete="shipping country"*/}
-        {/*    variant="standard"*/}
-        {/*  />*/}
-        {/*</Grid>*/}
         <Grid item xs={12}>
           <Button variant="contained" onClick={clickSubmit}>Submit</Button>
         </Grid>
+        <br />
+        <Grid item xs={12}>
+          <Typography variant="h3" gutterBottom>
+            Weather
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <Typography variant="h5" >
+            Longitude
+          </Typography>
+        </Grid>
+
+
+        <Grid item xs={12} sm={9}>
+          
+          <TextField
+              id="setPoint"
+              name="setpoint"
+              label="Longitude"
+              fullWidth
+              autoComplete="25"
+              variant="standard"
+          />
+
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <Typography variant="h5" >
+            Latitude
+          </Typography>
+        </Grid>
+
+
+        <Grid item xs={12} sm={9}>
+          
+          <TextField
+              id="setPoint"
+              name="setpoint"
+              label="Latitude"
+              fullWidth
+              autoComplete="25"
+              variant="standard"
+          />
+
+        </Grid>
+
+        <Grid item xs={12}>
+          <Button variant="contained" >Refresh Weather</Button>
+        </Grid>
       </Grid>
+      
     </React.Fragment>
+    
   );
 }

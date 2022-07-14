@@ -346,13 +346,13 @@ function DashboardContent(props) {
                                     <ListItemIcon>
                                     
                                     </ListItemIcon>
-                                    <ListItemText primary=" Max Room Temperature" onClick={() => setMenu("Dashboard")}/>
+                                    <ListItemText primary=" Max Room Temperature"/>
                         </ListItemButton>
                         <ListItemButton>
                                     <ListItemIcon>
                                         
                                     </ListItemIcon>
-                                    <ListItemText primary=" Min Room Temperature" onClick={() => setMenu("Dashboard")}/>
+                                    <ListItemText primary=" Min Room Temperature" />
                         </ListItemButton>
                         </div>
 
