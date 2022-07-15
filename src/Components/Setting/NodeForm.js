@@ -15,6 +15,7 @@ import {returnErrors} from "../../Actions/messages";
 import {useDispatch, useSelector} from "react-redux";
 import IndeterminateCheckbox from "./CheckBoxValve";
 import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
+import Switch from '@mui/material/Switch';
 
 export default function NodeForm(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
@@ -22,7 +23,7 @@ export default function NodeForm(props) {
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
     const selectedNode = props.selectedNode;
-
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
     function valuetext(value) {
         return `${value}°C`;
     }
@@ -141,8 +142,8 @@ export default function NodeForm(props) {
                     <Typography variant="h5">
                         Fan On
                     </Typography>
-                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="fan 1 on" />
-                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="fan 2 on" />
+                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan 1 on" />
+                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan 2 on" />
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>

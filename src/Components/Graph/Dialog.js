@@ -11,7 +11,7 @@ import Dialog from '@mui/material/Dialog';
 import PersonIcon from '@mui/icons-material/Person';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
-import {blue, green, orange, red} from '@mui/material/colors';
+import {blue, green, orange, purple, red} from '@mui/material/colors';
 import {Divider, Icon, ListItemIcon, MenuList} from "@mui/material";
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
@@ -24,6 +24,9 @@ import {Check} from "@material-ui/icons";
 import ClearIcon from '@mui/icons-material/Clear';
 import {useSelector} from "react-redux";
 import store from "../../store";
+import WaterIcon from '@mui/icons-material/Water';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 const listData = ['20°C', '04/26 20:11',1,1];
 
 export default function SimpleDialog(props) {
@@ -104,19 +107,35 @@ export default function SimpleDialog(props) {
                 <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
-                            <AccessTimeIcon />
+                            <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={`Analog Sensor1: ${lastTime}`} />
                 </ListItem>
-
+                
                 <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
-                            <AccessTimeIcon />
+                            <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={`Analog Sensor2: ${lastTime}`} />
+                </ListItem>
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+                            <WaterIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Humidity Sensor:`} />
+                </ListItem>
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
+                            <WaterIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Like Sensor:`} />
                 </ListItem>
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()}>
