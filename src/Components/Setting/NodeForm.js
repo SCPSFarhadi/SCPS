@@ -18,7 +18,6 @@ import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
 import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 
-
 export default function NodeForm(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
@@ -90,11 +89,10 @@ export default function NodeForm(props) {
 
                 <Grid item xs={12}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-                    <FormControlLabel
-                        label="control valve factor 1"
-                        // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                        control={<Switch id="valve1" {...label} defaultChecked />}
-                    />
+                <Typography variant="h6">
+                            control valve factor 1
+                </Typography>
+
 
                     < TextField
                         id="R_n"
@@ -104,10 +102,9 @@ export default function NodeForm(props) {
                         autoComplete="25"
                         variant="standard"
                     />
-                    <FormControlLabel
-                        label="control valve factor 2"
-                        control={<Switch id="valve2" {...label} defaultChecked />}
-                    />
+                <Typography variant="h6">
+                            control valve factor 2
+                </Typography>
 
                     <TextField
                         id="R_n"
@@ -117,11 +114,9 @@ export default function NodeForm(props) {
                         autoComplete="25"
                         variant="standard"
                     />
-                    <FormControlLabel
-                        label="control valve factor 3"
-                        control={<Switch id="valve3" {...label} defaultChecked />}
-                    />
-
+                <Typography variant="h6">
+                            control valve factor 3
+                </Typography>
                     <TextField
                         id="R_n"
                         name="setpoint"
@@ -130,10 +125,9 @@ export default function NodeForm(props) {
                         autoComplete="25"
                         variant="standard"
                     />
-                    <FormControlLabel
-                        label="control valve factor 4"
-                        control={<Switch id="valve3" {...label} defaultChecked />}
-                    />
+                <Typography variant="h6">
+                            control valve factor 4
+                </Typography>
 
                     <TextField
                         id="R_n"
@@ -144,10 +138,9 @@ export default function NodeForm(props) {
                         variant="standard"
                     />
                     
-                    <FormControlLabel
-                        label="control valve factor 5"
-                        control={<Switch id="valve3" {...label} defaultChecked />}
-                    />
+                    <Typography variant="h6">
+                            control valve factor 5
+                </Typography>
                     {/*<div>*/}
                     {/*    <Switch {...label} defaultChecked />*/}
                     {/*    <Switch {...label} />*/}
