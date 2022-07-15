@@ -141,8 +141,8 @@ export default function NodeForm(props) {
                     <Typography variant="h5">
                         Fan On
                     </Typography>
-                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="fan 1 open" />
-                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="fan 2 open" />
+                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="fan 1 on" />
+                    <FormControlLabel control={<Checkbox id="fanOpen" defaultChecked disabled={btnDisableCheckBox}/>} label="fan 2 on" />
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
