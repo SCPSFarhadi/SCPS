@@ -74,6 +74,44 @@ export default function Calculation(props) {
                 Calculation
             </Typography>
             <Grid container spacing={3}>
+            <Grid item xs={12} sm={3}>
+                    <Typography variant="h5">
+                        Longitude
+                    </Typography>
+                </Grid>
+
+
+                <Grid item xs={12} sm={9}>
+
+                    <TextField
+                        id="R_n"
+                        name="setpoint"
+                        label="Longitude"
+                        fullWidth
+                        autoComplete="25"
+                        variant="standard"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                    <Typography variant="h5">
+                        Latitude
+                    </Typography>
+                </Grid>
+
+
+                <Grid item xs={12} sm={9}>
+
+                    <TextField
+                        id="R_n"
+                        name="setpoint"
+                        label="Latitude"
+                        fullWidth
+                        autoComplete="25"
+                        variant="standard"
+                    />
+                </Grid>
+
+
                 <Grid item xs={12} sm={3}>
                     <Typography variant="h5">
                         Surface area
@@ -91,40 +129,7 @@ export default function Calculation(props) {
                         variant="standard"
                     />
                 </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Daily participation
-                    </Typography>
-                </Grid>
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="dailyPart"
-                        name="setpoint"
-                        label="Daily participation"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Minimum daily temperature
-                    </Typography>
-                </Grid>
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="minimumDaily"
-                        name="setpoint"
-                        label="Minimum temperature"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
+            
 
                 <Grid item xs={12} sm={3}>
                     <Typography variant="h5">
@@ -146,23 +151,6 @@ export default function Calculation(props) {
 
                 <Grid item xs={12} sm={3}>
                     <Typography variant="h5">
-                        Maximum daily temperature
-                    </Typography>
-                </Grid>
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="maxDaily"
-                        name="setpoint"
-                        label="Maximum temperature"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
                         Height from sea level
                     </Typography>
                 </Grid>
@@ -173,43 +161,6 @@ export default function Calculation(props) {
                         id="heightSea"
                         name="setpoint"
                         label="Height from sea level"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Maximum wind speed
-                    </Typography>
-                </Grid>
-
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="maximumWind"
-                        name="setpoint"
-                        label="Maximum wind speed"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
-
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Minimum wind speed
-                    </Typography>
-                </Grid>
-
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="minimumWind"
-                        name="setpoint"
-                        label="Minimum wind speed"
                         fullWidth
                         autoComplete="25"
                         variant="standard"
@@ -235,42 +186,7 @@ export default function Calculation(props) {
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Longitude
-                    </Typography>
-                </Grid>
 
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="R_n"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Latitude
-                    </Typography>
-                </Grid>
-
-
-                <Grid item xs={12} sm={9}>
-
-                    <TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="R_n"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
                 <Grid item xs={12}>
                     <Button variant="contained" onClick={handleSubmit}>Water need</Button>
                 </Grid>

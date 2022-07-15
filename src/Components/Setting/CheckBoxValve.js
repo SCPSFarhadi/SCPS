@@ -32,6 +32,14 @@ export default function IndeterminateCheckbox(props) {
                 label="control vale 3 open"
                 control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} />}
             />
+            <FormControlLabel
+                label="control vale 4 open"
+                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} />}
+            />
+            <FormControlLabel
+                label="control vale 5 open"
+                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} />}
+            />
             {/*<div>*/}
             {/*    <Switch {...label} defaultChecked />*/}
             {/*    <Switch {...label} />*/}

@@ -24,8 +24,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Grid from "@mui/material/Grid";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import AlbumIcon from '@mui/icons-material/Album';
+import ControPanel from "../Setting/ControlPanel";
 import NodeForm from "../Setting/NodeForm";
-
 import LineChart from "./nodeChart";
 import {Label} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
@@ -267,6 +267,14 @@ function MakeGraph(props) {
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <div className="p-6">
                                     <NodeForm selectedNode={selectedNode}/>
+                                </div>         
+                            </Paper>
+                        </Container>
+                        <Container component="main" maxWidth="lg" sx={{ mb: 4 }} >
+                            <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555",  backgroundColor: "rgb(255 255 215)", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
+                                MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
+                                <div className="p-6">
+                                    <ControPanel selectedNode={selectedNode}/>
                                 </div>         
                             </Paper>
                         </Container>

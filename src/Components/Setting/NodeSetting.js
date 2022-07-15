@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import NodeForm from './NodeForm';
+import ControPanel from './ControlPanel';
 
 function Copyright() {
   return (
@@ -47,7 +47,7 @@ export default function ConfigForm() {
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <React.Fragment>
               <React.Fragment>
-                  <NodeForm />
+                  <ControPanel />
               </React.Fragment>
           </React.Fragment>
         </Paper>

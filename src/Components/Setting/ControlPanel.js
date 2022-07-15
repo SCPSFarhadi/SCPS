@@ -15,19 +15,13 @@ import {returnErrors} from "../../Actions/messages";
 import {useDispatch, useSelector} from "react-redux";
 import IndeterminateCheckbox from "./CheckBoxValve";
 import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
-import Box from '@mui/material/Box';
-import Switch from '@mui/material/Switch';
 
-
-export default function NodeForm(props) {
+export default function ControPanel(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
     const selectedNode = props.selectedNode;
-
-
-    const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
     function valuetext(value) {
         return `${value}°C`;
@@ -84,86 +78,12 @@ export default function NodeForm(props) {
     return (
         <React.Fragment>
             <Typography variant="h3" gutterBottom>
-                Node Setting
+                Control Panel
             </Typography>
             <Grid container spacing={3}>
 
                 <Grid item xs={12}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-                    <FormControlLabel
-                        label="control valve factor 1"
-                        // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                        control={<Switch id="valve1" {...label} defaultChecked />}
-                    />
-
-                    < TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="Factor 1"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                    <FormControlLabel
-                        label="control valve factor 2"
-                        control={<Switch id="valve2" {...label} defaultChecked />}
-                    />
-
-                    <TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="Factor 2"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                    <FormControlLabel
-                        label="control valve factor 3"
-                        control={<Switch id="valve3" {...label} defaultChecked />}
-                    />
-
-                    <TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="Factor 3"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                    <FormControlLabel
-                        label="control valve factor 4"
-                        control={<Switch id="valve3" {...label} defaultChecked />}
-                    />
-
-                    <TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="Factor 4"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                    
-                    <FormControlLabel
-                        label="control valve factor 5"
-                        control={<Switch id="valve3" {...label} defaultChecked />}
-                    />
-                    {/*<div>*/}
-                    {/*    <Switch {...label} defaultChecked />*/}
-                    {/*    <Switch {...label} />*/}
-                    {/*    <Switch {...label} disabled defaultChecked />*/}
-                    {/*    <Switch {...label} disabled />*/}
-                    {/*</div>*/}
-
-                    <TextField
-                        id="R_n"
-                        name="setpoint"
-                        label="Factor 5"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Box>
+                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
 

@@ -71,7 +71,22 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Dry temperature: ${'20'}`} />
                 </ListItem>
-
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <AccessTimeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Analog Sensor 1: `} />
+                </ListItem>
+                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <AccessTimeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Analog Sensor 2: `} />
+                </ListItem>
                 {/*<ListItem button onClick={() => handleListItemClick()} key={listData[1]}>*/}
                 {/*    <ListItemAvatar>*/}
                 {/*        <MenuList dense>*/}
