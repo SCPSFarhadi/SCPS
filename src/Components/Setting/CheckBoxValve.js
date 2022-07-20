@@ -26,7 +26,7 @@ export default function IndeterminateCheckbox(props) {
                 />
 
                     <TextField
-                        id="R_n"
+                        id="2"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -40,7 +40,7 @@ export default function IndeterminateCheckbox(props) {
             />
 
                 <TextField
-                        id="R_n"
+                        id="3"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -53,7 +53,7 @@ export default function IndeterminateCheckbox(props) {
             />
 
                     <TextField
-                        id="R_n"
+                        id="4"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -66,7 +66,7 @@ export default function IndeterminateCheckbox(props) {
             />
 
             < TextField
-                        id="R_n"
+                        id="5"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -79,7 +79,7 @@ export default function IndeterminateCheckbox(props) {
             />
 
                 <TextField
-                        id="R_n"
+                        id="6"
                         name="setpoint"
                         label="waterneed"
                         fullWidth

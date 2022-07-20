@@ -26,45 +26,56 @@ export default function Calculation(props) {
     function handleSubmit() {
         console.log("hello world")
         let s = parseFloat(document.getElementById("surfaceArea").value);
-        let p = parseFloat(document.getElementById("dailyPart").value);
-        let T_min = parseFloat(document.getElementById("minimumDaily").value);
-        let T_max = parseFloat(document.getElementById("maxDaily").value);
-        let h = parseFloat(document.getElementById("heightSea").value);
-        let u_max = parseFloat(document.getElementById("maximumWind").value);
-        let u_min = parseFloat(document.getElementById("minimumWind").value);
+        // let p = parseFloat(document.getElementById("dailyPart").value);
+        // let T_min = parseFloat(document.getElementById("minimumDaily").value);
+        // let T_max = parseFloat(document.getElementById("maxDaily").value);
+        // let h = parseFloat(document.getElementById("heightSea").value);
+        // let u_max = parseFloat(document.getElementById("maximumWind").value);
+        // let u_min = parseFloat(document.getElementById("minimumWind").value);
         let R_n = parseFloat(document.getElementById("R_n").value);
-        let k_c = parseFloat(document.getElementById("cropCoeif").value);
+        // let k_c = parseFloat(document.getElementById("cropCoeif").value);
+        console.log("hi :)")
+        let tim = parseInt(s)  / parseInt(R_n)  *1000;
+        console.log(tim)
+        var timesRun = 0;
+        var interval = setInterval(function(){
+            timesRun += 1000;
+            if(timesRun === parseInt(R_n)*1000){
+                clearInterval(interval);
+            }
+            console.log("a message to server "+timesRun)
+        }, tim); 
 
-        console.log(s+p+T_min+T_max+h+u_min+u_max+R_n+k_c)
-        let temp1; //Dry Tem
-        let temp2; //Wet T
-        let T;
-        let u_2;
-        let deltea;
-        T=T_max-T_min;
-        let y;
-        let et0;
-        let e0min;
-        let e0max;
-        let e_a;
-        let e_s;
-        let waterneed;
-        y=0.655*0.001*101352*Math.pow(1-2.25577*0.00001*h,5.25588);
-        u_2=(u_max-u_min)/2;
-        deltea=4098*[(0.6108*Math.pow(Math.E,(17.27*T)/(T+273.3)))/Math.pow((17.27*T)/(T+273.3),2)]
+        // console.log(s+p+T_min+T_max+h+u_min+u_max+R_n+k_c)
+        // let temp1; //Dry Tem
+        // let temp2; //Wet T
+        // let T;
+        // let u_2;
+        // let deltea;
+        // T=T_max-T_min;
+        // let y;
+        // let et0;
+        // let e0min;
+        // let e0max;
+        // let e_a;
+        // let e_s;
+        // let waterneed;
+        // y=0.655*0.001*101352*Math.pow(1-2.25577*0.00001*h,5.25588);
+        // u_2=(u_max-u_min)/2;
+        // deltea=4098*[(0.6108*Math.pow(Math.E,(17.27*T)/(T+273.3)))/Math.pow((17.27*T)/(T+273.3),2)]
 
-        e0min=4098*0.6108*Math.pow(Math.E,(17.27*T_min)/(T_min+273.3));
+        // e0min=4098*0.6108*Math.pow(Math.E,(17.27*T_min)/(T_min+273.3));
 
-        e0max=4098*0.6108*Math.pow(Math.E,(17.27*T_max)/(T_max+273.3));
+        // e0max=4098*0.6108*Math.pow(Math.E,(17.27*T_max)/(T_max+273.3));
 
-        e_a=(96*e0max+96*e0min)/2;
+        // e_a=(96*e0max+96*e0min)/2;
 
-        e_s=(96*e0max+e0min)/2;
+        // e_s=(96*e0max+e0min)/2;
 
-        et0=(0.408*deltea*(R_n)+y*(900/(T+273)*u_2*(e_s-e_a)))/(deltea+y*(1+0.34*u_2));
+        // et0=(0.408*deltea*(R_n)+y*(900/(T+273)*u_2*(e_s-e_a)))/(deltea+y*(1+0.34*u_2));
 
-        waterneed=et0*s*k_c-p;
-        alert(waterneed)
+        // waterneed=et0*s*k_c-p;
+        // alert(waterneed)
 
     }
 
@@ -84,7 +95,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="R_n"
+                        id="longitude"
                         name="setpoint"
                         label="Longitude"
                         fullWidth
@@ -102,7 +113,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="R_n"
+                        id="latitude"
                         name="setpoint"
                         label="Latitude"
                         fullWidth
@@ -122,7 +133,7 @@ export default function Calculation(props) {
 
                     <TextField
                         id="surfaceArea"
-                        name="setpoint"
+                        name="surfaceArea"
                         label="Surface area"
                         fullWidth
                         autoComplete="25"
@@ -178,7 +189,7 @@ export default function Calculation(props) {
 
                     <TextField
                         id="R_n"
-                        name="setpoint"
+                        name="R_n"
                         label="R_n"
                         fullWidth
                         autoComplete="25"

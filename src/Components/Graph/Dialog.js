@@ -63,7 +63,7 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Wet temperature: ${lastTemp}`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key='1'>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccessTimeIcon />
@@ -71,7 +71,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Dry temperature: ${'20'}`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key='2'>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccessTimeIcon />
@@ -79,7 +79,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Analog Sensor 1: `} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key='3'>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccessTimeIcon />
