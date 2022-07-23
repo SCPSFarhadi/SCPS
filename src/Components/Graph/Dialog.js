@@ -26,7 +26,7 @@ import {useSelector} from "react-redux";
 import store from "../../store";
 import WaterIcon from '@mui/icons-material/Water';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-
+import LightIcon from '@mui/icons-material/Light';
 const listData = ['20°C', '04/26 20:11',1,1];
 
 export default function SimpleDialog(props) {
@@ -82,21 +82,21 @@ export default function SimpleDialog(props) {
                                 <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                     <PowerIcon/>
                                 </Avatar>
-                                <ListItemText inset>Cooling_Heating 1 Open</ListItemText>
+                                <ListItemText inset>HVAC 1 On</ListItemText>
                             </MenuItem>
                             <MenuItem>
                                 <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                     <PowerIcon/>
                                 </Avatar>
-                                <ListItemText inset>Cooling_Heating 2 Open</ListItemText>
+                                <ListItemText inset>HVAC 2 On</ListItemText>
                             </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
+                            {/*<MenuItem>*/}
+                            {/*    <Avatar sx={{ bgcolor: red[100], color: red[600] }}>*/}
+                            {/*        <PowerIcon/>*/}
+                            {/*    </Avatar>*/}
 
-                                <ListItemText inset>Cooling_Heating 3 close</ListItemText>
-                            </MenuItem>
+                            {/*    <ListItemText inset>Cooling_Heating 3 close</ListItemText>*/}
+                            {/*</MenuItem>*/}
                         </MenuList>
                     </ListItemAvatar>
 
@@ -132,10 +132,10 @@ export default function SimpleDialog(props) {
                 <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
-                            <WaterIcon />
+                            <LightIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Like Sensor:`} />
+                    <ListItemText primary={`Light Sensor:`} />
                 </ListItem>
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()}>

@@ -5,9 +5,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Typography from "@mui/material/Typography";
 import {useState} from "react";
+import {TextField} from "@mui/material";
 
 
-export default function IndeterminateCheckbox(props) {
+export default function DangleSetpoint(props) {
     const [checked, setChecked] = React.useState([true, false,false]);
 
 
@@ -20,17 +21,25 @@ export default function IndeterminateCheckbox(props) {
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
             <FormControlLabel
-                label="control vale 1 open"
+                label="Dongle Set point 1"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                control={<Switch id="valve1" {...label} defaultChecked onChange={handleChange2} disabled={props.disableCheckBox}/>}
+                control={        <TextField
+                    id="standard-size-small"
+                    defaultValue="20"
+                    size="small"
+                    value="20"
+                    variant="standard"
+                />}
             />
             <FormControlLabel
-                label="control vale 2 open"
-                control={<Switch id="valve2" {...label} defaultChecked onChange={handleChange2} disabled={props.disableCheckBox}/>}
-            />
-            <FormControlLabel
-                label="control vale 3 open"
-                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} disabled={props.disableCheckBox}/>}
+                label="Dongle Set point 2"
+                // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+                control={        <TextField
+                    id="standard-size-small"
+                    value="20"
+                    size="small"
+                    variant="standard"
+                />}
             />
         </Box>
     );
@@ -38,7 +47,7 @@ export default function IndeterminateCheckbox(props) {
     return (
         <div>
             <Typography variant="h5">
-                Control Valve
+                Dongle Set point
             </Typography>
             {children}
         </div>

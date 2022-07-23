@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import IndeterminateCheckbox from "./CheckBoxValve";
 import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
 import Switch from '@mui/material/Switch';
+import DangleSetpoint from "./Dangle";
 
 export default function NodeForm(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
@@ -128,6 +129,7 @@ export default function NodeForm(props) {
 
                     <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox}/>
                     <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
+                    <DangleSetpoint />
 
                     {/*<FormControlLabel*/}
                     {/*    control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}*/}
@@ -140,10 +142,10 @@ export default function NodeForm(props) {
                     {/*/>*/}
                     {/*<br/>*/}
                     <Typography variant="h5">
-                        Fan On
+                        Fan Air
                     </Typography>
-                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan 1 on" />
-                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan 2 on" />
+                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan air 1 on" />
+                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan air 2 on" />
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
