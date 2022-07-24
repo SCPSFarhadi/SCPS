@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import {FormControl, InputLabel, Select, Slider} from "@mui/material";
+import {ButtonGroup, FormControl, Input, InputLabel, ListItem, Select, Slider} from "@mui/material";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import {useState} from "react";
@@ -15,6 +15,7 @@ import {returnErrors} from "../../Actions/messages";
 import {useDispatch, useSelector} from "react-redux";
 import IndeterminateCheckbox from "./CheckBoxValve";
 import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
+import List from "@mui/material/List";
 
 export default function Calculation(props) {
 
@@ -109,7 +110,6 @@ export default function Calculation(props) {
                     </Typography>
                 </Grid>
 
-
                 <Grid item xs={12} sm={9}>
 
                     <TextField
@@ -122,6 +122,46 @@ export default function Calculation(props) {
                     />
                 </Grid>
 
+                <Grid item xs={12}>
+                    <Button variant="contained" onClick={handleSubmit}>Get Data</Button>
+                </Grid>
+
+
+                <Grid item xs={12} sm={12}>
+                    <Typography variant="h4">
+                        Calculate
+                    </Typography>
+                </Grid>
+
+                <Grid item xs={6} sm={6}>
+                    <List>
+                        <ListItem>
+                            <TextField label="Daily participation" style={{width: "100%"}}/>
+                        </ListItem>
+                        <ListItem>
+                            <TextField label="Min daily Temp" style={{width: "100%"}}/>
+                        </ListItem>
+                        <ListItem>
+                            <TextField label="Max daily Temp" style={{width: "100%"}}/>
+                        </ListItem>
+                    </List>
+                </Grid>
+
+                <Grid item xs={6} sm={6}>
+                    <List>
+                        <ListItem>
+                            <TextField label="Min wind speed" style={{width: "100%"}}/>
+                        </ListItem>
+                        <ListItem>
+                            <TextField label="Max wind speed" style={{width: "100%"}}/>
+                        </ListItem>
+                    </List>
+                    <ButtonGroup variant="contained" aria-label="outlined primary button group" style={{marginLeft:"15px"}}>
+                        <Button>Edit</Button>
+                        <Button>Refresh</Button>
+                    </ButtonGroup>
+                </Grid>
+                <br/>
 
                 <Grid item xs={12} sm={3}>
                     <Typography variant="h5">
