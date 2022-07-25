@@ -165,7 +165,7 @@ function DashboardContent(props) {
 
     let countError = useSelector(() => store.getState().errors.msg).length;
     let Errors = useSelector(() => store.getState().errors);
-
+    let colors = useSelector(() => store.getState().receiveData.colors);
     let dateConfig = useSelector(() => store.getState().receiveData.config);
     let dataPychart = useSelector(() => store.getState().receiveData.pychart);
 
@@ -258,6 +258,25 @@ function DashboardContent(props) {
                     item.color = listErrorColor[index];
                 });
             }
+        }
+
+        if(colors && colors.length !== 0) {
+            console.log("something")
+            let nodeId = colors[0]
+            let nodeColor = colors[1]
+
+            console.log("Hello ")
+            console.log(nodeId)
+            console.log(nodeColor)
+
+            let selectNode = modData.nodes.filter(item => {
+                return item.id === nodeId;
+            });
+            // console.log(selectNode)
+            selectNode.forEach(item => {
+                item.color = nodeColor;
+            });
+
         }
 
 
@@ -429,7 +448,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Max Temprature: 25 / RoomId :
+                                    Building Max Temperature: 25 / RoomId :
                                 </Typography>
 
                                 <Typography
@@ -439,7 +458,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Min Temprature: 20 / RoomId :
+                                    Building Min Temperature: 20 / RoomId :
                                 </Typography>
                                 {/*<Typography*/}
                                 {/*    component="h4"*/}

@@ -67,10 +67,6 @@ import Chart from "react-apexcharts";
 
 
 function LineChart2(props) {
-
-    console.log("in line chart")
-    console.log(props.temps)
-    console.log(props.times)
     const series = [
         {
             name: "Guests",

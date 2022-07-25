@@ -48,7 +48,7 @@ export default function SimpleDialog(props) {
         <div>
             <DialogTitle>Details</DialogTitle>
             <List sx={{ pt: 0 }}>
-                <ListItem button onClick={() => handleListItemClick()}>
+                <ListItem button onClick={() => handleListItemClick()} key="1">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: nodeColor[100], color: nodeColor[600] }}>
                             <ToggleOffIcon />
@@ -57,7 +57,7 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Room id: ${selectedNode.id}`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key={listData[0]}>
+                <ListItem button onClick={() => handleListItemClick()} key="2">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                             <DeviceThermostatIcon />
@@ -66,7 +66,7 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Room temperature: ${lastTemp}`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key="3">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccessTimeIcon />
@@ -104,7 +104,7 @@ export default function SimpleDialog(props) {
 
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key="6">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccountTreeIcon />
@@ -113,7 +113,7 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Analog Sensor1: ${lastTime}`} />
                 </ListItem>
                 
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key="5">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <AccountTreeIcon />
@@ -121,7 +121,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Analog Sensor2: ${lastTime}`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                             <WaterIcon />
@@ -129,7 +129,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Humidity Sensor:`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key={lastTime}>
+                <ListItem button onClick={() => handleListItemClick()} key="8">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
                             <LightIcon />
@@ -138,7 +138,7 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Light Sensor:`} />
                 </ListItem>
 
-                <ListItem autoFocus button onClick={() => handleListItemClick()}>
+                <ListItem autoFocus button onClick={() => handleListItemClick()} key="9">
                     <ListItemAvatar>
                         <Avatar>
                             <AddIcon />

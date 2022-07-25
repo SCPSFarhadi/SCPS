@@ -4,7 +4,7 @@ import WebSocketInstance from '../../../websocket';
 import {
     receiveDataNodeTem,
     receiveNotification,
-    receivePiechart, receiveًNodeTemp,
+    receivePiechart, receiveًColors, receiveًNodeTemp,
     receiveًRoomTemp
 } from '../../../Actions/recieveData.js'
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
@@ -27,7 +27,7 @@ class Socket extends React.Component {
         this.waitForSocketConnection(() => {
             WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this),
                 this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this),this.setError.bind(this),
-                this.setPieChart.bind(this),this.setRoomTemp.bind(this),this.setNodeTemp.bind(this))
+                this.setPieChart.bind(this),this.setRoomTemp.bind(this),this.setNodeTemp.bind(this),this.setNodeColors.bind(this))
             WebSocketInstance.fetchMessages(this.props.currentUser);
         });
     }
@@ -84,6 +84,10 @@ class Socket extends React.Component {
         console.log("In dispatch Node Temp")
         console.log(data)
         store.dispatch(receiveًNodeTemp(data))
+    }
+
+    setNodeColors(data){
+        store.dispatch(receiveًColors(data))
     }
 
     messageChangeHandler = (event) => {

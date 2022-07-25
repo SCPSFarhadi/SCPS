@@ -4,7 +4,7 @@ import {
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
     RECEIVE_ROOMTEMP,
-    RECEIVE_NODETEMP, RECEIVE_SETNODE
+    RECEIVE_NODETEMP, RECEIVE_SETNODE, RECEIVE_COLOR
 } from '../Actions/types.js';
 
 const initialState={
@@ -17,7 +17,8 @@ const initialState={
     listNodes:[],
     lastTime: "",
     lastTemp: "",
-    countFan: 0
+    countFan: 0,
+    colors :[],
 
 
 }
@@ -77,6 +78,13 @@ export default function(state=initialState,action){
                 ...state,
                 listNodes: lnodes
             }
+        case RECEIVE_COLOR:
+            console.log("colors")
+            console.log(action.payload)
+            return {
+                ...state,
+                colors: action.payload
+            };
         default:
             return state;
     }

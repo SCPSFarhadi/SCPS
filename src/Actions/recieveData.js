@@ -5,7 +5,7 @@ import {
     RECEIVE_DATA_CONFIG,
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
-    RECEIVE_ROOMTEMP, RECEIVE_SETNODE
+    RECEIVE_ROOMTEMP, RECEIVE_SETNODE,RECEIVE_COLOR
 } from "./types";
 
 // GET LEADS
@@ -55,5 +55,12 @@ export const setNodes = (data) => (dispatch) => {
     dispatch({
         payload: data,
         type: RECEIVE_SETNODE
+    })
+}
+
+export const receiveًColors = (data) => (dispatch) => {
+    dispatch({
+        payload: data,
+        type: RECEIVE_COLOR
     })
 }
