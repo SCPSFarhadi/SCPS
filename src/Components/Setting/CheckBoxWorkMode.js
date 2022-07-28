@@ -15,6 +15,7 @@ export default function IndeterminateCheckboxWork(props) {
     const handleChange2 = (event) => {
         // console.log(event.target.checked)
         props.setDisableCheckBox(!event.target.checked);
+        props.handleCheckingFanAir();
     };
 
     const handleChange3 = (event) => {

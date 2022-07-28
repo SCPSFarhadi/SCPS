@@ -39,6 +39,7 @@ export default function DangleSetpoint(props) {
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={        <TextField
                     id="dongle2"
+                    defaultValue="20"
                     size="small"
                     variant="standard"
                 />}

@@ -19,9 +19,11 @@ import Switch from '@mui/material/Switch';
 import DangleSetpoint from "./Dangle";
 
 export default function NodeForm(props) {
+
     const [btnDisabled, setBtnDisabled] = useState(false)
 
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
+
 
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
@@ -161,7 +163,7 @@ export default function NodeForm(props) {
                 </Grid>
                 <Grid item xs={12}>
 
-                    <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox}/>
+                    <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking}/>
                     <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox} handleCheckingFanAir={handleChecking}/>
 
                     {/*<FormControlLabel*/}
