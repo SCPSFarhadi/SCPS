@@ -18,16 +18,19 @@ export default function DangleSetpoint(props) {
     };
 
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+
+
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
+
             <FormControlLabel
                 label="Dongle Set point 1"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={        <TextField
-                    id="standard-size-small"
+                    id="dongle1"
                     defaultValue="20"
                     size="small"
-                    value="20"
                     variant="standard"
                 />}
             />
@@ -35,8 +38,7 @@ export default function DangleSetpoint(props) {
                 label="Dongle Set point 2"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={        <TextField
-                    id="standard-size-small"
-                    value="20"
+                    id="dongle2"
                     size="small"
                     variant="standard"
                 />}

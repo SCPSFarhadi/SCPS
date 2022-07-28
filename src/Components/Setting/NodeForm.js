@@ -20,7 +20,9 @@ import DangleSetpoint from "./Dangle";
 
 export default function NodeForm(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
+
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
+
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
     const selectedNode = props.selectedNode;
@@ -76,6 +78,38 @@ export default function NodeForm(props) {
                 console.log("data sent")
             })
     }
+    function handleChecking(){
+        if(document.getElementById("controlValve1") && document.getElementById("controlValve2")
+            && document.getElementById('fanAir1') && document.getElementById('fanAir2')
+        ){
+            console.log("fun4")
+            let input1 = document.getElementById("dongle1")
+            let input2 = document.getElementById("dongle2")
+            let controlValveTest1 = document.getElementById("controlValve1").checked
+            let controlValveTest2 = document.getElementById("controlValve2").checked
+            let fanAirTest1 = document.getElementById('fanAir1').checked
+            let fanAirTest2 = document.getElementById('fanAir2').checked
+
+            console.log("1 and 2 enable")
+            input1.disabled = false;
+            input2.disabled = false;
+
+            if(controlValveTest1 || fanAirTest1) {
+                console.log("1 is disabled")
+                input1.disabled = true;
+            }
+            if(controlValveTest2 || fanAirTest2){
+                console.log("2 is disabled")
+                input2.disabled = true;
+            }
+
+
+
+
+        }
+
+    }
+
 
     return (
         <React.Fragment>
@@ -128,8 +162,7 @@ export default function NodeForm(props) {
                 <Grid item xs={12}>
 
                     <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox}/>
-                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
-                    <DangleSetpoint />
+                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox} handleCheckingFanAir={handleChecking}/>
 
                     {/*<FormControlLabel*/}
                     {/*    control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}*/}
@@ -144,8 +177,17 @@ export default function NodeForm(props) {
                     <Typography variant="h5">
                         Fan Air
                     </Typography>
-                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan air 1 on" />
-                    <FormControlLabel control={<Switch id="valve5" {...label} defaultChecked/>} label="fan air 2 on" />
+                    <FormControlLabel
+                        label="Fan air 1 on"
+                        // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+                        control={<Switch id="fanAir1" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
+                    />
+                    <FormControlLabel
+                        label="Fan air 2 on"
+                        control={<Switch id="fanAir2" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
+                    />
+                    <br />
+                    <DangleSetpoint />
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>

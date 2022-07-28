@@ -23,6 +23,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Grid from "@mui/material/Grid";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import EditIcon from '@mui/icons-material/Edit';
 import AlbumIcon from '@mui/icons-material/Album';
 import NodeForm from "../Setting/NodeForm";
 
@@ -187,6 +188,7 @@ function MakeGraph(props) {
                                                 <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />
                                                 <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
                                                 <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
+                                                <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} />
                                             </BottomNavigation>
                                         </Box>
                                     </React.Fragment>

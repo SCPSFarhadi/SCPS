@@ -448,7 +448,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Max Temperature: 25 / RoomId :
+                                    Building Max Temperature: 25 / Room ID :
                                 </Typography>
 
                                 <Typography
@@ -458,7 +458,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Min Temperature: 20 / RoomId :
+                                    Building Min Temperature: 20 / Room ID :
                                 </Typography>
                                 {/*<Typography*/}
                                 {/*    component="h4"*/}
