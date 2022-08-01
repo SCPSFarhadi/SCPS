@@ -171,7 +171,7 @@ function MakeGraph(props) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <EdithDialog handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/>
+            {/* <EdithDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/> */}
 
             <Grid container spacing={2}>
                 <Grid item xs={8}>
