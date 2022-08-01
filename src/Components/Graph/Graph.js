@@ -36,6 +36,7 @@ import {RECEIVE_NODETEMP} from "../../Actions/types";
 import LineChart2 from "./nodeChart";
 import MenuItem from "@mui/material/MenuItem";
 import EdithDialog from "./EditDialog";
+import UploadDialog from "./UploadImage";
 
 
 
@@ -64,12 +65,20 @@ const myConfig = {
 function MakeGraph(props) {
     ///////// dialog state :
     const [openDialog, setOpenDialog] = React.useState(false);
+    const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
     const handleClickOpenDialog = () => {
         console.log("fun")
         setOpenDialog(true);
     };
     const handleCloseDialog = () => {
         setOpenDialog(false);
+    };
+    const handleClickOpenDialogUpload = () => {
+        console.log("fun upload")
+        setOpenDialogUpload(true);
+    };
+    const handleCloseDialogUpload = () => {
+        setOpenDialogUpload(false);
     };
 
 
@@ -171,8 +180,8 @@ function MakeGraph(props) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            {/* <EdithDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/> */}
-
+             <EdithDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/>
+             <UploadDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialogUpload} handleCloseDialog={handleCloseDialogUpload} openDialog={openDialogUpload}/>
             <Grid container spacing={2}>
                 <Grid item xs={8}>
                     <ThemeProvider theme={theme}>
@@ -214,7 +223,7 @@ function MakeGraph(props) {
                                                 }}
                                             >
                                                 <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />
-                                                <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />
+                                                <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>}  onClick={handleClickOpenDialogUpload}/>
                                                 <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
                                                 <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
                                                 <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />

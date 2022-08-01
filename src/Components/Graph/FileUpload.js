@@ -49,17 +49,17 @@ const imageGallery = [
 
 const styles = theme => ({
     root: {
-        backgroundColor: theme.palette.background.paper,
-        width: 500,
-        display: "flex",
+        // backgroundColor: theme.palette.background.paper,
+        width: "100%",
+        // display: "flex",
         justifyContent: "center",
-        alignItems: "flex-end"
+        // alignItems: "flex-end"
     },
     icon: {
         margin: theme.spacing.unit * 2
     },
     iconHover: {
-        margin: theme.spacing.unit * 2,
+        // margin: theme.spacing.unit * 2,
         "&:hover": {
             color: red[800]
         }
@@ -67,7 +67,7 @@ const styles = theme => ({
     cardHeader: {
         textalign: "center",
         align: "center",
-        backgroundColor: "white"
+        // backgroundColor: "white"
     },
     input: {
         display: "none"
@@ -91,11 +91,12 @@ const styles = theme => ({
         backgroundColor: "default"
     },
 
+    //
     searchRoot: {
         padding: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: 400
+        width: "100%"
     },
     searchInput: {
         marginLeft: 8,
@@ -105,8 +106,6 @@ const styles = theme => ({
         padding: 10
     },
     searchDivider: {
-        width: 1,
-        height: 28,
         margin: 4
     }
 });
@@ -155,8 +154,6 @@ class ImageUploadCard extends React.Component {
         const { value } = this.state;
 
         return (
-            <React.Fragment>
-                <CardContent>
                     <Grid container justify="center" alignItems="center">
                         <input
                             accept="image/*"
@@ -178,8 +175,7 @@ class ImageUploadCard extends React.Component {
                             <CollectionsIcon />
                         </Fab>
                     </Grid>
-                </CardContent>
-            </React.Fragment>
+
         );
     }
 
@@ -265,7 +261,7 @@ class ImageUploadCard extends React.Component {
                 <div
                     onClick={value => this.handleAvatarClick({ url })}
                     style={{
-                        padding: "5px 5px 5px 5px",
+                        // padding: "5px 5px 5px 5px",
                         cursor: "pointer"
                     }}
                 >
@@ -290,7 +286,7 @@ class ImageUploadCard extends React.Component {
         // ));
 
         return (
-            <React.Fragment>
+
                 <Grid>
                     {listItems}
                     <IconButton
@@ -302,7 +298,7 @@ class ImageUploadCard extends React.Component {
                         <ReplayIcon />
                     </IconButton>
                 </Grid>
-            </React.Fragment>
+
         );
     }
 
@@ -310,15 +306,14 @@ class ImageUploadCard extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <React.Fragment>
-                <CardActionArea onClick={this.imageResetHandler}>
-                    <img
-                        width="100%"
-                        className={classes.media}
-                        src={this.state.selectedFile}
-                    />
-                </CardActionArea>
-            </React.Fragment>
+            <div>
+                <img
+                    width="100%"
+                    className={classes.media}
+                    src={this.state.selectedFile}
+                />
+            </div>
+
         );
     }
 
@@ -335,18 +330,18 @@ class ImageUploadCard extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <React.Fragment>
+
                 <div className={classes.root}>
-                    <Card>
-                        {(this.state.mainState === "initial" && this.renderInitialState()) ||
-                            (this.state.mainState === "search" && this.renderSearchState()) ||
+                        {(this.state.mainState === "initial" &&
+                                this.renderInitialState()) ||
+                            (this.state.mainState === "search" &&
+                                this.renderSearchState()) ||
                             (this.state.mainState === "gallery" &&
                                 this.renderGalleryState()) ||
                             (this.state.mainState === "uploaded" &&
                                 this.renderUploadedState())}
-                    </Card>
                 </div>
-            </React.Fragment>
+
         );
     }
 }
