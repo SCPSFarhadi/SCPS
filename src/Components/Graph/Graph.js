@@ -35,6 +35,9 @@ import {baseUrl} from "../../Actions/auth";
 import {RECEIVE_NODETEMP} from "../../Actions/types";
 import LineChart2 from "./nodeChart";
 import MenuItem from "@mui/material/MenuItem";
+import EdithDialog from "./EditDialog";
+
+
 
 const bull = (
     <Box
@@ -50,7 +53,7 @@ const myConfig = {
     node: {
         shape:'rec',
         color: "green",
-        size: 820,
+        size: 420,
         highlightStrokeColor: "blue",
     },
     link: {
@@ -59,6 +62,18 @@ const myConfig = {
 };
 
 function MakeGraph(props) {
+    ///////// dialog state :
+    const [openDialog, setOpenDialog] = React.useState(false);
+    const handleClickOpenDialog = () => {
+        console.log("fun")
+        setOpenDialog(true);
+    };
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+
+
+
     const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
     let count_run = 0;
@@ -142,8 +157,22 @@ function MakeGraph(props) {
     const useStyles = makeStyles({border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
         MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"});
 
+    function handleRefresh() {
+        console.log("hiiiiii")
+        axios
+            .get(baseUrl + 'api/users/graph/' )
+            .then((res) => {
+                console.log("get data from server")
+            })
+            .catch((err) => {
+                console.log("error in receive data "+err)
+            });
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
+            <EdithDialog handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/>
+
             <Grid container spacing={2}>
                 <Grid item xs={8}>
                     <ThemeProvider theme={theme}>
@@ -184,11 +213,11 @@ function MakeGraph(props) {
                                                     setValue(newValue);
                                                 }}
                                             >
-                                                <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} />
+                                                <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />
                                                 <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />
                                                 <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
                                                 <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
-                                                <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} />
+                                                <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
                                             </BottomNavigation>
                                         </Box>
                                     </React.Fragment>

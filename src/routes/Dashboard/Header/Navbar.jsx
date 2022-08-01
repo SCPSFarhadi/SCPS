@@ -152,10 +152,10 @@ const mdTheme = createTheme();
 function DashboardContent(props) {
 
     let modData = {};
-    modData['nodes'] = [{ id: "1"}, { id: "2" }, { id: "3" }];
+    modData['nodes'] = [{ id: "1c:9d:c2:49:b6:2"}, { id: "2" }, { id: "3" }];
     modData['links'] =
         [
-            { source: "1", target: "2" },
+            { source: "1c:9d:c2:49:b6:2", target: "2" },
             { source: "2", target: "3" },
         ]
     ;
@@ -270,10 +270,12 @@ function DashboardContent(props) {
             console.log(nodeColor)
 
             let selectNode = modData.nodes.filter(item => {
-                return item.id === nodeId;
+                console.log("after ID : "+item.id )
+                return item.id.toString() === nodeId.toString();
             });
             // console.log(selectNode)
             selectNode.forEach(item => {
+                console.log("after ID color: "+item.id )
                 item.color = nodeColor;
             });
 
