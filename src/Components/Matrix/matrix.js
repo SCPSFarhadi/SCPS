@@ -59,9 +59,10 @@ function Matrix(props) {
       for (let i = 0; i < matrixSize.N * matrixSize.no; i++) {
         matrixF[i] = new Array(matrixSize.ns * 1).fill(0);
       }
-      let matrixM = Array(matrixSize.N * matrixSize.nu);
+
+      let matrixP = Array(matrixSize.N * matrixSize.nu);
       for (let i = 0; i < matrixSize.N * matrixSize.nu; i++) {
-        matrixM[i] = new Array(matrixSize.N * matrixSize.nu).fill(0);
+          matrixP[i] = new Array(matrixSize.N * matrixSize.nu).fill(0);
       }
 
       const handleSubmit = (event) => {
@@ -88,7 +89,10 @@ function Matrix(props) {
           <div className="border-2 border-solid border-indigo-500 p-2 rounded-lg overflow-scroll my-3" style={{ height: "300px", width: "100%" }}>
             {getInput(matrixQ)}
           </div>
-
+            <h3 className="font-bold text-center text-4xl">Matrix P</h3>
+          <div className="border-2 border-solid border-indigo-500 p-2 rounded-lg overflow-scroll my-3" style={{ height: "300px", width: "100%" }}>
+            {getInput(matrixP)}
+          </div>
           <button  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             {"Save Limit and constants"}
             </button>

@@ -68,6 +68,7 @@ class WebSocketService {
             this.callbacks[command](parsedData.message)
         }
         if (command === "nodeTem"){
+            console.log("node temp")
             this.callbacks[command](parsedData.message)
         }
         if(command === "nodeColor"){
