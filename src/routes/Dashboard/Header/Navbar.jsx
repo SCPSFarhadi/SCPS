@@ -169,6 +169,14 @@ function DashboardContent(props) {
     let dateConfig = useSelector(() => store.getState().receiveData.config);
     let dataPychart = useSelector(() => store.getState().receiveData.pychart);
 
+    let IdMax = useSelector(() => store.getState().receiveData.idMax);
+    if(!IdMax) IdMax = "";
+    let IdMin = useSelector(() => store.getState().receiveData.idMin);
+    if(!IdMin) IdMin = "";
+    let tempMax = useSelector(() => store.getState().receiveData.tempMax);
+    if(!tempMax) tempMax = ""
+    let tempMin = useSelector(() => store.getState().receiveData.tempMin);
+    if(!tempMin) tempMin = ""
 
     let dataRoomTemp = useSelector(() => store.getState().receiveData.roomTemp);
     let chartData = []
@@ -261,23 +269,26 @@ function DashboardContent(props) {
         }
 
         if(colors && colors.length !== 0) {
-            console.log("something")
-            let nodeId = colors[0]
-            let nodeColor = colors[1]
+            for(let i=0;i<colors.length;i++){
+                console.log("something"+i)
+                let nodeId = colors[i][0]
+                let nodeColor = colors[i][1]
 
-            console.log("Hello ")
-            console.log(nodeId)
-            console.log(nodeColor)
+                console.log("Hello ")
+                console.log(nodeId)
+                console.log(nodeColor)
 
-            let selectNode = modData.nodes.filter(item => {
-                console.log("after ID : "+item.id )
-                return item.id.toString() === nodeId.toString();
-            });
-            // console.log(selectNode)
-            selectNode.forEach(item => {
-                console.log("after ID color: "+item.id )
-                item.color = nodeColor;
-            });
+                let selectNode = modData.nodes.filter(item => {
+                    console.log("after ID : "+item.id )
+                    return item.id.toString() === nodeId.toString();
+                });
+                // console.log(selectNode)
+                selectNode.forEach(item => {
+                    console.log("after ID color: "+item.id )
+                    item.color = nodeColor;
+                });
+            }
+
 
         }
 
@@ -450,7 +461,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Max Temperature: 25 / Room ID :
+                                    Building Max Temperature: {tempMax} / Room ID :{IdMax}
                                 </Typography>
 
                                 <Typography
@@ -460,7 +471,7 @@ function DashboardContent(props) {
                                     noWrap
                                     sx={{ flexGrow: 2 }}
                                 >
-                                    Building Min Temperature: 20 / Room ID :
+                                    Building Min Temperature: {tempMin} / Room ID :{IdMin}
                                 </Typography>
                                 {/*<Typography*/}
                                 {/*    component="h4"*/}

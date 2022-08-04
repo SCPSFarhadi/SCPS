@@ -4,8 +4,8 @@ import WebSocketInstance from '../../../websocket';
 import {
     receiveDataNodeTem,
     receiveNotification,
-    receivePiechart, receiveًColors, receiveًNodeTemp,
-    receiveًRoomTemp
+    receivePiechart, receiveColor, receiveNodeTemp,
+    receiveRoomTemp, receiveMaxTemp, receiveMinTemp
 } from '../../../Actions/recieveData.js'
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
 import store from "../../../store";
@@ -27,7 +27,8 @@ class Socket extends React.Component {
         this.waitForSocketConnection(() => {
             WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this),
                 this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this),this.setError.bind(this),
-                this.setPieChart.bind(this),this.setRoomTemp.bind(this),this.setNodeTemp.bind(this),this.setNodeColors.bind(this))
+                this.setPieChart.bind(this),this.setRoomTemp.bind(this),this.setNodeTemp.bind(this),this.setNodeColors.bind(this),
+                this.setNodeMaxTemp.bind(this),this.setNodeMinTemp.bind(this))
             WebSocketInstance.fetchMessages(this.props.currentUser);
         });
     }
@@ -77,17 +78,27 @@ class Socket extends React.Component {
     }
 
     setRoomTemp(data){
-        store.dispatch(receiveًRoomTemp(data))
+        store.dispatch(receiveRoomTemp(data))
     }
 
     setNodeTemp(data){
         console.log("In dispatch Node Temp")
         console.log(data)
-        store.dispatch(receiveًNodeTemp(data))
+        store.dispatch(receiveNodeTemp(data))
     }
 
     setNodeColors(data){
-        store.dispatch(receiveًColors(data))
+        store.dispatch(receiveColor(data))
+    }
+    setNodeMaxTemp(data){
+        console.log("set max temp")
+        console.log(data)
+        store.dispatch(receiveMaxTemp(data))
+    }
+    setNodeMinTemp(data){
+        console.log("set min temp")
+        console.log(data)
+        store.dispatch(receiveMinTemp(data))
     }
 
     messageChangeHandler = (event) => {

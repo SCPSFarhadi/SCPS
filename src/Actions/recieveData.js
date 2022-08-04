@@ -5,7 +5,7 @@ import {
     RECEIVE_DATA_CONFIG,
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
-    RECEIVE_ROOMTEMP, RECEIVE_SETNODE,RECEIVE_COLOR
+    RECEIVE_ROOMTEMP, RECEIVE_SETNODE, RECEIVE_COLOR, RECEIVE_MAXTEMP, RECEIVE_MINTEMP
 } from "./types";
 
 // GET LEADS
@@ -36,13 +36,13 @@ export const receivePiechart = (data) => (dispatch) => {
         type: RECEIVE_PICHART
     })
 }
-export const receiveًRoomTemp = (data) => (dispatch) => {
+export const receiveRoomTemp = (data) => (dispatch) => {
     dispatch({
         payload: data,
         type: RECEIVE_ROOMTEMP
     })
 }
-export const receiveًNodeTemp = (data) => (dispatch) => {
+export const receiveNodeTemp = (data) => (dispatch) => {
     dispatch({
         payload: data,
         type: RECEIVE_ROOMTEMP
@@ -58,9 +58,23 @@ export const setNodes = (data) => (dispatch) => {
     })
 }
 
-export const receiveًColors = (data) => (dispatch) => {
+export const receiveColor = (data) => (dispatch) => {
     dispatch({
         payload: data,
         type: RECEIVE_COLOR
+    })
+}
+
+export const receiveMaxTemp = (data) => (dispatch) => {
+    dispatch({
+        payload: data,
+        type: RECEIVE_MAXTEMP
+    })
+}
+
+export const receiveMinTemp = (data) => (dispatch) => {
+    dispatch({
+        payload: data,
+        type: RECEIVE_MINTEMP
     })
 }

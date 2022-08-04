@@ -264,6 +264,8 @@ class ImageUploadCard extends React.Component {
                         // padding: "5px 5px 5px 5px",
                         cursor: "pointer"
                     }}
+
+                    key={url}
                 >
                     <Avatar src={url} />
                 </div>
