@@ -37,6 +37,7 @@ import ReplayIcon from "@material-ui/icons/Replay";
 
 //Tabs
 import { withStyles } from "@material-ui/core/styles";
+import {ImageListItem} from "@mui/material";
 
 const imageGallery = [
     "https://raw.githubusercontent.com/dxyang/StyleTransfer/master/style_imgs/mosaic.jpg",
@@ -56,7 +57,7 @@ const styles = theme => ({
         // alignItems: "flex-end"
     },
     icon: {
-        margin: theme.spacing.unit * 2
+        margin: theme.spacing(2)
     },
     iconHover: {
         // margin: theme.spacing.unit * 2,
@@ -87,7 +88,7 @@ const styles = theme => ({
         margin: 10
     },
     typography: {
-        margin: theme.spacing.unit * 2,
+        margin: theme.spacing(2),
         backgroundColor: "default"
     },
 
@@ -154,7 +155,7 @@ class ImageUploadCard extends React.Component {
         const { value } = this.state;
 
         return (
-                    <Grid container justify="center" alignItems="center">
+                    <Grid container alignItems="center" style={{justifyContent:"center"}}>
                         <input
                             accept="image/*"
                             className={classes.input}
@@ -210,6 +211,7 @@ class ImageUploadCard extends React.Component {
     }
 
     handleSeachClose = event => {
+        document.getElementById('graph-id-graph-wrapper').style.backgroundImage = '';
         this.setState({
             mainState: "initial"
         });
@@ -219,7 +221,7 @@ class ImageUploadCard extends React.Component {
         const { classes } = this.props;
 
         return (
-            <Paper className={classes.searchRoot} elevation={1}>
+            <div className={classes.searchRoot} >
                 <InputBase className={classes.searchInput} placeholder="Image URL" />
                 <IconButton
                     className={classes.button}
@@ -237,7 +239,7 @@ class ImageUploadCard extends React.Component {
                 >
                     <CloseIcon />
                 </IconButton>
-            </Paper>
+            </div>
         );
     }
 
@@ -258,18 +260,27 @@ class ImageUploadCard extends React.Component {
         let listItems = null;
         if(imageGallery){
             listItems = imageGallery.map(url => (
-                <div
-                    onClick={value => this.handleAvatarClick({ url })}
-                    style={{
-                        // padding: "5px 5px 5px 5px",
-                        cursor: "pointer"
-                    }}
-
-                    key={url}
-                >
-                    <Avatar src={url} />
-                </div>
+                <ImageListItem key={url}>
+                    <img
+                        onClick={value => this.handleAvatarClick({ url })}
+                        src={url}
+                        // alt={item.title}
+                        loading="lazy"
+                    />
+                </ImageListItem>
+                // <div
+                //     onClick={value => this.handleAvatarClick({ url })}
+                //     style={{
+                //         // padding: "5px 5px 5px 5px",
+                //         cursor: "pointer"
+                //     }}
+                //
+                //     key={url}
+                // >
+                //     <Avatar src={url} />
+                // </div>
             ));
+
         }else{
             console.log("not read images data")
         }
@@ -306,14 +317,20 @@ class ImageUploadCard extends React.Component {
 
     renderUploadedState() {
         const { classes, theme } = this.props;
-
+        const handleSetImage = () => {
+            document.getElementById('graph-id-graph-wrapper').style.backgroundImage = `url(${this.state.selectedFile})`
+        }
         return (
             <div>
                 <img
                     width="100%"
                     className={classes.media}
                     src={this.state.selectedFile}
+
                 />
+                <Button autoFocus onClick={handleSetImage}>
+                    Set background
+                </Button>
             </div>
 
         );
@@ -342,6 +359,8 @@ class ImageUploadCard extends React.Component {
                                 this.renderGalleryState()) ||
                             (this.state.mainState === "uploaded" &&
                                 this.renderUploadedState())}
+
+
                 </div>
 
         );

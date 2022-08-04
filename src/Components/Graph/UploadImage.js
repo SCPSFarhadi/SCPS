@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 
 export default function UploadDialog(props) {
 
+
     return (
         <div>
             <Dialog open={props.openDialog} onClose={props.handleCloseDialog}>
@@ -33,9 +34,9 @@ export default function UploadDialog(props) {
                     <Button autoFocus onClick={props.handleCloseDialog}>
                         Close
                     </Button>
-                    <Button onClick={props.handleCloseDialog} autoFocus>
-                        Save
-                    </Button>
+                    {/*<Button onClick={props.handleCloseDialog} autoFocus>*/}
+                    {/*    Save*/}
+                    {/*</Button>*/}
                 </DialogActions>
 
             </Dialog>

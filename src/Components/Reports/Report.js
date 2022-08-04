@@ -47,7 +47,7 @@ export default function ReportStates() {
                      filter={filter}
                      onFilterChange={(e) => setFilter(e.filter)}
                      style={{
-                         height: '420px'
+                         height: '1020px'
                      }}>
             <GridToolbar>
                 <button title="Export Excel"
