@@ -1,130 +1,114 @@
 export const bikeStations = [
     {
-        "ID": "rnd_test",
+        "ID": "1",
         "Type": "Frequency test",
         "pass_rate": 14,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "2",
         "Type": "Block Frequency test",
         "pass_rate": 40,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "3",
         "Type": "Longest Run Of Ones test",
         "pass_rate": 17,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "4",
         "Type": "Runs test",
         "pass_rate": 17,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "5",
         "Type": "Discrete Fourier Transform test",
         "pass_rate": 17,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "6",
         "Type": "Non-Overlapping Template Matchings test",
         "pass_rate": 17,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "7",
         "Type": "Overlapping Template Matchings test",
         "num_bikes_disabled": 2,
         "pass_rate": 30,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     }, {
-        "ID": "rnd_test",
+        "ID": "8",
         "Type": "Longest Run Of Ones test",
         "pass_rate": 70,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "9",
         "Type": "Matrix Rank test",
         "pass_rate": 40,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "10",
         "Type": "Universal test",
         "pass_rate": 40,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "11",
         "Type": "Matrix Rank test",
         "pass_rate": 25,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "12",
         "Type": "Linear Complexity test",
         "pass_rate": 30,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "13",
         "Type": "Approximate Entropy test",
         "pass_rate": 26,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "14",
         "Type": "Cumulative Sums test",
         "pass_rate": 5,
         "result": false,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "15",
         "Type": "Random Excursions test",
         "pass_rate": 5,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     },
     {
-        "ID": "rnd_test",
+        "ID": "16",
         "Type": "randomExcursionsVariant test",
         "pass_rate": 40,
         "result": true,
         "status": "IN_SERVICE",
-        "zone": "Randomness Test Result"
     }
 ];
