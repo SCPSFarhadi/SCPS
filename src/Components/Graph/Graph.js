@@ -157,34 +157,35 @@ function MakeGraph(props) {
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}} >
                                 <React.Fragment>
                                     <React.Fragment>
+
+                                        <div>
+
+                                            <div style={{height:'100%',width:'100%'}}>
+                                                <Graph
+                                                    id="graph-id" // id is mandatory
+                                                    data={props.data}
+                                                    config={myConfig}
+                                                    onDoubleClickNode={onClickedNode}
+                                                    // onDoubleClickNode = {onDoubleClickNode}
+                                                />
+                                            </div>
+
+                                        </div>
+                                        <Box sx={{ width: 500 }}>
+                                            <BottomNavigation
+                                                showLabels
+                                                value={value}
+                                                onChange={(event, newValue) => {
+                                                    setValue(newValue);
+                                                }}
+                                            >
+                                                <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} />
+                                                <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />
+                                                <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
+                                                <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
+                                            </BottomNavigation>
+                                        </Box>
                                         <Calculation />
-                                        {/*<div>*/}
-
-                                        {/*    <div style={{height:'100%',width:'100%'}}>*/}
-                                        {/*        <Graph*/}
-                                        {/*            id="graph-id" // id is mandatory*/}
-                                        {/*            data={props.data}*/}
-                                        {/*            config={myConfig}*/}
-                                        {/*            onDoubleClickNode={onClickedNode}*/}
-                                        {/*            // onDoubleClickNode = {onDoubleClickNode}*/}
-                                        {/*        />*/}
-                                        {/*    </div>*/}
-
-                                        {/*</div>*/}
-                                        {/*<Box sx={{ width: 500 }}>*/}
-                                        {/*    <BottomNavigation*/}
-                                        {/*        showLabels*/}
-                                        {/*        value={value}*/}
-                                        {/*        onChange={(event, newValue) => {*/}
-                                        {/*            setValue(newValue);*/}
-                                        {/*        }}*/}
-                                        {/*    >*/}
-                                        {/*        <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} />*/}
-                                        {/*        <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />*/}
-                                        {/*        <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />*/}
-                                        {/*        <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />*/}
-                                        {/*    </BottomNavigation>*/}
-                                        {/*</Box>*/}
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>

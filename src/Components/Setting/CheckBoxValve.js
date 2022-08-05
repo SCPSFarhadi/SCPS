@@ -22,11 +22,11 @@ export default function IndeterminateCheckbox(props) {
                 <FormControlLabel
                     label="control vale 1 open"
                     // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                    control={<Switch id="valve1" {...label} defaultChecked onChange={handleChange2} />}
+                    control={<Switch id="cvalve1" {...label} defaultChecked onChange={handleChange2} />}
                 />
 
                     <TextField
-                        id="2"
+                        id="cvalve1w"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -35,12 +35,12 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 2 open"
-                control={<Switch id="valve2" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cvalve2" {...label} defaultChecked onChange={handleChange2} />}
                 
             />
 
                 <TextField
-                        id="3"
+                        id="cvalve2w"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -49,11 +49,11 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 3 open"
-                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cvalve3" {...label} defaultChecked onChange={handleChange2} />}
             />
 
                     <TextField
-                        id="4"
+                        id="cvalve3w"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -62,11 +62,11 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 4 open"
-                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="ccvalve4" {...label} defaultChecked onChange={handleChange2} />}
             />
 
             < TextField
-                        id="5"
+                        id="cvalve4w"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
@@ -75,11 +75,11 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 5 open"
-                control={<Switch id="valve3" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="vcalve5" {...label} defaultChecked onChange={handleChange2} />}
             />
 
                 <TextField
-                        id="6"
+                        id="cvalve5w"
                         name="setpoint"
                         label="waterneed"
                         fullWidth
