@@ -15,7 +15,14 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Matrix from "../Matrix/matrix";
-import {BottomNavigation, BottomNavigationAction, CardActions, CardContent} from "@mui/material";
+import {
+    BottomNavigation,
+    BottomNavigationAction,
+    CardActions,
+    CardContent, ListItem,
+    ListItemAvatar,
+    ListItemText
+} from "@mui/material";
 import Button from "@mui/material/Button";
 
 import RestoreIcon from '@mui/icons-material/Restore';
@@ -40,7 +47,9 @@ import UploadDialog from "./UploadImage";
 import html2canvas from "html2canvas";
 import SaveIcon from '@mui/icons-material/Save';
 import exportAsImage from "./ExportAsImage";
-
+import Avatar from "@mui/material/Avatar";
+import CircleIcon from '@mui/icons-material/Circle';
+import List from "@mui/material/List";
 const bull = (
     <Box
         component="span"
@@ -86,7 +95,25 @@ function MakeGraph(props) {
     };
 
 
+    let modData = props.data;
+    let menus = "Nodes not loaded";
+    if(modData) {
+        menus = modData['nodes'].map((l,i)=>{
+            let secondary = "waiting for node status...";
+            if(modData.nodes[i].color)
+                secondary = modData.nodes[i].color
+            return (
+                <ListItem key={i}>
+                    <ListItemAvatar>
+                        <CircleIcon  style={{ color: green[500] }} />
+                    </ListItemAvatar>
+                    <ListItemText primary={l.id} secondary={secondary} />
+                </ListItem>
+                // <MenuItem key={i} value={l.id}>{l.id}</MenuItem>
 
+            )
+        })
+    }
     const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
     let count_run = 0;
@@ -248,6 +275,34 @@ function MakeGraph(props) {
                                                 <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
                                             </BottomNavigation>
                                         </Box>
+                                    </React.Fragment>
+                                    <React.Fragment>
+                                        <div>
+
+                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(${props.backGroundImage})`}}>
+                                                <List>
+                                                    {menus}
+                                                </List>
+
+                                            </div>
+
+                                        </div>
+                                        {/*<Box sx={{ width: 500 }}>*/}
+                                        {/*    <BottomNavigation*/}
+                                        {/*        showLabels*/}
+                                        {/*        value={value}*/}
+                                        {/*        onChange={(event, newValue) => {*/}
+                                        {/*            setValue(newValue);*/}
+                                        {/*        }}*/}
+                                        {/*    >*/}
+                                        {/*        <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />*/}
+                                        {/*        <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>}  onClick={handleClickOpenDialogUpload}/>*/}
+                                        {/*        <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />*/}
+                                        {/*        <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />*/}
+                                        {/*        <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />*/}
+                                        {/*        <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />*/}
+                                        {/*    </BottomNavigation>*/}
+                                        {/*</Box>*/}
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>
