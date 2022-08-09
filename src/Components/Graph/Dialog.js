@@ -27,8 +27,8 @@ import store from "../../store";
 import WaterIcon from '@mui/icons-material/Water';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import LightIcon from '@mui/icons-material/Light';
+import AirIcon from '@mui/icons-material/Air';
 const listData = ['20°C', '04/26 20:11',1,1];
-
 export default function SimpleDialog(props) {
     const { onClose, selectedNode,nodeColor,open } = props;
     const faucetState = ((listData[2] === 1) ? 'open' : 'close');
@@ -79,16 +79,34 @@ export default function SimpleDialog(props) {
                     <ListItemAvatar>
                         <MenuList dense>
                             <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
+                                <ListItemAvatar>
+                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
                                 <ListItemText inset>HVAC 1 On</ListItemText>
+
+                                <ListItemAvatar style={{ marginLeft: '30px' }} >
+                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                        <AirIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset >Fan Air 1 On</ListItemText>
                             </MenuItem>
                             <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
+                                <ListItemAvatar>
+                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
                                 <ListItemText inset>HVAC 2 On</ListItemText>
+
+                                <ListItemAvatar style={{ marginLeft: '30px' }} >
+                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                        <AirIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset >Fan Air 2 On</ListItemText>
                             </MenuItem>
                             {/*<MenuItem>*/}
                             {/*    <Avatar sx={{ bgcolor: red[100], color: red[600] }}>*/}
