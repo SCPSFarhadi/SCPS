@@ -1,6 +1,7 @@
 export const bikeStations = [
     {
         "ID": "1",
+        "DateTime":"2015/02/01",
         "Type": "Frequency test",
         "pass_rate": 14,
         "result": true,
@@ -8,6 +9,7 @@ export const bikeStations = [
     },
     {
         "ID": "2",
+        "DateTime":"2015/02/01",
         "Type": "Block Frequency test",
         "pass_rate": 40,
         "result": false,
@@ -15,6 +17,7 @@ export const bikeStations = [
     },
     {
         "ID": "3",
+        "DateTime":"2015/02/11",
         "Type": "Longest Run Of Ones test",
         "pass_rate": 17,
         "result": true,
@@ -22,6 +25,7 @@ export const bikeStations = [
     },
     {
         "ID": "4",
+        "DateTime":"2015/02/01",
         "Type": "Runs test",
         "pass_rate": 17,
         "result": true,
@@ -29,6 +33,7 @@ export const bikeStations = [
     },
     {
         "ID": "5",
+        "DateTime":"2015/02/01",
         "Type": "Discrete Fourier Transform test",
         "pass_rate": 17,
         "result": false,
@@ -36,6 +41,7 @@ export const bikeStations = [
     },
     {
         "ID": "6",
+        "DateTime":"2015/02/01",
         "Type": "Non-Overlapping Template Matchings test",
         "pass_rate": 17,
         "result": false,
@@ -43,6 +49,7 @@ export const bikeStations = [
     },
     {
         "ID": "7",
+        "DateTime":"2015/02/01",
         "Type": "Overlapping Template Matchings test",
         "num_bikes_disabled": 2,
         "pass_rate": 30,
@@ -50,6 +57,7 @@ export const bikeStations = [
         "status": "IN_SERVICE",
     }, {
         "ID": "8",
+        "DateTime":"2015/02/05",
         "Type": "Longest Run Of Ones test",
         "pass_rate": 70,
         "result": true,
@@ -57,6 +65,7 @@ export const bikeStations = [
     },
     {
         "ID": "9",
+        "DateTime":"2015/02/01",
         "Type": "Matrix Rank test",
         "pass_rate": 40,
         "result": false,
@@ -64,6 +73,7 @@ export const bikeStations = [
     },
     {
         "ID": "10",
+        "DateTime":"2015/02/01",
         "Type": "Universal test",
         "pass_rate": 40,
         "result": false,
@@ -71,6 +81,7 @@ export const bikeStations = [
     },
     {
         "ID": "11",
+        "DateTime":"2015/02/01",
         "Type": "Matrix Rank test",
         "pass_rate": 25,
         "result": false,
@@ -78,6 +89,7 @@ export const bikeStations = [
     },
     {
         "ID": "12",
+        "DateTime":"2015/02/01",
         "Type": "Linear Complexity test",
         "pass_rate": 30,
         "result": true,
@@ -85,6 +97,7 @@ export const bikeStations = [
     },
     {
         "ID": "13",
+        "DateTime":"2015/02/01",
         "Type": "Approximate Entropy test",
         "pass_rate": 26,
         "result": false,
@@ -92,6 +105,7 @@ export const bikeStations = [
     },
     {
         "ID": "14",
+        "DateTime":"2015/02/01",
         "Type": "Cumulative Sums test",
         "pass_rate": 5,
         "result": false,
@@ -99,6 +113,7 @@ export const bikeStations = [
     },
     {
         "ID": "15",
+        "DateTime":"2015/02/01",
         "Type": "Random Excursions test",
         "pass_rate": 5,
         "result": true,
@@ -106,6 +121,7 @@ export const bikeStations = [
     },
     {
         "ID": "16",
+        "DateTime":"2015/02/01",
         "Type": "randomExcursionsVariant test",
         "pass_rate": 40,
         "result": true,

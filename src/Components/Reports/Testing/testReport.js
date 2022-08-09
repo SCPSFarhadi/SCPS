@@ -1,6 +1,6 @@
 import * as React from 'react';
 import "@progress/kendo-theme-material/dist/all.css";
-import { Grid, GridColumn } from "@progress/kendo-react-grid";
+import {Grid, GridColumn, GridToolbar} from "@progress/kendo-react-grid";
 import { process } from "@progress/kendo-data-query";
 
 import { bikeStations } from "./data";
@@ -21,23 +21,47 @@ import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import EditIcon from "@mui/icons-material/Edit";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {ResponsiveContainer} from "recharts";
+import { ExcelExport } from '@progress/kendo-react-excel-export';
+import { GridPDFExport } from "@progress/kendo-react-pdf";
+import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+// import DateFnsUtils from "@date-io/date-fns";
+import {useState} from "react";
 
 const BooleanCell = (props) => {
     return (
         <td>{props.dataItem[props.field] ? '✅' : '❌'}</td>
     )
 }
+const initialFilter = {
+    logic: "and",
+    filters: [
 
+    ],
+};
 export default function TestReport() {
 
     const [dataState, setDataState] = React.useState({ skip: 0, take: 10 })
     const [result, setResult] = React.useState(process(bikeStations, dataState));
-
+    const _export = React.useRef(null);
+    const [filter, setFilter] = React.useState(initialFilter);
+    const [selectedDate, handleDateChange] = useState(new Date());
+    let gridPDFExport;
     const onDataStateChange = (event) => {
         setDataState(event.dataState);
         setResult(process(bikeStations, event.dataState));
     }
     const theme = createTheme();
+
+    const exportPDF = () => {
+        if (gridPDFExport !== null) {
+            gridPDFExport.save();
+        }
+    };
+    const excelExport = () => {
+        if (_export.current !== null) {
+            _export.current.save();
+        }
+    };
     return (
         <div>
             <Grid
@@ -50,7 +74,44 @@ export default function TestReport() {
                 resizable={true}
                 xs={6}
             >
+                <GridToolbar>
+                    <button title="Export Excel"
+                            className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
+                            onClick={excelExport}>
+                        Export to Excel
+                    </button>
+                    <button
+                        title="Export PDF"
+                        className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
+                        onClick={exportPDF}
+                    >
+                        Export PDF
+                    </button>
+
+                </GridToolbar>
+                <GridToolbar>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <DateTimePicker
+                            autoOk
+                            ampm={false}
+                            value={selectedDate}
+                            disableFuture={true}
+                            onChange={handleDateChange}
+                            label="From Date:"
+                        />
+
+                        <DateTimePicker
+                            value={selectedDate}
+                            disablePast
+                            onChange={handleDateChange}
+                            disableFuture={true}
+                            label="To"
+                            showTodayButton
+                        />
+                    </MuiPickersUtilsProvider>
+                </GridToolbar>
                 <GridColumn field="ID" title="ID"/>
+                <GridColumn field="DateTime" title="DateTime"/>
                 <GridColumn field="Type" title="Type" />
                 <GridColumn field="pass_rate" title="Pass rate" />
                 <GridColumn field="result" title="status" cell={BooleanCell} />
