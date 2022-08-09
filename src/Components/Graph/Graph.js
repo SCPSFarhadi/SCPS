@@ -278,36 +278,17 @@ function MakeGraph(props) {
                                     </React.Fragment>
                                     <React.Fragment>
                                         <div>
-
-                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(${props.backGroundImage})`}}>
-                                                <List>
-                                                    {menus}
-                                                </List>
-
-                                            </div>
+                                            <List>
+                                                {menus}
+                                            </List>
 
                                         </div>
-                                        {/*<Box sx={{ width: 500 }}>*/}
-                                        {/*    <BottomNavigation*/}
-                                        {/*        showLabels*/}
-                                        {/*        value={value}*/}
-                                        {/*        onChange={(event, newValue) => {*/}
-                                        {/*            setValue(newValue);*/}
-                                        {/*        }}*/}
-                                        {/*    >*/}
-                                        {/*        <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />*/}
-                                        {/*        <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>}  onClick={handleClickOpenDialogUpload}/>*/}
-                                        {/*        <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />*/}
-                                        {/*        <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />*/}
-                                        {/*        <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />*/}
-                                        {/*        <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />*/}
-                                        {/*    </BottomNavigation>*/}
-                                        {/*</Box>*/}
                                     </React.Fragment>
                                 </React.Fragment>
                             </Paper>
                         </Container>
                     </ThemeProvider>
+
                 </Grid>
                 
                 <Grid item xs={4}>
