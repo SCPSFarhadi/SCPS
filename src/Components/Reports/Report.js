@@ -6,9 +6,10 @@ import { GridPDFExport } from "@progress/kendo-react-pdf";
 import {states} from './states.js';
 
 import {filterBy} from "@progress/kendo-data-query";
-import DateFnsUtils from '@date-io/date-fns';
+// import DateFnsUtils from '@date-io/date-fns';
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { alpha } from '@material-ui/core/styles';
+import Button from "@mui/material/Button";
 
 const initialFilter = {
     logic: "and",
@@ -42,6 +43,10 @@ export default function ReportStates() {
     }
 
     function getGrid() {
+        function submitDate() {
+
+        }
+
         return <Grid data={filterBy(states, filter)}
                      filterable={true}
                      filter={filter}
@@ -65,25 +70,40 @@ export default function ReportStates() {
 
             </GridToolbar>
             <GridToolbar>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <DateTimePicker
-                        autoOk
-                        ampm={false}
-                        value={selectedDate}
-                        disableFuture={true}
-                        onChange={handleDateChange}
-                        label="From Date:"
-                    />
+            <span style={{marginTop:"15px"}}>
+                <label style={{fontWeight:"bold"}}>
+                    From date:
+                </label>
+                <input type="date" id="fromDate"/>
+            </span>{"          "}
+            <span style={{marginTop:"15px"}}>
+                <label style={{fontWeight:"bold"}}>
+                    To date:
+                </label>
+                <input type="date" id="toDate"/>
+            </span>{"   "}
+            <span style={{marginTop:"15px"}}>
+                <Button type="submit" onSubmit={submitDate} >Submit</Button>
+            </span>
+                {/*<MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
+                {/*    <DateTimePicker*/}
+                {/*        autoOk*/}
+                {/*        ampm={false}*/}
+                {/*        value={selectedDate}*/}
+                {/*        disableFuture={true}*/}
+                {/*        onChange={handleDateChange}*/}
+                {/*        label="From Date:"*/}
+                {/*    />*/}
 
-                    <DateTimePicker
-                        value={selectedDate}
-                        disablePast
-                        onChange={handleDateChange}
-                        disableFuture={true}
-                        label="To"
-                        showTodayButton
-                    />
-                </MuiPickersUtilsProvider>
+                {/*    <DateTimePicker*/}
+                {/*        value={selectedDate}*/}
+                {/*        disablePast*/}
+                {/*        onChange={handleDateChange}*/}
+                {/*        disableFuture={true}*/}
+                {/*        label="To"*/}
+                {/*        showTodayButton*/}
+                {/*    />*/}
+                {/*</MuiPickersUtilsProvider>*/}
             </GridToolbar>
 
             <GridColumn field="ID" title="ID"

@@ -26,6 +26,7 @@ import { GridPDFExport } from "@progress/kendo-react-pdf";
 import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 // import DateFnsUtils from "@date-io/date-fns";
 import {useState} from "react";
+import Button from "@mui/material/Button";
 
 const BooleanCell = (props) => {
     return (
@@ -62,6 +63,11 @@ export default function TestReport() {
             _export.current.save();
         }
     };
+
+    function submitDate() {
+
+    }
+
     return (
         <div>
             <Grid
@@ -89,7 +95,23 @@ export default function TestReport() {
                     </button>
 
                 </GridToolbar>
-
+                <GridToolbar>
+                    <span style={{marginTop:"15px"}}>
+                        <label style={{fontWeight:"bold"}}>
+                            From date:
+                        </label>
+                        <input type="date" id="fromDate"/>
+                    </span>{"          "}
+                            <span style={{marginTop:"15px"}}>
+                        <label style={{fontWeight:"bold"}}>
+                            To date:
+                        </label>
+                        <input type="date" id="toDate"/>
+                    </span>{"   "}
+                            <span style={{marginTop:"15px"}}>
+                        <Button type="submit" onSubmit={submitDate} >Submit</Button>
+                    </span>
+                </GridToolbar>
                 <GridColumn field="ID" title="ID"/>
                 <GridColumn field="DateTime" title="DateTime"/>
                 <GridColumn field="Type" title="Type" />
