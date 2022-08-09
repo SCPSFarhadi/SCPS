@@ -26,7 +26,7 @@ export default function UploadDialog(props) {
                     <DialogContentText>
                         Set Image
                     </DialogContentText>
-                    <ImageUploadCard />
+                    <ImageUploadCard setBackground={props.setBackground}/>
 
                 </DialogContent>
 

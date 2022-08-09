@@ -155,13 +155,13 @@ function DashboardContent(props) {
     modData['nodes'] = [{ id: "1c:9d:c2:49:b6:2"}, { id: "2" }, { id: "3" }];
     modData['links'] =
         [
-            { source: "1c:9d:c2:49:b6:2", target: "2" },
-            { source: "2", target: "3" },
         ]
     ;
 
     const [open, setOpen] = React.useState(true);
     const [menu, setMenu] = React.useState("Dashboard");
+
+    const [backGroundImage, setBAckGroundImage] = React.useState('');
 
     let countError = useSelector(() => store.getState().errors.msg).length;
     let Errors = useSelector(() => store.getState().errors);
@@ -293,7 +293,7 @@ function DashboardContent(props) {
         }
 
 
-        dataMiddle = <MakeGraph data={modData} handelClick={handleChange}/>;
+        dataMiddle = <MakeGraph setBAckGroundImage={setBAckGroundImage} backGroundImage={backGroundImage} data={modData} handelClick={handleChange}/>;
     }
     else if(menu === "Integrations"){
         dataMiddle = <MatrixForm />;

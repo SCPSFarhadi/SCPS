@@ -1,9 +1,9 @@
 import { Graph } from "react-d3-graph";
-import React from 'react';
+import React, {useRef} from 'react';
 import {useSelector, connect, useDispatch} from "react-redux";
 import store from "../../store";
 import SimpleDialog from "./Dialog";
-import {blue, green, red} from "@mui/material/colors";
+import {blue, green, yellow, red} from "@mui/material/colors";
 import actions from "redux-form/lib/actions";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -37,8 +37,9 @@ import LineChart2 from "./nodeChart";
 import MenuItem from "@mui/material/MenuItem";
 import EdithDialog from "./EditDialog";
 import UploadDialog from "./UploadImage";
-
-
+import html2canvas from "html2canvas";
+import SaveIcon from '@mui/icons-material/Save';
+import exportAsImage from "./ExportAsImage";
 
 const bull = (
     <Box
@@ -65,7 +66,10 @@ const myConfig = {
 function MakeGraph(props) {
     ///////// dialog state :
     const [openDialog, setOpenDialog] = React.useState(false);
+
     const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
+
+
     const handleClickOpenDialog = () => {
         console.log("fun")
         setOpenDialog(true);
@@ -177,11 +181,24 @@ function MakeGraph(props) {
                 console.log("error in receive data "+err)
             });
     }
+    const canvasRef = useRef()
+    function handleSaveButton() {
+        exportAsImage(document.querySelector("#graphDiv"), "test").then(r =>console.log("done"))
+        // html2canvas(document.querySelector("#graphDiv")).then(canvas => {
+        //     document.body.appendChild(canvas)
+        // });
 
+    }
+    // let graphSelect = document.getElementById('graph-id-graph-wrapper')
+    //     if(graphSelect)
+    //         graphSelect.style.backgroundImage = `url(${backGroundImage})`
+    //
+    // console.log("background:")
+    // console.log(backGroundImage)
     return (
         <Box sx={{ flexGrow: 1 }}>
              <EdithDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/>
-             <UploadDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialogUpload} handleCloseDialog={handleCloseDialogUpload} openDialog={openDialogUpload}/>
+             <UploadDialog setBackground={props.setBAckGroundImage} modData={props.data} handleClickOpenDialog={handleClickOpenDialogUpload} handleCloseDialog={handleCloseDialogUpload} openDialog={openDialogUpload}/>
             <Grid container spacing={2}>
                 <Grid item xs={8}>
                     <ThemeProvider theme={theme}>
@@ -203,12 +220,13 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <div>
 
-                                            <div style={{height:'100%',width:'100%'}}>
+                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(${props.backGroundImage})`}}>
                                                 <Graph
                                                     id="graph-id" // id is mandatory
                                                     data={props.data}
                                                     config={myConfig}
                                                     onDoubleClickNode={onClickedNode}
+                                                    ref={canvasRef}
                                                     // onDoubleClickNode = {onDoubleClickNode}
                                                 />
                                             </div>
@@ -227,6 +245,7 @@ function MakeGraph(props) {
                                                 <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
                                                 <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
                                                 <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
+                                                <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
                                             </BottomNavigation>
                                         </Box>
                                     </React.Fragment>
