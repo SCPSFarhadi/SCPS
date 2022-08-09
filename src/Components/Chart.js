@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recha
 import Title from '../routes/Dashboard/Header/Title';
 import {useSelector} from "react-redux";
 import store from "../store";
+import Button from "@mui/material/Button";
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -23,10 +24,33 @@ const data = [
 
 export default function Chart(props) {
     const theme = useTheme();
+
+    function submitDate() {
+
+    }
+
     return (
         <React.Fragment>
             <Title>Today</Title>
+            <div style={{display:"inline"}}>
+                <span style={{marginTop:"15px"}}>
+                        <label style={{fontWeight:"bold"}}>
+                            From date:
+                        </label>
+                        <input type="date" id="fromDate"/>
+                </span>{"          "}
+                <span style={{marginTop:"15px"}}>
+                        <label style={{fontWeight:"bold"}}>
+                            To date:
+                        </label>
+                        <input type="date" id="toDate"/>
+                </span>{"   "}
+                <span style={{marginTop:"15px"}}>
+                        <Button type="submit" onSubmit={submitDate} >Submit</Button>
+                </span>
+            </div>
             <ResponsiveContainer>
+
                 <LineChart
                     data={props.data}
                     margin={{

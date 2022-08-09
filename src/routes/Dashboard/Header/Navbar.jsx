@@ -329,10 +329,11 @@ function DashboardContent(props) {
                             p: 2,
                             display: 'flex',
                             flexDirection: 'column',
-                            height: 240,
+                            height: 450,
                             borderRadius: 10,
                         }}
                     >
+
                         <Chart data={chartData} />
                     </Paper>
                 </Grid>
