@@ -75,14 +75,6 @@ const myConfig = {
 
 function MakeGraph(props) {
     let dataShortDetail = useSelector(() => store.getState().receiveData.shortDetail);
-    if(dataShortDetail){
-        console.log("short detail updated")
-    }
-    ///////// dialog state :
-    const [openDialog, setOpenDialog] = React.useState(false);
-
-    const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
-
     let details = {
         "nodeId":" ",
         "time":  " ",
@@ -98,9 +90,16 @@ function MakeGraph(props) {
         "hvac2":" ",
         "parameter":" "
     }
-    if(dataShortDetail) {
+    if(!(Object.keys(dataShortDetail).length === 0)){
+        console.log("short detail updated")
         details = dataShortDetail;
     }
+    ///////// dialog state :
+    const [openDialog, setOpenDialog] = React.useState(false);
+
+    const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
+
+
 
 
     const handleClickOpenDialog = () => {
