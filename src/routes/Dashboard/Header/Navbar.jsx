@@ -565,7 +565,7 @@ function DashboardContent(props) {
                                     <ListItemIcon>
                                         <SecurityIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Security Tests" onClick={() => setMenu("TestReport")}/>
+                                    <ListItemText primary="Security Reports" onClick={() => setMenu("TestReport")}/>
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
