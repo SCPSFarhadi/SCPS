@@ -89,27 +89,7 @@ export default function TestReport() {
                     </button>
 
                 </GridToolbar>
-                <GridToolbar>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DateTimePicker
-                            autoOk
-                            ampm={false}
-                            value={selectedDate}
-                            disableFuture={true}
-                            onChange={handleDateChange}
-                            label="From Date:"
-                        />
 
-                        <DateTimePicker
-                            value={selectedDate}
-                            disablePast
-                            onChange={handleDateChange}
-                            disableFuture={true}
-                            label="To"
-                            showTodayButton
-                        />
-                    </MuiPickersUtilsProvider>
-                </GridToolbar>
                 <GridColumn field="ID" title="ID"/>
                 <GridColumn field="DateTime" title="DateTime"/>
                 <GridColumn field="Type" title="Type" />
