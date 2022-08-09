@@ -54,7 +54,7 @@ export default function SimpleDialog(props) {
                             <ToggleOffIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room id: ${selectedNode.id}`} />
+                    <ListItemText primary={`Room id: ${props.details.nodeId}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key="2">
@@ -63,7 +63,7 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room temperature: ${lastTemp}`} />
+                    <ListItemText primary={`Room temperature: ${props.details.temp}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key="3">
@@ -72,7 +72,7 @@ export default function SimpleDialog(props) {
                             <AccessTimeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Last occupancy: ${lastTime}`} />
+                    <ListItemText primary={`Last occupancy: ${props.details.lastOccupancy}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
@@ -84,14 +84,14 @@ export default function SimpleDialog(props) {
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>HVAC 1 On</ListItemText>
+                                <ListItemText inset>HVAC 1 {props.details.hvac1}</ListItemText>
 
                                 <ListItemAvatar style={{ marginLeft: '30px' }} >
                                     <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                         <AirIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset >Fan Air 1 On</ListItemText>
+                                <ListItemText inset >Fan Air 1 {props.details.fanAir1}</ListItemText>
                             </MenuItem>
                             <MenuItem>
                                 <ListItemAvatar>
@@ -99,22 +99,15 @@ export default function SimpleDialog(props) {
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>HVAC 2 On</ListItemText>
+                                <ListItemText inset>HVAC 2 {props.details.hvac2}</ListItemText>
 
                                 <ListItemAvatar style={{ marginLeft: '30px' }} >
                                     <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                         <AirIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset >Fan Air 2 On</ListItemText>
+                                <ListItemText inset >Fan Air 2 {props.details.fanAir2}</ListItemText>
                             </MenuItem>
-                            {/*<MenuItem>*/}
-                            {/*    <Avatar sx={{ bgcolor: red[100], color: red[600] }}>*/}
-                            {/*        <PowerIcon/>*/}
-                            {/*    </Avatar>*/}
-
-                            {/*    <ListItemText inset>Cooling_Heating 3 close</ListItemText>*/}
-                            {/*</MenuItem>*/}
                         </MenuList>
                     </ListItemAvatar>
 
@@ -128,7 +121,7 @@ export default function SimpleDialog(props) {
                             <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Analog Sensor1: ${lastTime}`} />
+                    <ListItemText primary={`Analog Sensor1: ${props.details.analogSensor1}`} />
                 </ListItem>
                 
                 <ListItem button onClick={() => handleListItemClick()} key="5">
@@ -137,7 +130,7 @@ export default function SimpleDialog(props) {
                             <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Analog Sensor2: ${lastTime}`} />
+                    <ListItemText primary={`Analog Sensor2: ${props.details.analogSensor2}`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
@@ -145,7 +138,7 @@ export default function SimpleDialog(props) {
                             <WaterIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Humidity Sensor:`} />
+                    <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor}`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="8">
                     <ListItemAvatar>
@@ -153,7 +146,7 @@ export default function SimpleDialog(props) {
                             <LightIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Light Sensor:`} />
+                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor}`} />
                 </ListItem>
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()} key="9">

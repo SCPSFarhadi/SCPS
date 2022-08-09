@@ -5,7 +5,7 @@ import {
     receiveDataNodeTem,
     receiveNotification,
     receivePiechart, receiveColor, receiveNodeTemp,
-    receiveRoomTemp, receiveMaxTemp, receiveMinTemp
+    receiveRoomTemp, receiveMaxTemp, receiveMinTemp, receiveShortDetail
 } from '../../../Actions/recieveData.js'
 import {receiveDataConfig} from '../../../Actions/recieveData.js'
 import store from "../../../store";
@@ -28,7 +28,7 @@ class Socket extends React.Component {
             WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this),
                 this.setNodeState.bind(this),this.setGraphConfig.bind(this),this.notMessage.bind(this),this.setError.bind(this),
                 this.setPieChart.bind(this),this.setRoomTemp.bind(this),this.setNodeTemp.bind(this),this.setNodeColors.bind(this),
-                this.setNodeMaxTemp.bind(this),this.setNodeMinTemp.bind(this))
+                this.setNodeMaxTemp.bind(this),this.setNodeMinTemp.bind(this),this.setShortDetail.bind(this))
             WebSocketInstance.fetchMessages(this.props.currentUser);
         });
     }
@@ -99,6 +99,12 @@ class Socket extends React.Component {
         console.log("set min temp")
         console.log(data)
         store.dispatch(receiveMinTemp(data))
+    }
+
+    setShortDetail(data){
+        console.log("short detail before dispatcher")
+        console.log(data)
+        store.dispatch(receiveShortDetail(data))
     }
 
     messageChangeHandler = (event) => {

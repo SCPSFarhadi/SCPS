@@ -293,7 +293,8 @@ function DashboardContent(props) {
         }
 
 
-        dataMiddle = <MakeGraph setBAckGroundImage={setBAckGroundImage} backGroundImage={backGroundImage} data={modData} handelClick={handleChange}/>;
+        dataMiddle = <MakeGraph setBAckGroundImage={setBAckGroundImage} backGroundImage={backGroundImage} data={modData}
+                                handelClick={handleChange}/>;
     }
     else if(menu === "Integrations"){
         dataMiddle = <MatrixForm />;

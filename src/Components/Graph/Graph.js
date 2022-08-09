@@ -50,6 +50,7 @@ import exportAsImage from "./ExportAsImage";
 import Avatar from "@mui/material/Avatar";
 import CircleIcon from '@mui/icons-material/Circle';
 import List from "@mui/material/List";
+
 const bull = (
     <Box
         component="span"
@@ -73,10 +74,33 @@ const myConfig = {
 };
 
 function MakeGraph(props) {
+    let dataShortDetail = useSelector(() => store.getState().receiveData.shortDetail);
+    if(dataShortDetail){
+        console.log("short detail updated")
+    }
     ///////// dialog state :
     const [openDialog, setOpenDialog] = React.useState(false);
 
     const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
+
+    let details = {
+        "nodeId":" ",
+        "time":  " ",
+        "temp": " ",
+        "lastOccupancy":" ",
+        "lightSensor":" ",
+        "humiditySensor":" ",
+        "analogSensor1":" ",
+        "analogSensor2":" ",
+        "fanAir1":" ",
+        "fanAir2":" ",
+        "hvac1":" ",
+        "hvac2":" ",
+        "parameter":" "
+    }
+    if(dataShortDetail) {
+        details = dataShortDetail;
+    }
 
 
     const handleClickOpenDialog = () => {
@@ -311,6 +335,7 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <SimpleDialog
                                             open={true}
+                                            details = {details}
                                             onClose={handleClose}
                                             selectedNode={selectedNode}
                                             nodeColor={nodeColor}

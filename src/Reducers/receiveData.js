@@ -4,7 +4,12 @@ import {
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
     RECEIVE_ROOMTEMP,
-    RECEIVE_NODETEMP, RECEIVE_SETNODE, RECEIVE_COLOR, RECEIVE_MAXTEMP, RECEIVE_MINTEMP
+    RECEIVE_NODETEMP,
+    RECEIVE_SETNODE,
+    RECEIVE_COLOR,
+    RECEIVE_MAXTEMP,
+    RECEIVE_MINTEMP,
+    RECEIVE_SHORTDETAIL,
 } from '../Actions/types.js';
 
 const initialState={
@@ -17,12 +22,14 @@ const initialState={
     listNodes:[],
     lastTime: "",
     lastTemp: "",
+    shortDetail:{},
     countFan: 0,
     colors :[],
     idMax: "",
     idMin:"",
     tempMax:"",
     tempMin:"",
+
 
 
 }
@@ -104,6 +111,12 @@ export default function(state=initialState,action){
                 ...state,
                 tempMin: action.payload["temp"],
                 idMin: action.payload["id"]
+            };
+        case RECEIVE_SHORTDETAIL:
+            console.log("RECEIVE_SHORTDETAIL")
+            return {
+                ...state,
+                shortDetail: action.payload
             };
         default:
             return state;

@@ -80,6 +80,9 @@ class WebSocketService {
         if(command === "minTemp"){
             this.callbacks[command](parsedData.message)
         }
+        if(command === "nodeNewTem"){
+            this.callbacks[command](parsedData.message)
+        }
 
     }
 
@@ -100,7 +103,7 @@ class WebSocketService {
     }
 
     addCallbacks(messagesCallback, newMessageCallback,setNodeState,setGraphConfig,notMessage,setError,setPieChart,setRoomTemp,
-                 setNodeTemp,setNodeColors,setNodeMaxTemp,setNodeMinTemp) {
+                 setNodeTemp,setNodeColors,setNodeMaxTemp,setNodeMinTemp,setShortDetail) {
         this.callbacks["new_message"] = messagesCallback;
         this.callbacks["chat_message"] = newMessageCallback;
         this.callbacks["node_state"] = setNodeState;
@@ -113,6 +116,7 @@ class WebSocketService {
         this.callbacks['nodeColor'] = setNodeColors;
         this.callbacks['maxTemp'] = setNodeMaxTemp;
         this.callbacks['minTemp'] = setNodeMinTemp;
+        this.callbacks['nodeNewTem'] = setShortDetail;
     }
 
     sendMessage(data) {

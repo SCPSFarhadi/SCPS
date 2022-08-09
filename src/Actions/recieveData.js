@@ -5,7 +5,12 @@ import {
     RECEIVE_DATA_CONFIG,
     RECEIVE_NOTIFICATION,
     RECEIVE_PICHART,
-    RECEIVE_ROOMTEMP, RECEIVE_SETNODE, RECEIVE_COLOR, RECEIVE_MAXTEMP, RECEIVE_MINTEMP
+    RECEIVE_ROOMTEMP,
+    RECEIVE_SETNODE,
+    RECEIVE_COLOR,
+    RECEIVE_MAXTEMP,
+    RECEIVE_MINTEMP,
+    RECEIVE_SHORTDETAIL
 } from "./types";
 
 // GET LEADS
@@ -76,5 +81,12 @@ export const receiveMinTemp = (data) => (dispatch) => {
     dispatch({
         payload: data,
         type: RECEIVE_MINTEMP
+    })
+}
+export const receiveShortDetail = (data) => (dispatch) => {
+    console.log("receive short detail")
+    dispatch({
+        payload: data,
+        type: RECEIVE_SHORTDETAIL
     })
 }

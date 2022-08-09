@@ -56,24 +56,39 @@ export default function NodeForm(props) {
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
-        var id = selectedNode
-        var fanOpen = document.getElementById("fanOpen").checked
+        let id = selectedNode
         let sleepMode = document.getElementById("workMode1").checked
-        let optimalMode = document.getElementById("workMode2").checked;
-        let manualMode = document.getElementById("workMode3").checked
+        let AutomateMode = document.getElementById("workMode2").checked;
+        let maintenanceMode = document.getElementById("workMode3").checked
+        let cValve1 = document.getElementById('controlValve1').checked;
+        let cValve2 = document.getElementById('controlValve2').checked;
+        let fanAir1 = document.getElementById('fanAir1').checked;
+        let fanAir2 = document.getElementById('fanAir2').checked;
+        let dongleValue1 = document.getElementById('dongle1').value;
+        let dongleValue2 = document.getElementById('dongle2').value;
 
-        if((sleepMode && optimalMode) ||(sleepMode && manualMode) || (optimalMode && manualMode) ){
+        if((sleepMode && AutomateMode) ||(sleepMode && maintenanceMode) || (AutomateMode && maintenanceMode) ){
             alert("Please Check only one mode");
             return;
         }
 
-        let valve1 = document.getElementById('valve1').checked;
-        let valve2 = document.getElementById('valve2').checked;
-        let valve3 = document.getElementById('valve3').checked;
-        let data = {nodeid:id.id,temp:value,fanopen:fanOpen,perm:perm,valve1:valve1,valve2:valve2,valve3:valve3,sleepMode:sleepMode,optimalMode:optimalMode,manualMode:manualMode}
-        console.log(fanOpen)
+        let data = {nodeid:id.id,
+            temp:value,
+            fanAir1:fanAir1,
+            fanAir2:fanAir2,
+            perm:perm,
+            cValve1:cValve1,
+            cValve2:cValve2,
+            dongleValue1:dongleValue1,
+            dongleValue2:dongleValue2,
+            sleepMode:sleepMode,
+            optimalMode:AutomateMode,
+            manualMode:maintenanceMode
+        }
+
         console.log("sent data: ")
         console.log(data)
+
         axios
             .post(baseUrl+'api/users/setnodeconfig/' , data,config)
             .then((res) => {
@@ -92,7 +107,6 @@ export default function NodeForm(props) {
             let fanAirTest1 = document.getElementById('fanAir1').checked
             let fanAirTest2 = document.getElementById('fanAir2').checked
 
-            console.log("1 and 2 enable")
             input1.disabled = false;
             input2.disabled = false;
 
@@ -115,7 +129,7 @@ export default function NodeForm(props) {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h4">
                 Node Setting
             </Typography>
             <Grid container spacing={3}>
@@ -143,7 +157,7 @@ export default function NodeForm(props) {
                         <InputLabel id="demo-simple-select-label">Room Occupant Permission</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
-                            id="demo-simple-select"
+                            id="occupantPermission"
                             value={perm}
                             label="Permission"
                             onChange={(event) => {
