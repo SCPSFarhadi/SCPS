@@ -90,7 +90,7 @@ export default function NodeForm(props) {
                 <Grid item xs={12}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
                 <Typography variant="h6">
-                            control valve factor 1
+                            control valve 1 factor
                 </Typography>
 
 
@@ -103,7 +103,7 @@ export default function NodeForm(props) {
                         variant="standard"
                     />
                 <Typography variant="h6">
-                            control valve factor 2
+                            control valve 2 factor
                 </Typography>
 
                     <TextField
@@ -115,7 +115,7 @@ export default function NodeForm(props) {
                         variant="standard"
                     />
                 <Typography variant="h6">
-                            control valve factor 3
+                            control valve 3 factor
                 </Typography>
                     <TextField
                         id="5"
@@ -126,7 +126,7 @@ export default function NodeForm(props) {
                         variant="standard"
                     />
                 <Typography variant="h6">
-                            control valve factor 4
+                            control valve 4 factor
                 </Typography>
 
                     <TextField
@@ -139,7 +139,7 @@ export default function NodeForm(props) {
                     />
                     
                     <Typography variant="h6">
-                            control valve factor 5
+                            control valve 5 factor
                 </Typography>
                     {/*<div>*/}
                     {/*    <Switch {...label} defaultChecked />*/}
@@ -157,7 +157,7 @@ export default function NodeForm(props) {
                         variant="standard"
                     />
                 </Box>
-                    <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+                    <Button variant="contained" onClick={handleSubmit}>Save</Button>
                 </Grid>
 
             </Grid>
