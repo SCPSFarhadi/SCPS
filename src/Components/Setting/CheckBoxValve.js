@@ -22,7 +22,7 @@ export default function IndeterminateCheckbox(props) {
                 <FormControlLabel
                     label="control vale 1 open"
                     // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                    control={<Switch id="cvalve1" {...label} defaultChecked onChange={handleChange2} />}
+                    control={<Switch id="cValveOpen1" {...label} defaultChecked onChange={handleChange2} />}
                 />
 
                     <TextField
@@ -35,7 +35,7 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 2 open"
-                control={<Switch id="cvalve2" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen2" {...label} defaultChecked onChange={handleChange2} />}
                 
             />
 
@@ -49,7 +49,7 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 3 open"
-                control={<Switch id="cvalve3" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen3" {...label} defaultChecked onChange={handleChange2} />}
             />
 
                     <TextField
@@ -62,7 +62,7 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 4 open"
-                control={<Switch id="ccvalve4" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen4" {...label} defaultChecked onChange={handleChange2} />}
             />
 
             < TextField
@@ -75,7 +75,7 @@ export default function IndeterminateCheckbox(props) {
                     />
             <FormControlLabel
                 label="control vale 5 open"
-                control={<Switch id="vcalve5" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen5" {...label} defaultChecked onChange={handleChange2} />}
             />
 
                 <TextField

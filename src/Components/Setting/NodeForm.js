@@ -95,7 +95,7 @@ export default function NodeForm(props) {
 
 
                     < TextField
-                        id="3"
+                        id="cValveFactor1"
                         name="setpoint"
                         label="Factor 1"
                         fullWidth

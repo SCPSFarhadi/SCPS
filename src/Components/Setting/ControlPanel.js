@@ -38,9 +38,10 @@ export default function ControPanel(props) {
     ];
     let value=20;
     const dispatch = useDispatch();
-    function handleSubmit() {
+    function handleSubmit(e) {
         console.log("temp for fun")
-        console.log(value)
+        e.preventDefault();
+
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -50,29 +51,114 @@ export default function ControPanel(props) {
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
-        var id = selectedNode
-        var fanOpen = document.getElementById("fanOpen").checked
-        let sleepMode = document.getElementById("workMode1").checked
-        let optimalMode = document.getElementById("workMode2").checked;
-        let manualMode = document.getElementById("workMode3").checked
 
-        if((sleepMode && optimalMode) ||(sleepMode && manualMode) || (optimalMode && manualMode) ){
-            alert("Please Check only one mode");
-            return;
+        let cValveOpen1 = document.getElementById("cValveOpen1").checked // false true
+        if(cValveOpen1){
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"open"},config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+        }else{
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"close"},config)
+                .then((res) => {
+                    console.log("data sent 1")
+                })
+            let x = parseInt(document.getElementById("cValveFactor1").value)
+            let y = parseInt(document.getElementById("cvalve1w").value)
+
+            setTimeout(() => {
+                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"open"},config)
+                }, y/x);
+            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"close"},config)
         }
 
-        let valve1 = document.getElementById('valve1').checked;
-        let valve2 = document.getElementById('valve2').checked;
-        let valve3 = document.getElementById('valve3').checked;
-        let data = {nodeid:id.id,temp:value,fanopen:fanOpen,perm:perm,valve1:valve1,valve2:valve2,valve3:valve3,sleepMode:sleepMode,optimalMode:optimalMode,manualMode:manualMode}
-        console.log(fanOpen)
-        console.log("sent data: ")
-        console.log(data)
-        axios
-            .post(baseUrl+'api/users/setnodeconfig/' , data,config)
-            .then((res) => {
-                console.log("data sent")
-            })
+        let cValveOpen2 = document.getElementById("cValveOpen2").checked // false true
+        if(cValveOpen2){
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"open"},config)
+                .then((res) => {
+                    console.log("data sent 2" )
+                })
+        }else{
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"close"},config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+            let x = parseInt(document.getElementById("cValveFactor2").value)
+            let y = parseInt(document.getElementById("cvalve2w").value)
+            setTimeout(() => {
+                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"open"},config)
+            }, y/x);
+            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"close"},config)
+        }
+
+        let cValveOpen3 = document.getElementById("cValveOpen3").checked // false true
+        if(cValveOpen3){
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"open"},config)
+                .then((res) => {
+                    console.log("data sent 3")
+                })
+        }else{
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"close"},config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+            let x = parseInt(document.getElementById("cValveFactor3").value)
+            let y = parseInt(document.getElementById("cvalve3w").value)
+            setTimeout(() => {
+                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"open"},config)
+            }, y/x);
+            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"close"},config)
+        }
+
+        let cValveOpen4 = document.getElementById("cValveOpen4").checked // false true
+        if(cValveOpen4){
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"open"},config)
+                .then((res) => {
+                    console.log("data sent 4")
+                })
+        }else{
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"close"},config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+            let x = parseInt(document.getElementById("cValveFactor4").value)
+            let y = parseInt(document.getElementById("cvalve4w").value)
+            setTimeout(() => {
+                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"open"},config)
+            }, y/x);
+            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"close"},config)
+        }
+
+        let cValveOpen5 = document.getElementById("cValveOpen5").checked // false true
+        if(cValveOpen5){
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"open"},config)
+                .then((res) => {
+                    console.log("data sent 5")
+                })
+        }else{
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"close"},config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+            let x = parseInt(document.getElementById("cValveFactor5").value)
+            let y = parseInt(document.getElementById("cvalve5w").value)
+            setTimeout(() => {
+                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"open"},config)
+            }, y/x);
+            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"close"},config)
+        }
+
+
     }
 
     return (
