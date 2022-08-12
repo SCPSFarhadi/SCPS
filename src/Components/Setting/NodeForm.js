@@ -71,8 +71,7 @@ export default function NodeForm(props) {
             alert("Please Check only one mode");
             return;
         }
-
-        let data = {nodeid:id.id,
+        let data = {nodeid:id,
             temp:value,
             fanAir1:fanAir1,
             fanAir2:fanAir2,

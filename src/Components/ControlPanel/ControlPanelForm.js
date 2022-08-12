@@ -14,6 +14,8 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import axios from "axios";
+import {baseUrl} from "../../Actions/auth";
 
 
 
@@ -36,6 +38,35 @@ export default function ControlPanelForm() {
 
 
 };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    let token = localStorage.getItem('token_access')
+    if (token) {
+      config.headers['Authorization'] = `JWT ${token}`;
+    }
+    let data ={
+      "longitude":document.getElementById("longitude").value,
+      "latitude":document.getElementById("latitude").value
+    }
+
+    console.log("sent data weather: ")
+    console.log(data)
+
+    axios
+        .post(baseUrl+'api/users/weather/' , data,config)
+        .then((res) => {
+          console.log("data sent weather")
+        })
+
+
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h3" gutterBottom>
@@ -152,7 +183,7 @@ export default function ControlPanelForm() {
         <Grid item xs={12} sm={9}>
           
           <TextField
-              id="setPoint"
+              id="longitude"
               name="setpoint"
               label="Longitude"
               fullWidth
@@ -171,7 +202,7 @@ export default function ControlPanelForm() {
         <Grid item xs={12} sm={9}>
           
           <TextField
-              id="setPoint"
+              id="latitude"
               name="setpoint"
               label="Latitude"
               fullWidth
@@ -182,7 +213,7 @@ export default function ControlPanelForm() {
         </Grid>
 
         <Grid item xs={12}>
-          <Button variant="contained" >Refresh Weather</Button>
+          <Button variant="contained" onClick={handleSubmit} >Refresh Weather</Button>
         </Grid>
       </Grid>
       
