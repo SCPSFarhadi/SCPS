@@ -21,7 +21,7 @@ import {
     CardActions,
     CardContent, ListItem,
     ListItemAvatar,
-    ListItemText
+    ListItemText, Menu
 } from "@mui/material";
 import Button from "@mui/material/Button";
 
@@ -50,6 +50,7 @@ import exportAsImage from "./ExportAsImage";
 import Avatar from "@mui/material/Avatar";
 import CircleIcon from '@mui/icons-material/Circle';
 import List from "@mui/material/List";
+import PositionedMenu from "./RoomSelect";
 
 const bull = (
     <Box
@@ -239,6 +240,7 @@ function MakeGraph(props) {
         // });
 
     }
+
     // let graphSelect = document.getElementById('graph-id-graph-wrapper')
     //     if(graphSelect)
     //         graphSelect.style.backgroundImage = `url(${backGroundImage})`
@@ -296,6 +298,7 @@ function MakeGraph(props) {
                                                 <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
                                                 <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
                                                 <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
+                                                <PositionedMenu/>
                                             </BottomNavigation>
                                         </Box>
                                     </React.Fragment>

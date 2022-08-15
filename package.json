@@ -34,6 +34,7 @@
     "highcharts": "^10.2.0",
     "highcharts-react-official": "^3.1.0",
     "html2canvas": "^1.4.1",
+    "material-ui-popup-state": "^4.0.2",
     "material-ui-selectfield": "^1.0.24",
     "mui-formik": "^0.1.1",
     "package.json": "^2.0.1",

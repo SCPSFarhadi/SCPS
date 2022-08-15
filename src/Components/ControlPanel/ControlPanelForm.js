@@ -95,7 +95,7 @@ export default function ControlPanelForm() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <Typography variant="h5">
-            Sleep mode
+            Select Mode
           </Typography>
         </Grid>
 
@@ -115,10 +115,13 @@ export default function ControlPanelForm() {
                           setBtnDisabled(true);
                       }
                   }}
+                  style={{width:"150px"}}
                   // onChange={handleChange}
               >
-                  <MenuItem value={"On"}>On</MenuItem>
-                  <MenuItem value={"Off"}>Off</MenuItem>
+                  <MenuItem value={"Sleep"}>Sleep mode</MenuItem>
+                  <MenuItem value={"Automate"}>Automate</MenuItem>
+                  <MenuItem value={"Classify"}>Classify mode</MenuItem>
+
               </Select>
         </Grid>
         <Grid item xs={12} sm={3}>
