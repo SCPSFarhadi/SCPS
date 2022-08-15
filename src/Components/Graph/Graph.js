@@ -1,9 +1,9 @@
 import { Graph } from "react-d3-graph";
-import React from 'react';
+import React, {useRef} from 'react';
 import {useSelector, connect, useDispatch} from "react-redux";
 import store from "../../store";
 import SimpleDialog from "./Dialog";
-import {blue, green, red} from "@mui/material/colors";
+import {blue, green, yellow, red} from "@mui/material/colors";
 import actions from "redux-form/lib/actions";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,7 +15,14 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Matrix from "../Matrix/matrix";
-import {BottomNavigation, BottomNavigationAction, CardActions, CardContent} from "@mui/material";
+import {
+    BottomNavigation,
+    BottomNavigationAction,
+    CardActions,
+    CardContent, ListItem,
+    ListItemAvatar,
+    ListItemText, Menu
+} from "@mui/material";
 import Button from "@mui/material/Button";
 
 import RestoreIcon from '@mui/icons-material/Restore';
@@ -23,9 +30,10 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Grid from "@mui/material/Grid";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import EditIcon from '@mui/icons-material/Edit';
 import AlbumIcon from '@mui/icons-material/Album';
-import ControPanel from "../Setting/ControlPanel";
 import NodeForm from "../Setting/NodeForm";
+
 import LineChart from "./nodeChart";
 import {Label} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
@@ -33,8 +41,18 @@ import axios from "axios";
 import {baseUrl} from "../../Actions/auth";
 import {RECEIVE_NODETEMP} from "../../Actions/types";
 import LineChart2 from "./nodeChart";
+import MenuItem from "@mui/material/MenuItem";
+import EdithDialog from "./EditDialog";
+import UploadDialog from "./UploadImage";
+import html2canvas from "html2canvas";
+import SaveIcon from '@mui/icons-material/Save';
+import exportAsImage from "./ExportAsImage";
+import Avatar from "@mui/material/Avatar";
+import CircleIcon from '@mui/icons-material/Circle';
+import List from "@mui/material/List";
+import PositionedMenu from "./RoomSelect";
 import Calculation from "../Setting/Calculation";
-
+import ControPanel from "../Setting/ControlPanel";
 
 const bull = (
     <Box
@@ -48,8 +66,9 @@ const bull = (
 const myConfig = {
     nodeHighlightBehavior: true,
     node: {
+        shape:'rec',
         color: "green",
-        size: 820,
+        size: 420,
         highlightStrokeColor: "blue",
     },
     link: {
@@ -58,6 +77,69 @@ const myConfig = {
 };
 
 function MakeGraph(props) {
+    let dataShortDetail = useSelector(() => store.getState().receiveData.shortDetail);
+    let details = {
+        "nodeId":" ",
+        "time":  " ",
+        "temp": " ",
+        "lastOccupancy":" ",
+        "lightSensor":" ",
+        "humiditySensor":" ",
+        "analogSensor1":" ",
+        "analogSensor2":" ",
+        "fanAir1":" ",
+        "fanAir2":" ",
+        "hvac1":" ",
+        "hvac2":" ",
+        "parameter":" "
+    }
+    if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
+        console.log("short detail updated")
+        details = dataShortDetail;
+    }
+    ///////// dialog state :
+    const [openDialog, setOpenDialog] = React.useState(false);
+
+    const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
+
+
+
+
+    const handleClickOpenDialog = () => {
+        console.log("fun")
+        setOpenDialog(true);
+    };
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+    const handleClickOpenDialogUpload = () => {
+        console.log("fun upload")
+        setOpenDialogUpload(true);
+    };
+    const handleCloseDialogUpload = () => {
+        setOpenDialogUpload(false);
+    };
+
+
+    let modData = props.data;
+    let menus = "Nodes not loaded";
+    if(modData) {
+        menus = modData['nodes'].map((l,i)=>{
+            let secondary = "waiting for node status...";
+            if(modData.nodes[i].color)
+                secondary = modData.nodes[i].color
+            return (
+                <ListItem key={i}>
+                    <ListItemAvatar>
+                        <CircleIcon  style={{ color: green[500] }} />
+                    </ListItemAvatar>
+                    <ListItemText primary={l.id} secondary={secondary} />
+                </ListItem>
+                // <MenuItem key={i} value={l.id}>{l.id}</MenuItem>
+
+            )
+        })
+    }
     const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
     let count_run = 0;
@@ -128,14 +210,45 @@ function MakeGraph(props) {
             return item.id === nodeId;
         });
         selectNode.forEach(item => {
+            item.color = "#f8c0cb";
             setSelectedNode(item.id);
             getLastData(item.id);
+
         });
+        setData(modData)
+
+
     };
     const theme = createTheme();
     const useStyles = makeStyles({border: "solid 1px #555", backgroundColor: "#fbfbf7", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
         MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"});
 
+    function handleRefresh() {
+        console.log("hiiiiii")
+        axios
+            .get(baseUrl + 'api/users/graph/' )
+            .then((res) => {
+                console.log("get data from server")
+            })
+            .catch((err) => {
+                console.log("error in receive data "+err)
+            });
+    }
+    const canvasRef = useRef()
+    function handleSaveButton() {
+        exportAsImage(document.querySelector("#graphDiv"), "test").then(r =>console.log("done"))
+        // html2canvas(document.querySelector("#graphDiv")).then(canvas => {
+        //     document.body.appendChild(canvas)
+        // });
+
+    }
+
+    // let graphSelect = document.getElementById('graph-id-graph-wrapper')
+    //     if(graphSelect)
+    //         graphSelect.style.backgroundImage = `url(${backGroundImage})`
+    //
+    // console.log("background:")
+    // console.log(backGroundImage)
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -181,10 +294,13 @@ function MakeGraph(props) {
                                             setValue(newValue);
                                         }}
                                     >
-                                        <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} />
-                                        <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>} />
+                                        <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />
+                                        <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>}  onClick={handleClickOpenDialogUpload}/>
                                         <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
                                         <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
+                                        <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
+                                        <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
+                                        <PositionedMenu/>
                                     </BottomNavigation>
                                 </Box>
                             </Paper>

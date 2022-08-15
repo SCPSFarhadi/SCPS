@@ -155,8 +155,6 @@ function DashboardContent(props) {
     modData['nodes'] = [{ id: "1"}, { id: "2" }, { id: "3" }];
     modData['links'] =
         [
-            { source: "1", target: "2" },
-            { source: "2", target: "3" },
         ]
     ;
 
