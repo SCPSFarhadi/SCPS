@@ -4,6 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import {HOST_URL} from "../../settings";
+import {imageGallery} from "./FileUpload";
 
 class ImageUploader extends React.Component{
 
@@ -31,7 +32,8 @@ class ImageUploader extends React.Component{
         axios.post(url, data, { // receive two parameter endpoint url ,form data
         })
             .then(res => { // then print response status
-                console.warn(res);
+                console.log(HOST_URL+(res.data).image);
+                imageGallery.push(HOST_URL+(res.data).image)
             })
 
     }

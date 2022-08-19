@@ -40,7 +40,7 @@ import { withStyles } from "@material-ui/core/styles";
 import {ImageListItem} from "@mui/material";
 import ImageUploader from "./ImageUploader";
 
-let imageGallery = [
+export let imageGallery = [
     "images.jpeg",
     "1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
     "caturday-shutterstock_149320799.jpg"
@@ -110,10 +110,11 @@ const styles = theme => ({
 });
 
 class ImageUploadCard extends React.Component {
+
     state = {
         mainState: "initial", // initial, search, gallery, uploaded
         imageUploaded: 0,
-        selectedFile: null
+        selectedFile: null,
     };
 
     handleUploadClick = event => {
@@ -222,7 +223,7 @@ class ImageUploadCard extends React.Component {
         return (
             <div className={classes.searchRoot} >
                 {/*<InputBase className={classes.searchInput} placeholder="Image URL" />*/}
-                <ImageUploader />
+                <ImageUploader  />
                 {/*<IconButton*/}
                 {/*    className={classes.button}*/}
                 {/*    aria-label="Search"*/}

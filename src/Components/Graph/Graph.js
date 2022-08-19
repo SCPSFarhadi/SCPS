@@ -309,13 +309,28 @@ function MakeGraph(props) {
                                                     setValue(newValue);
                                                 }}
                                             >
-                                                <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />
-                                                <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>}  onClick={handleClickOpenDialogUpload}/>
-                                                <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
-                                                <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
-                                                <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
-                                                <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
-                                                <PositionedMenu/>
+                                                <Grid item sm={4} xs={2}>
+                                                    <BottomNavigationAction label="Refresh" icon={<RestoreIcon sx={{ color: green[600] }} />} onClick={handleRefresh} />
+                                                </Grid>
+                                                <Grid item sm={4} xs={2}>
+                                                    <BottomNavigationAction label="Locations" icon={<LocationOnIcon sx={{ color: blue[600] }}/>}  onClick={handleClickOpenDialogUpload}/>
+                                                </Grid>
+                                                <Grid item sm={4} xs={2}>
+                                                    <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />
+                                                </Grid>
+                                                <Grid item sm={4} xs={2}>
+                                                    <BottomNavigationAction label="Warnings" icon={<WarningAmberIcon sx={{ color: 'warning.main' }}/>} />
+                                                </Grid>
+                                                <Grid item sm={4} xs={2}>
+                                                    <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
+                                                </Grid>
+                                                <Grid item sm={4} xs={2}>
+                                                    <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
+                                                </Grid>
+                                                <Grid item sm={4} xs={2}>
+                                                    <PositionedMenu/>
+                                                </Grid>
+
                                             </BottomNavigation>
                                         </Box>
                                     </React.Fragment>
