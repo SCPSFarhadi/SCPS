@@ -32,7 +32,6 @@ class FileUpload extends React.Component{
                 console.log(HOST_URL+(res.data).File);
                 console.log(res);
             })
-
     }
 
     render(){

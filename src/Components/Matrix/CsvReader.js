@@ -21,7 +21,6 @@ function CsvReader(props) {
 
     return (
             // <ReactFileReader fileTypes={[".csv"]} multipleFiles={false} handleFiles={handleFiles}>
-
             // </ReactFileReader>
         <FileUpload />
     );
