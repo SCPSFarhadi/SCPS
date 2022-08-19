@@ -279,12 +279,10 @@ function DashboardContent(props) {
                 console.log(nodeColor)
 
                 let selectNode = modData.nodes.filter(item => {
-                    console.log("after ID : "+item.id )
                     return item.id.toString() === nodeId.toString();
                 });
                 // console.log(selectNode)
                 selectNode.forEach(item => {
-                    console.log("after ID color: "+item.id )
                     item.color = nodeColor;
                 });
             }

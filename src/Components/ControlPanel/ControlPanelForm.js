@@ -23,18 +23,40 @@ import {baseUrl} from "../../Actions/auth";
 export default function ControlPanelForm() {
 
   const [disabled, setBtnDisabled] = React.useState(true);
-  const [perm, setBtnPerm] = React.useState("Off");
+  const [heatingCooling,setHeatingCooling] = React.useState('');
+  const [fanOnOff,setFanOffOn] = React.useState('');
+  const [menuItemSelect, setBtnMenuItemSelect] = React.useState("");
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
   const clickSubmit = function() {
     console.log("in click")
-    let sleepMode = perm
+    let Mode = menuItemSelect
     let setPoint = document.getElementById("setPoint").value
-    console.log(setPoint)
-
-    if(sleepMode === "Off" && !setPoint.value){
-      alert("Please add set");
-
+    let coolingHeatingMode = heatingCooling;
+    let FanState = fanOnOff
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    let token = localStorage.getItem('token_access')
+    if (token) {
+      config.headers['Authorization'] = `JWT ${token}`;
     }
+    let data = {hvacmode:coolingHeatingMode,
+      selectmode:Mode,
+      fan:FanState,
+      setpoint:setPoint
+    }
+
+    console.log("sent data: ")
+    console.log(data)
+
+    axios
+        .post(baseUrl+'api/users/controlPanel/' , data,config)
+        .then((res) => {
+          console.log("data sent")
+        })
+
 
 
 };
@@ -67,6 +89,22 @@ export default function ControlPanelForm() {
 
   }
 
+  function coolingHeatingButton(event) {
+    if(event.target.value === 'Cooling'){
+      setHeatingCooling('cooling')
+    }else if(event.target.value === 'Heating'){
+      setHeatingCooling('heating')
+    }
+  }
+
+  function handleFanOn(event) {
+    if(event.target.value === 'On'){
+      setFanOffOn('on')
+    }else if(event.target.value === 'Off'){
+      setFanOffOn('off')
+    }
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h3" gutterBottom>
@@ -87,8 +125,8 @@ export default function ControlPanelForm() {
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="Cooling" control={<Radio />} label="Cooling" />
-              <FormControlLabel value="Heating" control={<Radio />} label="Heating" />
+              <FormControlLabel value="Cooling" control={<Radio onClick={coolingHeatingButton}/>} label="Cooling" />
+              <FormControlLabel value="Heating" control={<Radio onClick={coolingHeatingButton} />} label="Heating" />
             </RadioGroup>
           </FormControl>
 
@@ -104,23 +142,23 @@ export default function ControlPanelForm() {
               <Select
                   labelId="demo-simple-select-label"
                   id="sleepModeId"
-                  value={perm}
+                  value={menuItemSelect}
                   label="Sleep Mode"
                   onChange={(event) => {
                     console.log("FADAYAT SHAVAM")
-                      setBtnPerm(event.target.value)
-                      if (event.target.value === "Off") {
-                          setBtnDisabled(false);
-                      } else {
+                      setBtnMenuItemSelect(event.target.value)
+                      if (event.target.value === "Sleep") {
                           setBtnDisabled(true);
+                      } else {
+                          setBtnDisabled(false);
                       }
                   }}
                   style={{width:"150px"}}
                   // onChange={handleChange}
               >
-                  <MenuItem value={"Sleep"}>Sleep mode</MenuItem>
-                  <MenuItem value={"Automate"}>Automate</MenuItem>
-                  <MenuItem value={"Classify"}>Classify mode</MenuItem>
+                  <MenuItem value={"sleep"}>Sleep mode</MenuItem>
+                  <MenuItem value={"automate"}>Automate</MenuItem>
+                  <MenuItem value={"classify"}>Classify mode</MenuItem>
 
               </Select>
         </Grid>
@@ -142,8 +180,8 @@ export default function ControlPanelForm() {
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
             >
-              <FormControlLabel value="On" control={<Radio />} label="On" />
-              <FormControlLabel value="Off" control={<Radio />} label="Off" />
+              <FormControlLabel value="On" control={<Radio onClick={handleFanOn}/>} label="On" />
+              <FormControlLabel value="Off" control={<Radio onClick={handleFanOn} />} label="Off" />
             </RadioGroup>
           </FormControl>
         </Grid>

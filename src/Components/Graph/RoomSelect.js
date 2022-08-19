@@ -14,7 +14,7 @@ export default function PositionedMenu() {
                     </Button>
                     <Menu {...bindMenu(popupState)}>
                         <MenuItem onClick={popupState.close}>Room 1</MenuItem>
-                        <MenuItem onClick={popupState.close}>Room 2t</MenuItem>
+                        <MenuItem onClick={popupState.close}>Room 2</MenuItem>
                         <MenuItem onClick={popupState.close}>Room 3</MenuItem>
                     </Menu>
                 </React.Fragment>

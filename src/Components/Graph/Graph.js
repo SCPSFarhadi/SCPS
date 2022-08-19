@@ -118,6 +118,23 @@ function MakeGraph(props) {
         setOpenDialogUpload(false);
     };
 
+    const onClickedNodeMenu = function(elem) {
+        console.log("in click")
+        let modData = { ...dataState };
+
+        let selectNode = modData.nodes.filter(item => {
+            return item.id === elem.target.innerHTML;
+        });
+        selectNode.forEach(item => {
+            item.color = "#f8c0cb";
+            setSelectedNode(item.id);
+            getLastData(item.id);
+
+        });
+        setData(modData)
+
+
+    };
 
     let modData = props.data;
     let menus = "Nodes not loaded";
@@ -127,7 +144,7 @@ function MakeGraph(props) {
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
-                <ListItem key={i}>
+                <ListItem key={i} onClick={onClickedNodeMenu}>
                     <ListItemAvatar>
                         <CircleIcon  style={{ color: green[500] }} />
                     </ListItemAvatar>
