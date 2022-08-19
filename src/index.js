@@ -10,7 +10,6 @@ import Register from './routes/Register.js'
 import App from './App';
 import './index.css';
 import {BrowserRouter} from "react-router-dom";
-
 // const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 // const routing = (
 //     <Router>

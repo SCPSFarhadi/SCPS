@@ -27,6 +27,8 @@ import {DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 // import DateFnsUtils from "@date-io/date-fns";
 import {useState} from "react";
 import Button from "@mui/material/Button";
+import {HOST_URL} from "../../../settings";
+import axios from "axios";
 
 const BooleanCell = (props) => {
     return (
@@ -64,7 +66,21 @@ export default function TestReport() {
         }
     };
 
-    function submitDate() {
+    function submitDate(event) {
+        event.preventDefault()
+        let from = document.getElementById('fromDateSecurity').value
+        let to = document.getElementById('toDateSecurity').value
+
+        let url = HOST_URL+"/api/users/ReportSecurityStation/";
+        let data2 = {
+            from:from,
+            to:to
+        }
+        axios.post(url, data2, { // receive two parameter endpoint url ,form data
+        })
+            .then(res => { // then print response status
+                console.log(res);
+            })
 
     }
 
@@ -100,16 +116,16 @@ export default function TestReport() {
                         <label style={{fontWeight:"bold"}}>
                             From date:
                         </label>
-                        <input type="date" id="fromDate"/>
+                        <input type="date" id="fromDateSecurity"/>
                     </span>{"          "}
                             <span style={{marginTop:"15px"}}>
                         <label style={{fontWeight:"bold"}}>
                             To date:
                         </label>
-                        <input type="date" id="toDate"/>
+                        <input type="date" id="toDateSecurity"/>
                     </span>{"   "}
                             <span style={{marginTop:"15px"}}>
-                        <Button type="submit" onSubmit={submitDate} >Submit</Button>
+                        <Button type="submit" onClick={submitDate} >Submit</Button>
                     </span>
                 </GridToolbar>
                 <GridColumn field="ID" title="ID"/>

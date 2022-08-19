@@ -14,6 +14,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ImageUploadCard from "./FileUpload";
 import Typography from "@mui/material/Typography";
+import ImageUploader from "./ImageUploader";
 
 export default function UploadDialog(props) {
 
@@ -38,7 +39,6 @@ export default function UploadDialog(props) {
                     {/*    Save*/}
                     {/*</Button>*/}
                 </DialogActions>
-
             </Dialog>
 
 

@@ -10,6 +10,8 @@ import {filterBy} from "@progress/kendo-data-query";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { alpha } from '@material-ui/core/styles';
 import Button from "@mui/material/Button";
+import {HOST_URL} from "../../settings";
+import axios from "axios";
 
 const initialFilter = {
     logic: "and",
@@ -43,7 +45,21 @@ export default function ReportStates() {
     }
 
     function getGrid() {
-        function submitDate() {
+        function submitDate(event) {
+            event.preventDefault()
+            let from = document.getElementById('fromDateReport').value
+            let to = document.getElementById('toDateReport').value
+
+            let url = HOST_URL+"/api/users/ReportNodeStation/";
+            let data2 = {
+                from:from,
+                to:to
+            }
+            axios.post(url, data2, { // receive two parameter endpoint url ,form data
+            })
+                .then(res => { // then print response status
+                    console.log(res);
+                })
 
         }
 
@@ -74,16 +90,16 @@ export default function ReportStates() {
                 <label style={{fontWeight:"bold"}}>
                     From date:
                 </label>
-                <input type="date" id="fromDate"/>
+                <input type="date" id="fromDateReport"/>
             </span>{"          "}
             <span style={{marginTop:"15px"}}>
                 <label style={{fontWeight:"bold"}}>
                     To date:
                 </label>
-                <input type="date" id="toDate"/>
+                <input type="date" id="toDateReport"/>
             </span>{"   "}
             <span style={{marginTop:"15px"}}>
-                <Button type="submit" onSubmit={submitDate} >Submit</Button>
+                <Button type="submit" onClick={submitDate} >Submit</Button>
             </span>
                 {/*<MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
                 {/*    <DateTimePicker*/}

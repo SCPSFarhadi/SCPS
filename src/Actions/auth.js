@@ -11,8 +11,9 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
 } from './types';
+import {HOST_URL} from "../settings";
 
-export const baseUrl = 'http://127.0.0.1:8000/';
+export const baseUrl = HOST_URL+'/';
 
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {

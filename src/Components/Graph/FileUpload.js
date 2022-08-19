@@ -38,8 +38,9 @@ import ReplayIcon from "@material-ui/icons/Replay";
 //Tabs
 import { withStyles } from "@material-ui/core/styles";
 import {ImageListItem} from "@mui/material";
+import ImageUploader from "./ImageUploader";
 
-const imageGallery = [
+let imageGallery = [
     "images.jpeg",
     "1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
     "caturday-shutterstock_149320799.jpg"
@@ -220,14 +221,15 @@ class ImageUploadCard extends React.Component {
 
         return (
             <div className={classes.searchRoot} >
-                <InputBase className={classes.searchInput} placeholder="Image URL" />
-                <IconButton
-                    className={classes.button}
-                    aria-label="Search"
-                    onClick={this.handleImageSearch}
-                >
-                    <SearchIcon />
-                </IconButton>
+                {/*<InputBase className={classes.searchInput} placeholder="Image URL" />*/}
+                <ImageUploader />
+                {/*<IconButton*/}
+                {/*    className={classes.button}*/}
+                {/*    aria-label="Search"*/}
+                {/*    onClick={this.handleImageSearch}*/}
+                {/*>*/}
+                {/*    <SearchIcon />*/}
+                {/*</IconButton>*/}
                 <Divider className={classes.searchDivider} />
                 <IconButton
                     color="primary"
