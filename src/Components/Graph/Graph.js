@@ -301,7 +301,7 @@ function MakeGraph(props) {
                                             </div>
 
                                         </div>
-                                        <Box sx={{ width: 500 }}>
+                                        <Box sx={{ width: "100%" }}>
                                             <BottomNavigation
                                                 showLabels
                                                 value={value}

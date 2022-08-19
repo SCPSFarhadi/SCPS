@@ -78,6 +78,7 @@ import {deepPurple} from "@mui/material/colors";
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import ControlPanelSetting from "../../../Components/ControlPanel/ControlPanelSetting.js";
 import {setNodes} from "../../../Actions/recieveData";
+import {HOST_URL} from "../../../settings";
 
 
 function handleClickBread(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -168,6 +169,7 @@ function DashboardContent(props) {
     let colors = useSelector(() => store.getState().receiveData.colors);
     let dateConfig = useSelector(() => store.getState().receiveData.config);
     let dataPychart = useSelector(() => store.getState().receiveData.pychart);
+    const [nodeId,setNodeId] = React.useState('');
 
     let IdMax = useSelector(() => store.getState().receiveData.idMax);
     if(!IdMax) IdMax = "";
@@ -213,6 +215,7 @@ function DashboardContent(props) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
         setAge(event.target.value);
+        setNodeId(event.target.value)
         axios
             .post(baseUrl+'api/users/sendlastdata/' , {nodeid:event.target.value},config)
             .then((res) => {
@@ -235,7 +238,22 @@ function DashboardContent(props) {
     };
     let dataMiddle;
 
-    function submitDate() {
+    function submitDate(event) {
+        event.preventDefault()
+        let from = document.getElementById('fromDateNode').value
+        let to = document.getElementById('toDateNode').value
+
+        let url = HOST_URL+"/api/users/NodeTempDate/";
+        let data2 = {
+            nodeid:nodeId,
+            from:from,
+            to:to
+        }
+        axios.post(url, data2, { // receive two parameter endpoint url ,form data
+        })
+            .then(res => { // then print response status
+                console.log(res);
+            })
 
     }
 
@@ -380,15 +398,15 @@ function DashboardContent(props) {
                                 <label style={{fontWeight:"bold"}}>
                                     From date:
                                 </label>
-                                <input type="date" id="fromDate"/>
+                                <input type="date" id="fromDateNode"/>
                             </span>{"          "}
                                 <span style={{marginTop:"15px"}}>
                                 <label style={{fontWeight:"bold"}}>
                                     To date:
                                 </label>
-                                <input type="date" id="toDate"/>
+                                <input type="date" id="toDateNode"/>
                             </span>{"   "}
-                                <Button type="submit" onSubmit={submitDate} >Submit</Button>
+                                <Button type="submit" onClick={submitDate} >Submit</Button>
 
                             </div>
 

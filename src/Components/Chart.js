@@ -5,6 +5,8 @@ import Title from '../routes/Dashboard/Header/Title';
 import {useSelector} from "react-redux";
 import store from "../store";
 import Button from "@mui/material/Button";
+import {HOST_URL} from "../settings";
+import axios from "axios";
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -25,7 +27,20 @@ const data = [
 export default function Chart(props) {
     const theme = useTheme();
 
-    function submitDate() {
+    function submitDate(event) {
+        let from = document.getElementById('fromDateRoom').value
+        let to = document.getElementById('toDateRoom').value
+
+        let url = HOST_URL+"/api/users/RoomTempDate/";
+        let data2 = {
+            from:from,
+            to:to
+        }
+        axios.post(url, data2, { // receive two parameter endpoint url ,form data
+        })
+            .then(res => { // then print response status
+                console.log(res);
+            })
 
     }
 
@@ -37,16 +52,16 @@ export default function Chart(props) {
                         <label style={{fontWeight:"bold"}}>
                             From date:
                         </label>
-                        <input type="date" id="fromDate"/>
+                        <input type="date" id="fromDateRoom"/>
                 </span>{"          "}
                 <span style={{marginTop:"15px"}}>
                         <label style={{fontWeight:"bold"}}>
                             To date:
                         </label>
-                        <input type="date" id="toDate"/>
+                        <input type="date" id="toDateRoom"/>
                 </span>{"   "}
                 <span style={{marginTop:"15px"}}>
-                        <Button type="submit" onSubmit={submitDate} >Submit</Button>
+                        <Button type="submit" onClick={submitDate} >Submit</Button>
                 </span>
             </div>
             <ResponsiveContainer>
