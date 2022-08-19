@@ -536,62 +536,62 @@ function DashboardContent(props) {
                             <Divider />
                             <List component="nav">
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
+                                <ListItemButton onClick={() => setMenu("Dashboard")}>
                                     <ListItemIcon>
                                         <DashboardIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Dashboard" onClick={() => setMenu("Dashboard")}/>
+                                    <ListItemText primary="Dashboard" />
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                    <ListItemButton>
+                                    <ListItemButton onClick={() => setMenu("Graph")}>
                                         <ListItemIcon>
                                             <PeopleIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary="Graph" onClick={() => setMenu("Graph")}/>
+                                        <ListItemText primary="Graph" />
                                     </ListItemButton>
                                 </div>
 
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
+                                <ListItemButton onClick={() => setMenu("Control")}>
                                     <ListItemIcon>
                                         <PauseCircleOutlineIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Control Panel" onClick={() => setMenu("Control")}/>
+                                    <ListItemText primary="Control Panel" />
                                 </ListItemButton>
                                 </div>
 
 
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
+                                <ListItemButton  onClick={() => setMenu("Reports")}>
                                     <ListItemIcon>
                                         <BarChartIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Reports" onClick={() => setMenu("Reports")}/>
+                                    <ListItemText primary="Reports"/>
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
+                                <ListItemButton onClick={() => setMenu("Integrations")}>
                                     <ListItemIcon>
                                         <LayersIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Admin Setting" onClick={() => setMenu("Integrations")}/>
+                                    <ListItemText primary="Admin Setting" />
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
+                                <ListItemButton onClick={() => setMenu("TestReport")}>
                                     <ListItemIcon>
                                         <SecurityIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Security Reports" onClick={() => setMenu("TestReport")}/>
+                                    <ListItemText primary="Security Reports" />
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton>
+                                <ListItemButton onClick={() => setMenu("ProfileSetting")}>
                                     <ListItemIcon>
                                         <SettingsIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Login Setting" onClick={() => setMenu("ProfileSetting")}/>
+                                    </ListItemIcon >
+                                    <ListItemText primary="Login Setting" />
                                 </ListItemButton>
                                 </div>
                             </List>
