@@ -37,10 +37,24 @@ const options = {
         type: "spline"
     },
     title: {
-        text: "My chart"
+        text: "Security Status"
+    },
+    xAxis: {
+        categories: ['12:10', '12:30', '13:10', '14:00', '15:10', '15:45']
+    },
+    yAxis: {
+        title: {
+            text: "security percentage level "
+        },
+        // labels: {
+        //     align: 'left',
+        //     x: 0,
+        //     y: -2
+        // },
     },
     series: [
         {
+            name: 'time-stamp ',
             data: [50, 20, 24,40, 30, 60]
         }
     ]
