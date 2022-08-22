@@ -79,6 +79,7 @@ import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import ControlPanelSetting from "../../../Components/ControlPanel/ControlPanelSetting.js";
 import {setNodes} from "../../../Actions/recieveData";
 import {HOST_URL} from "../../../settings";
+import {makeStyles} from "@material-ui/core/styles";
 
 
 function handleClickBread(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -115,7 +116,38 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
-
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+    drawer: {
+        [theme.breakpoints.up('sm')]: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.up('sm')]: {
+            display: 'none',
+        },
+    },
+    toolbar: theme.mixins.toolbar,
+    drawerPaper: {
+        width: drawerWidth
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+    },
+    closeMenuButton: {
+        marginRight: 'auto',
+        marginLeft: 0,
+    },
+}));
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
@@ -127,12 +159,14 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.enteringScreen,
             }),
+
             boxSizing: 'border-box',
             ...(!open && {
                 overflowX: 'hidden',
                 transition: theme.transitions.create('width', {
                     easing: theme.transitions.easing.sharp,
                     duration: theme.transitions.duration.leavingScreen,
+
                 }),
                 width: theme.spacing(7),
                 [theme.breakpoints.up('sm')]: {
