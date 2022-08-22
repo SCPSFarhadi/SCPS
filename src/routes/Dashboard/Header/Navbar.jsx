@@ -56,7 +56,7 @@ import MatrixForm from "../../../Components/Matrix/MatrixSetting";
 import MakeGraph from "../../../Components/Graph/Graph.js";
 // import ProfileSetting from "./Navtabs/ProfileSetting";
 import ProfileSetting from '../../../Components/ProfileSetting/ProfSetting.js'
-import TestReport from '../../../Components/Reports/Testing/testReport'
+import SecurityReports from '../../../Components/Reports/Testing/testReport'
 import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
 import ConfigForm from '../../../Components/Setting/NodeSetting'
 
@@ -425,8 +425,8 @@ function DashboardContent(props) {
     else if(menu === "Profile"){
         dataMiddle = <ProfileSetting/>;
     }
-    else if(menu === "TestReport"){
-        dataMiddle = <TestReport/>;
+    else if(menu === "SecurityReports"){
+        dataMiddle = <SecurityReports/>;
     }
     else if(menu === "Setting"){
         dataMiddle =  <ConfigForm
@@ -579,7 +579,7 @@ function DashboardContent(props) {
                                 </ListItemButton>
                                 </div>
                                 <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton onClick={() => setMenu("TestReport")}>
+                                <ListItemButton onClick={() => setMenu("SecurityReports")}>
                                     <ListItemIcon>
                                         <SecurityIcon />
                                     </ListItemIcon>

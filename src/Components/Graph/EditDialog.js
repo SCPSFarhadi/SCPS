@@ -70,7 +70,7 @@ export default function EditDialog(props) {
                                 m: 'auto',
                             }}
                         >
-                            <Grid item xs={4}>
+                            <Grid item xs={4} lg={4}>
                                 <FormControl style={{marginTop:"20px" ,width:"100px"}}>
                                     <InputLabel id="demo-simple-select-label">NodeId</InputLabel>
                                     <Select
@@ -140,7 +140,7 @@ export default function EditDialog(props) {
             {/*            m: 'auto',*/}
             {/*        }}*/}
             {/*    >*/}
-            {/*        <Grid item xs={4}>*/}
+            {/*        <Grid item xs={4} lg={4}>*/}
             {/*            <FormControl sx={{ mt: 2, minWidth: 120 }}>*/}
             {/*                <InputLabel htmlFor="max-width">Select Node</InputLabel>*/}
             {/*                <Select*/}

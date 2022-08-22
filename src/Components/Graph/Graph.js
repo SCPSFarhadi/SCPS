@@ -269,7 +269,7 @@ function MakeGraph(props) {
              <EdithDialog modData={props.data} handleClickOpenDialog={handleClickOpenDialog} handleCloseDialog={handleCloseDialog} openDialog={openDialog}/>
              <UploadDialog setBackground={props.setBAckGroundImage} modData={props.data} handleClickOpenDialog={handleClickOpenDialogUpload} handleCloseDialog={handleCloseDialogUpload} openDialog={openDialogUpload}/>
             <Grid container spacing={2}>
-                <Grid item xs={8}>
+                <Grid item xs={8} lg={8} sm={12}>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <AppBar
@@ -301,7 +301,7 @@ function MakeGraph(props) {
                                             </div>
 
                                         </div>
-                                        <Box sx={{ width: "100%" }}>
+                                        <Box sx={{ width: "100%" }} style={{display: "inline"}}>
                                             <BottomNavigation
                                                 showLabels
                                                 value={value}
@@ -349,7 +349,7 @@ function MakeGraph(props) {
 
                 </Grid>
                 
-                <Grid item xs={4}>
+                <Grid item xs={4} lg={4} sm={12}>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <AppBar
@@ -382,7 +382,7 @@ function MakeGraph(props) {
                     </ThemeProvider>
                 </Grid>
 
-                <Grid item xs={8}>
+                <Grid item xs={8} lg={8} sm={12}>
                 <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <AppBar
@@ -408,7 +408,7 @@ function MakeGraph(props) {
                     </ThemeProvider>
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item xs={4} lg={4} sm={12}>
                 <ThemeProvider theme={theme} >
                         <CssBaseline />
                         <AppBar
