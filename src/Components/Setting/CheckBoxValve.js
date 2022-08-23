@@ -20,12 +20,12 @@ export default function IndeterminateCheckbox(props) {
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
             <FormControlLabel
-                label="control valve 1 open"
+                label="HVAC 1 open"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={<Switch id="controlValve1" {...label} defaultChecked onChange={props.handleCheckingFanAir} disabled={props.disableCheckBox}/>}
             />
             <FormControlLabel
-                label="control valve 2 open"
+                label="HVAC 2 open"
                 control={<Switch id="controlValve2" {...label} defaultChecked onChange={props.handleCheckingFanAir} disabled={props.disableCheckBox}/>}
             />
             {/*<FormControlLabel*/}

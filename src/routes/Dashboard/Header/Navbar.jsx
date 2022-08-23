@@ -193,7 +193,7 @@ function DashboardContent(props) {
         ]
     ;
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const [menu, setMenu] = React.useState("Dashboard");
 
     const [backGroundImage, setBAckGroundImage] = React.useState('');

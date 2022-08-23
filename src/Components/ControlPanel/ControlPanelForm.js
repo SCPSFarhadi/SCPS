@@ -147,7 +147,7 @@ export default function ControlPanelForm() {
                   onChange={(event) => {
                     console.log("FADAYAT SHAVAM")
                       setBtnMenuItemSelect(event.target.value)
-                      if (event.target.value === "Sleep") {
+                      if (event.target.value === "sleep") {
                           setBtnDisabled(true);
                       } else {
                           setBtnDisabled(false);
@@ -158,32 +158,9 @@ export default function ControlPanelForm() {
               >
                   <MenuItem value={"sleep"}>Sleep mode</MenuItem>
                   <MenuItem value={"automate"}>Automate</MenuItem>
-                  <MenuItem value={"classify"}>Classify mode</MenuItem>
+                  <MenuItem value={"classic"}>Classic mode</MenuItem>
 
               </Select>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5">
-            Fan
-          </Typography>
-        </Grid>
-
-
-        <Grid item xs={12} sm={9}>
-             {/* <FormControlLabel
-                label="Fan"
-                control={<Switch id="workMode1" {...label} />}
-            /> */}
-          <FormControl> 
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel value="On" control={<Radio onClick={handleFanOn}/>} label="On" />
-              <FormControlLabel value="Off" control={<Radio onClick={handleFanOn} />} label="Off" />
-            </RadioGroup>
-          </FormControl>
         </Grid>
 
         <Grid item xs={12} sm={3}>
