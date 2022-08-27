@@ -187,7 +187,7 @@ const mdTheme = createTheme();
 function DashboardContent(props) {
 
     let modData = {};
-    modData['nodes'] = [{ id: "1c:9d:c2:49:b6:2"}, { id: "2" }, { id: "3" }];
+    modData['nodes'] = [{ id: "1"}];
     modData['links'] =
         [
         ]

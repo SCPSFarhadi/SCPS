@@ -68,7 +68,7 @@ export default function SimpleDialog(props) {
 
                 <ListItem button onClick={() => handleListItemClick()} key="3">
                     <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                        <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
                             <AccessTimeIcon />
                         </Avatar>
                     </ListItemAvatar>
@@ -93,7 +93,7 @@ export default function SimpleDialog(props) {
                                 </ListItemAvatar>
                                 <ListItemText inset >Fan Air 1 {props.details.fanAir1}</ListItemText>
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem disabled={true}>
                                 <ListItemAvatar>
                                     <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                         <PowerIcon/>

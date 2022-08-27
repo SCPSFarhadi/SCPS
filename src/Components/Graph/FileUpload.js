@@ -325,6 +325,7 @@ class ImageUploadCard extends React.Component {
         return (
             <div>
                 <img
+
                     width="100%"
                     className={classes.media}
                     src={this.state.selectedFile}

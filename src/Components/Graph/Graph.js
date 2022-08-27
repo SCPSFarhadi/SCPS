@@ -76,15 +76,19 @@ const myConfig = {
 
 function MakeGraph(props) {
     let dataShortDetail = useSelector(() => store.getState().receiveData.shortDetail);
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateTime = date + ' ' + time;
     let details = {
-        "nodeId":" ",
-        "time":  " ",
-        "temp": " ",
-        "lastOccupancy":" ",
-        "lightSensor":" ",
-        "humiditySensor":" ",
-        "analogSensor1":" ",
-        "analogSensor2":" ",
+        "nodeId":"1",
+        "time":  dateTime,
+        "temp": "29",
+        "lastOccupancy":"Null",
+        "lightSensor":"Null",
+        "humiditySensor":"Null",
+        "analogSensor1":"Null",
+        "analogSensor2":"Null",
         "fanAir1":" ",
         "fanAir2":" ",
         "hvac1":" ",
@@ -289,7 +293,7 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <div>
 
-                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(${props.backGroundImage})`}}>
+                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(${props.backGroundImage})`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
                                                 <Graph
                                                     id="graph-id" // id is mandatory
                                                     data={props.data}

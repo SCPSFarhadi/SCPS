@@ -35,6 +35,7 @@ export default function DangleSetpoint(props) {
                 />}
             />
             <FormControlLabel
+                disabled={true}
                 label="Dongle Set point 2"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={        <TextField
