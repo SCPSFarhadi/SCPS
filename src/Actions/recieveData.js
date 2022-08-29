@@ -10,7 +10,8 @@ import {
     RECEIVE_COLOR,
     RECEIVE_MAXTEMP,
     RECEIVE_MINTEMP,
-    RECEIVE_SHORTDETAIL
+    RECEIVE_SHORTDETAIL,
+    RECEIVE_NODETEMP
 } from "./types";
 
 // GET LEADS
@@ -50,7 +51,7 @@ export const receiveRoomTemp = (data) => (dispatch) => {
 export const receiveNodeTemp = (data) => (dispatch) => {
     dispatch({
         payload: data,
-        type: RECEIVE_ROOMTEMP
+        type: RECEIVE_NODETEMP
     })
 }
 

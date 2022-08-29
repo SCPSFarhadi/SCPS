@@ -273,11 +273,12 @@ function DashboardContent(props) {
     let dataMiddle;
 
     function submitDate(event) {
+        console.log('in from to to Node Temp')
         event.preventDefault()
         let from = document.getElementById('fromDateNode').value
         let to = document.getElementById('toDateNode').value
 
-        let url = HOST_URL+"/api/users/NodeTempDate/";
+        let url = HOST_URL+"/api/users/ReportNodeStation/";
         let data2 = {
             nodeid:nodeId,
             from:from,

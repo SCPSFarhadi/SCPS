@@ -13,7 +13,7 @@ function LineChart(props) {
         {
             name: "Guests",
             // data: props.temps
-            data: ["24.25","25.26","25.78","26.2","24.5","23.65"]
+            data: ["24.25","25.26","27.78","28.20","28.80","29"]
         }
     ];
     const options = {

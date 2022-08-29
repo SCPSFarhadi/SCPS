@@ -28,6 +28,7 @@ export default function Chart(props) {
     const theme = useTheme();
 
     function submitDate(event) {
+        console.log("in romm temp from to to")
         let from = document.getElementById('fromDateRoom').value
         let to = document.getElementById('toDateRoom').value
 

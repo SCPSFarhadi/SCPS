@@ -24,6 +24,8 @@ export default function NodeForm(props) {
 
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
 
+    const [modeSelect, setModeSelect] = useState('')
+
 
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
@@ -132,8 +134,13 @@ export default function NodeForm(props) {
                 Node Setting
             </Typography>
             <Grid container spacing={3}>
-                
-                
+
+                <Grid item xs={12}>
+                    <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking} setModeSelect={setModeSelect}
+                                               setBtnDisabled={setBtnDisabled}/>
+                </Grid>
+
+
                 <Grid item xs={12}>
                     <Typography>
                         Set point:
@@ -152,7 +159,7 @@ export default function NodeForm(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <FormControl fullWidth>
+                    <FormControl fullWidth disabled={btnDisabled}>
                         <InputLabel id="demo-simple-select-label">Room Occupant Permission</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
@@ -176,7 +183,7 @@ export default function NodeForm(props) {
                 </Grid>
                 <Grid item xs={12}>
 
-                    <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking}/>
+                    {/*<IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking}/>*/}
                     <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox} handleCheckingFanAir={handleChecking}/>
 
                     {/*<FormControlLabel*/}

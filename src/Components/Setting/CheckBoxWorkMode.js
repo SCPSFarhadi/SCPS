@@ -16,13 +16,17 @@ export default function IndeterminateCheckboxWork(props) {
         // console.log(event.target.checked)
         props.setDisableCheckBox(!event.target.checked);
         props.handleCheckingFanAir();
+        props.setModeSelect('maintenance')
     };
 
     const handleChange3 = (event) => {
         setChecked([checked[0], event.target.checked,checked[2]]);
+        props.setModeSelect('automate')
+        props.setBtnDisabled(!event.target.checked)
     };
     const handleChange4 = (event) => {
         setChecked([checked[0], checked[1],event.target.checked]);
+        props.setModeSelect('sleep')
     };
 
     const children = (
