@@ -67,32 +67,32 @@ import Chart from "react-apexcharts";
 
 
 function LineChart2(props) {
-    // const series = [
-    //     {
-    //         name: "Guests",
-    //         // data: props.temps
-    //         data: props.temps
-    //     }
-    // ];
-    // const options = {
-    //     xaxis: {
-    //         // categories: props.times
-    //         categories: props.times
-    //     }
-    // };
     const series = [
         {
             name: "Guests",
             // data: props.temps
-            data: ["24.25","25.26","27.78","28.20","28.80","29"]
+            data: props.temps
         }
     ];
     const options = {
         xaxis: {
             // categories: props.times
-            categories: ["1401-03-18 12:39:55","1401-03-18 14:39:55","1401-03-18 18:39:55","1401-03-18 21:39:55","1401-03-19 12:39:55","1401-03-19 18:39:55"]
+            categories: props.times
         }
     };
+    // const series = [
+    //     {
+    //         name: "Guests",
+    //         // data: props.temps
+    //         data: ["24.25","25.26","27.78","28.20","28.80","29"]
+    //     }
+    // ];
+    // const options = {
+    //     xaxis: {
+    //         // categories: props.times
+    //         categories: ["1401-03-18 12:39:55","1401-03-18 14:39:55","1401-03-18 18:39:55","1401-03-18 21:39:55","1401-03-19 12:39:55","1401-03-19 18:39:55"]
+    //     }
+    // };
     return (
         <Chart type="line" series={series} options={options} />
     );
