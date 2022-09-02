@@ -85,8 +85,9 @@ export default function SimpleDialog(props) {
                                     </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText inset>HVAC 1 {props.details.hvac1}</ListItemText>
-
-                                <ListItemAvatar style={{ marginLeft: '30px' }} >
+                            </MenuItem>
+                            <MenuItem>
+                                <ListItemAvatar >
                                     <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                         <AirIcon/>
                                     </Avatar>
@@ -101,13 +102,16 @@ export default function SimpleDialog(props) {
                                 </ListItemAvatar>
                                 <ListItemText inset>HVAC 2 {props.details.hvac2}</ListItemText>
 
-                                <ListItemAvatar style={{ marginLeft: '30px' }} >
+                            </MenuItem>
+                            <MenuItem disabled={true}>
+                                <ListItemAvatar >
                                     <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
                                         <AirIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText inset >Fan Air 2 {props.details.fanAir2}</ListItemText>
                             </MenuItem>
+
                         </MenuList>
                     </ListItemAvatar>
 

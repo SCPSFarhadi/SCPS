@@ -124,8 +124,9 @@ export default function ReportStates() {
 
             <GridColumn field="ID" title="ID"
                         filter="date"
-                        format="{0:d}"/>
-            <GridColumn field="Temp" title="Temperature"/>
+                        format="{0:d}"
+                        disableColumnFilter/>
+            <GridColumn field="Temp"  title="Temperature"/>
             <GridColumn field="active" title="active" cell={BooleanCell}/>
             <GridColumn field="status" title="status"/>
             <GridColumn field="comment" title="comment"/>

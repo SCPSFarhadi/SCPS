@@ -123,7 +123,9 @@ function MakeGraph(props) {
     };
 
     const onClickedNodeMenu = function(elem) {
-        console.log("in click")
+        console.log("in click down menu")
+        console.log(elem.target.innerHTML)
+
         let modData = { ...dataState };
 
         let selectNode = modData.nodes.filter(item => {
@@ -144,7 +146,7 @@ function MakeGraph(props) {
     let menus = "Nodes not loaded";
     if(modData) {
         menus = modData['nodes'].map((l,i)=>{
-            let secondary = "waiting for node status...";
+            let secondary = "waiting for node status...(click on node number please)";
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
@@ -152,7 +154,7 @@ function MakeGraph(props) {
                     <ListItemAvatar>
                         <CircleIcon  style={{ color: green[500] }} />
                     </ListItemAvatar>
-                    <ListItemText primary={l.id} secondary={secondary} />
+                    <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
                 </ListItem>
                 // <MenuItem key={i} value={l.id}>{l.id}</MenuItem>
 
@@ -196,6 +198,9 @@ function MakeGraph(props) {
     }, [])
 
     const getLastData = (id) => {
+        console.log('get last data')
+        console.log(id)
+        var data2 = {nodeid:id}
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -205,6 +210,18 @@ function MakeGraph(props) {
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
+        // fetch(baseUrl+'api/users/sendlastdata/', {
+        //     method: "POST",
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(data2)
+        // }).then(res => {
+        //             console.log("resieve data in graph")
+        //             console.log(res.data)
+        //             dispatch({
+        //                 type: RECEIVE_NODETEMP,
+        //                 payload: res.data,
+        //             });
+        // });
 
         axios
             .post(baseUrl+'api/users/sendlastdata/' , {nodeid:id},config)
@@ -229,7 +246,6 @@ function MakeGraph(props) {
             return item.id === nodeId;
         });
         selectNode.forEach(item => {
-            item.color = "#f8c0cb";
             setSelectedNode(item.id);
             getLastData(item.id);
 
@@ -292,8 +308,8 @@ function MakeGraph(props) {
                                 <React.Fragment>
                                     <React.Fragment>
                                         <div>
-
-                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(${props.backGroundImage})`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
+                                            {/*backgroundImage:`url(${props.backGroundImage})`*/}
+                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(https://s6.uupload.ir/files/screenshot_from_2022-08-27_13-27-26_z58g.png)`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
                                                 <Graph
                                                     id="graph-id" // id is mandatory
                                                     data={props.data}
