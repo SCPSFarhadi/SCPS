@@ -312,7 +312,7 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <div>
                                             {/*backgroundImage:`url(${props.backGroundImage})`*/}
-                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage:`url(http://37.156.25.234:8000/media/users/None/20220902224931909.png)`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
+                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage:`url(http://37.156.25.234:8000/media/users/None/2022090319521763.png)`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
                                                 {/*<Graph*/}
                                                 {/*    id="graph-id" // id is mandatory*/}
                                                 {/*    data={props.data}*/}
