@@ -150,13 +150,16 @@ function MakeGraph(props) {
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
-                <ListItem key={i} onClick={onClickedNodeMenu}>
-                    <ListItemAvatar>
-                        <CircleIcon  style={{ color: green[500] }} />
-                    </ListItemAvatar>
-                    <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
-                </ListItem>
-                // <MenuItem key={i} value={l.id}>{l.id}</MenuItem>
+                <Grid item xl={3} sm={12}>
+                    <ListItem key={i} onClick={onClickedNodeMenu}>
+                        <ListItemAvatar>
+                            <CircleIcon  style={{ color: secondary }} />
+                        </ListItemAvatar>
+                        <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
+                    </ListItem>
+                    {/*<MenuItem key={i} value={l.id}>{l.id}</MenuItem>*/}
+                </Grid>
+
 
             )
         })
@@ -259,7 +262,7 @@ function MakeGraph(props) {
         MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"});
 
     function handleRefresh() {
-        console.log("hiiiiii")
+        console.log("refreshed button click")
         axios
             .get(baseUrl + 'api/users/graph/' )
             .then((res) => {
@@ -309,15 +312,15 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <div>
                                             {/*backgroundImage:`url(${props.backGroundImage})`*/}
-                                            <div id='graphDiv' style={{height:'100%',width:'100%',backgroundImage:`url(https://s6.uupload.ir/files/screenshot_from_2022-08-27_13-27-26_z58g.png)`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
-                                                <Graph
-                                                    id="graph-id" // id is mandatory
-                                                    data={props.data}
-                                                    config={myConfig}
-                                                    onDoubleClickNode={onClickedNode}
-                                                    ref={canvasRef}
-                                                    // onDoubleClickNode = {onDoubleClickNode}
-                                                />
+                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage:`url(http://37.156.25.234:8000/media/users/None/20220902224931909.png)`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
+                                                {/*<Graph*/}
+                                                {/*    id="graph-id" // id is mandatory*/}
+                                                {/*    data={props.data}*/}
+                                                {/*    config={myConfig}*/}
+                                                {/*    onDoubleClickNode={onClickedNode}*/}
+                                                {/*    ref={canvasRef}*/}
+                                                {/*    // onDoubleClickNode = {onDoubleClickNode}*/}
+                                                {/*/>*/}
                                             </div>
 
                                         </div>

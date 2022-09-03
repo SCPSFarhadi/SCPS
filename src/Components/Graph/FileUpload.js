@@ -41,6 +41,7 @@ import {ImageListItem} from "@mui/material";
 import ImageUploader from "./ImageUploader";
 
 export let imageGallery = [
+    "http://37.156.25.234:8000/media/users/None/20220902224931909.png",
     "images.jpeg",
     "1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
     "caturday-shutterstock_149320799.jpg"
@@ -152,7 +153,6 @@ class ImageUploadCard extends React.Component {
     renderInitialState() {
         const { classes, theme } = this.props;
         const { value } = this.state;
-
         return (
                     <Grid container alignItems="center" style={{justifyContent:"center"}}>
                         <input
@@ -175,6 +175,7 @@ class ImageUploadCard extends React.Component {
                             <CollectionsIcon />
                         </Fab>
                     </Grid>
+
 
         );
     }

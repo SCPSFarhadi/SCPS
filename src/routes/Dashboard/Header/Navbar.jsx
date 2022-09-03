@@ -322,12 +322,14 @@ function DashboardContent(props) {
         }
 
         if(colors && colors.length !== 0) {
+            console.log("all colors")
+            console.log(colors)
             for(let i=0;i<colors.length;i++){
-                console.log("something"+i)
+                console.log("set node color with id "+i)
                 let nodeId = colors[i][0]
                 let nodeColor = colors[i][1]
 
-                console.log("Hello ")
+                console.log("with color  "+nodeColor)
                 console.log(nodeId)
                 console.log(nodeColor)
 
