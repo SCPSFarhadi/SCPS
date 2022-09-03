@@ -64,9 +64,7 @@ export default function ReportStates() {
         }
 
         return <Grid data={filterBy(states, filter)}
-                     filterable={true}
-                     filter={filter}
-                     onFilterChange={(e) => setFilter(e.filter)}
+
                      style={{
                          height: '1020px'
                      }}>
@@ -101,35 +99,18 @@ export default function ReportStates() {
             <span style={{marginTop:"15px"}}>
                 <Button type="submit" onClick={submitDate} >Submit</Button>
             </span>
-                {/*<MuiPickersUtilsProvider utils={DateFnsUtils}>*/}
-                {/*    <DateTimePicker*/}
-                {/*        autoOk*/}
-                {/*        ampm={false}*/}
-                {/*        value={selectedDate}*/}
-                {/*        disableFuture={true}*/}
-                {/*        onChange={handleDateChange}*/}
-                {/*        label="From Date:"*/}
-                {/*    />*/}
-
-                {/*    <DateTimePicker*/}
-                {/*        value={selectedDate}*/}
-                {/*        disablePast*/}
-                {/*        onChange={handleDateChange}*/}
-                {/*        disableFuture={true}*/}
-                {/*        label="To"*/}
-                {/*        showTodayButton*/}
-                {/*    />*/}
-                {/*</MuiPickersUtilsProvider>*/}
             </GridToolbar>
 
             <GridColumn field="ID" title="ID"
                         filter="date"
                         format="{0:d}"
                         disableColumnFilter/>
+            <GridColumn field="Time" title="Time"/>
             <GridColumn field="Temp"  title="Temperature"/>
-            {/*<GridColumn field="active" title="active" cell={BooleanCell}/>*/}
-            {/*<GridColumn field="status" title="status"/>*/}
-            {/*<GridColumn field="comment" title="comment"/>*/}
+            <GridColumn field="Humidity" title="Humidity Sensor"/>
+            <GridColumn field="Light" title="Light Sensor"/>
+            <GridColumn field="AnalogSensor1" title="Analog Sensor 1"/>
+            <GridColumn field="AnalogSensor2" title="Analog Sensor 2"/>
         </Grid>
             ;
 

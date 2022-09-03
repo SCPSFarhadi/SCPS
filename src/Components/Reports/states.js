@@ -1,58 +1,75 @@
 export const states = [
     {
-        "ID": "1",
-        "Temp": "20",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
-    },
-    {
-        "ID": "1",
+        "Time":"2022-09-03 18:05:36",
+        "ID":"1",
         "Temp": "25",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
+
     },
     {
-        "ID": "2",
-        "Temp": "27",
-        "active": false,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
+        "Time":"2022-09-03 18:06:49",
+        "ID":"1",
+        "Temp": "26",
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
     },
     {
-        "ID": "4",
-        "Temp": "12",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
+        "Time":"2022-09-03 18:10:20",
+        "ID":"1",
+        "Temp": "26.5",
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
     },
     {
-        "ID": "3",
+        "Time":"2022-09-03 18:11:36",
+        "ID":"1",
+        "Temp": "28.2",
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
+    },
+    {
+        "Time":"2022-09-03 18:14:26",
+        "ID":"1",
         "Temp": "28",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
     },
     {
-        "ID": "1",
-        "Temp": "20",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
-    },
-    {
-        "ID": "1",
-        "Temp": "23",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
-    },
-    {
-        "ID": "1",
+        "Time":"2022-09-03 18:19:46",
+        "ID":"1",
         "Temp": "29",
-        "active": true,
-        "status": "IN_SERVICE",
-        "comment": "Randomness Test Result"
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
+    },
+    {
+        "Time":"2022-09-03 18:25:36",
+        "ID":"1",
+        "Temp": "28.75",
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
+    },
+    {
+        "Time":"2022-09-03 18:29:43",
+        "ID":"1",
+        "Temp": "28.5",
+        "Humidity":"Null",
+        "Light":"Null",
+        "AnalogSensor1":"Null",
+        "AnalogSensor2":"Null"
     }
 ];
