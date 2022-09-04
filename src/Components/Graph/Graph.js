@@ -106,7 +106,6 @@ function MakeGraph(props) {
 
 
 
-
     const handleClickOpenDialog = () => {
         console.log("fun")
         setOpenDialog(true);
@@ -436,11 +435,6 @@ function MakeGraph(props) {
                             <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#caf0f8", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <React.Fragment>
-                                    <Button variant="contained" onClick={()=>{
-                                        console.log("Stop graph")
-                                        times = [];
-                                        temps = [];
-                                    }}>Stop receive data</Button>
                                     <LineChart2 times={times} temps={temps}/>
                                 </React.Fragment>
                             </Paper>
