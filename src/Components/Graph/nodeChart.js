@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
+import Button from "@mui/material/Button";
 
 // class LineChart extends Component {
 //     // constructor(props) {
@@ -94,7 +95,10 @@ function LineChart2(props) {
     //     }
     // };
     return (
-        <Chart type="line" series={series} options={options} />
+        <React.Fragment>
+            <Chart type="line" series={series} options={options} />
+        </React.Fragment>
+
     );
 
 }

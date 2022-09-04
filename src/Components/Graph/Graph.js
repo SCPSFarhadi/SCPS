@@ -156,6 +156,19 @@ function MakeGraph(props) {
                             <CircleIcon  style={{ color: secondary }} />
                         </ListItemAvatar>
                         <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
+                        <Button variant="text" onClick={()=>{
+                            let modData = { ...dataState };
+
+                            let selectNode = modData.nodes.filter(item => {
+                                return item.id === l.id;
+                            });
+                            selectNode.forEach(item => {
+                                setSelectedNode(item.id);
+                                getLastData(item.id);
+
+                            });
+                            setData(modData)
+                        }}>Graph node {l.id}</Button>
                     </ListItem>
                     {/*<MenuItem key={i} value={l.id}>{l.id}</MenuItem>*/}
                 </Grid>
@@ -172,6 +185,7 @@ function MakeGraph(props) {
     const [selectedNode, setSelectedNode] = React.useState("");
     const [nodeColor, setColor] = React.useState(green);
     const [dataState, setData] = React.useState(props.data);
+
     const handleClickOpen = (node) => {
         setSelectedNode(node);
         setOpen(true);
@@ -422,9 +436,12 @@ function MakeGraph(props) {
                             <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#caf0f8", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <React.Fragment>
-                                    <React.Fragment>
-                                        <LineChart2 times={times} temps={temps}/>
-                                    </React.Fragment>
+                                    <Button variant="contained" onClick={()=>{
+                                        console.log("Stop graph")
+                                        times = [];
+                                        temps = [];
+                                    }}>Stop receive data</Button>
+                                    <LineChart2 times={times} temps={temps}/>
                                 </React.Fragment>
                             </Paper>
                         </Container>
