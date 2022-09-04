@@ -105,7 +105,6 @@ function MakeGraph(props) {
     const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
 
 
-
     const handleClickOpenDialog = () => {
         console.log("fun")
         setOpenDialog(true);
@@ -194,11 +193,17 @@ function MakeGraph(props) {
     };
     let dataTime = useSelector(() => store.getState().receiveData.time);
     let dataTemp = useSelector(() => store.getState().receiveData.temp);
+    const [stopGraph,setStopGraph] = React.useState(false)
     let times = [];
     let temps = [];
     if(dataTime && dataTemp && dataTime.length !==0 && dataTemp.length !==0){
         times = dataTime;
         temps = dataTemp;
+    }
+    if(stopGraph){
+        console.log("graph stopped")
+        times = [];
+        temps = [];
     }
     React.useEffect(() => {
         let nodes = props.data.nodes;
@@ -435,7 +440,7 @@ function MakeGraph(props) {
                             <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#caf0f8", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <React.Fragment>
-                                    <LineChart2 times={times} temps={temps}/>
+                                    <LineChart2 times={times} temps={temps} setStopGraph={setStopGraph}/>
                                 </React.Fragment>
                             </Paper>
                         </Container>

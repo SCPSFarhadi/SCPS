@@ -25,8 +25,12 @@ function LineChart2(props) {
         <React.Fragment>
             <Button variant="contained" onClick={()=>{
 
-
+            props.setStopGraph(true)
             }}>Clear/Stop receive data</Button>
+            <Button variant="contained" onClick={()=>{
+
+                props.setStopGraph(false)
+            }}>Start Graph</Button>
             <Chart type="line" series={series} options={options}/>
         </React.Fragment>
 
