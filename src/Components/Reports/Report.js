@@ -129,7 +129,7 @@ export default function ReportStates() {
             let from = document.getElementById('fromDateReport').value
             let to = document.getElementById('toDateReport').value
 
-            let url = HOST_URL+"/api/users/ReportNodeStation/";
+            let url = HOST_URL+"/api/users/report/";
             let data2 = {
                 from:from,
                 to:to
