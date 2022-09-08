@@ -84,34 +84,8 @@ export default function SimpleDialog(props) {
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>HVAC 1 {props.details.hvac1}</ListItemText>
+                                <ListItemText inset>HVAC {props.details.hvac1}</ListItemText>
                             </MenuItem>
-                            <MenuItem>
-                                <ListItemAvatar >
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                        <AirIcon/>
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText inset >Fan Air 1 {props.details.fanAir1}</ListItemText>
-                            </MenuItem>
-                            <MenuItem disabled={true}>
-                                <ListItemAvatar>
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                        <PowerIcon/>
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText inset>HVAC 2 {props.details.hvac2}</ListItemText>
-
-                            </MenuItem>
-                            <MenuItem disabled={true}>
-                                <ListItemAvatar >
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                        <AirIcon/>
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText inset >Fan Air 2 {props.details.fanAir2}</ListItemText>
-                            </MenuItem>
-
                         </MenuList>
                     </ListItemAvatar>
 
@@ -119,23 +93,7 @@ export default function SimpleDialog(props) {
 
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key="6">
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
-                            <AccountTreeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={`Analog Sensor1: ${props.details.analogSensor1}`} />
-                </ListItem>
-                
-                <ListItem button onClick={() => handleListItemClick()} key="5">
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
-                            <AccountTreeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={`Analog Sensor2: ${props.details.analogSensor2}`} />
-                </ListItem>
+
                 <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
@@ -143,14 +101,6 @@ export default function SimpleDialog(props) {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor}`} />
-                </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="8">
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
-                            <LightIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor}`} />
                 </ListItem>
 
                 <ListItem autoFocus button onClick={() => handleListItemClick()} key="9">

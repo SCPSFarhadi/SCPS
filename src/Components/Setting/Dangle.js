@@ -25,21 +25,10 @@ export default function DangleSetpoint(props) {
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
 
             <FormControlLabel
-                label="Dongle Set point 1"
+                label="Dongle Set point"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={        <TextField
                     id="dongle1"
-                    defaultValue="20"
-                    size="small"
-                    variant="standard"
-                />}
-            />
-            <FormControlLabel
-                disabled={true}
-                label="Dongle Set point 2"
-                // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                control={        <TextField
-                    id="dongle2"
                     defaultValue="20"
                     size="small"
                     variant="standard"

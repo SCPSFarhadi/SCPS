@@ -182,34 +182,8 @@ export default function NodeForm(props) {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-
-                    {/*<IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking}/>*/}
                     <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox} handleCheckingFanAir={handleChecking}/>
 
-                    {/*<FormControlLabel*/}
-                    {/*    control={<Checkbox color="secondary" id="checkSolenoid" name="saveAddress" value="yes"/>}*/}
-                    {/*    label="Solenoid valve Open "*/}
-                    {/*/>*/}
-                    {/*<br/>*/}
-                    {/*<FormControlLabel*/}
-                    {/*    control={<Checkbox color="secondary" id="checWorkMode" name="saveAddress" value="yes"/>}*/}
-                    {/*    label="work mode"*/}
-                    {/*/>*/}
-                    {/*<br/>*/}
-                    <Typography variant="h5">
-                        Fan Air
-                    </Typography>
-                    <FormControlLabel
-                        label="Fan air 1 on"
-                        // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                        control={<Switch id="fanAir1" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
-                    />
-                    <FormControlLabel
-                        disabled={true}
-                        label="Fan air 2 on"
-                        control={<Switch id="fanAir2" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
-                    />
-                    <br />
                     <DangleSetpoint />
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
