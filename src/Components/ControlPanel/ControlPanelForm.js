@@ -22,7 +22,7 @@ import {baseUrl} from "../../Actions/auth";
 
 export default function ControlPanelForm() {
 
-  const [disabled, setBtnDisabled] = React.useState(true);
+  const [disabled, setBtnDisabled] = React.useState(false);
   const [heatingCooling,setHeatingCooling] = React.useState('');
   const [fanOnOff,setFanOffOn] = React.useState('');
   const [menuItemSelect, setBtnMenuItemSelect] = React.useState("");
