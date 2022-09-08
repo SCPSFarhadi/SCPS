@@ -193,7 +193,7 @@ function MakeGraph(props) {
     };
     let dataTime = useSelector(() => store.getState().receiveData.time);
     let dataTemp = useSelector(() => store.getState().receiveData.temp);
-    const [stopGraph,setStopGraph] = React.useState(false)
+    const [stopGraph,setStopGraph] = React.useState(true)
     let times = [];
     let temps = [];
     if(dataTime && dataTemp && dataTime.length !==0 && dataTemp.length !==0){
