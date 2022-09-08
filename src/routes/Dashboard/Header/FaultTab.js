@@ -55,30 +55,33 @@ export default function FaultTab(props) {
 
                 {
                     error_list.map((error,index)=> {
-                        if(colors[index]==="red"){
-                            return (
-                                <Alert severity="error" key={index}>
-                                    <AlertTitle>{error}</AlertTitle>
-                                    This is an Error in node ID: {ids[index]}
-                                </Alert>
-                            )
+                        if(ids[index]){
+                            if(colors[index]==="red"){
+                                return (
+                                    <Alert severity="error" key={index}>
+                                        <AlertTitle>{error}</AlertTitle>
+                                        This is an Error in node ID: {ids[index]}
+                                    </Alert>
+                                )
+                            }
+                            else if(colors[index]==="blue"){
+                                return(
+                                    <Alert severity="info" key={index}>
+                                        <AlertTitle>{error}</AlertTitle>
+                                        This is an info in node ID: {ids[index]}
+                                    </Alert>
+                                )
+                            }
+                            else{
+                                return (
+                                    <Alert severity="warning" key={index}>
+                                        <AlertTitle>{error}</AlertTitle>
+                                        This is a warning in node ID: {ids[index]}
+                                    </Alert>
+                                )
+                            }
                         }
-                        else if(colors[index]==="blue"){
-                            return(
-                                <Alert severity="info" key={index}>
-                                    <AlertTitle>{error}</AlertTitle>
-                                    This is an info in node ID: {ids[index]}
-                                </Alert>
-                            )
-                        }
-                        else{
-                            return (
-                                <Alert severity="warning" key={index}>
-                                    <AlertTitle>{error}</AlertTitle>
-                                    This is a warning in node ID: {ids[index]}
-                                </Alert>
-                            )
-                        }
+
 
                     })
 
