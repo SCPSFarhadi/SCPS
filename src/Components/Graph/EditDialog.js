@@ -20,6 +20,7 @@ export default function EditDialog(props) {
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [selectNode, setSelectNode] = React.useState('');
     const [selectRoom, setSelectRoom] = React.useState('');
+
     let modData = props.modData;
     let menus = "Nodes not loaded";
     if(modData) {
@@ -44,7 +45,7 @@ export default function EditDialog(props) {
                         Set Id of a node and select a room id to load image of a map
                     </DialogContentText>
                     <FormControl style={{marginTop:"20px" ,width:"100%"}}>
-                        <InputLabel htmlFor="demo-controlled-open-select">Room Select</InputLabel>
+                        <InputLabel htmlFor="demo-controlled-open-select">Floor Select</InputLabel>
                         <Select
                             value={selectRoom}
                             onChange={handleChangeRoom}
@@ -96,7 +97,7 @@ export default function EditDialog(props) {
                                 <TextField sx={{ mt: 2 , ml:1}} id="standard-basic" label="Node ID" variant="standard" />
                             </Grid>
                             <Grid item xs={3}>
-                                <TextField sx={{ mt: 2 , ml:1}} id="standard-basic" label="Room ID" variant="standard" />
+                                <TextField sx={{ mt: 2 , ml:1}} id="standard-basic" label="Floor Number" variant="standard" value={selectRoom}/>
                             </Grid>
                             <br />
 

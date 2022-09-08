@@ -60,7 +60,8 @@ export default function FaultTab(props) {
                                 return (
                                     <Alert severity="error" key={index}>
                                         <AlertTitle>{error}</AlertTitle>
-                                        This is an Error in node ID: {ids[index]}
+                                        {/*This is an Error in node ID: {ids[index]}*/}
+                                        Error in node with detail
                                     </Alert>
                                 )
                             }
@@ -68,7 +69,8 @@ export default function FaultTab(props) {
                                 return(
                                     <Alert severity="info" key={index}>
                                         <AlertTitle>{error}</AlertTitle>
-                                        This is an info in node ID: {ids[index]}
+                                        {/*This is an info in node ID: {ids[index]}*/}
+                                        Information
                                     </Alert>
                                 )
                             }
@@ -76,7 +78,8 @@ export default function FaultTab(props) {
                                 return (
                                     <Alert severity="warning" key={index}>
                                         <AlertTitle>{error}</AlertTitle>
-                                        This is a warning in node ID: {ids[index]}
+                                        {/*This is a warning in node ID: {ids[index]}*/}
+                                        Warning in node with detail
                                     </Alert>
                                 )
                             }

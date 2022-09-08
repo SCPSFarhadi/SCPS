@@ -39,6 +39,10 @@ import ReplayIcon from "@material-ui/icons/Replay";
 import { withStyles } from "@material-ui/core/styles";
 import {ImageListItem} from "@mui/material";
 import ImageUploader from "./ImageUploader";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListItemText from "@mui/material/ListItemText";
 
 export let imageGallery = [
     "http://37.156.25.234:8000/media/users/None/20220902224931909.png",
@@ -164,16 +168,28 @@ class ImageUploadCard extends React.Component {
                             onChange={this.handleUploadClick}
                         />
                         <label htmlFor="contained-button-file">
-                            <Fab component="span" className={classes.button}>
-                                <AddPhotoAlternateIcon />
-                            </Fab>
+                            <ListItemButton>
+                                <ListItemIcon  className={classes.button}>
+                                    <AddPhotoAlternateIcon />
+                                </ListItemIcon>
+                            </ListItemButton>
                         </label>
-                        <Fab className={classes.button} onClick={this.handleSearchClick}>
-                            <SearchIcon />
-                        </Fab>
-                        <Fab className={classes.button} onClick={this.handleGalleryClick}>
-                            <CollectionsIcon />
-                        </Fab>
+                        <ListItemButton onClick={this.handleSearchClick}>
+                            <ListItemIcon  className={classes.button}>
+                                <SearchIcon />
+                            </ListItemIcon>
+                        </ListItemButton>
+                        <ListItemButton onClick={this.handleGalleryClick}>
+                            <ListItemIcon  className={classes.button}>
+                                <CollectionsIcon />
+                            </ListItemIcon>
+                        </ListItemButton>
+                        {/*<div className={classes.button} onClick={this.handleSearchClick}>*/}
+                        {/*    <SearchIcon />*/}
+                        {/*</div>*/}
+                        {/*<div className={classes.button} onClick={this.handleGalleryClick}>*/}
+                        {/*    <CollectionsIcon />*/}
+                        {/*</div>*/}
                     </Grid>
 
 
@@ -225,22 +241,16 @@ class ImageUploadCard extends React.Component {
             <div className={classes.searchRoot} >
                 {/*<InputBase className={classes.searchInput} placeholder="Image URL" />*/}
                 <ImageUploader  />
-                {/*<IconButton*/}
-                {/*    className={classes.button}*/}
-                {/*    aria-label="Search"*/}
-                {/*    onClick={this.handleImageSearch}*/}
-                {/*>*/}
-                {/*    <SearchIcon />*/}
-                {/*</IconButton>*/}
+
                 <Divider className={classes.searchDivider} />
-                <IconButton
+                <div
                     color="primary"
                     className={classes.secondaryButton}
                     aria-label="Close"
                     onClick={this.handleSeachClose}
                 >
                     <CloseIcon />
-                </IconButton>
+                </div>
             </div>
         );
     }
@@ -304,14 +314,14 @@ class ImageUploadCard extends React.Component {
 
                 <Grid>
                     {listItems}
-                    <IconButton
+                    <div
                         color="primary"
                         className={classes.secondaryButton}
                         aria-label="Close"
                         onClick={this.handleSeachClose}
                     >
                         <ReplayIcon />
-                    </IconButton>
+                    </div>
                 </Grid>
 
         );
@@ -332,9 +342,9 @@ class ImageUploadCard extends React.Component {
                     src={this.state.selectedFile}
 
                 />
-                <Button autoFocus onClick={handleSetImage}>
+                <button autoFocus onClick={handleSetImage}>
                     Set background
-                </Button>
+                </button>
             </div>
 
         );

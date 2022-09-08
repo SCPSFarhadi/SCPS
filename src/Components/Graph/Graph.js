@@ -1,5 +1,5 @@
 import { Graph } from "react-d3-graph";
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useSelector, connect, useDispatch} from "react-redux";
 import store from "../../store";
 import SimpleDialog from "./Dialog";
@@ -51,6 +51,7 @@ import Avatar from "@mui/material/Avatar";
 import CircleIcon from '@mui/icons-material/Circle';
 import List from "@mui/material/List";
 import PositionedMenu from "./RoomSelect";
+import handleSubmit from "redux-form/lib/handleSubmit";
 
 const bull = (
     <Box
@@ -104,6 +105,10 @@ function MakeGraph(props) {
 
     const [openDialogUpload, setOpenDialogUpload] = React.useState(false);
 
+    useEffect(() => {
+        console.log("I have been mounted")
+        handleRefresh()
+    }, [])
 
     const handleClickOpenDialog = () => {
         console.log("fun")
@@ -365,10 +370,7 @@ function MakeGraph(props) {
                                                 <Grid item sm={4} xs={2}>
                                                     <BottomNavigationAction label="Edit" icon={<EditIcon sx={{ color: blue[800] }}/>} onClick={handleClickOpenDialog} />
                                                 </Grid>
-                                                <Grid item sm={4} xs={2}>
-                                                    <BottomNavigationAction label="Save" icon={<SaveIcon sx={{ color: yellow[800] }}/>} onClick={handleSaveButton} />
-                                                </Grid>
-                                                <Grid item sm={4} xs={2}>
+                                                <Grid item sm={4} xs={2} style={{marginTop:"10px"}}>
                                                     <PositionedMenu/>
                                                 </Grid>
 
