@@ -113,11 +113,6 @@ class MyComponent extends Component {
                                             Forgot password
                                         </Link>
                                     </Grid>
-                                    <Grid item>
-                                        <Link href="/register" variant="body2" className="bg-green-600 text-white text-decoration-none p-2 rounded-md transition duration-300 ease-in-out hover:bg-green-700 hover:transition hover:duration-300 hover:ease-in-out hover:shadow-lg">
-                                            {"Don't have an account? Sign Up"}
-                                        </Link>
-                                    </Grid>
                                 </Grid>
                             </Box>
                         </Box>
