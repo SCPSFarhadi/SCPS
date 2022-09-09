@@ -190,8 +190,8 @@ export default function ReportStates() {
             <GridColumn field="Temp"  title="Temperature"/>
             <GridColumn field="Humidity" title="Humidity Sensor"/>
             <GridColumn field="Light" title="Light Sensor"/>
-            <GridColumn field="AnalogSensor1" title="Analog Sensor 1"/>
-            <GridColumn field="AnalogSensor2" title="Analog Sensor 2"/>
+            <GridColumn field="AnalogSensor1" title="Solid humidity sensor 1"/>
+            <GridColumn field="AnalogSensor2" title="Solid humidity sensor 2"/>
         </Grid>
             ;
 
