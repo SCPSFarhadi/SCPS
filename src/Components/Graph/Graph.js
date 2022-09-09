@@ -233,8 +233,10 @@ function MakeGraph(props) {
             },
         };
         let token = localStorage.getItem('token_access')
+        console.log(localStorage.getItem('token_access'))
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
+
         }
         // fetch(baseUrl+'api/users/sendlastdata/', {
         //     method: "POST",
