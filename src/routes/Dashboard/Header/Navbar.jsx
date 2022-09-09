@@ -589,14 +589,14 @@ function DashboardContent(props) {
                                     </ListItemButton>
                                 </div>
 
-                                <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton onClick={() => setMenu("Control")}>
-                                    <ListItemIcon>
-                                        <PauseCircleOutlineIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Control Panel" />
-                                </ListItemButton>
-                                </div>
+                                {/*<div className="bg-gray-200 m-3 rounded-lg">*/}
+                                {/*<ListItemButton onClick={() => setMenu("Control")}>*/}
+                                {/*    <ListItemIcon>*/}
+                                {/*        <PauseCircleOutlineIcon />*/}
+                                {/*    </ListItemIcon>*/}
+                                {/*    <ListItemText primary="Control Panel" />*/}
+                                {/*</ListItemButton>*/}
+                                {/*</div>*/}
 
 
                                 <div className="bg-gray-200 m-3 rounded-lg">
@@ -607,22 +607,22 @@ function DashboardContent(props) {
                                     <ListItemText primary="Reports"/>
                                 </ListItemButton>
                                 </div>
-                                <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton onClick={() => setMenu("Integrations")}>
-                                    <ListItemIcon>
-                                        <LayersIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Admin Setting" />
-                                </ListItemButton>
-                                </div>
-                                <div className="bg-gray-200 m-3 rounded-lg">
-                                <ListItemButton onClick={() => setMenu("SecurityReports")}>
-                                    <ListItemIcon>
-                                        <SecurityIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Security Reports" />
-                                </ListItemButton>
-                                </div>
+                                {/*<div className="bg-gray-200 m-3 rounded-lg">*/}
+                                {/*<ListItemButton onClick={() => setMenu("Integrations")}>*/}
+                                {/*    <ListItemIcon>*/}
+                                {/*        <LayersIcon />*/}
+                                {/*    </ListItemIcon>*/}
+                                {/*    <ListItemText primary="Admin Setting" />*/}
+                                {/*</ListItemButton>*/}
+                                {/*</div>*/}
+                                {/*<div className="bg-gray-200 m-3 rounded-lg">*/}
+                                {/*<ListItemButton onClick={() => setMenu("SecurityReports")}>*/}
+                                {/*    <ListItemIcon>*/}
+                                {/*        <SecurityIcon />*/}
+                                {/*    </ListItemIcon>*/}
+                                {/*    <ListItemText primary="Security Reports" />*/}
+                                {/*</ListItemButton>*/}
+                                {/*</div>*/}
                                 <div className="bg-gray-200 m-3 rounded-lg">
                                 <ListItemButton onClick={() => setMenu("ProfileSetting")}>
                                     <ListItemIcon>

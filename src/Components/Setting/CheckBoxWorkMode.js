@@ -15,18 +15,13 @@ export default function IndeterminateCheckboxWork(props) {
     const handleChange2 = (event) => {
         // console.log(event.target.checked)
         props.setDisableCheckBox(!event.target.checked);
-        props.handleCheckingFanAir();
-        props.setModeSelect('maintenance')
     };
 
     const handleChange3 = (event) => {
         setChecked([checked[0], event.target.checked,checked[2]]);
-        props.setModeSelect('automate')
-        props.setBtnDisabled(!event.target.checked)
     };
     const handleChange4 = (event) => {
         setChecked([checked[0], checked[1],event.target.checked]);
-        props.setModeSelect('sleep')
     };
 
     const children = (
@@ -36,11 +31,11 @@ export default function IndeterminateCheckboxWork(props) {
                 control={<Switch id="workMode1" {...label}  onChange={handleChange4}/>}
             />
             <FormControlLabel
-                label="Automate mode"
+                label="Optimal mode"
                 control={<Switch id="workMode2" {...label}  onChange={handleChange3}/>}
             />
             <FormControlLabel
-                label="Maintenance mode"
+                label="Manual mode"
                 control={<Switch id="workMode3" {...label}  onChange={handleChange2}/>}
             />
         </Box>
