@@ -92,7 +92,14 @@ export default function SimpleDialog(props) {
 
 
                 </ListItem>
-
+                <ListItem button onClick={() => handleListItemClick()} key="5">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <AccountTreeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Co2 sensor : ${props.details.analogSensor2}`} />
+                </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
