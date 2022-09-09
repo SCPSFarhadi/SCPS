@@ -66,15 +66,6 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Room temperature: ${props.details.temp}`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key="3">
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
-                            <AccessTimeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={`Last occupancy: ${props.details.lastOccupancy}`} />
-                </ListItem>
-
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
                     <ListItemAvatar>
                         <MenuList dense>
