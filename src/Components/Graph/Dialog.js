@@ -132,14 +132,14 @@ export default function SimpleDialog(props) {
                 </ListItem>
                 {/*</ListItem>*/}
 
-                <ListItem autoFocus button onClick={() => handleListItemClick()}>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <AddIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Graph" onClick={props.handleClick}/>
-                </ListItem>
+                {/*<ListItem autoFocus button onClick={() => handleListItemClick()}>*/}
+                {/*    <ListItemAvatar>*/}
+                {/*        <Avatar>*/}
+                {/*            <AddIcon />*/}
+                {/*        </Avatar>*/}
+                {/*    </ListItemAvatar>*/}
+                {/*    <ListItemText primary="Graph" onClick={props.handleClick}/>*/}
+                {/*</ListItem>*/}
             </List>
         </div>
     );
