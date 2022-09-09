@@ -80,7 +80,7 @@ export default function SimpleDialog(props) {
                             <SensorsIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Solid humidity sensor 1: `} />
+                    <ListItemText primary={`Soil humidity sensor 1: `} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key='3'>
                     <ListItemAvatar>
@@ -88,7 +88,7 @@ export default function SimpleDialog(props) {
                             <SensorsIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Solid humidity sensor 2: `} />
+                    <ListItemText primary={`Soil humidity sensor 2: `} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
                     <ListItemAvatar>

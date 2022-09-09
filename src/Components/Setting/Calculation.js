@@ -194,7 +194,7 @@ export default function Calculation(props) {
                     <TextField
                         id="cropCoeif"
                         name="setpoint"
-                        label="Minimum temperature"
+                        label="Crop coefficient"
                         fullWidth
                         autoComplete="25"
                         variant="standard"
