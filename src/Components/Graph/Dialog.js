@@ -87,36 +87,36 @@ export default function SimpleDialog(props) {
                         <MenuList dense>
                             <MenuItem>
                                 <ListItemAvatar>
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <Avatar sx={props.hvac1Color}>
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>HVAC 1 {props.details.hvac1}</ListItemText>
+                                <ListItemText inset>HVAC 1 {props.details.hvac1.toUpperCase()}</ListItemText>
                             </MenuItem>
                             <MenuItem>
                                 <ListItemAvatar >
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <Avatar sx={props.fanair1Color}>
                                         <AirIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset >Fan Air 1 {props.details.fanAir1}</ListItemText>
+                                <ListItemText inset >Fan Air 1 {props.details.fanAir1.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            <MenuItem disabled={true}>
+                            <MenuItem >
                                 <ListItemAvatar>
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <Avatar sx={props.hvac2Color}>
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>HVAC 2 {props.details.hvac2}</ListItemText>
+                                <ListItemText inset>HVAC 2 {props.details.hvac2.toUpperCase()}</ListItemText>
 
                             </MenuItem>
-                            <MenuItem disabled={true}>
+                            <MenuItem>
                                 <ListItemAvatar >
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <Avatar sx={props.fanair2Color}>
                                         <AirIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset >Fan Air 2 {props.details.fanAir2}</ListItemText>
+                                <ListItemText inset >Fan Air 2 {props.details.fanAir2.toUpperCase()}</ListItemText>
                             </MenuItem>
 
                         </MenuList>
@@ -132,7 +132,7 @@ export default function SimpleDialog(props) {
                             <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Smoke sensor : ${props.details.analogSensor1} %`} />
+                    <ListItemText primary={`Smoke sensor : ${props.details.analogSensor1} ppm`} />
                 </ListItem>
                 
                 <ListItem button onClick={() => handleListItemClick()} key="5">
