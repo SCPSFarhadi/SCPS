@@ -108,7 +108,7 @@ export default function ControlPanelForm() {
   return (
     <React.Fragment>
       <Typography variant="h3" gutterBottom>
-      Control Panel
+       Control Panel
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={3}>
