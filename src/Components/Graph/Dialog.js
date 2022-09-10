@@ -63,9 +63,16 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room temperature: ${props.details.temp}`} />
+                    <ListItemText primary={`Room temperature: ${props.details.temp} Centigrade`} />
                 </ListItem>
-
+                <ListItem button onClick={() => handleListItemClick()} key="2">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+                            <DeviceThermostatIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Set point ${props.details.setPoint} Centigrade`} />
+                </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="3">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
@@ -125,7 +132,7 @@ export default function SimpleDialog(props) {
                             <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Smoke sensor : ${props.details.analogSensor1}`} />
+                    <ListItemText primary={`Smoke sensor : ${props.details.analogSensor1} %`} />
                 </ListItem>
                 
                 <ListItem button onClick={() => handleListItemClick()} key="5">
@@ -134,7 +141,7 @@ export default function SimpleDialog(props) {
                             <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`CO2 sensor : ${props.details.analogSensor2}`} />
+                    <ListItemText primary={`CO2 sensor : ${props.details.analogSensor2} %`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
@@ -142,7 +149,7 @@ export default function SimpleDialog(props) {
                             <WaterIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor}`} />
+                    <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor} %`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="8">
                     <ListItemAvatar>
@@ -150,7 +157,7 @@ export default function SimpleDialog(props) {
                             <LightIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor}`} />
+                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor} Lx`} />
                 </ListItem>
 
             </List>

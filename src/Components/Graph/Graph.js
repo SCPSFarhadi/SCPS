@@ -94,7 +94,8 @@ function MakeGraph(props) {
         "fanAir2":" ",
         "hvac1":" ",
         "hvac2":" ",
-        "parameter":" "
+        "parameter":" ",
+        "setPoint":"None"
     }
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")
