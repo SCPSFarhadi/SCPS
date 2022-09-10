@@ -187,8 +187,8 @@ export default function ReportStates() {
                         format="{0:d}"
                         disableColumnFilter/>
             <GridColumn field="Time" title="Time"/>
-            <GridColumn field="Temp"  title="Temperature"/>
-            <GridColumn field="Humidity" title="Humidity Sensor"/>
+            <GridColumn field="Temp"  title="Dry Temperature"/>
+            <GridColumn field="Humidity" title="Wet Temperature "/>
             <GridColumn field="Light" title="Light Sensor"/>
             <GridColumn field="CO2" title="CO2 Sensor"/>
         </Grid>
