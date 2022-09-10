@@ -101,14 +101,6 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor}`} />
                 </ListItem>
 
-                <ListItem autoFocus button onClick={() => handleListItemClick()} key="9">
-                    <ListItemAvatar>
-                        <Avatar>
-                            <AddIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Graph" onClick={props.handleClick}/>
-                </ListItem>
             </List>
         </div>
     );
