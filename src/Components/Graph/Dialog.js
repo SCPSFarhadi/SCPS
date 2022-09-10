@@ -141,7 +141,7 @@ export default function SimpleDialog(props) {
                             <AccountTreeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`CO2 sensor : ${props.details.analogSensor2} %`} />
+                    <ListItemText primary={`CO2 sensor : ${props.details.analogSensor2} ppm`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
@@ -157,7 +157,7 @@ export default function SimpleDialog(props) {
                             <LightIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor} Lx`} />
+                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor} lux`} />
                 </ListItem>
 
             </List>
