@@ -89,7 +89,7 @@ function MakeGraph(props) {
         "lastOccupancy":"Null",
         "lightSensor":"Null",
         "humiditySensor":"Null",
-        "analogSensor1":"Null",
+        "CO2sensor":"Null",
         "analogSensor2":"Null",
         "fanAir1":" ",
         "fanAir2":" ",
