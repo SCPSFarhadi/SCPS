@@ -65,7 +65,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Room temperature: ${props.details.temp} Centigrade`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="20">
+                <ListItem button onClick={() => handleListItemClick()} key="3">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                             <DeviceThermostatIcon />
@@ -73,7 +73,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Set point ${props.details.setPoint} Centigrade`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="3">
+                <ListItem button onClick={() => handleListItemClick()} key="4">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
                             <AccessTimeIcon />
