@@ -63,11 +63,7 @@ export default function NodeForm(props) {
         let AutomateMode = document.getElementById("workMode2").checked;
         let maintenanceMode = document.getElementById("workMode3").checked
         let cValve1 = document.getElementById('controlValve1').checked;
-        let cValve2 = document.getElementById('controlValve2').checked;
-        let fanAir1 = document.getElementById('fanAir1').checked;
-        let fanAir2 = document.getElementById('fanAir2').checked;
         let dongleValue1 = document.getElementById('dongle1').value;
-        let dongleValue2 = document.getElementById('dongle2').value;
 
         if((sleepMode && AutomateMode) ||(sleepMode && maintenanceMode) || (AutomateMode && maintenanceMode) ){
             alert("Please Check only one mode");
@@ -75,13 +71,13 @@ export default function NodeForm(props) {
         }
         let data = {nodeid:id,
             temp:value,
-            fanAir1:fanAir1,
-            fanAir2:fanAir2,
+            fanAir1:false,
+            fanAir2:false,
             perm:perm,
             cValve1:cValve1,
-            cValve2:cValve2,
+            cValve2:false,
             dongleValue1:dongleValue1,
-            dongleValue2:dongleValue2,
+            dongleValue2:false,
             sleepMode:sleepMode,
             optimalMode:AutomateMode,
             manualMode:maintenanceMode

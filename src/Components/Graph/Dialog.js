@@ -65,7 +65,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Room temperature: ${props.details.temp} Centigrade`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="2">
+                <ListItem button onClick={() => handleListItemClick()} key="3">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                             <DeviceThermostatIcon />
