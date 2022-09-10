@@ -81,6 +81,7 @@ function MakeGraph(props) {
     const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const dateTime = date + ' ' + time;
+    let hvac = { bgcolor: red[100], color: red[600] }
     let details = {
         "nodeId":"1",
         "time":  dateTime,
@@ -100,6 +101,9 @@ function MakeGraph(props) {
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")
         details = dataShortDetail;
+        if(details.hvac1==="on"){
+            hvac = { bgcolor: green[100], color: green[600] }
+        }
     }
     ///////// dialog state :
     const [openDialog, setOpenDialog] = React.useState(false);
@@ -414,6 +418,7 @@ function MakeGraph(props) {
                                         <SimpleDialog
                                             open={true}
                                             details = {details}
+                                            hvac={hvac}
                                             onClose={handleClose}
                                             selectedNode={selectedNode}
                                             nodeColor={nodeColor}

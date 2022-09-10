@@ -78,11 +78,11 @@ export default function SimpleDialog(props) {
                         <MenuList dense>
                             <MenuItem>
                                 <ListItemAvatar>
-                                    <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
+                                    <Avatar sx={props.hvac}>
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>HVAC {props.details.hvac1}</ListItemText>
+                                <ListItemText inset>HVAC {props.details.hvac1.toUpperCase()}</ListItemText>
                             </MenuItem>
                         </MenuList>
                     </ListItemAvatar>
