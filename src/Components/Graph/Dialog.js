@@ -105,7 +105,7 @@ export default function SimpleDialog(props) {
                             <WaterIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor}`} />
+                    <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor} %`} />
                 </ListItem>
 
             </List>
