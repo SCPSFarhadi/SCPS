@@ -189,7 +189,7 @@ export default function ReportStates() {
             <GridColumn field="Time" title="Time"/>
             <GridColumn field="Temp"  title="Temperature"/>
             <GridColumn field="Humidity" title="Humidity Sensor"/>
-            <GridColumn field="CO2sensor" title="CO2 sensor"/>
+            {/*<GridColumn field="CO2sensor" title="CO2 sensor"/>*/}
         </Grid>
             ;
 
