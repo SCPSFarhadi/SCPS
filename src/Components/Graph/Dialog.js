@@ -54,7 +54,7 @@ export default function SimpleDialog(props) {
                             <ToggleOffIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Node Id: ${selectedNode.id}`} />
+                    <ListItemText primary={`Node Id: 1${selectedNode.id}`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[0]}>
