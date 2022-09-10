@@ -85,7 +85,7 @@ function MakeGraph(props) {
         "nodeId":"1",
         "time":  dateTime,
         "temp": "29",
-        "lastOccupancy":"Null",
+        "lastOccupancy":"None",
         "lightSensor":"Null",
         "humiditySensor":"Null",
         "analogSensor1":"Null",
