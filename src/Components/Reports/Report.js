@@ -18,7 +18,7 @@ let states = [
         "Temp": "25",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
 
     },
@@ -28,7 +28,7 @@ let states = [
         "Temp": "26",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     },
     {
@@ -37,7 +37,7 @@ let states = [
         "Temp": "26.5",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     },
     {
@@ -46,7 +46,7 @@ let states = [
         "Temp": "28.2",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     },
     {
@@ -55,7 +55,7 @@ let states = [
         "Temp": "28",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     },
     {
@@ -64,7 +64,7 @@ let states = [
         "Temp": "29",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     },
     {
@@ -73,7 +73,7 @@ let states = [
         "Temp": "28.75",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     },
     {
@@ -82,7 +82,7 @@ let states = [
         "Temp": "28.5",
         "Humidity":"Null",
         "Light":"Null",
-        "AnalogSensor1":"Null",
+        "CO2sensor":"Null",
         "AnalogSensor2":"Null"
     }
 ];
@@ -189,6 +189,7 @@ export default function ReportStates() {
             <GridColumn field="Time" title="Time"/>
             <GridColumn field="Temp"  title="Temperature"/>
             <GridColumn field="Humidity" title="Humidity Sensor"/>
+            <GridColumn field="CO2sensor" title="CO2 sensor"/>
         </Grid>
             ;
 
