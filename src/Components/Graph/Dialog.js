@@ -153,14 +153,6 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Light Sensor: ${props.details.lightSensor}`} />
                 </ListItem>
 
-                <ListItem autoFocus button onClick={() => handleListItemClick()} key="9">
-                    <ListItemAvatar>
-                        <Avatar>
-                            <AddIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Graph" onClick={props.handleClick}/>
-                </ListItem>
             </List>
         </div>
     );
