@@ -63,7 +63,7 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Room temperature: ${props.details.temp}`} />
+                    <ListItemText primary={`Room temperature: ${props.details.temp} Centigrade`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
@@ -83,14 +83,14 @@ export default function SimpleDialog(props) {
 
 
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="5">
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
-                            <AccountTreeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={`CO2sensor : ${props.details.analogSensor2}`} />
-                </ListItem>
+                {/*<ListItem button onClick={() => handleListItemClick()} key="5">*/}
+                {/*    <ListItemAvatar>*/}
+                {/*        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>*/}
+                {/*            <AccountTreeIcon />*/}
+                {/*        </Avatar>*/}
+                {/*    </ListItemAvatar>*/}
+                {/*    <ListItemText primary={`CO2sensor : ${props.details.analogSensor2}`} />*/}
+                {/*</ListItem>*/}
 
                 <ListItem button onClick={() => handleListItemClick()} key="7">
                     <ListItemAvatar>
