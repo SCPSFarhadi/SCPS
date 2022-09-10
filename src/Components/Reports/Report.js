@@ -191,8 +191,6 @@ export default function ReportStates() {
             <GridColumn field="Humidity" title="Humidity Sensor"/>
             <GridColumn field="Light" title="Light Sensor"/>
             <GridColumn field="CO2" title="CO2 Sensor"/>
-            <GridColumn field="CO2sensor" title="Soil humidity sensor 1"/>
-            <GridColumn field="AnalogSensor2" title="Soil humidity sensor 2"/>
         </Grid>
             ;
 
