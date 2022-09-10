@@ -205,7 +205,6 @@ export default function NodeForm(props) {
                         control={<Switch id="fanAir1" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
                     />
                     <FormControlLabel
-                        disabled={true}
                         label="Fan air 2 on"
                         control={<Switch id="fanAir2" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
                     />
