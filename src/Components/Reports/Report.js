@@ -189,8 +189,8 @@ export default function ReportStates() {
             <GridColumn field="Time" title="Time"/>
             <GridColumn field="Temp"  title="Dry Temperature"/>
             <GridColumn field="Humidity" title="Wet Temperature "/>
-            <GridColumn field="Light" title="Light Sensor"/>
-            <GridColumn field="CO2" title="CO2 Sensor"/>
+            <GridColumn field="Light" title="Soil humidity Sensor 1"/>
+            <GridColumn field="CO2" title="Soil humidity Sensor 2"/>
         </Grid>
             ;
 
