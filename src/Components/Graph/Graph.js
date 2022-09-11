@@ -190,7 +190,12 @@ function MakeGraph(props) {
     const [selectedNode, setSelectedNode] = React.useState("");
     const [nodeColor, setColor] = React.useState(green);
     const [dataState, setData] = React.useState(props.data);
+    let backImage = useSelector(()=>props.backGroundImage)
 
+    let IMageUrl = `url(https://s6.uupload.ir/files/screenshot_from_2022-09-11_11-24-51_lajk.png)`
+    if(backImage){
+        IMageUrl = `url(${props.backGroundImage})`
+    }
     const handleClickOpen = (node) => {
         setSelectedNode(node);
         setOpen(true);
@@ -337,7 +342,7 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <div>
                                             {/*backgroundImage:`url(${props.backGroundImage})`*/}
-                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage:`url(${props.backGroundImage})`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
+                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage:IMageUrl,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
                                                 {/*<Graph*/}
                                                 {/*    id="graph-id" // id is mandatory*/}
                                                 {/*    data={props.data}*/}
