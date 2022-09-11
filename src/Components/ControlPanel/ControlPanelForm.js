@@ -157,7 +157,7 @@ export default function ControlPanelForm() {
                   // onChange={handleChange}
               >
                   <MenuItem value={"sleep"}>Sleep mode</MenuItem>
-                  <MenuItem value={"automate"}>Automate</MenuItem>
+                  <MenuItem value={"automate"}>Energy saving mode</MenuItem>
                   <MenuItem value={"classic"}>Classic mode</MenuItem>
 
               </Select>
