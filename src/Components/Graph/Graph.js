@@ -217,6 +217,12 @@ function MakeGraph(props) {
     };
     let dataTime = useSelector(() => store.getState().receiveData.time);
     let dataTemp = useSelector(() => store.getState().receiveData.temp);
+    let backImage = useSelector(()=>props.backGroundImage)
+
+    let IMageUrl = `url(https://s6.uupload.ir/files/screenshot_from_2022-09-11_11-24-51_lajk.png)`
+    if(backImage){
+        IMageUrl = `url(${props.backGroundImage})`
+    }
     const [stopGraph,setStopGraph] = React.useState(true)
     let times = [];
     let temps = [];
@@ -356,7 +362,7 @@ function MakeGraph(props) {
                                     <React.Fragment>
                                         <div>
                                             {/*backgroundImage:`url(${props.backGroundImage})`*/}
-                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage:`url(http://37.156.25.234:8000/media/users/None/2022090319521763.png)`,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
+                                            <div id='graphDiv' style={{height:'600px',width:'100%',backgroundImage: IMageUrl,backgroundRepeat:"no-repeat",backgroundSize: "contain",backgroundPosition:"center"}}>
                                                 {/*<Graph*/}
                                                 {/*    id="graph-id" // id is mandatory*/}
                                                 {/*    data={props.data}*/}
