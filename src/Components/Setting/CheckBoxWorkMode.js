@@ -36,6 +36,7 @@ export default function IndeterminateCheckboxWork(props) {
             props.setSleepSelect(false)
         else
             props.setSleepSelect(true)
+
     };
 
     const children = (
@@ -50,7 +51,7 @@ export default function IndeterminateCheckboxWork(props) {
             />
             <FormControlLabel
                 label="Maintenance mode"
-                control={<Switch id="workMode3" {...label} checked={true} onChange={handleChange2} />}
+                control={<Switch id="workMode3" {...label} defaultChecked onChange={handleChange2} />}
             />
         </Box>
     );

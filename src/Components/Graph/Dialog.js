@@ -15,6 +15,7 @@ import {blue, green, orange, purple, red} from '@mui/material/colors';
 import {Divider, Icon, ListItemIcon, MenuList} from "@mui/material";
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
+import ModeIcon from '@mui/icons-material/Mode';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SettingsInputHdmiIcon from '@mui/icons-material/SettingsInputHdmi';
 import PowerIcon from '@mui/icons-material/Power';
@@ -71,7 +72,15 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Set point ${props.details.setPoint} Centigrade`} />
+                    <ListItemText primary={`Set point: ${props.details.setPoint} Centigrade`} />
+                </ListItem>
+                <ListItem button onClick={() => handleListItemClick()} key="3">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <ModeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Mode: ${props.details.mode}`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="4">
                     <ListItemAvatar>

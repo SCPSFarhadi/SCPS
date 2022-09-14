@@ -16,6 +16,7 @@ export default function IndeterminateCheckbox(props) {
         setChecked([event.target.checked, checked[1],checked[2]]);
     };
 
+
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
