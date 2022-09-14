@@ -20,8 +20,9 @@ import DangleSetpoint from "./Dangle";
 
 export default function NodeForm(props) {
 
-    const [btnDisabled, setBtnDisabled] = useState(false)
-
+    const [btnDisabled, setBtnDisabled] = useState(true)
+    const [btnSleepSelect, setSleepSelect] = useState(false)
+    const [btnEnergySelect, setEnergySelect] = useState(false)
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
 
     const [modeSelect, setModeSelect] = useState('')
@@ -137,7 +138,7 @@ export default function NodeForm(props) {
 
                 <Grid item xs={12}>
                     <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking} setModeSelect={setModeSelect}
-                                               setBtnDisabled={setBtnDisabled}/>
+                                               setBtnDisabled={setBtnDisabled} setSleepSelect={setSleepSelect} btnSleepSelect={btnSleepSelect} setEnergySelect={setEnergySelect} btnEnergySelect={btnEnergySelect}/>
                 </Grid>
 
 
@@ -202,14 +203,14 @@ export default function NodeForm(props) {
                     <FormControlLabel
                         label="Fan air 1 on"
                         // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                        control={<Switch id="fanAir1" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
+                        control={<Switch id="fanAir1" {...label} defaultChecked disabled={btnSleepSelect||btnEnergySelect} onChange={handleChecking}/>}
                     />
                     <FormControlLabel
                         label="Fan air 2 on"
-                        control={<Switch id="fanAir2" {...label} defaultChecked disabled={props.disableCheckBox} onChange={handleChecking}/>}
+                        control={<Switch id="fanAir2" {...label} defaultChecked disabled={btnSleepSelect||btnEnergySelect} onChange={handleChecking}/>}
                     />
                     <br />
-                    <DangleSetpoint />
+                    <DangleSetpoint  btnSleepSelect={btnSleepSelect} btnMaintenanceSelect={btnEnergySelect}/>
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>

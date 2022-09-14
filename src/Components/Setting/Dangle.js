@@ -32,10 +32,11 @@ export default function DangleSetpoint(props) {
                     defaultValue="20"
                     size="small"
                     variant="standard"
+                    disabled={props.btnSleepSelect || props.btnMaintenanceSelect}
                 />}
             />
             <FormControlLabel
-                disabled={true}
+                // disabled={true}
                 label="Dongle Set point 2"
                 // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                 control={        <TextField
@@ -43,6 +44,7 @@ export default function DangleSetpoint(props) {
                     defaultValue="20"
                     size="small"
                     variant="standard"
+                    disabled={props.btnSleepSelect || props.btnMaintenanceSelect}
                 />}
             />
         </Box>
