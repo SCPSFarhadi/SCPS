@@ -96,7 +96,8 @@ function MakeGraph(props) {
         "hvac1":" ",
         "hvac2":" ",
         "parameter":" ",
-        "setPoint":"None"
+        "setPoint":"None",
+        "mode":"None"
     }
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")

@@ -28,6 +28,7 @@ import WaterIcon from '@mui/icons-material/Water';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import LightIcon from '@mui/icons-material/Light';
 import AirIcon from '@mui/icons-material/Air';
+import ModeIcon from "@mui/icons-material/Mode";
 const listData = ['20°C', '04/26 20:11',1,1];
 export default function SimpleDialog(props) {
     const { onClose, selectedNode,nodeColor,open } = props;
@@ -107,7 +108,14 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor} %`} />
                 </ListItem>
-
+                <ListItem button onClick={() => handleListItemClick()} key="3">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <ModeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Working Mode: ${props.details.mode}`} />
+                </ListItem>
             </List>
         </div>
     );

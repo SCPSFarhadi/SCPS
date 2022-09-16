@@ -36,8 +36,8 @@ export default function NodeForm(props) {
     }
     const marks = [
         {
-            value: 20,
-            label: '20°C',
+            value: 17,
+            label: '17°C',
         },
         {
             value: 30,
@@ -60,12 +60,13 @@ export default function NodeForm(props) {
         }
         let id = selectedNode
         let sleepMode = document.getElementById("workMode1").checked
-        let AutomateMode = document.getElementById("workMode2").checked;
+        let EnergySaving = document.getElementById("workMode2").checked;
         let maintenanceMode = document.getElementById("workMode3").checked
+        let ClassicMode = document.getElementById("workMode4").checked
         let cValve1 = document.getElementById('controlValve1').checked;
         let dongleValue1 = document.getElementById('dongle1').value;
 
-        if((sleepMode && AutomateMode) ||(sleepMode && maintenanceMode) || (AutomateMode && maintenanceMode) ){
+        if((sleepMode && EnergySaving) ||(sleepMode && maintenanceMode) || (EnergySaving && maintenanceMode) ){
             alert("Please Check only one mode");
             return;
         }
@@ -79,7 +80,8 @@ export default function NodeForm(props) {
             dongleValue1:dongleValue1,
             dongleValue2:false,
             sleepMode:sleepMode,
-            optimalMode:AutomateMode,
+            energysavingMode:EnergySaving,
+            classicMode:ClassicMode,
             manualMode:maintenanceMode
         }
 
@@ -150,7 +152,7 @@ export default function NodeForm(props) {
                         valueLabelDisplay="auto"
                         marks={marks}
                         onChange={(e, val) => value = val}
-                        min={20}
+                        min={17}
                         max={30}
                     />
                 </Grid>
@@ -177,14 +179,42 @@ export default function NodeForm(props) {
                         </Select>
                     </FormControl>
                 </Grid>
+
+                <Grid item xs={12}>
+                    <Typography variant='h5'>
+                        Fan Speed:
+                    </Typography>
+
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="sleepModeId"
+                        // value={menuItemSelect}
+                        label="Sleep Mode"
+                        // onChange={(event) => {
+                        //     console.log("FADAYAT SHAVAM")
+                        //     setBtnMenuItemSelect(event.target.value)
+                        //     if (event.target.value === "sleep") {
+                        //         setBtnDisabled(true);
+                        //     } else {
+                        //         setBtnDisabled(false);
+                        //     }
+                        // }}
+                        style={{width:"150px"}}
+                        // onChange={handleChange}
+                    >
+                        <MenuItem value={"low"}>low</MenuItem>
+                        <MenuItem value={"mid"}>mid</MenuItem>
+                        <MenuItem value={"high"}>high</MenuItem>
+
+                    </Select>
+                </Grid>
                 <Grid item xs={12}>
                     <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox} handleCheckingFanAir={handleChecking}/>
 
-                    <DangleSetpoint />
-                    <br />
+                    {/*<DangleSetpoint />*/}
+                    {/*<br />*/}
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
-
             </Grid>
         </React.Fragment>
     );
