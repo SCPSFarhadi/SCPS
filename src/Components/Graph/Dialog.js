@@ -74,14 +74,6 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Set point: ${props.details.setPoint} Centigrade`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="3">
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
-                            <ModeIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={`Mode: ${props.details.mode}`} />
-                </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key="4">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
@@ -168,7 +160,14 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Light Sensor: ${props.details.lightSensor} lux`} />
                 </ListItem>
-
+                <ListItem button onClick={() => handleListItemClick()} key="3">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
+                            <ModeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Working Mode: ${props.details.mode}`} />
+                </ListItem>
             </List>
         </div>
     );

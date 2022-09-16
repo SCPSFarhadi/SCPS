@@ -42,7 +42,8 @@ export default function ControlPanelForm() {
     if (token) {
       config.headers['Authorization'] = `JWT ${token}`;
     }
-    let data = {hvacmode:coolingHeatingMode,
+    let data = {
+      hvacmode:coolingHeatingMode,
       selectmode:Mode,
       fan:FanState,
       setpoint:setPoint
@@ -157,8 +158,9 @@ export default function ControlPanelForm() {
                   // onChange={handleChange}
               >
                   <MenuItem value={"sleep"}>Sleep mode</MenuItem>
-                  <MenuItem value={"automate"}>Energy Saving mode</MenuItem>
+                  <MenuItem value={"energysaving"}>Energy Saving mode</MenuItem>
                   <MenuItem value={"classic"}>Classic mode</MenuItem>
+                  <MenuItem value={"maintenance"}>Maintenance mode</MenuItem>
 
               </Select>
         </Grid>
