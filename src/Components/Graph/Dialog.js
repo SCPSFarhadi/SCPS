@@ -92,6 +92,24 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Humidity Sensor: ${props.details.humiditySensor} %`} />
                 </ListItem>
+                <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
+                    <ListItemAvatar>
+                        <MenuList dense>
+                            <MenuItem>
+                                <ListItemAvatar>
+                                    <Avatar sx={props.hvac}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset>HVAC {props.details.hvac1.toUpperCase()}</ListItemText>
+                            </MenuItem>
+                        </MenuList>
+                    </ListItemAvatar>
+
+
+
+                </ListItem>
+
                 <ListItem button onClick={() => handleListItemClick()} key="8">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
