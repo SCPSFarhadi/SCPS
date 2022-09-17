@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
 import './App.css'
-import {BrowserRouter, Link, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter, HashRouter, Link, Redirect, Route, Switch} from "react-router-dom";
 import SignIn from "./routes/Signin";
 import Chat from "./Containers/Chat.js"
 import HeaderComponent from "./routes/Dashboard/Header/HeaderComponent";
@@ -22,7 +22,7 @@ class App extends Component {
 
             <Provider store={store}>
             <Socket/>
-                <BrowserRouter>
+                <HashRouter>
                     {/*<Routes>*/}
                     {/*    <Route path="/signin" element={<SignIn />} />*/}
                     {/*    <Route path="/login" element={<Login />} />*/}
@@ -44,7 +44,7 @@ class App extends Component {
                         <Route exact path="/setting" component={Checkout} />
                         <PrivateRoute exact path="/test" component={Navbar} />
                     </Switch>
-                </BrowserRouter>
+                </HashRouter>
 
             </Provider>
 
