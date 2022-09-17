@@ -159,7 +159,7 @@ function MakeGraph(props) {
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
-                <Grid item xl={3} sm={12}>
+                <Grid item xl={3} sm={12} key={i}>
                     <ListItem key={i} onClick={onClickedNodeMenu}>
                         <ListItemAvatar>
                             <CircleIcon  style={{ color: secondary }} />

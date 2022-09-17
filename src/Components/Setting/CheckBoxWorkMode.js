@@ -14,26 +14,26 @@ export default function IndeterminateCheckboxWork(props) {
 
     const handleChange2 = (event) => {
         // console.log(event.target.checked)
-        props.setDisableCheckBox(!event.target.checked);
-        props.handleCheckingFanAir();
-        props.setModeSelect('maintenance')
+        setChecked([checked[0], checked[1],event.target.checked]);
+        props.setModeSelect('sleep')
     };
 
     const handleChange3 = (event) => {
         setChecked([checked[0], event.target.checked,checked[2]]);
-        props.setModeSelect('automate')
+        props.setModeSelect('energysaving')
         props.setBtnDisabled(!event.target.checked)
     };
     const handleChange4 = (event) => {
         setChecked([checked[0], checked[1],event.target.checked]);
-        props.setModeSelect('sleep')
+        props.setModeSelect('classic')
+        props.setClassicMode(!event.target.checked)
     };
 
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
             <FormControlLabel
                 label="Sleep mode"
-                control={<Switch id="workMode1" {...label}  onChange={handleChange4}/>}
+                control={<Switch id="workMode1" {...label}  onChange={handleChange2}/>}
             />
             <FormControlLabel
                 label="Energy Saving Mode"
@@ -41,11 +41,7 @@ export default function IndeterminateCheckboxWork(props) {
             />
             <FormControlLabel
                 label="Classic Mode"
-                control={<Switch id="workMode4" {...label}  onChange={handleChange3}/>}
-            />
-            <FormControlLabel
-                label="Maintenance mode"
-                control={<Switch id="workMode3" {...label}  onChange={handleChange2}/>}
+                control={<Switch id="workMode4" {...label}  onChange={handleChange4}/>}
             />
         </Box>
     );

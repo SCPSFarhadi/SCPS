@@ -20,11 +20,12 @@ import DangleSetpoint from "./Dangle";
 
 export default function NodeForm(props) {
 
-    const [btnDisabled, setBtnDisabled] = useState(false)
+    const [btnDisabled, setBtnDisabled] = useState(true)
 
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
-
+    const [classicMode, setClassicMode] = React.useState(true);
     const [modeSelect, setModeSelect] = useState('')
+    const [menuItemSelect, setMenuItemSelect] = useState('LOW')
 
 
     const [perm, setPerm] = React.useState('');
@@ -61,12 +62,9 @@ export default function NodeForm(props) {
         let id = selectedNode
         let sleepMode = document.getElementById("workMode1").checked
         let EnergySaving = document.getElementById("workMode2").checked;
-        let maintenanceMode = document.getElementById("workMode3").checked
         let ClassicMode = document.getElementById("workMode4").checked
-        let cValve1 = document.getElementById('controlValve1').checked;
-        let dongleValue1 = document.getElementById('dongle1').value;
 
-        if((sleepMode && EnergySaving) ||(sleepMode && maintenanceMode) || (EnergySaving && maintenanceMode) ){
+        if((sleepMode && EnergySaving) ||(sleepMode && ClassicMode) || (EnergySaving && ClassicMode) ){
             alert("Please Check only one mode");
             return;
         }
@@ -75,14 +73,15 @@ export default function NodeForm(props) {
             fanAir1:false,
             fanAir2:false,
             perm:perm,
-            cValve1:cValve1,
+            cValve1:false,
             cValve2:false,
-            dongleValue1:dongleValue1,
+            dongleValue1:false,
             dongleValue2:false,
             sleepMode:sleepMode,
             energysavingMode:EnergySaving,
             classicMode:ClassicMode,
-            manualMode:maintenanceMode
+            manualMode:false,
+            fanspeed:menuItemSelect.toLowerCase(),
         }
 
         console.log("sent data: ")
@@ -117,10 +116,6 @@ export default function NodeForm(props) {
                 console.log("2 is disabled")
                 input2.disabled = true;
             }
-
-
-
-
         }
 
     }
@@ -135,12 +130,12 @@ export default function NodeForm(props) {
 
                 <Grid item xs={12}>
                     <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking} setModeSelect={setModeSelect}
-                                               setBtnDisabled={setBtnDisabled}/>
+                                               setBtnDisabled={setBtnDisabled} setClassicMode={setClassicMode}/>
                 </Grid>
 
 
                 <Grid item xs={12}>
-                    <Typography>
+                    <Typography variant='h5'>
                         Set point:
                     </Typography>
                     <Slider
@@ -157,30 +152,6 @@ export default function NodeForm(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <FormControl fullWidth disabled={btnDisabled}>
-                        <InputLabel id="demo-simple-select-label">Room Occupant Permission</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="occupantPermission"
-                            value={perm}
-                            label="Permission"
-                            onChange={(event) => {
-                                setPerm(event.target.value)
-                                if (event.target.value === "NO") {
-                                    setBtnDisabled(false);
-                                } else {
-                                    setBtnDisabled(true);
-                                }
-                            }}
-                            // onChange={handleChange}
-                        >
-                            <MenuItem value={"YES"}>YES</MenuItem>
-                            <MenuItem value={"NO"}>NO</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-
-                <Grid item xs={12}>
                     <Typography variant='h5'>
                         Fan Speed:
                     </Typography>
@@ -188,29 +159,23 @@ export default function NodeForm(props) {
                     <Select
                         labelId="demo-simple-select-label"
                         id="sleepModeId"
-                        // value={menuItemSelect}
+                        disabled={classicMode}
+                        value={menuItemSelect}
                         label="Sleep Mode"
-                        // onChange={(event) => {
-                        //     console.log("FADAYAT SHAVAM")
-                        //     setBtnMenuItemSelect(event.target.value)
-                        //     if (event.target.value === "sleep") {
-                        //         setBtnDisabled(true);
-                        //     } else {
-                        //         setBtnDisabled(false);
-                        //     }
-                        // }}
+                        onChange={(event) => {
+                            console.log("change Fan Speed")
+                            setMenuItemSelect(event.target.value)
+                        }}
                         style={{width:"150px"}}
                         // onChange={handleChange}
                     >
-                        <MenuItem value={"low"}>low</MenuItem>
-                        <MenuItem value={"mid"}>mid</MenuItem>
-                        <MenuItem value={"high"}>high</MenuItem>
+                        <MenuItem value={"LOW"}>LOW</MenuItem>
+                        <MenuItem value={"MED"}>MED</MenuItem>
+                        <MenuItem value={"HIGH"}>HIGH</MenuItem>
 
                     </Select>
                 </Grid>
                 <Grid item xs={12}>
-                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox} handleCheckingFanAir={handleChecking}/>
-
                     {/*<DangleSetpoint />*/}
                     {/*<br />*/}
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>

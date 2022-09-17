@@ -23,8 +23,10 @@ import {baseUrl} from "../../Actions/auth";
 export default function ControlPanelForm() {
 
   const [disabled, setBtnDisabled] = React.useState(true);
+
   const [heatingCooling,setHeatingCooling] = React.useState('');
   const [fanOnOff,setFanOffOn] = React.useState('');
+
   const [menuItemSelect, setBtnMenuItemSelect] = React.useState("");
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
   const clickSubmit = function() {
@@ -149,17 +151,17 @@ export default function ControlPanelForm() {
                       setBtnMenuItemSelect(event.target.value)
                       if (event.target.value === "sleep") {
                           setBtnDisabled(true);
-                      } else {
-                          setBtnDisabled(false);
+                      }
+                      else {
+                        setBtnDisabled(false);
                       }
                   }}
                   style={{width:"150px"}}
                   // onChange={handleChange}
               >
-                  <MenuItem value={"sleep"}>Sleep mode</MenuItem>
+                  <MenuItem value={"sleep"}>Sleep Mode</MenuItem>
                   <MenuItem value={"enerysaving"}>Energy saving mode</MenuItem>
                   <MenuItem value={"classic"}>Classic mode</MenuItem>
-                  <MenuItem value={"maintenance"}>Maintenance mode</MenuItem>
               </Select>
         </Grid>
 
