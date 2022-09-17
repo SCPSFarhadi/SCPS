@@ -32,7 +32,7 @@ export default function IndeterminateCheckboxWork(props) {
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
             <FormControlLabel
-                label="Sleep mode"
+                label="Sleep Mode"
                 control={<Switch id="workMode1" {...label}  onChange={handleChange2}/>}
             />
             <FormControlLabel
