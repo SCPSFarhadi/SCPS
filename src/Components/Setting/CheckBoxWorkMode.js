@@ -27,6 +27,8 @@ export default function IndeterminateCheckboxWork(props) {
         setChecked([checked[0], checked[1],event.target.checked]);
         props.setModeSelect('classic')
         props.setClassicMode(!event.target.checked)
+        props.setModeSelect('energysaving')
+        props.setBtnDisabled(!event.target.checked)
     };
 
     const children = (
