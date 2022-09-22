@@ -94,7 +94,7 @@ export default function SimpleDialog(props) {
                                 </ListItemAvatar>
                                 <ListItemText inset>HVAC 1 {props.details.hvac1.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem disabled={props.details.type==='1'}>
                                 <ListItemAvatar >
                                     <Avatar sx={props.fanair1Color}>
                                         <AirIcon/>
@@ -102,7 +102,7 @@ export default function SimpleDialog(props) {
                                 </ListItemAvatar>
                                 <ListItemText inset >Fan Air 1 {props.details.fanAir1.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            <MenuItem disabled={props.details.parameter === '1'}>
+                            <MenuItem disabled={(props.details.parameter === '1') || (props.details.type==='1')}>
                                 <ListItemAvatar>
                                     <Avatar sx={props.hvac2Color}>
                                         <PowerIcon/>
@@ -111,7 +111,7 @@ export default function SimpleDialog(props) {
                                 <ListItemText inset>HVAC 2 {props.details.hvac2.toUpperCase()}</ListItemText>
 
                             </MenuItem>
-                            <MenuItem disabled={props.details.parameter === '1'}>
+                            <MenuItem disabled={(props.details.parameter === '1' )|| (props.details.type==='1')}>
                                 <ListItemAvatar >
                                     <Avatar sx={props.fanair2Color}>
                                         <AirIcon/>

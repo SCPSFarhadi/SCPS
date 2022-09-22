@@ -100,11 +100,14 @@ function MakeGraph(props) {
         "hvac1":" ",
         "hvac2":" ",
         "parameter":" ",
+        "type":" ",
         "setPoint":"None",
         "mode":"None"
     }
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")
+        console.log(details.type === '1')
+        console.log("something fun")
         details = dataShortDetail;
         if(details.hvac1==="on"){
             hvac1Color = { bgcolor: green[100], color: green[600] }

@@ -205,6 +205,7 @@ export default function NodeForm(props) {
                     </Typography>
                     <FormControlLabel
                         label="Fan air 1 on"
+                        disabled={props.details.type==='1'}
                         // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
                         control={<Switch id="fanAir1" {...label} defaultChecked disabled={btnSleepSelect||btnEnergySelect} onChange={handleChecking}/>}
                     />
