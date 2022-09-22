@@ -102,7 +102,7 @@ export default function SimpleDialog(props) {
                                 </ListItemAvatar>
                                 <ListItemText inset >Fan Air 1 {props.details.fanAir1.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            <MenuItem >
+                            <MenuItem disabled={props.details.parameter === '1'}>
                                 <ListItemAvatar>
                                     <Avatar sx={props.hvac2Color}>
                                         <PowerIcon/>
@@ -111,7 +111,7 @@ export default function SimpleDialog(props) {
                                 <ListItemText inset>HVAC 2 {props.details.hvac2.toUpperCase()}</ListItemText>
 
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem disabled={props.details.parameter === '1'}>
                                 <ListItemAvatar >
                                     <Avatar sx={props.fanair2Color}>
                                         <AirIcon/>
@@ -160,7 +160,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Light Sensor: ${props.details.lightSensor} lux`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="3">
+                <ListItem button onClick={() => handleListItemClick()} key="9">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: orange[100], color: orange[600] }}>
                             <ModeIcon />

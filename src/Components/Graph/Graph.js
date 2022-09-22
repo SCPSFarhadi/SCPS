@@ -169,17 +169,20 @@ function MakeGraph(props) {
     let menus = "Nodes not loaded";
     if(modData) {
         menus = modData['nodes'].map((l,i)=>{
-            let secondary = "waiting for node status...(click on node number please)";
+            let secondary = "waiting....";
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
-                <Grid item xl={3} sm={12}>
+                // <Grid item xl={3} sm={12}>
+                <div>
+                    <Grid item sm={4} xs={modData['nodes']%12} width={300}>
                     <ListItem key={i} onClick={onClickedNodeMenu}>
                         <ListItemAvatar>
                             <CircleIcon  style={{ color: secondary }} />
                         </ListItemAvatar>
                         <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
-                        <Button variant="text" onClick={()=>{
+                        <br/>
+                        <Button variant="text" style={{marginLeft:'100%'}} onClick={()=>{
                             let modData = { ...dataState };
 
                             let selectNode = modData.nodes.filter(item => {
@@ -193,8 +196,9 @@ function MakeGraph(props) {
                             setData(modData)
                         }}>Graph node {l.id}</Button>
                     </ListItem>
-                    {/*<MenuItem key={i} value={l.id}>{l.id}</MenuItem>*/}
-                </Grid>
+                    </Grid>
+                </div>
+
 
 
             )
@@ -406,10 +410,34 @@ function MakeGraph(props) {
                                         </Box>
                                     </React.Fragment>
                                     <React.Fragment>
-                                        <div>
-                                            <List>
+                                        <div style={{height:menus.length*100+'px'}}>
+                                            <BottomNavigation
+                                                showLabels
+                                            >
+                                                {/*<Grid item sm={4} xs={2}>*/}
+                                                {/*    <ListItem key={1} onClick={onClickedNodeMenu}>*/}
+                                                {/*        <ListItemAvatar>*/}
+                                                {/*            <CircleIcon  />*/}
+                                                {/*        </ListItemAvatar>*/}
+                                                {/*        <ListItemText color={blue} />*/}
+                                                {/*    </ListItem>*/}
+                                                {/*</Grid>*/}
+                                                {/*<Grid item sm={4} xs={2}>*/}
+                                                {/*    <ListItem key={1} onClick={onClickedNodeMenu}>*/}
+                                                {/*        <ListItemAvatar>*/}
+                                                {/*            <CircleIcon  />*/}
+                                                {/*        </ListItemAvatar>*/}
+                                                {/*        <ListItemText color={blue} />*/}
+                                                {/*    </ListItem>*/}
+                                                {/*</Grid>*/}
+                                                {/*<Grid item sm={4} xs={2}>*/}
+                                                {/*    <BottomNavigationAction label="Errors" icon={<ErrorOutlineIcon sx={{ color: red[600] }}/>} />*/}
+                                                {/*</Grid>*/}
                                                 {menus}
-                                            </List>
+                                            </BottomNavigation>
+                                            {/*<List>*/}
+                                            {/*    {menus}*/}
+                                            {/*</List>*/}
 
                                         </div>
                                     </React.Fragment>
@@ -498,7 +526,7 @@ function MakeGraph(props) {
                             <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555", backgroundColor: "#f3eec3", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                 MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                 <div className="p-6">
-                                    <NodeForm selectedNode={selectedNode}/>
+                                    <NodeForm selectedNode={selectedNode} details = {details}/>
                                 </div>         
                             </Paper>
                         </Container>

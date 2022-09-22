@@ -26,8 +26,9 @@ export default function IndeterminateCheckbox(props) {
                 control={<Switch id="controlValve1" {...label} defaultChecked onChange={props.handleCheckingFanAir} disabled={props.disableCheckBox}/>}
             />
             <FormControlLabel
+                disabled={props.details.parameter === '1' || props.disableCheckBox}
                 label="HVAC 2 on"
-                control={<Switch id="controlValve2" {...label} defaultChecked onChange={props.handleCheckingFanAir} disabled={props.disableCheckBox}/>}
+                control={<Switch id="controlValve2" {...label} defaultChecked onChange={props.handleCheckingFanAir}/>}
             />
             {/*<FormControlLabel*/}
             {/*    label="control valve 3 open"*/}
