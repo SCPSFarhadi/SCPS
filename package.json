@@ -1,8 +1,7 @@
 {
   "name": "untitled2",
-  "homepage": "http://pouriaarefi.ir/spilt/",
+  "homepage": "http://91.98.15.243:3000/",
   "version": "0.1.0",
-
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
