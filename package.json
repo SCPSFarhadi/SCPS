@@ -1,6 +1,7 @@
 {
   "name": "untitled2",
   "version": "0.1.0",
+  "homepage": "http://91.98.15.243:3002/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
