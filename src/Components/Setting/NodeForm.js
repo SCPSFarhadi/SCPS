@@ -59,7 +59,7 @@ export default function NodeForm(props) {
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
-        let id = selectedNode
+        let id = props.details.nodeid ? props.details.nodeid : selectedNode
         let sleepMode = document.getElementById("workMode1").checked
         let EnergySavingMode = document.getElementById("workMode2").checked;
         let maintenanceMode = document.getElementById("workMode3").checked
