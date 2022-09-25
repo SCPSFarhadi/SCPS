@@ -35,6 +35,10 @@ export default function ControlPanelForm() {
     let setPoint = document.getElementById("setPoint").value
     let coolingHeatingMode = heatingCooling;
     let FanState = fanOnOff
+    if(!(setPoint>16 && setPoint<31)){
+      alert("set point must between 17 and 30")
+      return;
+    }
     const config = {
       headers: {
         'Content-Type': 'application/json',

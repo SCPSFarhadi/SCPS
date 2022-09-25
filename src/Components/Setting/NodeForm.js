@@ -24,6 +24,7 @@ export default function NodeForm(props) {
 
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
     const [classicMode, setClassicMode] = React.useState(true);
+    const [value,setValue]= useState(20);
     const [modeSelect, setModeSelect] = useState('')
     const [menuItemSelect, setMenuItemSelect] = useState('LOW')
 
@@ -35,6 +36,11 @@ export default function NodeForm(props) {
     function valuetext(value) {
         return `${value}°C`;
     }
+    const changeValue = (event, value) => {
+        console.log("selected temp")
+        console.log(value)
+        setValue(value);
+    };
     const marks = [
         {
             value: 17,
@@ -45,7 +51,6 @@ export default function NodeForm(props) {
             label: '30°C',
         },
     ];
-    let value=20;
     const dispatch = useDispatch();
     function handleSubmit() {
         console.log("temp for fun")
@@ -146,7 +151,7 @@ export default function NodeForm(props) {
                         step={0.5}
                         valueLabelDisplay="auto"
                         marks={marks}
-                        onChange={(e, val) => value = val}
+                        onChange={changeValue}
                         min={17}
                         max={30}
                     />
