@@ -149,18 +149,17 @@ function MakeGraph(props) {
     };
 
     const onClickedNodeMenu = function(elem) {
-        console.log("in click down menu")
-        console.log(elem.target.innerHTML)
-
+        if(elem.target.innerHTML)
+            getLastData(elem.target.innerHTML);
         let modData = { ...dataState };
 
         let selectNode = modData.nodes.filter(item => {
             return item.id === elem.target.innerHTML;
         });
         selectNode.forEach(item => {
-            item.color = "#f8c0cb";
-            setSelectedNode(item.id);
             getLastData(item.id);
+            setSelectedNode(item.id);
+
 
         });
         setData(modData)
@@ -186,16 +185,20 @@ function MakeGraph(props) {
                         <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
                         <br/>
                         <Button variant="text" style={{marginLeft:'100%'}} onClick={()=>{
-                            let modData = { ...dataState };
-
-                            let selectNode = modData.nodes.filter(item => {
-                                return item.id === l.id;
-                            });
-                            selectNode.forEach(item => {
-                                setSelectedNode(item.id);
-                                getLastData(item.id);
-
-                            });
+                            console.log("in button")
+                            console.log(l.id+"   "+i)
+                            // let modData = { ...dataState };
+                            //
+                            // let selectNode = modData.nodes.filter(item => {
+                            //     return item.id === l.id;
+                            // });
+                            // selectNode.forEach(item => {
+                            //     setSelectedNode(item.id);
+                            //     getLastData(item.id);
+                            //
+                            // });
+                            setSelectedNode(l.id);
+                            getLastData(l.id);
                             setData(modData)
                         }}>Graph node {l.id}</Button>
                     </ListItem>
@@ -266,7 +269,6 @@ function MakeGraph(props) {
             },
         };
         let token = localStorage.getItem('token_access')
-        console.log(localStorage.getItem('token_access'))
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
 
