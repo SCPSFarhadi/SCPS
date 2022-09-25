@@ -171,20 +171,19 @@ function MakeGraph(props) {
     let menus = "Nodes not loaded";
     if(modData) {
         menus = modData['nodes'].map((l,i)=>{
-            let secondary = "waiting....";
+            let secondary = "";
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
                 // <Grid item xl={3} sm={12}>
                 <div>
-                    <Grid item sm={4} xs={modData['nodes']%12} width={300}>
+                    <Grid item sm={12} xs={modData['nodes']%12} width="100%">
                     <ListItem key={i} >
                         <ListItemAvatar>
                             <CircleIcon  style={{ color: secondary }} />
                         </ListItemAvatar>
-                        <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
-                        <br/>
-                        <Button variant="text" style={{marginLeft:'100%'}} onClick={()=>{
+                        <ListItemText color={blue} primary={l.id} id='elementIdNode'/>
+                        <Button variant="text" onClick={()=>{
                             console.log("in button")
                             console.log(l.id+"   "+i)
                             // let modData = { ...dataState };
