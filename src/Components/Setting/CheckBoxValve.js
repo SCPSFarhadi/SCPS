@@ -73,19 +73,6 @@ export default function IndeterminateCheckbox(props) {
                 autoComplete="25"
                 variant="standard"
             />
-            <FormControlLabel
-                label="control vale 5 open"
-                control={<Switch id="cValveOpen5" {...label} defaultChecked onChange={handleChange2} />}
-            />
-
-            <TextField
-                id="cvalve5w"
-                name="setpoint"
-                label="waterneed"
-                fullWidth
-                autoComplete="25"
-                variant="standard"
-            />
             {/*<div>*/}
             {/*    <Switch {...label} defaultChecked />*/}
             {/*    <Switch {...label} />*/}

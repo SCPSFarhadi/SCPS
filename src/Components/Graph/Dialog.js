@@ -118,13 +118,13 @@ export default function SimpleDialog(props) {
                                 </Avatar>
                                 <ListItemText inset>Control valve 4 Open</ListItemText>
                             </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
+                            {/*<MenuItem>*/}
+                            {/*    <Avatar sx={{ bgcolor: red[100], color: red[600] }}>*/}
+                            {/*        <PowerIcon/>*/}
+                            {/*    </Avatar>*/}
 
-                                <ListItemText inset>Control valve 5 close</ListItemText>
-                            </MenuItem>
+                            {/*    <ListItemText inset>Control valve 5 close</ListItemText>*/}
+                            {/*</MenuItem>*/}
                         </MenuList>
                     </ListItemAvatar>
 

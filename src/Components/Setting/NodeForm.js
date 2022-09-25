@@ -138,9 +138,6 @@ export default function NodeForm(props) {
                             variant="standard"
                         />
 
-                        <Typography variant="h6">
-                            control valve 5 factor
-                        </Typography>
                         {/*<div>*/}
                         {/*    <Switch {...label} defaultChecked />*/}
                         {/*    <Switch {...label} />*/}
@@ -148,14 +145,6 @@ export default function NodeForm(props) {
                         {/*    <Switch {...label} disabled />*/}
                         {/*</div>*/}
 
-                        <TextField
-                            id="7"
-                            name="setpoint"
-                            label="Factor 5"
-                            fullWidth
-                            autoComplete="25"
-                            variant="standard"
-                        />
                     </Box>
                     <Button variant="contained" onClick={handleSubmit}>Save</Button>
                 </Grid>
