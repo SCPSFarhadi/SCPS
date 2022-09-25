@@ -13,23 +13,23 @@ import axios from "axios";
 
 let states = [
     {
-        "Time":"2022-09-03 18:05:36",
-        "ID":"1",
-        "RoomTemp": "25",
-        "Humidity":"Null",
-        "Light":"Null",
-        "AnalogSensor1":"Null",
-        "AnalogSensor2":"Null",
-        "WorkMode":"sleep",
-        "UserSetPoint":"20",
-        "HVACType1":"NULL",
-        "HVACSetPoint1":"30",
-        "HVACTemp1":"30",
-        "HVACState1":"1",
-        "HVACType2":"NULL",
-        "HVACSetPoint2":"30",
-        "HVACTemp2":"30",
-        "HVACState2":"1"
+        "Time":"please submit time",
+        "ID":"",
+        "RoomTemp": "",
+        "Humidity":"",
+        "Light":"",
+        "AnalogSensor1":"",
+        "AnalogSensor2":"",
+        "WorkMode":"",
+        "UserSetPoint":"",
+        "HVACType1":"",
+        "HVACSetPoint1":"",
+        "HVACTemp1":"",
+        "HVACState1":"",
+        "HVACType2":"",
+        "HVACSetPoint2":"",
+        "HVACTemp2":"",
+        "HVACState2":""
     }
 ];
 
@@ -64,7 +64,6 @@ export default function ReportStates() {
             <td>{props.dataItem[props.field] ? '✅' : '❌'}</td>
         )
     }
-
     function getGrid() {
         function submitDate(event) {
             event.preventDefault()
@@ -128,7 +127,7 @@ export default function ReportStates() {
                         filter="date"
                         format="{0:d}"
                         disableColumnFilter/>
-            <GridColumn field="Time" title="Time"/>
+            <GridColumn field="Time" title="Time" width="200%"/>
             <GridColumn field="RoomTemp"  title="Room Temperature"/>
             <GridColumn field="Humidity" title="Humidity Sensor"/>
             <GridColumn field="Light" title="Light Sensor"/>
@@ -136,14 +135,14 @@ export default function ReportStates() {
             <GridColumn field="AnalogSensor2" title="Smoke Sensor"/>
             <GridColumn field="WorkMode" title="WorkMode"/>
             <GridColumn field="UserSetPoint"  title="UserSetPoint"/>
-            <GridColumn field="HVACType1" title="HVACType1"/>
-            <GridColumn field="HVACSetPoint1" title="HVACSetPoint1"/>
-            <GridColumn field="HVACTemp1" title="HVACTemp1"/>
-            <GridColumn field="HVACState1" title="HVACState1"/>
-            <GridColumn field="HVACType2" title="HVACType2"/>
-            <GridColumn field="HVACSetPoint2" title="HVACSetPoint2"/>
-            <GridColumn field="HVACTemp2" title="HVACTemp2"/>
-            <GridColumn field="HVACState2" title="HVACState2"/>
+            <GridColumn field="HVACType1" title="HVACType1" />
+            {/*<GridColumn field="HVACSetPoint1" title="HVACSetPoint1"/>*/}
+            {/*<GridColumn field="HVACTemp1" title="HVACTemp1"/>*/}
+            {/*<GridColumn field="HVACState1" title="HVACState1"/>*/}
+            {/*<GridColumn field="HVACType2" title="HVACType2"/>*/}
+            {/*<GridColumn field="HVACSetPoint2" title="HVACSetPoint2"/>*/}
+            {/*<GridColumn field="HVACTemp2" title="HVACTemp2"/>*/}
+            {/*<GridColumn field="HVACState2" title="HVACState2"/>*/}
         </Grid>
             ;
 

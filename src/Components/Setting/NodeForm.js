@@ -24,7 +24,7 @@ export default function NodeForm(props) {
     const [btnSleepSelect, setSleepSelect] = useState(false)
     const [btnEnergySelect, setEnergySelect] = useState(false)
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
-
+    const [value,setValue]= useState(20);
     const [modeSelect, setModeSelect] = useState('')
 
 
@@ -35,17 +35,22 @@ export default function NodeForm(props) {
     function valuetext(value) {
         return `${value}°C`;
     }
+    const changeValue = (event, value) => {
+        console.log("selected temp")
+        console.log(value)
+        setValue(value);
+    };
     const marks = [
         {
-            value: 20,
-            label: '20°C',
+            value: 17,
+            label: '17°C',
         },
         {
             value: 30,
             label: '30°C',
         },
     ];
-    let value=20;
+
     const dispatch = useDispatch();
     function handleSubmit() {
         console.log("temp for fun")
@@ -153,6 +158,19 @@ export default function NodeForm(props) {
                     <Typography>
                         Set point:
                     </Typography>
+                    {/*<Grid item xs={12} sm={9}>*/}
+
+                    {/*    <TextField*/}
+                    {/*        id="setPoint"*/}
+                    {/*        name="setpoint"*/}
+                    {/*        label="Set Point"*/}
+                    {/*        fullWidth*/}
+                    {/*        autoComplete="25"*/}
+                    {/*        variant="standard"*/}
+                    {/*        disabled={btnDisabled}*/}
+                    {/*        onChange={(e, val) => value=val}*/}
+                    {/*    />*/}
+                    {/*</Grid>*/}
                     <Slider
                         disabled={btnDisabled}
                         aria-label="SetPoint"
@@ -161,13 +179,13 @@ export default function NodeForm(props) {
                         step={0.5}
                         valueLabelDisplay="auto"
                         marks={marks}
-                        onChange={(e, val) => value = val}
-                        min={20}
+                        onChange={changeValue}
+                        min={17}
                         max={30}
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <FormControl fullWidth disabled={btnDisabled}>
+                    <FormControl fullWidth disabled={btnDisabled} >
                         <InputLabel id="demo-simple-select-label">Room Occupant Permission</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
