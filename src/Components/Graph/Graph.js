@@ -178,7 +178,7 @@ function MakeGraph(props) {
                 // <Grid item xl={3} sm={12}>
                 <div>
                     <Grid item sm={4} xs={modData['nodes']%12} width={300}>
-                    <ListItem key={i} onClick={onClickedNodeMenu}>
+                    <ListItem key={i} >
                         <ListItemAvatar>
                             <CircleIcon  style={{ color: secondary }} />
                         </ListItemAvatar>
