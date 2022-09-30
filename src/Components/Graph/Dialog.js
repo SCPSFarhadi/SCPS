@@ -111,7 +111,7 @@ export default function SimpleDialog(props) {
                                 <ListItemText inset>HVAC 2 {props.details.hvac2.toUpperCase()}</ListItemText>
 
                             </MenuItem>
-                            <MenuItem disabled={(props.details.parameter === '1' )|| (props.details.type===1)}>
+                            <MenuItem disabled={(props.details.parameter === '1' )|| (props.details.type===1) }>
                                 <ListItemAvatar >
                                     <Avatar sx={props.fanair2Color}>
                                         <AirIcon/>

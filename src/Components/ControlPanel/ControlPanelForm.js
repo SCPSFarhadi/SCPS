@@ -31,7 +31,7 @@ export default function ControlPanelForm() {
     console.log("in click")
     let Mode = menuItemSelect
     let setPoint = document.getElementById("setPoint").value
-    if(!(setPoint>16 && setPoint<31)){
+    if(Mode!=='sleep'&& (!(setPoint>16 && setPoint<31))){
       alert("set point must between 17 and 30")
       return;
     }
