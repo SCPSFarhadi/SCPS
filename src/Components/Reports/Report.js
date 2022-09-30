@@ -13,83 +13,25 @@ import axios from "axios";
 
 let states = [
     {
-        "Time":"2022-09-03 18:05:36",
-        "ID":"1",
-        "Temp": "25",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-
-    },
-    {
-        "Time":"2022-09-03 18:06:49",
-        "ID":"1",
-        "Temp": "26",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-    },
-    {
-        "Time":"2022-09-03 18:10:20",
-        "ID":"1",
-        "Temp": "26.5",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-    },
-    {
-        "Time":"2022-09-03 18:11:36",
-        "ID":"1",
-        "Temp": "28.2",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-    },
-    {
-        "Time":"2022-09-03 18:14:26",
-        "ID":"1",
-        "Temp": "28",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-    },
-    {
-        "Time":"2022-09-03 18:19:46",
-        "ID":"1",
-        "Temp": "29",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-    },
-    {
-        "Time":"2022-09-03 18:25:36",
-        "ID":"1",
-        "Temp": "28.75",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
-    },
-    {
-        "Time":"2022-09-03 18:29:43",
-        "ID":"1",
-        "Temp": "28.5",
-        "Humidity":"Null",
-        "Light":"Null",
-        "CO2sensor":"Null",
-        "AnalogSensor2":"Null"
+        "Time":"please submit time",
+        "ID":"",
+        "RoomTemp": "",
+        "Humidity":"",
+        "Light":"",
+        "AnalogSensor1":"",
+        "AnalogSensor2":"",
+        "WorkMode":"",
+        "UserSetPoint":"",
+        "HVACType1":"",
+        "HVACSetPoint1":"",
+        "HVACTemp1":"",
+        "HVACState1":"",
+        "HVACType2":"",
+        "HVACSetPoint2":"",
+        "HVACTemp2":"",
+        "HVACState2":""
     }
 ];
-
-
-
-
 
 const initialFilter = {
     logic: "and",
@@ -122,14 +64,13 @@ export default function ReportStates() {
             <td>{props.dataItem[props.field] ? '✅' : '❌'}</td>
         )
     }
-
     function getGrid() {
         function submitDate(event) {
             event.preventDefault()
             let from = document.getElementById('fromDateReport').value
             let to = document.getElementById('toDateReport').value
 
-            let url = HOST_URL+"/api/users/report/";
+            let url = HOST_URL+"/api/users/ReportRoomTem/";
             let data2 = {
                 from:from,
                 to:to
@@ -171,13 +112,13 @@ export default function ReportStates() {
                 </label>
                 <input type="date" id="fromDateReport"/>
             </span>{"          "}
-            <span style={{marginTop:"15px"}}>
+                <span style={{marginTop:"15px"}}>
                 <label style={{fontWeight:"bold"}}>
                     To date:
                 </label>
                 <input type="date" id="toDateReport"/>
             </span>{"   "}
-            <span style={{marginTop:"15px"}}>
+                <span style={{marginTop:"15px"}}>
                 <Button type="submit" onClick={submitDate} >Submit</Button>
             </span>
             </GridToolbar>
@@ -186,10 +127,22 @@ export default function ReportStates() {
                         filter="date"
                         format="{0:d}"
                         disableColumnFilter/>
-            <GridColumn field="Time" title="Time"/>
-            <GridColumn field="Temp"  title="ًRoom Temperature"/>
+            <GridColumn field="Time" title="Time" width="200%"/>
+            <GridColumn field="RoomTemp"  title="Room Temperature"/>
             <GridColumn field="Humidity" title="Humidity Sensor"/>
-            {/*<GridColumn field="CO2sensor" title="CO2 sensor"/>*/}
+            {/*<GridColumn field="Light" title="Light Sensor"/>*/}
+            {/*<GridColumn field="AnalogSensor1" title="CO2 Sensor"/>*/}
+            {/*<GridColumn field="AnalogSensor2" title="Smoke Sensor"/>*/}
+            {/*<GridColumn field="WorkMode" title="WorkMode"/>*/}
+            {/*<GridColumn field="UserSetPoint"  title="UserSetPoint"/>*/}
+            {/*<GridColumn field="HVACType1" title="HVACType1" />*/}
+            {/*<GridColumn field="HVACSetPoint1" title="HVACSetPoint1"/>*/}
+            {/*<GridColumn field="HVACTemp1" title="HVACTemp1"/>*/}
+            {/*<GridColumn field="HVACState1" title="HVACState1"/>*/}
+            {/*<GridColumn field="HVACType2" title="HVACType2"/>*/}
+            {/*<GridColumn field="HVACSetPoint2" title="HVACSetPoint2"/>*/}
+            {/*<GridColumn field="HVACTemp2" title="HVACTemp2"/>*/}
+            {/*<GridColumn field="HVACState2" title="HVACState2"/>*/}
         </Grid>
             ;
 
@@ -199,6 +152,14 @@ export default function ReportStates() {
         <GridPDFExport ref={(pdfExport) => (gridPDFExport = pdfExport)}>
             {getGrid()}
         </GridPDFExport>
-            {getGrid()}
+        {getGrid()}
     </ExcelExport>;
 };
+
+// <GridColumn field="ID" title="ID"
+//                           filter="date"
+//                           format="{0:d}"
+//                           disableColumnFilter/>
+// <GridColumn field="Time" title="Time"/>
+// <GridColumn field="Temp"  title="ًRoom Temperature"/>
+// <GridColumn field="Humidity" title="Humidity Sensor"/>

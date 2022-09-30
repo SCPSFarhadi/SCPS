@@ -91,7 +91,7 @@ export default function TestReport() {
                 filterable={true}
                 onDataStateChange={onDataStateChange}
                 pageable={true}
-                total={bikeStations.length}
+                // total={bikeStations.length}
                 {...dataState}
                 resizable={true}
                 xs={6}
