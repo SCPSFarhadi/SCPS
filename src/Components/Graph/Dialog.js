@@ -63,7 +63,7 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={`Wet temperature: ${props.details.temp} Centigrade`} />
+                    <ListItemText primary={`Wet temperature: ${props.details.fanAir1} Centigrade`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key='1'>
