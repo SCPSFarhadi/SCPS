@@ -41,7 +41,21 @@ export default function ControPanel(props) {
     function handleSubmit(e) {
         console.log("temp for fun")
         e.preventDefault();
-
+        var baseData ={
+            "cValve1": true,
+            "cValve2": true,
+            "classicMode": false,
+            "dongleValue1": "20",
+            "dongleValue2": "20",
+            "energysavingMode": false,
+            "fanAir1": true,
+            "fanAir2": true,
+            "manualMode": true,
+            "nodeid": "",
+            "perm": "",
+            "sleepMode": false,
+            "temp": 20
+        }
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -54,8 +68,9 @@ export default function ControPanel(props) {
 
         let cValveOpen1 = document.getElementById("cValveOpen1").checked // false true
         if(cValveOpen1){
+            baseData.cValve1 = true;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"open"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent")
                 })
@@ -76,8 +91,9 @@ export default function ControPanel(props) {
 
         let cValveOpen2 = document.getElementById("cValveOpen2").checked // false true
         if(cValveOpen2){
+            baseData.cValve2 = true;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"open"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent 2" )
                 })
@@ -97,8 +113,9 @@ export default function ControPanel(props) {
 
         let cValveOpen3 = document.getElementById("cValveOpen3").checked // false true
         if(cValveOpen3){
+            baseData.fanAir1 = true;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"open"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent 3")
                 })
@@ -118,8 +135,9 @@ export default function ControPanel(props) {
 
         let cValveOpen4 = document.getElementById("cValveOpen4").checked // false true
         if(cValveOpen4){
+            baseData.fanAir2 = true;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"open"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent 4")
                 })
