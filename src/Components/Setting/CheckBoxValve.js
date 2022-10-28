@@ -9,7 +9,11 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 export default function IndeterminateCheckbox(props) {
     const [checked, setChecked] = React.useState([true, false,false]);
-
+    const [CValveChecked5, setCValveChecked5] = React.useState(true);
+    const [CValveChecked4, setCValveChecked4] = React.useState(true);
+    const [CValveChecked3, setCValveChecked3] = React.useState(true);
+    const [CValveChecked2, setCValveChecked2] = React.useState(true);
+    const [CValveChecked1, setCValveChecked1] = React.useState(true);
 
 
     const handleChange2 = (event) => {
@@ -17,12 +21,16 @@ export default function IndeterminateCheckbox(props) {
     };
 
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
                 <FormControlLabel
                     label="control vale 1 open"
                     // control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-                    control={<Switch id="cValveOpen1" {...label} defaultChecked onChange={handleChange2} />}
+                    control={<Switch id="cValveOpen1" {...label} defaultChecked onChange={function(e) {
+                        setCValveChecked1(e.target.checked)
+                    }} />}
                 />
 
                     <TextField
@@ -32,10 +40,13 @@ export default function IndeterminateCheckbox(props) {
                         fullWidth
                         autoComplete="25"
                         variant="standard"
+                        disabled={CValveChecked1}
                     />
             <FormControlLabel
                 label="control vale 2 open"
-                control={<Switch id="cValveOpen2" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen2" {...label} defaultChecked onChange={function(e) {
+                    setCValveChecked2(e.target.checked)
+                }} />}
                 
             />
 
@@ -46,10 +57,13 @@ export default function IndeterminateCheckbox(props) {
                         fullWidth
                         autoComplete="25"
                         variant="standard"
+                        disabled={CValveChecked2}
                     />
             <FormControlLabel
                 label="control vale 3 open"
-                control={<Switch id="cValveOpen3" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen3" {...label} defaultChecked onChange={function(e) {
+                    setCValveChecked3(e.target.checked)
+                }} />}
             />
 
                     <TextField
@@ -59,10 +73,13 @@ export default function IndeterminateCheckbox(props) {
                         fullWidth
                         autoComplete="25"
                         variant="standard"
+                        disabled={CValveChecked3}
                     />
             <FormControlLabel
                 label="control vale 4 open"
-                control={<Switch id="cValveOpen4" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen4" {...label} defaultChecked onChange={function(e) {
+                    setCValveChecked4(e.target.checked)
+                }} />}
             />
 
             < TextField
@@ -72,10 +89,13 @@ export default function IndeterminateCheckbox(props) {
                         fullWidth
                         autoComplete="25"
                         variant="standard"
+                        disabled={CValveChecked4}
                     />
             <FormControlLabel
                 label="control vale 5 open"
-                control={<Switch id="cValveOpen5" {...label} defaultChecked onChange={handleChange2} />}
+                control={<Switch id="cValveOpen5" {...label} defaultChecked onChange={function(e) {
+                    setCValveChecked5(e.target.checked)
+                }} />}
             />
 
                 <TextField
@@ -85,6 +105,7 @@ export default function IndeterminateCheckbox(props) {
                         fullWidth
                         autoComplete="25"
                         variant="standard"
+                        disabled={CValveChecked5}
                     />
             {/*<div>*/}
             {/*    <Switch {...label} defaultChecked />*/}
