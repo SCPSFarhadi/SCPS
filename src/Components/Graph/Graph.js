@@ -155,28 +155,33 @@ function MakeGraph(props) {
             if(modData.nodes[i].color)
                 secondary = modData.nodes[i].color
             return (
-                <Grid item xl={3} sm={12}>
-                    <ListItem key={i} onClick={onClickedNodeMenu}>
-                        <ListItemAvatar>
-                            <CircleIcon  style={{ color: secondary }} />
-                        </ListItemAvatar>
-                        <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
-                        <Button variant="text" onClick={()=>{
-                            let modData = { ...dataState };
-
-                            let selectNode = modData.nodes.filter(item => {
-                                return item.id === l.id;
-                            });
-                            selectNode.forEach(item => {
-                                setSelectedNode(item.id);
-                                getLastData(item.id);
-
-                            });
-                            setData(modData)
-                        }}>Graph node {l.id}</Button>
-                    </ListItem>
-                    {/*<MenuItem key={i} value={l.id}>{l.id}</MenuItem>*/}
-                </Grid>
+                <div>
+                    <Grid item sm={12} xs={modData['nodes']%12} width="100%">
+                        <ListItem key={i} >
+                            <ListItemAvatar>
+                                <CircleIcon  style={{ color: secondary }} />
+                            </ListItemAvatar>
+                            <ListItemText color={blue} primary={l.id} id='elementIdNode'/>
+                            <Button variant="text" onClick={()=>{
+                                console.log("in button")
+                                console.log(l.id+"   "+i)
+                                // let modData = { ...dataState };
+                                //
+                                // let selectNode = modData.nodes.filter(item => {
+                                //     return item.id === l.id;
+                                // });
+                                // selectNode.forEach(item => {
+                                //     setSelectedNode(item.id);
+                                //     getLastData(item.id);
+                                //
+                                // });
+                                setSelectedNode(l.id);
+                                getLastData(l.id);
+                                setData(modData)
+                            }}>Graph node {l.id}</Button>
+                        </ListItem>
+                    </Grid>
+                </div>
 
 
             )
@@ -242,6 +247,7 @@ function MakeGraph(props) {
         let token = localStorage.getItem('token_access')
         if (token) {
             config.headers['Authorization'] = `JWT ${token}`;
+
         }
         // fetch(baseUrl+'api/users/sendlastdata/', {
         //     method: "POST",

@@ -95,7 +95,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
     axios
-        .post(baseUrl+'api/users/logout/', {refresh: localStorage.getItem('token_refresh')}, tokenConfig(getState))
+        .post(baseUrl+'api/users/logout/', {refresh: localStorage.getItem('token_refresh')})
         .then((res) => {
             dispatch({ type: 'CLEAR_LEADS' });
             dispatch({
