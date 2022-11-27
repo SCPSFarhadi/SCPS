@@ -51,7 +51,7 @@ export default function ControPanel(props) {
             "fanAir1": true,
             "fanAir2": true,
             "manualMode": true,
-            "nodeid": "",
+            "nodeid": props.details.nodeId,
             "perm": true,
             "sleepMode": false,
             "temp": 20
@@ -76,8 +76,9 @@ export default function ControPanel(props) {
                     console.log("data sent")
                 })
         }else{
+            baseData.cValve1 = false;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"close"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent 1")
                 })
@@ -99,8 +100,9 @@ export default function ControPanel(props) {
                     console.log("data sent 2" )
                 })
         }else{
+            baseData.cValve2 = false;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"close"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent")
                 })
@@ -121,8 +123,9 @@ export default function ControPanel(props) {
                     console.log("data sent 3")
                 })
         }else{
+            baseData.fanAir1 = false;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"close"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent")
                 })
@@ -143,8 +146,9 @@ export default function ControPanel(props) {
                     console.log("data sent 4")
                 })
         }else{
+            baseData.fanAir2 = false;
             axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"close"},config)
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent")
                 })

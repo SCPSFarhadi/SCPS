@@ -455,7 +455,7 @@ function MakeGraph(props) {
                                 <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 3, md: 1 } }} style={{border: "solid 1px #555",  backgroundColor: "rgb(255 255 215)", boxShadow: "0 0 10px rgb(0 0 0 / 60%)",
                                     MozBoxShadow: "0 0 10px rgba(0,0,0,0.6)", WebkitBoxShadow: "0 0 10px rgb(0 0 0 / 60%)", OBoxShadow: "0 0 10px rgba(0,0,0,0.6)"}}>
                                     <div className="p-6">
-                                        <ControPanel selectedNode={selectedNode}/>
+                                        <ControPanel selectedNode={selectedNode} details = {details}/>
                                     </div>
                                 </Paper>
                             </Container>
