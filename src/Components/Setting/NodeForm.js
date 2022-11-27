@@ -107,7 +107,7 @@ export default function NodeForm(props) {
                         </Typography>
 
                         <TextField
-                            id="4"
+                            id="cValveFactor2"
                             name="setpoint"
                             label="Factor 2"
                             fullWidth
@@ -118,7 +118,7 @@ export default function NodeForm(props) {
                             control valve 3 factor
                         </Typography>
                         <TextField
-                            id="5"
+                            id="cValveFactor3"
                             name="setpoint"
                             label="Factor 3"
                             fullWidth
@@ -130,7 +130,7 @@ export default function NodeForm(props) {
                         </Typography>
 
                         <TextField
-                            id="6"
+                            id="cValveFactor4"
                             name="setpoint"
                             label="Factor 4"
                             fullWidth

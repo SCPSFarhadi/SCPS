@@ -86,9 +86,10 @@ export default function ControPanel(props) {
             let y = parseInt(document.getElementById("cvalve1w").value)
 
             setTimeout(() => {
-                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"open"},config)
+                baseData.cValve1 = true;
+                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
             }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":1,"status":"close"},config)
+            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
         }
 
         let cValveOpen2 = document.getElementById("cValveOpen2").checked // false true
@@ -109,9 +110,10 @@ export default function ControPanel(props) {
             let x = parseInt(document.getElementById("cValveFactor2").value)
             let y = parseInt(document.getElementById("cvalve2w").value)
             setTimeout(() => {
-                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"open"},config)
+                baseData.cValve2 = true;
+                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
             }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":2,"status":"close"},config)
+            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
         }
 
         let cValveOpen3 = document.getElementById("cValveOpen3").checked // false true
@@ -132,9 +134,10 @@ export default function ControPanel(props) {
             let x = parseInt(document.getElementById("cValveFactor3").value)
             let y = parseInt(document.getElementById("cvalve3w").value)
             setTimeout(() => {
-                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"open"},config)
+                baseData.fanAir1 = true;
+                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
             }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":3,"status":"close"},config)
+            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
         }
 
         let cValveOpen4 = document.getElementById("cValveOpen4").checked // false true
@@ -155,9 +158,10 @@ export default function ControPanel(props) {
             let x = parseInt(document.getElementById("cValveFactor4").value)
             let y = parseInt(document.getElementById("cvalve4w").value)
             setTimeout(() => {
-                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"open"},config)
+                baseData.fanAir2 = true;
+                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
             }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"close"},config)
+            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
         }
 
         // let cValveOpen5 = document.getElementById("cValveOpen5").checked // false true

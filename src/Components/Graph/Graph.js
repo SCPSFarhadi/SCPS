@@ -82,11 +82,16 @@ function MakeGraph(props) {
     const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const dateTime = date + ' ' + time;
+    let hvac1Color = { bgcolor: red[100], color: red[600] }
+    let hvac2Color = { bgcolor: red[100], color: red[600] }
+    let fanair1Color = { bgcolor: red[100], color: red[600] }
+    let fanair2Color = { bgcolor: red[100], color: red[600] }
+
     let details = {
         "nodeId":"1",
         "time":  dateTime,
         "temp": "29",
-        "lastOccupancy":"Null",
+        "lastOccupancy":"None",
         "lightSensor":"Null",
         "humiditySensor":"Null",
         "analogSensor1":"Null",
@@ -96,7 +101,28 @@ function MakeGraph(props) {
         "hvac1":" ",
         "hvac2":" ",
         "parameter":" ",
-        "setPoint":" "
+        "type":" ",
+        "setPoint":"None",
+        "mode":"None"
+    }
+    if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
+        console.log("short detail updated")
+        console.log(details.type === '1')
+        console.log("something fun")
+        details = dataShortDetail;
+        if(details.hvac1==="on"){
+            hvac1Color = { bgcolor: green[100], color: green[600] }
+        }
+        if(details.hvac2==="on"){
+            hvac2Color = { bgcolor: green[100], color: green[600] }
+        }
+        if(details.fanAir1==="on"){
+            fanair1Color = { bgcolor: green[100], color: green[600] }
+        }
+        if(details.fanAir2==="on"){
+            fanair2Color = { bgcolor: green[100], color: green[600] }
+        }
+
     }
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")
@@ -435,6 +461,10 @@ function MakeGraph(props) {
                                         <SimpleDialog
                                             open={true}
                                             details = {details}
+                                            hvac1Color={hvac1Color}
+                                            hvac2Color={hvac2Color}
+                                            fanair1Color={fanair1Color}
+                                            fanair2Color={fanair2Color}
                                             onClose={handleClose}
                                             selectedNode={selectedNode}
                                             nodeColor={nodeColor}

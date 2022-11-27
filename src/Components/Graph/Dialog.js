@@ -90,43 +90,47 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Soil humidity sensor 2: ${props.details.analogSensor2} %`} />
                 </ListItem>
+
                 <ListItem button onClick={() => handleListItemClick()} key={listData[1]}>
                     <ListItemAvatar>
                         <MenuList dense>
                             <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
-                                <ListItemText inset>Control valve 1 Open</ListItemText>
+                                <ListItemAvatar>
+                                    <Avatar sx={props.hvac1Color}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset>Control valve 1 {props.details.hvac1.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
-                                <ListItemText inset>Control valve 2 Open</ListItemText>
+                            <MenuItem disabled={props.details.type===1}>
+                                <ListItemAvatar >
+                                    <Avatar sx={props.fanair1Color}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset >Control valve 2 {props.details.fanAir1.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
+                            <MenuItem disabled={(props.details.parameter === '1') || (props.details.type===1)}>
+                                <ListItemAvatar>
+                                    <Avatar sx={props.hvac2Color}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset>Control valve 3 {props.details.hvac2.toUpperCase()}</ListItemText>
 
-                                <ListItemText inset>Control valve 3 close</ListItemText>
                             </MenuItem>
-                            <MenuItem>
-                                <Avatar sx={{ bgcolor: green[100], color: green[600] }}>
-                                    <PowerIcon/>
-                                </Avatar>
-                                <ListItemText inset>Control valve 4 Open</ListItemText>
+                            <MenuItem disabled={(props.details.parameter === '1' )|| (props.details.type===1) }>
+                                <ListItemAvatar >
+                                    <Avatar sx={props.fanair2Color}>
+                                        <PowerIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText inset >Control valve 4 {props.details.fanAir2.toUpperCase()}</ListItemText>
                             </MenuItem>
-                            {/*<MenuItem>*/}
-                            {/*    <Avatar sx={{ bgcolor: red[100], color: red[600] }}>*/}
-                            {/*        <PowerIcon/>*/}
-                            {/*    </Avatar>*/}
 
-                            {/*    <ListItemText inset>Control valve 5 close</ListItemText>*/}
-                            {/*</MenuItem>*/}
                         </MenuList>
                     </ListItemAvatar>
+
 
 
                 </ListItem>
