@@ -166,7 +166,6 @@ function MakeGraph(props) {
                                 console.log("in button")
                                 console.log(l.id+"   "+i)
                                 // let modData = { ...dataState };
-                                //
                                 // let selectNode = modData.nodes.filter(item => {
                                 //     return item.id === l.id;
                                 // });
