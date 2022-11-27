@@ -390,11 +390,12 @@ function MakeGraph(props) {
                                         </Box>
                                     </React.Fragment>
                                     <React.Fragment>
-                                        <div>
-                                            <List>
+                                        <div style={{height:menus.length*100+'px'}}>
+                                            <BottomNavigation
+                                                showLabels
+                                            >
                                                 {menus}
-                                            </List>
-
+                                            </BottomNavigation>
                                         </div>
                                     </React.Fragment>
                                 </React.Fragment>
