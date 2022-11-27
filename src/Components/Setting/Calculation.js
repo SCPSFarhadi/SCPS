@@ -23,7 +23,11 @@ export default function Calculation(props) {
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
     const [perm, setPerm] = React.useState('');
     const selectedNode = props.selectedNode;
-
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
     let value=20;
     function handleSubmit() {
         console.log("calculate waterneed")
@@ -134,7 +138,16 @@ export default function Calculation(props) {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Button variant="contained" onClick={handleSubmit}>Get Data</Button>
+                    <Button variant="contained" onClick={()=>{
+                        var databuilt = {'longitude':document.getElementById('longitude').value,'latitude':document.getElementById('latitude').value}
+                        axios
+                            .post(baseUrl+'api/users/weather/' , databuilt,config)
+                            .then((res) => {
+                                console.log("data sent")
+                                console.log(databuilt)
+                            })
+
+                    }}>Get Data</Button>
                 </Grid>
 
 
