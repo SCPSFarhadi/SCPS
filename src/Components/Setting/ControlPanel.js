@@ -52,10 +52,11 @@ export default function ControPanel(props) {
             "fanAir2": true,
             "manualMode": true,
             "nodeid": "",
-            "perm": "",
+            "perm": true,
             "sleepMode": false,
             "temp": 20
         }
+
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -155,26 +156,26 @@ export default function ControPanel(props) {
             axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":4,"status":"close"},config)
         }
 
-        let cValveOpen5 = document.getElementById("cValveOpen5").checked // false true
-        if(cValveOpen5){
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"open"},config)
-                .then((res) => {
-                    console.log("data sent 5")
-                })
-        }else{
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"close"},config)
-                .then((res) => {
-                    console.log("data sent")
-                })
-            let x = parseInt(document.getElementById("cValveFactor5").value)
-            let y = parseInt(document.getElementById("cvalve5w").value)
-            setTimeout(() => {
-                axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"open"},config)
-            }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"close"},config)
-        }
+        // let cValveOpen5 = document.getElementById("cValveOpen5").checked // false true
+        // if(cValveOpen5){
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"open"},config)
+        //         .then((res) => {
+        //             console.log("data sent 5")
+        //         })
+        // }else{
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"close"},config)
+        //         .then((res) => {
+        //             console.log("data sent")
+        //         })
+        //     let x = parseInt(document.getElementById("cValveFactor5").value)
+        //     let y = parseInt(document.getElementById("cvalve5w").value)
+        //     setTimeout(() => {
+        //         axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"open"},config)
+        //     }, y/x);
+        //     axios.post(baseUrl+'api/users/setnodeconfig/' , {"cvavleid":5,"status":"close"},config)
+        // }
 
 
     }
