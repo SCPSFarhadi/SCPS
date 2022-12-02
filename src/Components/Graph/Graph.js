@@ -103,7 +103,8 @@ function MakeGraph(props) {
         "parameter":" ",
         "type":" ",
         "setPoint":"None",
-        "mode":"None"
+        "mode":"None",
+        "fanAir1Temp":"-1",
     }
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")
