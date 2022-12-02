@@ -94,7 +94,7 @@ export default function ControPanel(props) {
         }
         else if(!cValveOpen1 && cValveOpen2 && cValveOpen3 && cValveOpen4)      {
             console.log("first close")
-            baseData.cValve1 = false;
+            baseData.cValve1 = true;
             baseData.cValve2 = true;
             baseData.fanAir1 = true;
             baseData.fanAir2 = true;
@@ -104,10 +104,10 @@ export default function ControPanel(props) {
                     console.log("data sent")
                 })
 
-            if(x1 !==0){
+            if(x1 && x1 !==0){
 
                 setTimeout(() => {
-                    baseData.cValve1 = true;
+                    baseData.cValve1 = false;
                     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 }, y1/x1*1000);
             }else{
@@ -117,7 +117,7 @@ export default function ControPanel(props) {
         else if(cValveOpen1 && !cValveOpen2 && cValveOpen3 && cValveOpen4){
             console.log("second close")
             baseData.cValve1 = true;
-            baseData.cValve2 = false;
+            baseData.cValve2 = true;
             baseData.fanAir1 = true;
             baseData.fanAir2 = true;
 
@@ -127,10 +127,10 @@ export default function ControPanel(props) {
                     console.log("data sent")
                 })
 
-            if(x2 !==0){
+            if(x2 && x2 !==0){
 
                 setTimeout(() => {
-                    baseData.cValve2 = true;
+                    baseData.cValve2 = false;
                     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 }, y2/x2*1000);
             }else{
@@ -141,7 +141,7 @@ export default function ControPanel(props) {
             console.log("third close")
             baseData.cValve1 = true;
             baseData.cValve2 = true;
-            baseData.fanAir1 = false;
+            baseData.fanAir1 = true;
             baseData.fanAir2 = true;
 
             axios
@@ -150,10 +150,10 @@ export default function ControPanel(props) {
                     console.log("data sent")
                 })
 
-            if(x3 !==0){
+            if(x3 && x3 !==0){
 
                 setTimeout(() => {
-                    baseData.fanAir1 = true;
+                    baseData.fanAir1 = false;
                     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 }, y2/x2*1000);
             }else{
@@ -165,7 +165,7 @@ export default function ControPanel(props) {
             baseData.cValve1 = true;
             baseData.cValve2 = true;
             baseData.fanAir1 = true;
-            baseData.fanAir2 = false;
+            baseData.fanAir2 = true;
 
             axios
                 .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
@@ -173,10 +173,10 @@ export default function ControPanel(props) {
                     console.log("data sent")
                 })
 
-            if(x1 !==0){
+            if(x4 && x4 !==0){
 
                 setTimeout(() => {
-                    baseData.fanAir2 = true;
+                    baseData.fanAir2 = false;
                     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 }, y4/x4*1000);
             }else{
