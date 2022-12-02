@@ -69,7 +69,7 @@ export default function ReportStates() {
             event.preventDefault()
             let from = document.getElementById('fromDateReport').value
             let to = document.getElementById('toDateReport').value
-
+            console.log("ReportRoomTem")
             let url = HOST_URL+"/api/users/ReportRoomTem/";
             let data2 = {
                 from:from,
