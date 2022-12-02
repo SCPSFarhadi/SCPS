@@ -104,7 +104,7 @@ export default function SimpleDialog(props) {
                             </MenuItem>
                             <MenuItem disabled={props.details.type===1}>
                                 <ListItemAvatar >
-                                    <Avatar sx={props.fanair1Color}>
+                                    <Avatar sx={props.hvac2Color}>
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
@@ -112,7 +112,7 @@ export default function SimpleDialog(props) {
                             </MenuItem>
                             <MenuItem disabled={(props.details.parameter === '1') || (props.details.type===1)}>
                                 <ListItemAvatar>
-                                    <Avatar sx={props.hvac2Color}>
+                                    <Avatar sx={props.fanair1Color}>
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>

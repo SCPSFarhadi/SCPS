@@ -90,7 +90,7 @@ export default function Calculation(props) {
         console.log("es is :" + e_s)
         et0=(0.408*deltea*(R_n)+y*(900/(T+273)*u_2*(e_s-e_a)))/(deltea+y*(1+0.34*u_2));
         console.log("et0 is :" + et0)
-        waterneed=et0*s*k_c-p;
+        waterneed=et0*s*k_c-s*p;
         alert(waterneed)
 
     }
