@@ -236,7 +236,7 @@ export default function NodeForm(props) {
                         control={<Switch id="fanAir2" {...label} defaultChecked disabled={btnSleepSelect||btnEnergySelect} onChange={handleChecking}/>}
                     />
                     <br />
-                    <DangleSetpoint  btnSleepSelect={btnSleepSelect} btnMaintenanceSelect={btnEnergySelect}/>
+                    <DangleSetpoint  btnSleepSelect={btnSleepSelect} btnMaintenanceSelect={btnEnergySelect} pr={props.details}/>
                     <br />
                     <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>

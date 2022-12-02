@@ -45,7 +45,7 @@ export default function DangleSetpoint(props) {
                     defaultValue="20"
                     size="small"
                     variant="standard"
-                    disabled={props.btnSleepSelect || props.btnMaintenanceSelect}
+                    disabled={props.btnSleepSelect || props.btnMaintenanceSelect || (props.pr.parameter === '1') || (props.pr.type===1)}
                 />}
             />
         </Box>
