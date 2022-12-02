@@ -108,7 +108,7 @@ export default function SimpleDialog(props) {
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset >Control valve 2 {props.details.fanAir1.toUpperCase()}</ListItemText>
+                                <ListItemText inset >Control valve 2 {props.details.hvac2.toUpperCase()}</ListItemText>
                             </MenuItem>
                             <MenuItem disabled={(props.details.parameter === '1') || (props.details.type===1)}>
                                 <ListItemAvatar>
@@ -116,7 +116,7 @@ export default function SimpleDialog(props) {
                                         <PowerIcon/>
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText inset>Control valve 3 {props.details.hvac2.toUpperCase()}</ListItemText>
+                                <ListItemText inset>Control valve 3 {props.details.fanAir1.toUpperCase()}</ListItemText>
 
                             </MenuItem>
                             <MenuItem disabled={(props.details.parameter === '1' )|| (props.details.type===1) }>
