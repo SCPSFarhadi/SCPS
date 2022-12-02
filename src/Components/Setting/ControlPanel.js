@@ -68,101 +68,196 @@ export default function ControPanel(props) {
         }
 
         let cValveOpen1 = document.getElementById("cValveOpen1").checked // false true
-        if(cValveOpen1){
-            baseData.cValve1 = true;
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                .then((res) => {
-                    console.log("data sent")
-                })
-        }else{
-            baseData.cValve1 = false;
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                .then((res) => {
-                    console.log("data sent 1")
-                })
-            let x = parseInt(document.getElementById("cValveFactor1").value)
-            let y = parseInt(document.getElementById("cvalve1w").value)
-
-            setTimeout(() => {
-                baseData.cValve1 = true;
-                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-            }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-        }
-
         let cValveOpen2 = document.getElementById("cValveOpen2").checked // false true
-        if(cValveOpen2){
-            baseData.cValve2 = true;
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                .then((res) => {
-                    console.log("data sent 2" )
-                })
-        }else{
-            baseData.cValve2 = false;
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                .then((res) => {
-                    console.log("data sent")
-                })
-            let x = parseInt(document.getElementById("cValveFactor2").value)
-            let y = parseInt(document.getElementById("cvalve2w").value)
-            setTimeout(() => {
-                baseData.cValve2 = true;
-                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-            }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-        }
-
         let cValveOpen3 = document.getElementById("cValveOpen3").checked // false true
-        if(cValveOpen3){
-            baseData.fanAir1 = true;
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                .then((res) => {
-                    console.log("data sent 3")
-                })
-        }else{
-            baseData.fanAir1 = false;
-            axios
-                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                .then((res) => {
-                    console.log("data sent")
-                })
-            let x = parseInt(document.getElementById("cValveFactor3").value)
-            let y = parseInt(document.getElementById("cvalve3w").value)
-            setTimeout(() => {
-                baseData.fanAir1 = true;
-                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-            }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-        }
-
         let cValveOpen4 = document.getElementById("cValveOpen4").checked // false true
-        if(cValveOpen4){
+        let x1 = parseInt(document.getElementById("cValveFactor1").value)
+        let y1 = parseInt(document.getElementById("cvalve1w").value)
+        let x2 = parseInt(document.getElementById("cValveFactor2").value)
+        let y2 = parseInt(document.getElementById("cvalve2w").value)
+        let x3 = parseInt(document.getElementById("cValveFactor3").value)
+        let y3 = parseInt(document.getElementById("cvalve3w").value)
+        let x4 = parseInt(document.getElementById("cValveFactor4").value)
+        let y4 = parseInt(document.getElementById("cvalve4w").value)
+
+        if(cValveOpen1 && cValveOpen2 && cValveOpen3 && cValveOpen4){
+            console.log("all open")
+            baseData.cValve1 = true;
+            baseData.cValve2 = true;
+            baseData.fanAir1 = true;
             baseData.fanAir2 = true;
             axios
                 .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
-                    console.log("data sent 4")
+                    console.log("data sent")
                 })
-        }else{
-            baseData.fanAir2 = false;
+        }
+        else if(!cValveOpen1 && cValveOpen2 && cValveOpen3 && cValveOpen4)      {
+            console.log("first close")
+            baseData.cValve1 = false;
+            baseData.cValve2 = true;
+            baseData.fanAir1 = true;
+            baseData.fanAir2 = true;
             axios
                 .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
                 .then((res) => {
                     console.log("data sent")
                 })
-            let x = parseInt(document.getElementById("cValveFactor4").value)
-            let y = parseInt(document.getElementById("cvalve4w").value)
-            setTimeout(() => {
-                baseData.fanAir2 = true;
-                axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-            }, y/x);
-            axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+
+            if(x1 !==0){
+
+                setTimeout(() => {
+                    baseData.cValve1 = true;
+                    axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                }, y1/x1*1000);
+            }else{
+                alert("x1 is zeo")
+            }
         }
+        else if(cValveOpen1 && !cValveOpen2 && cValveOpen3 && cValveOpen4){
+            console.log("second close")
+            baseData.cValve1 = true;
+            baseData.cValve2 = false;
+            baseData.fanAir1 = true;
+            baseData.fanAir2 = true;
+
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+
+            if(x2 !==0){
+
+                setTimeout(() => {
+                    baseData.cValve2 = true;
+                    axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                }, y2/x2*1000);
+            }else{
+                alert("x2 is zeo")
+            }
+        }
+        else if(cValveOpen1 && cValveOpen2 && !cValveOpen3 && cValveOpen4){
+            console.log("third close")
+            baseData.cValve1 = true;
+            baseData.cValve2 = true;
+            baseData.fanAir1 = false;
+            baseData.fanAir2 = true;
+
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+
+            if(x3 !==0){
+
+                setTimeout(() => {
+                    baseData.fanAir1 = true;
+                    axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                }, y2/x2*1000);
+            }else{
+                alert("x3 is zeo")
+            }
+        }
+        else if(cValveOpen1 && cValveOpen2 && cValveOpen3 && !cValveOpen4){
+            console.log("fourth close")
+            baseData.cValve1 = true;
+            baseData.cValve2 = true;
+            baseData.fanAir1 = true;
+            baseData.fanAir2 = false;
+
+            axios
+                .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                .then((res) => {
+                    console.log("data sent")
+                })
+
+            if(x1 !==0){
+
+                setTimeout(() => {
+                    baseData.fanAir2 = true;
+                    axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+                }, y4/x4*1000);
+            }else{
+                alert("x4 is zeo")
+            }
+        }
+        else{
+          alert("off more than two control valve not allowed")
+        }
+        //
+
+        // if(cValveOpen2){
+        //     baseData.cValve2 = true;
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //         .then((res) => {
+        //             console.log("data sent 2" )
+        //         })
+        // }else{
+        //     baseData.cValve2 = false;
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //         .then((res) => {
+        //             console.log("data sent")
+        //         })
+        //     let x = parseInt(document.getElementById("cValveFactor2").value)
+        //     let y = parseInt(document.getElementById("cvalve2w").value)
+        //     setTimeout(() => {
+        //         baseData.cValve2 = true;
+        //         axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //     }, y/x);
+        //     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        // }
+        //
+
+        // if(cValveOpen3){
+        //     baseData.fanAir1 = true;
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //         .then((res) => {
+        //             console.log("data sent 3")
+        //         })
+        // }else{
+        //     baseData.fanAir1 = false;
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //         .then((res) => {
+        //             console.log("data sent")
+        //         })
+        //     let x = parseInt(document.getElementById("cValveFactor3").value)
+        //     let y = parseInt(document.getElementById("cvalve3w").value)
+        //     setTimeout(() => {
+        //         baseData.fanAir1 = true;
+        //         axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //     }, y/x);
+        //     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        // }
+        //
+
+        // if(cValveOpen4){
+        //     baseData.fanAir2 = true;
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //         .then((res) => {
+        //             console.log("data sent 4")
+        //         })
+        // }else{
+        //     baseData.fanAir2 = false;
+        //     axios
+        //         .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //         .then((res) => {
+        //             console.log("data sent")
+        //         })
+        //     let x = parseInt(document.getElementById("cValveFactor4").value)
+        //     let y = parseInt(document.getElementById("cvalve4w").value)
+        //     setTimeout(() => {
+        //         baseData.fanAir2 = true;
+        //         axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        //     }, y/x);
+        //     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
+        // }
 
         // let cValveOpen5 = document.getElementById("cValveOpen5").checked // false true
         // if(cValveOpen5){

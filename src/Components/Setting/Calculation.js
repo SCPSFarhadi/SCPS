@@ -142,9 +142,12 @@ export default function Calculation(props) {
                         var databuilt = {'longitude':document.getElementById('longitude').value,'latitude':document.getElementById('latitude').value}
                         axios
                             .post(baseUrl+'api/users/weather/' , databuilt,config)
+
                             .then((res) => {
                                 console.log("data sent")
-                                console.log(databuilt)
+                                let y = JSON.parse(res.data)
+                                console.log("outerTemp : "+y['conf']['out_temp'])
+                                alert("outerTemp : "+y['conf']['out_temp'] +"\n"+"engineTemp : "+y['conf']['engine_temp'])
                             })
 
                     }}>Get Data</Button>
