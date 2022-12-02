@@ -80,6 +80,10 @@ export default function ControPanel(props) {
         let x4 = parseInt(document.getElementById("cValveFactor4").value)
         let y4 = parseInt(document.getElementById("cvalve4w").value)
 
+        if(!y1) y1 = 1;
+        if(!y2) y2 = 1;
+        if(!y3) y3 = 1;
+        if(!y4) y4 = 1;
         if(cValveOpen1 && cValveOpen2 && cValveOpen3 && cValveOpen4){
             console.log("all open")
             baseData.cValve1 = true;
@@ -155,7 +159,7 @@ export default function ControPanel(props) {
                 setTimeout(() => {
                     baseData.fanAir1 = false;
                     axios.post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
-                }, y2/x2*1000);
+                }, y3/x3*1000);
             }else{
                 alert("x3 is zeo")
             }
