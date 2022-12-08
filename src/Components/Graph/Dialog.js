@@ -118,6 +118,23 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Working Mode: ${props.details.mode}`} />
                 </ListItem>
+                <ListItem button onClick={() => handleListItemClick()} key="8">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
+                            <LightIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Light Sensor: ${props.details.lightSensor} lux`} />
+                </ListItem>
+
+                <ListItem button onClick={() => handleListItemClick()} key="4">
+                    <ListItemAvatar>
+                        <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
+                            <AccessTimeIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={`Last occupancy: ${props.details.lastOccupancy}`} />
+                </ListItem>
             </List>
         </div>
     );
