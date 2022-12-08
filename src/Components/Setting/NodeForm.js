@@ -97,7 +97,7 @@ export default function NodeForm(props) {
             energysavingMode:EnergySavingMode,
             classicMode:classicMode,
             manualMode:maintenanceMode,
-            // fanspeed:menuItemSelect.toLowerCase()
+            fanspeed:menuItemSelect.toLowerCase()
         }
 
         console.log("sent data: ")
