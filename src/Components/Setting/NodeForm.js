@@ -27,7 +27,7 @@ export default function NodeForm(props) {
     const [value,setValue]= useState(20);
     const [modeSelect, setModeSelect] = useState('')
     const [menuItemSelect, setMenuItemSelect] = useState('LOW')
-
+    const [classicMode, setClassicMode] = React.useState(true);
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
     const selectedNode = props.selectedNode;
@@ -150,7 +150,8 @@ export default function NodeForm(props) {
 
                 <Grid item xs={12}>
                     <IndeterminateCheckboxWork setDisableCheckBox = {setDisableCheckBox} handleCheckingFanAir={handleChecking} setModeSelect={setModeSelect}
-                                               setBtnDisabled={setBtnDisabled} setSleepSelect={setSleepSelect} btnSleepSelect={btnSleepSelect} setEnergySelect={setEnergySelect} btnEnergySelect={btnEnergySelect}/>
+                                               setBtnDisabled={setBtnDisabled} setSleepSelect={setSleepSelect} btnSleepSelect={btnSleepSelect}
+                                               setEnergySelect={setEnergySelect} btnEnergySelect={btnEnergySelect} setClassicMode={setClassicMode}/>
                 </Grid>
 
 
@@ -249,7 +250,7 @@ export default function NodeForm(props) {
                     <Select
                         labelId="demo-simple-select-label"
                         id="sleepModeId"
-                        // disabled={classicMode}
+                        disabled={modeSelect !== 'maintenance'}
                         value={menuItemSelect}
                         label="Sleep Mode"
                         onChange={(event) => {
