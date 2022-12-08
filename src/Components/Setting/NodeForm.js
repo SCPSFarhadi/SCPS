@@ -26,7 +26,7 @@ export default function NodeForm(props) {
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
     const [value,setValue]= useState(20);
     const [modeSelect, setModeSelect] = useState('')
-
+    const [menuItemSelect, setMenuItemSelect] = useState('LOW')
 
     const [perm, setPerm] = React.useState('');
     const [room, setRoom] = React.useState('Fancoil Select');
@@ -250,11 +250,11 @@ export default function NodeForm(props) {
                         labelId="demo-simple-select-label"
                         id="sleepModeId"
                         // disabled={classicMode}
-                        // value={menuItemSelect}
+                        value={menuItemSelect}
                         label="Sleep Mode"
                         onChange={(event) => {
                             console.log("change Fan Speed")
-                            // setMenuItemSelect(event.target.value)
+                            setMenuItemSelect(event.target.value)
                         }}
                         style={{width:"150px"}}
                         // onChange={handleChange}
