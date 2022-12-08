@@ -96,7 +96,8 @@ export default function NodeForm(props) {
             sleepMode:sleepMode,
             energysavingMode:EnergySavingMode,
             classicMode:classicMode,
-            manualMode:maintenanceMode
+            manualMode:maintenanceMode,
+            // fanspeed:menuItemSelect.toLowerCase()
         }
 
         console.log("sent data: ")
@@ -238,10 +239,38 @@ export default function NodeForm(props) {
                     <br />
                     <DangleSetpoint  btnSleepSelect={btnSleepSelect} btnMaintenanceSelect={btnEnergySelect} pr={props.details}/>
                     <br />
-                    <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 </Grid>
 
+                <Grid item xs={12}>
+                    <Typography variant='h5'>
+                        Fan Speed:
+                    </Typography>
+
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="sleepModeId"
+                        // disabled={classicMode}
+                        // value={menuItemSelect}
+                        label="Sleep Mode"
+                        onChange={(event) => {
+                            console.log("change Fan Speed")
+                            // setMenuItemSelect(event.target.value)
+                        }}
+                        style={{width:"150px"}}
+                        // onChange={handleChange}
+                    >
+                        <MenuItem value={"LOW"}>LOW</MenuItem>
+                        <MenuItem value={"MED"}>MED</MenuItem>
+                        <MenuItem value={"HIGH"}>HIGH</MenuItem>
+
+                    </Select>
+                </Grid>
+                <Grid item xs={12}>
+                    <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+                </Grid>
             </Grid>
+
+
         </React.Fragment>
     );
 }
