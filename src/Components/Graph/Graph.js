@@ -110,10 +110,6 @@ function MakeGraph(props) {
         console.log(details.type === '1')
         console.log("something fun")
         details = dataShortDetail;
-        if(details.speed !== 0){
-            console.log("speed recieved")
-            details.hvac1 = "on";
-        }
         if(details.hvac1==="on"){
             hvac1Color = { bgcolor: green[100], color: green[600] }
         }
