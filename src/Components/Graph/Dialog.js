@@ -109,7 +109,7 @@ export default function SimpleDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary={`Working Mode: ${props.details.mode}`} />
                 </ListItem>
-                <ListItem button onClick={() => handleListItemClick()} key="8">
+                <ListItem button onClick={() => handleListItemClick()} key="9">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
                             <LightIcon />
@@ -118,7 +118,7 @@ export default function SimpleDialog(props) {
                     <ListItemText primary={`Light Sensor: ${props.details.lightSensor} lux`} />
                 </ListItem>
 
-                <ListItem button onClick={() => handleListItemClick()} key="4">
+                <ListItem button onClick={() => handleListItemClick()} key="10">
                     <ListItemAvatar>
                         <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
                             <AccessTimeIcon />

@@ -97,11 +97,17 @@ function MakeGraph(props) {
         "hvac2":" ",
         "parameter":" ",
         "setPoint":"None",
-        "mode":"None"
+        "mode":"None",
+        "speed":0,
     }
+
     if(dataShortDetail && !(Object.keys(dataShortDetail).length === 0)){
         console.log("short detail updated")
         details = dataShortDetail;
+        if(details.speed !== 0){
+            console.log("speed recieved")
+            details.hvac1 = "on";
+        }
         if(details.hvac1==="on"){
             hvac = { bgcolor: green[100], color: green[600] }
         }
