@@ -159,39 +159,58 @@ function MakeGraph(props) {
 
     let modData = props.data;
     let menus = "Nodes not loaded";
+    let elements = [];
     if(modData) {
-        menus = modData['nodes'].map((l,i)=>{
-            let secondary = "waiting for node status...(click on node number please)";
-            if(modData.nodes[i].color)
-                secondary = modData.nodes[i].color
-            return (
-                <Grid item xl={3} sm={12} key={i}>
-                    <ListItem key={i} onClick={onClickedNodeMenu}>
-                        <ListItemAvatar>
-                            <CircleIcon  style={{ color: secondary }} />
-                        </ListItemAvatar>
-                        <ListItemText color={blue} primary={l.id} secondary={secondary} id='elementIdNode'/>
-                        <Button variant="text" onClick={()=>{
-                            let modData = { ...dataState };
 
-                            let selectNode = modData.nodes.filter(item => {
-                                return item.id === l.id;
-                            });
-                            selectNode.forEach(item => {
-                                setSelectedNode(item.id);
-                                getLastData(item.id);
+        let numberNodes = modData['nodes'].length;
+        for(let k=1;k<=numberNodes/6+1;k++){
+            elements.push(
+                modData['nodes'].map((l,i)=>{
+                    if((k-1)*5<=i && i<k*5){
+                        let secondary = "";
+                        if(modData.nodes[i].color)
+                            secondary = modData.nodes[i].color
+                        return (
+                            // <Grid item xl={3} sm={12}>
+                            <div>
+                                <Grid item sm={12}  width="100%">
+                                    <ListItem key={i} >
+                                        <ListItemAvatar>
+                                            <CircleIcon  style={{ color: secondary }} />
+                                        </ListItemAvatar>
+                                        <ListItemText color={blue} primary={l.id} id='elementIdNode'/>
+                                        <Button variant="text" onClick={()=>{
+                                            console.log("in button")
+                                            console.log(l.id+"   "+i)
+                                            setSelectedNode(l.id);
+                                            getLastData(l.id);
+                                            setData(modData)
+                                        }}>Graph node {l.id}</Button>
+                                    </ListItem>
+                                </Grid>
+                            </div>
+                        )
+                    }
 
-                            });
-                            setData(modData)
-                        }}>Graph node {l.id}</Button>
-                    </ListItem>
-                    {/*<MenuItem key={i} value={l.id}>{l.id}</MenuItem>*/}
-                </Grid>
-
-
+                })
             )
-        })
+        }
+
+        console.log("loghmani");
+        console.log(elements)
     }
+    let namayesh =elements.map((l,i)=>{
+        return(
+            <BottomNavigation
+                showLabels
+            >
+
+                {elements[i]}
+            </BottomNavigation>
+        )
+
+
+    })
     const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
     let count_run = 0;
@@ -395,11 +414,8 @@ function MakeGraph(props) {
                                         </Box>
                                     </React.Fragment>
                                     <React.Fragment>
-                                        <div>
-                                            <List>
-                                                {menus}
-                                            </List>
-
+                                        <div style={{height:(menus.length%7)*100+'px'}}>
+                                            {namayesh}
                                         </div>
                                     </React.Fragment>
                                 </React.Fragment>
