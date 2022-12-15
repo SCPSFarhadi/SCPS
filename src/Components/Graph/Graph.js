@@ -209,35 +209,21 @@ function MakeGraph(props) {
 
         console.log("loghmani");
         console.log(elements)
-        // menus = modData['nodes'].map((l,i)=>{
-        //     let secondary = "";
-        //     if(modData.nodes[i].color)
-        //         secondary = modData.nodes[i].color
-        //     return (
-        //         // <Grid item xl={3} sm={12}>
-        //         <div>
-        //             <Grid item sm={12}  width="100%">
-        //             <ListItem key={i} >
-        //                 <ListItemAvatar>
-        //                     <CircleIcon  style={{ color: secondary }} />
-        //                 </ListItemAvatar>
-        //                 <ListItemText color={blue} primary={l.id} id='elementIdNode'/>
-        //                 <Button variant="text" onClick={()=>{
-        //                     console.log("in button")
-        //                     console.log(l.id+"   "+i)
-        //                     setSelectedNode(l.id);
-        //                     getLastData(l.id);
-        //                     setData(modData)
-        //                 }}>Graph node {l.id}</Button>
-        //             </ListItem>
-        //             </Grid>
-        //         </div>
-        //
-        //
-        //
-        //     )
-        // })
     }
+    let namayesh =elements.map((l,i)=>{
+        return(
+            <BottomNavigation
+            showLabels
+        >
+
+            {elements[i]}
+        </BottomNavigation>
+        )
+
+
+    })
+
+
     const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
     let count_run = 0;
@@ -444,21 +430,7 @@ function MakeGraph(props) {
                                     </React.Fragment>
                                     <React.Fragment>
                                         <div style={{height:(menus.length%7)*100+'px'}}>
-                                            <BottomNavigation
-                                                showLabels
-                                            >
-
-                                                {elements[0]}
-                                            </BottomNavigation>
-                                            <BottomNavigation
-                                                showLabels
-                                            >
-
-                                                {elements[1]}
-                                            </BottomNavigation>
-                                            {/*<List>*/}
-                                            {/*    {menus}*/}
-                                            {/*</List>*/}
+                                            {namayesh}
 
                                         </div>
                                     </React.Fragment>
