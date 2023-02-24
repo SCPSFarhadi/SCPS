@@ -78,8 +78,9 @@ export default function ControlPanelForm() {
       config.headers['Authorization'] = `JWT ${token}`;
     }
     let data ={
-      "longitude":document.getElementById("longitude").value,
-      "latitude":document.getElementById("latitude").value
+      "city_name":document.getElementById("city_name").value
+      // "longitude":document.getElementById("longitude").value,
+      // "latitude":document.getElementById("latitude").value
     }
 
     console.log("sent data weather: ")
@@ -211,29 +212,29 @@ export default function ControlPanelForm() {
 
         <Grid item xs={12} sm={9}>
           
-          <TextField
-              id="longitude"
-              name="setpoint"
-              label="Longitude"
-              fullWidth
-              autoComplete="25"
-              variant="standard"
-          />
+        {/*  <TextField*/}
+        {/*      id="longitude"*/}
+        {/*      name="setpoint"*/}
+        {/*      label="Longitude"*/}
+        {/*      fullWidth*/}
+        {/*      autoComplete="25"*/}
+        {/*      variant="standard"*/}
+        {/*  />*/}
 
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5" >
-            Latitude
-          </Typography>
-        </Grid>
+        {/*</Grid>*/}
+        {/*<Grid item xs={12} sm={3}>*/}
+        {/*  <Typography variant="h5" >*/}
+        {/*    Latitude*/}
+        {/*  </Typography>*/}
+        {/*</Grid>*/}
 
 
-        <Grid item xs={12} sm={9}>
+        {/*<Grid item xs={12} sm={9}>*/}
           
           <TextField
-              id="latitude"
+              id="city_name"
               name="setpoint"
-              label="Latitude"
+              label="city_name"
               fullWidth
               autoComplete="25"
               variant="standard"
