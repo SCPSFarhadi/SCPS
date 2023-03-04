@@ -206,7 +206,7 @@ export default function ControlPanelForm() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <Typography variant="h5" >
-            Longitude
+            City name
           </Typography>
         </Grid>
 
