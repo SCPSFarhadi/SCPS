@@ -33,6 +33,7 @@ export default function ControlPanelForm() {
       const response = await fetch("application/json")
       const jsonData = await response.json();
       console.log(jsonData)
+      document.getElementById("weather").value = jsonData
     } catch (err) {
       console.error(err.message);
     }
@@ -255,7 +256,13 @@ export default function ControlPanelForm() {
           <Button variant="contained" onClick={handleSubmit} >Refresh Weather</Button>
         </Grid>
       </Grid>
-      
+
+      <TextField
+          id="weather"
+          label="Weather"
+          autoComplete="25"
+          disabled
+      />
     </React.Fragment>
     
   );
