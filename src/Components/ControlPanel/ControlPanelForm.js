@@ -27,6 +27,16 @@ export default function ControlPanelForm() {
   const [fanOnOff,setFanOffOn] = React.useState('');
   const [menuItemSelect, setBtnMenuItemSelect] = React.useState("");
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+  const getResponse = async() => {
+    try {
+      const response = await fetch("application/json")
+      const jsonData = await response.json();
+      console.log(jsonData)
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
   const clickSubmit = function() {
     console.log("in click")
     let Mode = menuItemSelect
@@ -88,7 +98,7 @@ export default function ControlPanelForm() {
     axios
         .post(baseUrl+'api/users/weather/' , data,config)
         .then((res) => {
-          console.log("data sent weather")
+          getResponse()
         })
 
 
