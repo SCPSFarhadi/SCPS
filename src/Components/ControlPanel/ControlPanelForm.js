@@ -27,6 +27,17 @@ export default function ControlPanelForm() {
   const [fanOnOff,setFanOffOn] = React.useState('');
   const [menuItemSelect, setBtnMenuItemSelect] = React.useState("");
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+  const getResponse = async() => {
+    try {
+      const response = await fetch("http://91.98.15.243:3000/json")
+      const jsonData = await response.json();
+      console.log(jsonData)
+      document.getElementById("weather").value = jsonData
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
   const clickSubmit = function() {
     console.log("in click")
     let Mode = menuItemSelect
@@ -64,7 +75,7 @@ export default function ControlPanelForm() {
 
 
 
-};
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -79,8 +90,6 @@ export default function ControlPanelForm() {
     }
     let data ={
       "city_name":document.getElementById("city_name").value
-
-      // "F":document.getElementById("longitude").value,
       // "latitude":document.getElementById("latitude").value
     }
 
@@ -90,7 +99,7 @@ export default function ControlPanelForm() {
     axios
         .post(baseUrl+'api/users/weather/' , data,config)
         .then((res) => {
-          console.log("data sent weather")
+          getResponse()
         })
 
 
@@ -117,139 +126,146 @@ export default function ControlPanelForm() {
   }
 
   return (
-    <React.Fragment>
-      <Typography variant="h3" gutterBottom>
-      Control Panel
-      </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5">
-            HVAC Mode
-          </Typography>
-        </Grid>
+      <React.Fragment>
+        <Typography variant="h3" gutterBottom>
+          Control Panel
+        </Typography>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={3}>
+            <Typography variant="h5">
+              HVAC Mode
+            </Typography>
+          </Grid>
 
-        <Grid item xs={12} sm={9}>
+          <Grid item xs={12} sm={9}>
 
-          <FormControl> 
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel value="Cooling" control={<Radio onClick={coolingHeatingButton}/>} label="Cooling" />
-              <FormControlLabel value="Heating" control={<Radio onClick={coolingHeatingButton} />} label="Heating" />
-            </RadioGroup>
-          </FormControl>
-
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5">
-            Select Mode
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} sm={9}>
-
-              <Select
-                  labelId="demo-simple-select-label"
-                  id="sleepModeId"
-                  value={menuItemSelect}
-                  label="Sleep Mode"
-                  onChange={(event) => {
-                    console.log("FADAYAT SHAVAM")
-                      setBtnMenuItemSelect(event.target.value)
-                      if (event.target.value === "sleep") {
-                          setBtnDisabled(true);
-                      } else {
-                          setBtnDisabled(false);
-                      }
-                  }}
-                  style={{width:"150px"}}
-                  // onChange={handleChange}
+            <FormControl>
+              <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
               >
-                  <MenuItem value={"sleep"}>Sleep Mode</MenuItem>
-                  <MenuItem value={"energysaving"}>Energy Saving Mode</MenuItem>
-                  <MenuItem value={"classic"}>Classic Mode</MenuItem>
+                <FormControlLabel value="Cooling" control={<Radio onClick={coolingHeatingButton}/>} label="Cooling" />
+                <FormControlLabel value="Heating" control={<Radio onClick={coolingHeatingButton} />} label="Heating" />
+              </RadioGroup>
+            </FormControl>
 
-              </Select>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Typography variant="h5">
+              Select Mode
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} sm={9}>
+
+            <Select
+                labelId="demo-simple-select-label"
+                id="sleepModeId"
+                value={menuItemSelect}
+                label="Sleep Mode"
+                onChange={(event) => {
+                  console.log("FADAYAT SHAVAM")
+                  setBtnMenuItemSelect(event.target.value)
+                  if (event.target.value === "sleep") {
+                    setBtnDisabled(true);
+                  } else {
+                    setBtnDisabled(false);
+                  }
+                }}
+                style={{width:"150px"}}
+                // onChange={handleChange}
+            >
+              <MenuItem value={"sleep"}>Sleep Mode</MenuItem>
+              <MenuItem value={"energysaving"}>Energy Saving Mode</MenuItem>
+              <MenuItem value={"classic"}>Classic Mode</MenuItem>
+
+            </Select>
+          </Grid>
+
+          <Grid item xs={12} sm={3}>
+            <Typography variant="h5" >
+              Set Point
+            </Typography>
+          </Grid>
+
+
+          <Grid item xs={12} sm={9}>
+
+            <TextField
+                id="setPoint"
+                name="setpoint"
+                label="Set Point"
+                fullWidth
+                autoComplete="25"
+                variant="standard"
+                disabled={disabled}
+            />
+          </Grid>
+
+
+          <Grid item xs={12}>
+            <Button variant="contained" onClick={clickSubmit}>Submit</Button>
+          </Grid>
+          <br />
+          <Grid item xs={12}>
+            <Typography variant="h3" gutterBottom>
+              Weather
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Typography variant="h5" >
+              Longitude
+            </Typography>
+          </Grid>
+
+
+          <Grid item xs={12} sm={9}>
+            {/*  */}
+            {/*  <TextField*/}
+            {/*      id="longitude"*/}
+            {/*      name="setpoint"*/}
+            {/*      label="Longitude"*/}
+            {/*      fullWidth*/}
+            {/*      autoComplete="25"*/}
+            {/*      variant="standard"*/}
+            {/*  />*/}
+
+            {/*</Grid>*/}
+            {/*<Grid item xs={12} sm={3}>*/}
+            {/*  <Typography variant="h5" >*/}
+            {/*    Latitude*/}
+            {/*  </Typography>*/}
+            {/*</Grid>*/}
+
+
+            {/*<Grid item xs={12} sm={9}>*/}
+
+            <TextField
+                id="city_name"
+                name="setpoint"
+                label="city_name"
+                fullWidth
+                autoComplete="25"
+                variant="standard"
+            />
+
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button variant="contained" onClick={handleSubmit} >Refresh Weather</Button>
+          </Grid>
         </Grid>
 
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5" >
-            Set Point
-          </Typography>
+        <Grid padding={3} item xs={22} sm={15}>
         </Grid>
+        <TextField
+            id="weather"
+            label="Weather"
+            autoComplete="25"
+            disabled
+        />
+      </React.Fragment>
 
-
-        <Grid item xs={12} sm={9}>
-          
-          <TextField
-              id="setPoint"
-              name="setpoint"
-              label="Set Point"
-              fullWidth
-              autoComplete="25"
-              variant="standard"
-              disabled={disabled}
-          />
-        </Grid>
-
-
-
-        <Grid item xs={12}>
-          <Button variant="contained" onClick={clickSubmit}>Submit</Button>
-        </Grid>
-        <br />
-        <Grid item xs={12}>
-          <Typography variant="h3" gutterBottom>
-            Weather
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5" >
-            City name
-          </Typography>
-        </Grid>
-
-
-        <Grid item xs={12} sm={9}>
-          
-        {/*  <TextField*/}
-        {/*      id="longitude"*/}
-        {/*      name="setpoint"*/}
-        {/*      label="Longitude"*/}
-        {/*      fullWidth*/}
-        {/*      autoComplete="25"*/}
-        {/*      variant="standard"*/}
-        {/*  />*/}
-
-        {/*</Grid>*/}
-        {/*<Grid item xs={12} sm={3}>*/}
-        {/*  <Typography variant="h5" >*/}
-        {/*    Latitude*/}
-        {/*  </Typography>*/}
-        {/*</Grid>*/}
-
-
-        {/*<Grid item xs={12} sm={9}>*/}
-          
-          <TextField
-              id="city_name"
-              name="setpoint"
-              label="city_name"
-              fullWidth
-              autoComplete="25"
-              variant="standard"
-          />
-
-        </Grid>
-
-        <Grid item xs={12}>
-          <Button variant="contained" onClick={handleSubmit} >Refresh Weather</Button>
-        </Grid>
-      </Grid>
-      
-    </React.Fragment>
-    
   );
 }
