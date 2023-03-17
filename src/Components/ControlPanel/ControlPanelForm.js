@@ -73,8 +73,7 @@ export default function ControlPanelForm() {
       config.headers['Authorization'] = `JWT ${token}`;
     }
     let data ={
-      "longitude":document.getElementById("longitude").value,
-      "latitude":document.getElementById("latitude").value
+      "city name":document.getElementById("city_name").value
     }
 
     console.log("sent data weather: ")
@@ -193,7 +192,7 @@ export default function ControlPanelForm() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <Typography variant="h5" >
-            Longitude
+            City Name
           </Typography>
         </Grid>
 
@@ -201,34 +200,34 @@ export default function ControlPanelForm() {
         <Grid item xs={12} sm={9}>
           
           <TextField
-              id="longitude"
+              id="city_name"
               name="setpoint"
-              label="Longitude"
+              label="City Name"
               fullWidth
               autoComplete="25"
               variant="standard"
           />
 
         </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="h5" >
-            Latitude
-          </Typography>
-        </Grid>
+        {/*<Grid item xs={12} sm={3}>*/}
+        {/*  <Typography variant="h5" >*/}
+        {/*    Latitude*/}
+        {/*  </Typography>*/}
+        {/*</Grid>*/}
 
 
-        <Grid item xs={12} sm={9}>
-          
-          <TextField
-              id="latitude"
-              name="setpoint"
-              label="Latitude"
-              fullWidth
-              autoComplete="25"
-              variant="standard"
-          />
+        {/*<Grid item xs={12} sm={9}>*/}
+        {/*  */}
+        {/*  <TextField*/}
+        {/*      id="latitude"*/}
+        {/*      name="setpoint"*/}
+        {/*      label="Latitude"*/}
+        {/*      fullWidth*/}
+        {/*      autoComplete="25"*/}
+        {/*      variant="standard"*/}
+        {/*  />*/}
 
-        </Grid>
+        {/*</Grid>*/}
 
         <Grid item xs={12}>
           <Button variant="contained" onClick={handleSubmit} >Refresh Weather</Button>
