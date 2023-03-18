@@ -103,7 +103,7 @@ export default function Calculation(props) {
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={3}>
                     <Typography variant="h5">
-                        Longitude
+                        City Name
                     </Typography>
                 </Grid>
 
@@ -111,35 +111,35 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        id="longitude"
+                        id="city_name"
                         name="setpoint"
-                        label="Longitude"
+                        label="city_name"
                         fullWidth
                         autoComplete="25"
                         variant="standard"
                     />
                 </Grid>
-                <Grid item xs={12} sm={3}>
-                    <Typography variant="h5">
-                        Latitude
-                    </Typography>
-                </Grid>
+                {/*<Grid item xs={12} sm={3}>*/}
+                {/*    <Typography variant="h5">*/}
+                {/*        Latitude*/}
+                {/*    </Typography>*/}
+                {/*</Grid>*/}
 
-                <Grid item xs={12} sm={9}>
+                {/*<Grid item xs={12} sm={9}>*/}
 
-                    <TextField
-                        id="latitude"
-                        name="setpoint"
-                        label="Latitude"
-                        fullWidth
-                        autoComplete="25"
-                        variant="standard"
-                    />
-                </Grid>
+                {/*    <TextField*/}
+                {/*        id="latitude"*/}
+                {/*        name="setpoint"*/}
+                {/*        label="Latitude"*/}
+                {/*        fullWidth*/}
+                {/*        autoComplete="25"*/}
+                {/*        variant="standard"*/}
+                {/*    />*/}
+                {/*</Grid>*/}
 
                 <Grid item xs={12}>
                     <Button variant="contained" onClick={()=>{
-                        var databuilt = {'longitude':document.getElementById('longitude').value,'latitude':document.getElementById('latitude').value}
+                        var databuilt = {'city_name':document.getElementById('city_name').value}
                         axios
                             .post(baseUrl+'api/users/weather/' , databuilt,config)
 
