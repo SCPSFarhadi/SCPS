@@ -26,6 +26,8 @@ export default function Calculation(props) {
     const config = {
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+
         },
     };
     let value=20;
@@ -141,8 +143,7 @@ export default function Calculation(props) {
                     <Button variant="contained" onClick={()=>{
                         var databuilt = {'city_name':document.getElementById('city_name').value}
                         axios
-                            .post(baseUrl+'api/users/weather/' , databuilt,config)
-
+                            .post(baseUrl+'api/users/weather' , databuilt,config)
                             .then((res) => {
                                 console.log("data sent")
                                 let y = JSON.parse(res.data)
