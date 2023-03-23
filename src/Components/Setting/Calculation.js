@@ -26,8 +26,6 @@ export default function Calculation(props) {
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-
         },
     };
     let value=20;
@@ -141,14 +139,16 @@ export default function Calculation(props) {
 
                 <Grid item xs={12}>
                     <Button variant="contained" onClick={()=>{
-                        var databuilt = {'city_name':document.getElementById('city_name').value}
+                        var databuilt = {'city_name':document.getElementById('city_name').value
+                        }
                         axios
-                            .post(baseUrl+'api/users/weather' , databuilt,config)
+                            .post(baseUrl+'api/users/weather/' , databuilt,config)
+
                             .then((res) => {
                                 console.log("data sent")
                                 let y = JSON.parse(res.data)
-                                console.log("outerTemp : "+y['conf']['out_temp'])
-                                alert("outerTemp : "+y['conf']['out_temp'] +"\n"+"engineTemp : "+y['conf']['engine_temp'])
+                                console.log("temperature: "+y['main']['feels_like'])
+                                alert("temperature: "+y['main']['feels_like'])
                             })
 
                     }}>Get Data</Button>
