@@ -22,7 +22,21 @@ export default function Calculation(props) {
 
     const [btnDisableCheckBox, setDisableCheckBox] = useState(true)
     const [perm, setPerm] = React.useState('');
+    const [variant, setVariant] = useState('standard');
+    const [shrink, setShrink] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
+    const [value5, setValue5] = useState('');
     const selectedNode = props.selectedNode;
+
+    const handleChange1 = (event) => {setValue1(event.target.value);};
+    const handleChange2 = (event) => {setValue2(event.target.value);};
+    const handleChange3 = (event) => {setValue3(event.target.value);};
+    const handleChange4 = (event) => {setValue4(event.target.value);};
+    const handleChange5 = (event) => {setValue5(event.target.value);};
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -139,16 +153,18 @@ export default function Calculation(props) {
 
                 <Grid item xs={12}>
                     <Button variant="contained" onClick={()=>{
-                        var databuilt = {'city_name':document.getElementById('city_name').value
-                        }
+                        var databuilt = {'city_name':document.getElementById('city_name').value}
                         axios
                             .post(baseUrl+'api/users/weather/' , databuilt,config)
 
                             .then((res) => {
-                                console.log("data sent")
                                 let y = JSON.parse(res.data)
-                                console.log("temperature: "+y['main']['feels_like'])
-                                alert("temperature: "+y['main']['feels_like'])
+                                setShrink(true)
+                                setVariant('filled')
+                                setDisabled(true)
+                                setValue1(y['main']['temp'])
+                                setValue2(y['main']['temp_min'])
+                                setValue3(y['main']['temp_max'])
                             })
 
                     }}>Get Data</Button>
@@ -164,13 +180,13 @@ export default function Calculation(props) {
                 <Grid item xs={6} sm={6}>
                     <List>
                         <ListItem>
-                            <TextField label="Daily participation" style={{width: "100%"}} id='dailyPart'/>
+                            <TextField label="Daily Participation" onChange={handleChange1} value={value1} disabled={disabled} variant={variant} shrink={shrink} style={{width: "100%"}} id='dailyPart' />
                         </ListItem>
                         <ListItem>
-                            <TextField label="Min daily Temp" style={{width: "100%"}} id='minimumDaily'/>
+                            <TextField label="Min daily Temp" onChange={handleChange2} value={value2} disabled={disabled} variant={variant} shrink={shrink} style={{width: "100%"}} id='minimumDaily'/>
                         </ListItem>
                         <ListItem>
-                            <TextField label="Max daily Temp" style={{width: "100%"}} id='maxDaily'/>
+                            <TextField label="Max daily Temp" onChange={handleChange3} value={value3} disabled={disabled} variant={variant} shrink={shrink} style={{width: "100%"}} id='maxDaily'/>
                         </ListItem>
                     </List>
                 </Grid>
@@ -178,15 +194,21 @@ export default function Calculation(props) {
                 <Grid item xs={6} sm={6}>
                     <List>
                         <ListItem>
-                            <TextField label="Min wind speed" style={{width: "100%"}} id='minimumWind'/>
+                            <TextField label="Min wind speed" onChange={handleChange4} value={value4} disabled={disabled} variant={variant} shrink={shrink} style={{width: "100%"}} id='minimumWind'/>
                         </ListItem>
                         <ListItem>
-                            <TextField label="Max wind speed" style={{width: "100%"}} id='maximumWind'/>
+                            <TextField label="Max wind speed" onChange={handleChange5} value={value5} disabled={disabled} variant={variant} shrink={shrink} style={{width: "100%"}} id='maximumWind'/>
                         </ListItem>
                     </List>
                     <ButtonGroup variant="contained" aria-label="outlined primary button group" style={{marginLeft:"15px"}}>
-                        <Button>Edit</Button>
-                        <Button>Refresh</Button>
+                        <Button onClick={()=>{
+                            setVariant('standard')
+                            setDisabled(false)
+                        }}>Edit</Button>
+                        <Button onClick={()=>{
+                            setVariant('filled')
+                            setDisabled(true)
+                        }}>Refresh</Button>
                     </ButtonGroup>
                 </Grid>
                 <br/>
@@ -200,6 +222,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
+                        InputLabelProps={{shrink: true}}
                         id="surfaceArea"
                         name="surfaceArea"
                         label="Surface area"
@@ -219,6 +242,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
+                        InputLabelProps={{shrink: true}}
                         id="cropCoeif"
                         name="setpoint"
                         label="Crop coefficient"
@@ -237,6 +261,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
+                        InputLabelProps={{shrink: true}}
                         id="heightSea"
                         name="setpoint"
                         label="Height from sea level"
@@ -256,6 +281,7 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
+                        InputLabelProps={{shrink: true}}
                         id="R_n"
                         name="R_n"
                         label="R_n"
