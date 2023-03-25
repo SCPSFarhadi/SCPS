@@ -222,7 +222,6 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        InputLabelProps={{shrink: true}}
                         id="surfaceArea"
                         name="surfaceArea"
                         label="Surface area"
@@ -242,7 +241,6 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        InputLabelProps={{shrink: true}}
                         id="cropCoeif"
                         name="setpoint"
                         label="Crop coefficient"
@@ -261,7 +259,6 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        InputLabelProps={{shrink: true}}
                         id="heightSea"
                         name="setpoint"
                         label="Height from sea level"
@@ -281,7 +278,6 @@ export default function Calculation(props) {
                 <Grid item xs={12} sm={9}>
 
                     <TextField
-                        InputLabelProps={{shrink: true}}
                         id="R_n"
                         name="R_n"
                         label="R_n"
