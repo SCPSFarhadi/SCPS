@@ -30,6 +30,7 @@ export default function Calculation(props) {
     const [value3, setValue3] = useState('');
     const [value4, setValue4] = useState('');
     const [value5, setValue5] = useState('');
+    const [waterneedText, setWaterneedText] = useState('');
     const selectedNode = props.selectedNode;
 
     const handleChange1 = (event) => {setValue1(event.target.value);};
@@ -105,7 +106,7 @@ export default function Calculation(props) {
         et0=(0.408*deltea*(R_n)+y*(900/(T+273)*u_2*(e_s-e_a)))/(deltea+y*(1+0.34*u_2));
         console.log("et0 is :" + et0)
         waterneed=et0*s*k_c-s*p;
-        alert(waterneed)
+        setWaterneedText(waterneed);
 
     }
 
@@ -287,10 +288,25 @@ export default function Calculation(props) {
                     />
                 </Grid>
 
-
-                <Grid item xs={12}>
-                    <Button variant="contained" onClick={handleSubmit}>Water need</Button>
+                <Grid item xs={12} sm={12}>
+                    <Grid container>
+                        <Grid item xs={6} sm={6}>
+                                <Button variant="contained" onClick={handleSubmit}>Water need</Button>
+                        </Grid>
+                        <Grid item xs={6} sm={6}>
+                            <TextField
+                                style={{width: "100%"}}
+                                id='waterneed'
+                                name='waterneed'
+                                label='calculated waterneed'
+                                variant='filled'
+                                disabled
+                                InputLabelProps={{shrink: true}}
+                                value={waterneedText}/>
+                        </Grid>
+                    </Grid>
                 </Grid>
+
             </Grid>
         </React.Fragment>
     );
