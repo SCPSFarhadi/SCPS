@@ -163,7 +163,7 @@ export default function Calculation(props) {
                                 setShrink(true)
                                 setVariant('filled')
                                 setDisabled(true)
-                                setValue1(y['main']['temp'])
+                                setValue1(y['rain']['1h']*1000)
                                 setValue2(y['main']['temp_min'])
                                 setValue3(y['main']['temp_max'])
                             })

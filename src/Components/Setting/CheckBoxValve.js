@@ -9,7 +9,6 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 export default function IndeterminateCheckbox(props) {
     const [checked, setChecked] = React.useState([true, false,false]);
-    const [CValveChecked5, setCValveChecked5] = React.useState(true);
     const [CValveChecked4, setCValveChecked4] = React.useState(true);
     const [CValveChecked3, setCValveChecked3] = React.useState(true);
     const [CValveChecked2, setCValveChecked2] = React.useState(true);

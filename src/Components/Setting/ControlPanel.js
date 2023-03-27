@@ -15,6 +15,7 @@ import {returnErrors} from "../../Actions/messages";
 import {useDispatch, useSelector} from "react-redux";
 import IndeterminateCheckbox from "./CheckBoxValve";
 import IndeterminateCheckboxWork from "./CheckBoxWorkMode";
+import {List, ListItem} from "@material-ui/core";
 
 export default function ControPanel(props) {
     const [btnDisabled, setBtnDisabled] = useState(false)
@@ -80,15 +81,20 @@ export default function ControPanel(props) {
         let x4 = parseInt(document.getElementById("cValveFactor4").value)
         let y4 = parseInt(document.getElementById("cvalve4w").value)
 
-        if(!y1) y1 = 1;
-        if(!y2) y2 = 1;
-        if(!y3) y3 = 1;
-        if(!y4) y4 = 1;
+        if (!x1) x1=1;
+        if (!x2) x2=1;
+        if (!x3) x3=1;
+        if (!x4) x4=1;
+        if (!y1) y1=0;
+        if (!y2) y2=0;
+        if (!y3) y3=0;
+        if (!y4) y4=0;
 
-        baseData.cValve1 = cValveOpen1;
-        baseData.cValve2 = cValveOpen2;
-        baseData.fanAir1 = cValveOpen3;
-        baseData.fanAir2 = cValveOpen4;
+        baseData.cValve1 = cValveOpen1? true:1000.0*y1/x1;
+        baseData.cValve2 = cValveOpen2? true:1000.0*y2/x2;
+        baseData.cValve3 = cValveOpen3? true:1000.0*y3/x3;
+        baseData.cValve4 = cValveOpen4? true:1000.0*y4/x4;
+
         axios
             .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
             .then((res) => {
@@ -306,8 +312,14 @@ export default function ControPanel(props) {
             <Grid container spacing={3}>
 
                 <Grid item xs={12}>
-                    <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
-                    <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+                    <Grid container>
+                        <Grid item>
+                            <IndeterminateCheckbox disableCheckBox={btnDisableCheckBox}/>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+                        </Grid>
+                    </Grid>
                 </Grid>
 
             </Grid>
