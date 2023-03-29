@@ -78,7 +78,6 @@ export default function Calculation(props) {
         let T;
         let u_2;
         let deltea;
-        T=T_max-T_min;
         let y;
         let et0;
         let e0min;

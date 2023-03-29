@@ -44,13 +44,17 @@ export default function ControPanel(props) {
         e.preventDefault();
         var baseData ={
             "cValve1": true,
+            "cValve1Time": 0,
             "cValve2": true,
+            "cValve2Time": 0,
             "classicMode": false,
             "dongleValue1": "20",
             "dongleValue2": "20",
             "energysavingMode": false,
             "fanAir1": true,
+            "fanAir1Time": 0,
             "fanAir2": true,
+            "fanAir2Time": 0,
             "manualMode": true,
             "nodeid": props.details.nodeId,
             "perm": true,
@@ -68,10 +72,10 @@ export default function ControPanel(props) {
             config.headers['Authorization'] = `JWT ${token}`;
         }
 
-        let cValveOpen1 = document.getElementById("cValveOpen1").checked // false true
-        let cValveOpen2 = document.getElementById("cValveOpen2").checked // false true
-        let cValveOpen3 = document.getElementById("cValveOpen3").checked // false true
-        let cValveOpen4 = document.getElementById("cValveOpen4").checked // false true
+        baseData.cValve1 = document.getElementById("cValveOpen1").checked // false true
+        baseData.cValve2 = document.getElementById("cValveOpen2").checked // false true
+        baseData.fanAir1 = document.getElementById("cValveOpen3").checked // false true
+        baseData.fanAir2 = document.getElementById("cValveOpen4").checked // false true
         let x1 = parseInt(document.getElementById("cValveFactor1").value)
         let y1 = parseInt(document.getElementById("cvalve1w").value)
         let x2 = parseInt(document.getElementById("cValveFactor2").value)
@@ -90,10 +94,11 @@ export default function ControPanel(props) {
         if (!y3) y3=0;
         if (!y4) y4=0;
 
-        baseData.cValve1 = cValveOpen1? true:1000.0*y1/x1;
-        baseData.cValve2 = cValveOpen2? true:1000.0*y2/x2;
-        baseData.cValve3 = cValveOpen3? true:1000.0*y3/x3;
-        baseData.cValve4 = cValveOpen4? true:1000.0*y4/x4;
+        baseData.cValve1Time = 1000.0*y1/x1;
+        baseData.cValve2Time = 1000.0*y2/x2;
+        baseData.fanAir1Time = 1000.0*y3/x3;
+        baseData.fanAir2Time = 1000.0*y4/x4;
+
 
         axios
             .post(baseUrl+'api/users/setnodeconfig/' , baseData,config)
