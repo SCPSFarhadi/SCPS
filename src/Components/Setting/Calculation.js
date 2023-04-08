@@ -86,8 +86,8 @@ export default function Calculation(props) {
         let u_min = parseFloat(document.getElementById("minimumWind").value);
         let R_n = parseFloat(document.getElementById("R_n").value);
         let k_c = parseFloat(document.getElementById("cropCoeif").value);
-        let dry = parseInt(document.getElementById('dry_temp').textContent.split(' ')[2]);
-        let wet = parseInt(document.getElementById('wet_temp').textContent.split(' ')[2]);
+        let dry = 2 * parseInt(document.getElementById('dry_temp').textContent.split(' ')[2]);
+        let wet = 2 * parseInt(document.getElementById('wet_temp').textContent.split(' ')[2]);
         console.log("s:"+s)
         console.log("p:"+p)
         console.log('T_min:'+T_min)
