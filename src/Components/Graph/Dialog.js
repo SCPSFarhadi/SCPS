@@ -25,12 +25,33 @@ import ClearIcon from '@mui/icons-material/Clear';
 import SensorsIcon from '@mui/icons-material/Sensors';
 import {useSelector} from "react-redux";
 import store from "../../store";
+import axios from "axios";
+import {baseUrl} from "../../Actions/auth";
 const listData = ['20°C', '04/26 20:11',1,1];
 
 export default function SimpleDialog(props) {
     const { onClose, selectedNode,nodeColor,open } = props;
     const faucetState = ((listData[2] === 1) ? 'open' : 'close');
     const isPersonInRoom = ((listData[2] === 1) ? 'person in' : 'no person');
+    const [dry_temp, set_dry_temp] = React.useState(0);
+    const [wet_temp, set_wet_temp] = React.useState(0);
+
+
+    const update_temp = () => {
+        axios
+            .post(baseUrl+'api/users/DungleUpdate/')
+
+            .then((res) => {
+                // console.log(res.data['dry_temp'])
+                // let y = JSON.parse(res.data)
+                // console.log(y)
+                set_dry_temp(res.data['dry_temp'])
+                set_wet_temp(res.data['wet_temp'])
+                setTimeout(update_temp, 1000)
+            })
+    }
+
+    update_temp();
     const handleClose = () => {
         onClose();
     };
@@ -63,7 +84,7 @@ export default function SimpleDialog(props) {
                             <DeviceThermostatIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText id={'wet_temp'} primary={`Wet temperature: ${props.details.fanAir1Temp} Centigrade`} />
+                    <ListItemText id={'wet_temp'} primary={`Wet temperature: ${wet_temp} Centigrade`} />
                 </ListItem>
 
                 <ListItem button onClick={() => handleListItemClick()} key='1'>
@@ -72,7 +93,7 @@ export default function SimpleDialog(props) {
                             <AccessTimeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText id={'dry_temp'} primary={`Dry temperature: ${props.details.temp} Centigrade`} />
+                    <ListItemText id={'dry_temp'} primary={`Dry temperature: ${dry_temp} Centigrade`} />
                 </ListItem>
                 <ListItem button onClick={() => handleListItemClick()} key='2'>
                     <ListItemAvatar>
