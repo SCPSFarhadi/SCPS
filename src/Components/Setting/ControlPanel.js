@@ -76,14 +76,14 @@ export default function ControPanel(props) {
         baseData.cValve2 = document.getElementById("cValveOpen2").checked // false true
         baseData.fanAir1 = document.getElementById("cValveOpen3").checked // false true
         baseData.fanAir2 = document.getElementById("cValveOpen4").checked // false true
-        let x1 = parseInt(document.getElementById("cValveFactor1").value)
-        let y1 = parseInt(document.getElementById("cvalve1w").value)
-        let x2 = parseInt(document.getElementById("cValveFactor2").value)
-        let y2 = parseInt(document.getElementById("cvalve2w").value)
-        let x3 = parseInt(document.getElementById("cValveFactor3").value)
-        let y3 = parseInt(document.getElementById("cvalve3w").value)
-        let x4 = parseInt(document.getElementById("cValveFactor4").value)
-        let y4 = parseInt(document.getElementById("cvalve4w").value)
+        let x1 = parseFloat(document.getElementById("cValveFactor1").value)
+        let y1 = parseFloat(document.getElementById("cvalve1w").value)
+        let x2 = parseFloat(document.getElementById("cValveFactor2").value)
+        let y2 = parseFloat(document.getElementById("cvalve2w").value)
+        let x3 = parseFloat(document.getElementById("cValveFactor3").value)
+        let y3 = parseFloat(document.getElementById("cvalve3w").value)
+        let x4 = parseFloat(document.getElementById("cValveFactor4").value)
+        let y4 = parseFloat(document.getElementById("cvalve4w").value)
 
         if (!x1) x1=1;
         if (!x2) x2=1;
@@ -94,10 +94,10 @@ export default function ControPanel(props) {
         if (!y3) y3=0;
         if (!y4) y4=0;
 
-        baseData.cValve1Time = 1000.0*y1/x1;
-        baseData.cValve2Time = 1000.0*y2/x2;
-        baseData.fanAir1Time = 1000.0*y3/x3;
-        baseData.fanAir2Time = 1000.0*y4/x4;
+        baseData.cValve1Time = y1/x1;
+        baseData.cValve2Time = y2/x2;
+        baseData.fanAir1Time = y3/x3;
+        baseData.fanAir2Time = y4/x4;
 
 
         axios
