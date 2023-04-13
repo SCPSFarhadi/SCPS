@@ -35,8 +35,6 @@ export default function SimpleDialog(props) {
     const isPersonInRoom = ((listData[2] === 1) ? 'person in' : 'no person');
     const [dry_temp, set_dry_temp] = React.useState(0);
     const [wet_temp, set_wet_temp] = React.useState(0);
-
-
     const update_temp = () => {
         axios
             .post(baseUrl+'api/users/DungleUpdate/')

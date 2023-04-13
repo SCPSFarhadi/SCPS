@@ -62,6 +62,7 @@ export default function ControPanel(props) {
             "temp": 20
         }
 
+        console.log('node id: ', props.details.nodeId)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
