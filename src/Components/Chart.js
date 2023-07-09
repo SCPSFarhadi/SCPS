@@ -32,7 +32,7 @@ export default function Chart(props) {
         let from = document.getElementById('fromDateRoom').value
         let to = document.getElementById('toDateRoom').value
 
-        let url = HOST_URL+"/api/users/RoomTempDate/";
+        let url = HOST_URL+"/api/users/ReportRoomTem/";
         let data2 = {
             from:from,
             to:to
